@@ -1,0 +1,54 @@
+global:
+  timeout: 30
+  retries: 2
+  parallel: 5
+
+servers:
+  - name: web-server-01
+    host: 192.168.1.101
+    port: 22
+    username: admin
+    group: web
+    auth_type: password
+    password: "your_password_here"
+    tags:
+      - web
+      - production
+    description: "Web 服务器节点 01"
+
+  - name: web-server-02
+    host: 192.168.1.102
+    port: 22
+    username: admin
+    group: web
+    auth_type: key
+    key_path: ~/.ssh/id_rsa
+    passphrase: "your_passphrase_here"
+    tags:
+      - web
+      - production
+    description: "Web 服务器节点 02"
+
+  - name: db-server-01
+    host: 192.168.1.201
+    port: 22
+    username: dba
+    group: database
+    auth_type: key
+    key_path: ~/.ssh/db_key
+    tags:
+      - database
+      - production
+    description: "数据库服务器主节点"
+
+  - name: cache-server-01
+    host: 192.168.1.301
+    port: 22
+    username: cache
+    group: cache
+    auth_type: password
+    password: "your_password_here"
+    tags:
+      - cache
+      - production
+    description: "Redis 缓存服务器"

@@ -1,0 +1,165 @@
+rules:
+  - id: CPU_USAGE_HIGH
+    name: CPU 使用率过高
+    description: "当 CPU 使用率超过 80% 时触发告警"
+    metric_type: cpu.usage
+    condition: "cpu.usage > 80"
+    severity: warning
+    tags:
+      - cpu
+      - performance
+    enabled: true
+
+  - id: CPU_LOAD_HIGH
+    name: CPU 负载过高
+    description: "当 5 分钟负载超过 CPU 核心数时触发告警"
+    metric_type: cpu.load5
+    condition: "cpu.load5 > 4"
+    severity: warning
+    tags:
+      - cpu
+      - performance
+    enabled: true
+
+  - id: CPU_IOWAIT_HIGH
+    name: CPU IO 等待过高
+    description: "当 CPU IO 等待超过 30% 时触发告警"
+    metric_type: cpu.iowait
+    condition: "cpu.iowait > 30"
+    severity: warning
+    tags:
+      - cpu
+      - io
+    enabled: true
+
+  - id: MEMORY_USAGE_HIGH
+    name: 内存使用率过高
+    description: "当内存使用率超过 85% 时触发告警"
+    metric_type: memory.usage
+    condition: "memory.usage > 85"
+    severity: critical
+    tags:
+      - memory
+      - performance
+    enabled: true
+
+  - id: MEMORY_AVAILABLE_LOW
+    name: 可用内存不足
+    description: "当可用内存低于 1GB 时触发告警"
+    metric_type: memory.available
+    condition: "memory.available < 1024"
+    severity: critical
+    tags:
+      - memory
+      - resources
+    enabled: true
+
+  - id: SWAP_USAGE_HIGH
+    name: 交换分区使用率过高
+    description: "当交换分区使用率超过 50% 时触发告警"
+    metric_type: memory.swap_usage
+    condition: "memory.swap_usage > 50"
+    severity: warning
+    tags:
+      - memory
+      - swap
+    enabled: true
+
+  - id: DISK_ROOT_HIGH
+    name: 根分区磁盘使用率过高
+    description: "当根分区磁盘使用率超过 85% 时触发告警"
+    metric_type: disk./.usage
+    condition: "disk./.usage > 85"
+    severity: critical
+    tags:
+      - disk
+      - storage
+    enabled: true
+
+  - id: DISK_MAX_HIGH
+    name: 磁盘最高使用率过高
+    description: "当任意磁盘分区使用率超过 90% 时触发告警"
+    metric_type: disk.max_usage
+    condition: "disk.max_usage > 90"
+    severity: critical
+    tags:
+      - disk
+      - storage
+    enabled: true
+
+  - id: DISK_DATA_HIGH
+    name: 数据分区磁盘使用率过高
+    description: "当数据分区磁盘使用率超过 80% 时触发告警"
+    metric_type: disk./data.usage
+    condition: "disk./data.usage > 80"
+    severity: warning
+    tags:
+      - disk
+      - storage
+    enabled: true
+
+  - id: PROCESS_COUNT_HIGH
+    name: 进程数过多
+    description: "当进程总数超过 500 时触发告警"
+    metric_type: process.count
+    condition: "process.count > 500"
+    severity: warning
+    tags:
+      - process
+      - system
+    enabled: true
+
+  - id: PROCESS_HIGH_CPU
+    name: 单个进程 CPU 使用率过高
+    description: "当单个进程 CPU 使用率超过 70% 时触发告警"
+    metric_type: process.high_cpu
+    condition: "process.high_cpu > 70"
+    severity: warning
+    tags:
+      - process
+      - cpu
+    enabled: true
+
+  - id: PROCESS_HIGH_MEM
+    name: 单个进程内存使用率过高
+    description: "当单个进程内存使用率超过 30% 时触发告警"
+    metric_type: process.high_mem
+    condition: "process.high_mem > 30"
+    severity: warning
+    tags:
+      - process
+      - memory
+    enabled: true
+
+  - id: TCP_CONNECTIONS_HIGH
+    name: TCP 连接数过高
+    description: "当 TCP 连接数超过 10000 时触发告警"
+    metric_type: system.tcp_conn
+    condition: "system.tcp_conn > 10000"
+    severity: warning
+    tags:
+      - network
+      - system
+    enabled: true
+
+  - id: OPEN_FILES_HIGH
+    name: 打开文件数过高
+    description: "当系统打开文件数超过 50000 时触发告警"
+    metric_type: system.open_files
+    condition: "system.open_files > 50000"
+    severity: warning
+    tags:
+      - system
+      - resources
+    enabled: true
+
+  - id: CPU_USAGE_NORMAL
+    name: CPU 使用率正常范围
+    description: "CPU 使用率应在 10%-60% 正常范围内"
+    metric_type: cpu.usage
+    condition: "cpu.usage between 10 and 60"
+    severity: info
+    tags:
+      - cpu
+      - performance
+    enabled: true
