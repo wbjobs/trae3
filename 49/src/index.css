@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #050d1a;
+  --color-panel: rgba(10, 22, 40, 0.8);
+  --color-border: rgba(26, 58, 92, 0.5);
+  --color-accent: #00e5ff;
+  --color-text: #e0e8f0;
+  --color-text-muted: #7a8fa6;
+  --color-alarm: #ff3d00;
+  --color-warn: #ffa726;
+  --color-ok: #4caf50;
+
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--color-panel);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  .glass-panel-solid {
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(26, 58, 92, 0.6);
+    border-radius: 8px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.4);
+}
+
+@keyframes alarm-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-alarm-pulse {
+  animation: alarm-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 20s linear infinite;
+}
+
+@keyframes corrosion-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-corrosion-pulse {
+  animation: corrosion-pulse 2s ease-in-out infinite;
+}
+
+@keyframes path-dash {
+  0% {
+    stroke-dashoffset: 8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-path-dash {
+  animation: path-dash 0.5s linear infinite;
+}
+
+@keyframes cross-section-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-cross-section-in {
+  animation: cross-section-fade-in 0.3s ease-out forwards;
+}
+
+@keyframes cross-section-fade-out {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+}
+
+.animate-cross-section-out {
+  animation: cross-section-fade-out 0.3s ease-out forwards;
+}
+
+@keyframes pressure-bar-pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pressure-bar {
+  animation: pressure-bar-pulse 1.5s ease-in-out infinite;
+}
+
+.path-waypoint-item {
+  transition: all 0.2s ease;
+}
+
+.path-waypoint-item.dragging {
+  opacity: 0.5;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+}
+
+.path-waypoint-item.drag-over {
+  border-color: #00e5ff;
+  background-color: rgba(0, 229, 255, 0.1);
+}
+
+.cross-section-svg {
+  cursor: grab;
+}
+
+.cross-section-svg:active {
+  cursor: grabbing;
+}
+
+.cross-section-close-btn {
+  transition: all 0.2s ease;
+}
+
+.cross-section-close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.risk-indicator {
+  position: relative;
+}
+
+.risk-indicator::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: inherit;
+  filter: blur(4px);
+  opacity: 0.5;
+  animation: risk-pulse 2s ease-in-out infinite;
+}
+
+@keyframes risk-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.map-node {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.map-node:hover {
+  transform: scale(1.2);
+}
+
+.map-node.selected {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.path-line {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.path-line.animated {
+  stroke-dasharray: 8 4;
+  animation: path-flow 1s linear infinite;
+}
+
+@keyframes path-flow {
+  0% {
+    stroke-dashoffset: 12;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.gauge-fill {
+  transition: all 0.5s ease-out;
+}
+
+.life-bar-fill {
+  transition: width 1s ease-out;
+}
+
+.corrosion-layer {
+  transition: all 0.3s ease;
+}
+
+.corrosion-layer:hover {
+  opacity: 1 !important;
+  filter: brightness(1.2);
+}
