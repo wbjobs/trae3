@@ -1,0 +1,37 @@
+{
+    "cluster": {
+        "master_host": "0.0.0.0",
+        "master_port": 9500,
+        "heartbeat_interval": 10,
+        "node_timeout": 30,
+        "max_retries": 3
+    },
+    "scheduler": {
+        "max_concurrent_tasks": 100,
+        "task_timeout": 3600,
+        "retry_delay": 30,
+        "priority_levels": 5
+    },
+    "sediment": {
+        "default_model": "yang_sediment",
+        "time_step": 3600,
+        "max_iterations": 1000,
+        "convergence_threshold": 1e-6
+    },
+    "storage": {
+        "db_type": "postgresql",
+        "db_host": "localhost",
+        "db_port": 5432,
+        "db_name": "sediment_db",
+        "db_user": "sediment_admin",
+        "db_password": "",
+        "pool_size": 10,
+        "batch_insert_size": 500
+    },
+    "logging": {
+        "level": "INFO",
+        "log_dir": "logs",
+        "max_file_size_mb": 50,
+        "backup_count": 5
+    }
+}

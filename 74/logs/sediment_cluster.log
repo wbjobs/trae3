@@ -1,0 +1,338 @@
+2026-05-30 17:40:18,005 [INFO] __main__ - Running standalone sediment computation demo...
+2026-05-30 17:40:18,005 [INFO] __main__ - Computation complete: 24 time steps
+2026-05-30 17:40:18,007 [INFO] __main__ -   Step 0: depth=4.9977m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:40:18,007 [INFO] __main__ -   Step 1: depth=4.9955m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:40:18,007 [INFO] __main__ -   Step 2: depth=4.9932m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:40:18,007 [INFO] __main__ -   Step 3: depth=4.9910m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:40:18,008 [INFO] __main__ -   Step 4: depth=4.9887m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:40:18,008 [INFO] __main__ -   ... (19 more steps)
+2026-05-30 17:40:18,008 [INFO] __main__ -   Final Step 23: depth=4.9460m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:40:18,008 [INFO] __main__ - Standalone computation finished successfully
+2026-05-30 17:41:37,055 [INFO] storage.connection - Initializing connection pool: postgresql://localhost:5432/sediment_db pool_size=10
+2026-05-30 17:41:37,055 [INFO] storage.connection - Connection pool initialized with 10 connections
+2026-05-30 17:41:37,055 [INFO] storage.manager - Storage manager initialized
+2026-05-30 17:41:37,055 [INFO] master - Cluster master initialized
+2026-05-30 17:41:37,056 [INFO] node_manager - Node manager started
+2026-05-30 17:41:37,056 [INFO] scheduler - Task scheduler started
+2026-05-30 17:41:37,056 [INFO] master - Cluster master started on 0.0.0.0:9500
+2026-05-30 17:41:37,056 [INFO] __main__ - === 集群水文泥沙计算演示 ===
+2026-05-30 17:41:37,056 [INFO] __main__ - 可用泥沙模型: ['yang_sediment', 'engelund_hansen', 'rouse']
+2026-05-30 17:41:37,056 [INFO] node_manager - Node registered: compute-node-01 host=192.168.1.101:9501 cores=16 mem=64.0GB
+2026-05-30 17:41:37,056 [INFO] __main__ - 注册计算节点: compute-node-01 (16核/64.0GB)
+2026-05-30 17:41:37,056 [INFO] node_manager - Node registered: compute-node-02 host=192.168.1.102:9501 cores=32 mem=128.0GB
+2026-05-30 17:41:37,057 [INFO] __main__ - 注册计算节点: compute-node-02 (32核/128.0GB)
+2026-05-30 17:41:37,057 [INFO] node_manager - Node registered: compute-node-03 host=192.168.1.103:9501 cores=8 mem=32.0GB
+2026-05-30 17:41:37,057 [INFO] __main__ - 注册计算节点: compute-node-03 (8核/32.0GB)
+2026-05-30 17:41:37,057 [INFO] __main__ - 
+--- 提交计算任务 ---
+2026-05-30 17:41:37,057 [INFO] scheduler - Task submitted: 23cfc562a2d74025 type=sediment_compute priority=HIGH
+2026-05-30 17:41:37,057 [INFO] __main__ -   [长江中游泥沙输移] -> task_id=23cfc562a2d74025
+2026-05-30 17:41:37,057 [INFO] scheduler - Task submitted: f8c808b331f744b8 type=sediment_compute priority=CRITICAL
+2026-05-30 17:41:37,057 [INFO] __main__ -   [黄河下游冲淤演算] -> task_id=f8c808b331f744b8
+2026-05-30 17:41:37,058 [INFO] scheduler - Task submitted: fb1a23e879f54bbd type=sediment_compute priority=NORMAL
+2026-05-30 17:41:37,058 [INFO] __main__ -   [珠江口悬沙浓度分布] -> task_id=fb1a23e879f54bbd
+2026-05-30 17:41:37,058 [INFO] __main__ - 
+--- 本地执行演算验证 ---
+2026-05-30 17:41:37,059 [INFO] __main__ -   [长江中游泥沙输移] 完成: 最终浓度=0.0000 最终输沙率=0.00000000 河床变化=0.00450000m 最终水深=7.7840m
+2026-05-30 17:41:37,059 [INFO] __main__ -   [黄河下游冲淤演算] 完成: 最终浓度=18909.6467 最终输沙率=339.36269584 河床变化=-381.77740782m 最终水深=18328.3156m
+2026-05-30 17:41:37,060 [INFO] __main__ -   [珠江口悬沙浓度分布] 完成: 最终浓度=9383.4786 最终输沙率=0.05354686 河床变化=-0.05686522m 最终水深=7.1900m
+2026-05-30 17:41:37,060 [INFO] __main__ - 
+--- 集群状态 ---
+2026-05-30 17:41:37,112 [ERROR] asyncio - Task exception was never retrieved
+future: <Task finished name='Task-3' coro=<TaskScheduler._dispatch_loop() done, defined at E:\标注项目\trae3\74\scheduler\__init__.py:159> exception=TypeError("object of type 'bool' has no len()")>
+Traceback (most recent call last):
+  File "E:\标注项目\trae3\74\scheduler\__init__.py", line 164, in _dispatch_loop
+    if len(self._running) >= self._max_concurrent:
+       ^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'bool' has no len()
+2026-05-30 17:41:37,113 [ERROR] asyncio - Task exception was never retrieved
+future: <Task finished name='Task-4' coro=<TaskScheduler._timeout_loop() done, defined at E:\标注项目\trae3\74\scheduler\__init__.py:176> exception=AttributeError("'bool' object has no attribute 'items'")>
+Traceback (most recent call last):
+  File "E:\标注项目\trae3\74\scheduler\__init__.py", line 180, in _timeout_loop
+    tid for tid, t in self._running.items()
+                      ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'bool' object has no attribute 'items'
+2026-05-30 17:44:05,972 [INFO] storage.connection - Initializing connection pool: postgresql://localhost:5432/sediment_db pool_size=10
+2026-05-30 17:44:05,972 [INFO] storage.connection - Connection pool initialized with 10 connections
+2026-05-30 17:44:05,972 [INFO] storage.manager - Storage manager initialized
+2026-05-30 17:44:05,973 [INFO] master - Cluster master initialized
+2026-05-30 17:44:05,973 [INFO] node_manager - Node manager started
+2026-05-30 17:44:05,973 [INFO] scheduler - Task scheduler started
+2026-05-30 17:44:05,973 [INFO] master - Cluster master started on 0.0.0.0:9500
+2026-05-30 17:44:05,973 [INFO] __main__ - === 集群水文泥沙计算演示 ===
+2026-05-30 17:44:05,973 [INFO] __main__ - 可用泥沙模型: ['yang_sediment', 'engelund_hansen', 'rouse']
+2026-05-30 17:44:05,973 [INFO] node_manager - Node registered: compute-node-01 host=192.168.1.101:9501 cores=16 mem=64.0GB
+2026-05-30 17:44:05,973 [INFO] __main__ - 注册计算节点: compute-node-01 (16核/64.0GB)
+2026-05-30 17:44:05,973 [INFO] node_manager - Node registered: compute-node-02 host=192.168.1.102:9501 cores=32 mem=128.0GB
+2026-05-30 17:44:05,973 [INFO] __main__ - 注册计算节点: compute-node-02 (32核/128.0GB)
+2026-05-30 17:44:05,973 [INFO] node_manager - Node registered: compute-node-03 host=192.168.1.103:9501 cores=8 mem=32.0GB
+2026-05-30 17:44:05,973 [INFO] __main__ - 注册计算节点: compute-node-03 (8核/32.0GB)
+2026-05-30 17:44:05,975 [INFO] __main__ - 
+--- 提交计算任务 ---
+2026-05-30 17:44:05,975 [INFO] scheduler - Task submitted: 5f81774c611046c5 type=sediment_compute priority=HIGH
+2026-05-30 17:44:05,975 [INFO] __main__ -   [长江中游泥沙输移] -> task_id=5f81774c611046c5
+2026-05-30 17:44:05,975 [INFO] scheduler - Task submitted: 70c760295a2041c9 type=sediment_compute priority=CRITICAL
+2026-05-30 17:44:05,975 [INFO] __main__ -   [黄河下游冲淤演算] -> task_id=70c760295a2041c9
+2026-05-30 17:44:05,975 [INFO] scheduler - Task submitted: 6ec20d8a8db245b7 type=sediment_compute priority=NORMAL
+2026-05-30 17:44:05,976 [INFO] __main__ -   [珠江口悬沙浓度分布] -> task_id=6ec20d8a8db245b7
+2026-05-30 17:44:05,976 [INFO] __main__ - 
+--- 本地执行演算验证 ---
+2026-05-30 17:44:05,976 [INFO] __main__ -   [长江中游泥沙输移] 完成: 最终浓度=0.0000 最终输沙率=0.00000000 河床变化=0.00450000m 最终水深=7.7840m
+2026-05-30 17:44:05,977 [INFO] __main__ -   [黄河下游冲淤演算] 完成: 最终浓度=18909.6467 最终输沙率=339.36269584 河床变化=-381.77740782m 最终水深=18328.3156m
+2026-05-30 17:44:05,979 [INFO] __main__ -   [珠江口悬沙浓度分布] 完成: 最终浓度=9383.4786 最终输沙率=0.05354686 河床变化=-0.05686522m 最终水深=7.1900m
+2026-05-30 17:44:05,979 [INFO] __main__ - 
+--- 集群状态 ---
+2026-05-30 17:44:05,981 [INFO] __main__ -   调度器: {'pending': 3, 'running': 0, 'completed': 0, 'total': 3}
+2026-05-30 17:44:05,982 [INFO] __main__ -   集群: 3 节点在线 / 3 总计
+2026-05-30 17:44:05,982 [INFO] __main__ -   存储: {'pool_size': 10, 'available_connections': 10, 'in_use_connections': 0, 'buffered_results': 0}
+2026-05-30 17:44:05,983 [INFO] scheduler - Task scheduler stopped
+2026-05-30 17:44:05,983 [INFO] node_manager - Node manager stopped
+2026-05-30 17:44:05,984 [INFO] storage.manager - Result writer closed. Total flushes: 0
+2026-05-30 17:44:05,984 [INFO] storage.connection - All database connections closed
+2026-05-30 17:44:05,984 [INFO] storage.manager - Storage manager closed
+2026-05-30 17:44:05,985 [INFO] master - Cluster master stopped
+2026-05-30 17:44:05,985 [INFO] __main__ - 
+=== 演示完成 ===
+2026-05-30 17:44:16,276 [INFO] __main__ - Running standalone sediment computation demo...
+2026-05-30 17:44:16,276 [INFO] __main__ - Computation complete: 24 time steps
+2026-05-30 17:44:16,276 [INFO] __main__ -   Step 0: depth=4.9977m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:44:16,276 [INFO] __main__ -   Step 1: depth=4.9955m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:44:16,276 [INFO] __main__ -   Step 2: depth=4.9932m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:44:16,276 [INFO] __main__ -   Step 3: depth=4.9910m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:44:16,277 [INFO] __main__ -   Step 4: depth=4.9887m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:44:16,277 [INFO] __main__ -   ... (19 more steps)
+2026-05-30 17:44:16,278 [INFO] __main__ -   Final Step 23: depth=4.9460m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:44:16,278 [INFO] __main__ - Standalone computation finished successfully
+2026-05-30 17:52:44,999 [INFO] __main__ - Running standalone sediment computation demo...
+2026-05-30 17:52:45,000 [INFO] __main__ - Computation complete: 24 time steps
+2026-05-30 17:52:45,001 [INFO] __main__ -   Step 0: depth=4.9977m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:52:45,001 [INFO] __main__ -   Step 1: depth=4.9955m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:52:45,001 [INFO] __main__ -   Step 2: depth=4.9932m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:52:45,001 [INFO] __main__ -   Step 3: depth=4.9910m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:52:45,002 [INFO] __main__ -   Step 4: depth=4.9887m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:52:45,002 [INFO] __main__ -   ... (19 more steps)
+2026-05-30 17:52:45,002 [INFO] __main__ -   Final Step 23: depth=4.9460m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 17:52:45,004 [INFO] __main__ - Standalone computation finished successfully
+2026-05-30 17:52:56,817 [INFO] storage.connection - Initializing connection pool: postgresql://localhost:5432/sediment_db pool_size=10
+2026-05-30 17:52:56,818 [INFO] storage.connection - Connection pool initialized with 10 connections
+2026-05-30 17:52:56,818 [INFO] storage.manager - Storage manager initialized
+2026-05-30 17:52:56,819 [INFO] master - Cluster master initialized
+2026-05-30 17:52:56,820 [INFO] node_manager - Node manager started
+2026-05-30 17:52:56,820 [INFO] scheduler - Task scheduler started
+2026-05-30 17:52:56,820 [INFO] master - Cluster master started on 0.0.0.0:9500
+2026-05-30 17:52:56,820 [INFO] __main__ - === 集群水文泥沙计算演示 ===
+2026-05-30 17:52:56,820 [INFO] __main__ - 可用泥沙模型: ['yang_sediment', 'engelund_hansen', 'rouse']
+2026-05-30 17:52:56,821 [INFO] node_manager - Node registered: compute-node-01 host=192.168.1.101:9501 cores=16 mem=64.0GB
+2026-05-30 17:52:56,821 [INFO] __main__ - 注册计算节点: compute-node-01 (16核/64.0GB)
+2026-05-30 17:52:56,821 [INFO] node_manager - Node registered: compute-node-02 host=192.168.1.102:9501 cores=32 mem=128.0GB
+2026-05-30 17:52:56,822 [INFO] __main__ - 注册计算节点: compute-node-02 (32核/128.0GB)
+2026-05-30 17:52:56,822 [INFO] node_manager - Node registered: compute-node-03 host=192.168.1.103:9501 cores=8 mem=32.0GB
+2026-05-30 17:52:56,822 [INFO] __main__ - 注册计算节点: compute-node-03 (8核/32.0GB)
+2026-05-30 17:52:56,823 [INFO] __main__ - 
+--- 提交计算任务 ---
+2026-05-30 17:52:56,823 [INFO] scheduler - Task submitted: e99f50b04b654e9c type=sediment_compute priority=HIGH
+2026-05-30 17:52:56,824 [INFO] __main__ -   [长江中游泥沙输移] -> task_id=e99f50b04b654e9c
+2026-05-30 17:52:56,824 [INFO] scheduler - Task submitted: 4f5d0018bb8b4964 type=sediment_compute priority=CRITICAL
+2026-05-30 17:52:56,824 [INFO] __main__ -   [黄河下游冲淤演算] -> task_id=4f5d0018bb8b4964
+2026-05-30 17:52:56,825 [INFO] scheduler - Task submitted: cd3e821a2fd84aa6 type=sediment_compute priority=NORMAL
+2026-05-30 17:52:56,825 [INFO] __main__ -   [珠江口悬沙浓度分布] -> task_id=cd3e821a2fd84aa6
+2026-05-30 17:52:56,825 [INFO] __main__ - 
+--- 本地执行演算验证 ---
+2026-05-30 17:52:56,826 [INFO] __main__ -   [长江中游泥沙输移] 完成: 最终浓度=0.0000 最终输沙率=0.00000000 河床变化=0.00450000m 最终水深=7.7840m
+2026-05-30 17:52:56,827 [WARNING] sediment.models - Step 0: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,827 [WARNING] sediment.models - Step 1: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,827 [WARNING] sediment.models - Step 2: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,827 [WARNING] sediment.models - Step 3: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,828 [WARNING] sediment.models - Step 4: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,828 [WARNING] sediment.models - Step 5: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,828 [WARNING] sediment.models - Step 6: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,828 [WARNING] sediment.models - Step 7: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,828 [WARNING] sediment.models - Step 8: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,828 [WARNING] sediment.models - Step 9: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,829 [WARNING] sediment.models - Step 10: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,829 [WARNING] sediment.models - Step 11: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,829 [WARNING] sediment.models - Step 12: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,829 [WARNING] sediment.models - Step 13: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,831 [WARNING] sediment.models - Step 14: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,831 [WARNING] sediment.models - Step 15: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,832 [WARNING] sediment.models - Step 16: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,832 [WARNING] sediment.models - Step 17: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,832 [WARNING] sediment.models - Step 18: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,832 [WARNING] sediment.models - Step 19: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,832 [WARNING] sediment.models - Step 20: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,832 [WARNING] sediment.models - Step 21: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,833 [WARNING] sediment.models - Step 22: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,833 [WARNING] sediment.models - Step 23: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,833 [WARNING] sediment.models - Step 24: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,833 [WARNING] sediment.models - Step 25: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,834 [WARNING] sediment.models - Step 26: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,834 [WARNING] sediment.models - Step 27: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,834 [WARNING] sediment.models - Step 28: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,835 [WARNING] sediment.models - Step 29: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,838 [WARNING] sediment.models - Step 30: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,839 [WARNING] sediment.models - Step 31: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,839 [WARNING] sediment.models - Step 32: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,839 [WARNING] sediment.models - Step 33: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,840 [WARNING] sediment.models - Step 34: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,840 [WARNING] sediment.models - Step 35: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,840 [WARNING] sediment.models - Step 36: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,841 [WARNING] sediment.models - Step 37: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,841 [WARNING] sediment.models - Step 38: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,841 [WARNING] sediment.models - Step 39: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,841 [WARNING] sediment.models - Step 40: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,841 [WARNING] sediment.models - Step 41: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,842 [WARNING] sediment.models - Step 42: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,842 [WARNING] sediment.models - Step 43: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,842 [WARNING] sediment.models - Step 44: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,843 [WARNING] sediment.models - Step 45: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,843 [WARNING] sediment.models - Step 46: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,843 [WARNING] sediment.models - Step 47: bed_change=-381.777408 exceeds limit 0.5, clamping
+2026-05-30 17:52:56,843 [INFO] __main__ -   [黄河下游冲淤演算] 完成: 最终浓度=12806139.4657 最终输沙率=339.36269584 河床变化=-0.50000000m 最终水深=27.0000m
+2026-05-30 17:52:56,844 [INFO] __main__ -   [珠江口悬沙浓度分布] 完成: 最终浓度=9383.4786 最终输沙率=0.05354686 河床变化=-0.05686522m 最终水深=7.1900m
+2026-05-30 17:52:56,844 [INFO] __main__ - 
+--- 集群状态 ---
+2026-05-30 17:52:56,845 [INFO] __main__ -   调度器: {'pending': 3, 'running': 0, 'completed': 0, 'total': 3}
+2026-05-30 17:52:56,845 [INFO] __main__ -   集群: 3 节点在线 / 3 总计
+2026-05-30 17:52:56,845 [INFO] __main__ -   存储: {'pool_size': 10, 'available_connections': 10, 'in_use_connections': 0, 'buffered_results': 0}
+2026-05-30 17:52:56,846 [INFO] scheduler - Task scheduler stopped
+2026-05-30 17:52:56,846 [INFO] node_manager - Node manager stopped
+2026-05-30 17:52:56,847 [INFO] storage.manager - Result writer closed. Total flushes: 0, total_written: 0, total_failed: 0
+2026-05-30 17:52:56,847 [INFO] storage.connection - All database connections closed
+2026-05-30 17:52:56,847 [INFO] storage.manager - Storage manager closed
+2026-05-30 17:52:56,847 [INFO] master - Cluster master stopped
+2026-05-30 17:52:56,848 [INFO] __main__ - 
+=== 演示完成 ===
+2026-05-30 18:13:24,539 [INFO] __main__ - Running standalone sediment computation demo...
+2026-05-30 18:13:24,540 [INFO] __main__ - Computation complete: 24 time steps, 3 snapshots, converged=False
+2026-05-30 18:13:24,541 [INFO] __main__ -   Step 1: dt=3600s depth=4.9977m conc=0.0000 transport=0.00000000 bed_change=0.00225000m cv=inf
+2026-05-30 18:13:24,541 [INFO] __main__ -   Step 2: dt=3600s depth=4.9955m conc=0.0000 transport=0.00000000 bed_change=0.00225000m cv=inf
+2026-05-30 18:13:24,541 [INFO] __main__ -   Step 3: dt=3600s depth=4.9932m conc=0.0000 transport=0.00000000 bed_change=0.00225000m cv=inf
+2026-05-30 18:13:24,541 [INFO] __main__ -   Step 4: dt=3600s depth=4.9910m conc=0.0000 transport=0.00000000 bed_change=0.00225000m cv=inf
+2026-05-30 18:13:24,541 [INFO] __main__ -   Step 5: dt=3600s depth=4.9887m conc=0.0000 transport=0.00000000 bed_change=0.00225000m cv=inf
+2026-05-30 18:13:24,541 [INFO] __main__ -   ... (19 more steps)
+2026-05-30 18:13:24,541 [INFO] __main__ -   Final Step 24: depth=4.9460m conc=0.0000 transport=0.00000000 bed_change=0.00225000m
+2026-05-30 18:13:24,541 [INFO] __main__ - Statistics:
+2026-05-30 18:13:24,543 [INFO] __main__ -   Avg concentration: 0.0000
+2026-05-30 18:13:24,543 [INFO] __main__ -   Max concentration: 0.0000
+2026-05-30 18:13:24,543 [INFO] __main__ -   Min concentration: 0.0000
+2026-05-30 18:13:24,543 [INFO] __main__ -   P50 concentration: 0.0000
+2026-05-30 18:13:24,543 [INFO] __main__ -   Avg depth: 4.9719m
+2026-05-30 18:13:24,543 [INFO] __main__ -   Total bed change: 0.054000m
+2026-05-30 18:13:24,543 [INFO] __main__ - Standalone computation finished successfully
+2026-05-30 18:13:42,126 [INFO] storage.manager - Initializing connection pool: postgresql://localhost:5432/sediment_db pool_size=10
+2026-05-30 18:13:42,126 [INFO] storage.manager - Connection pool initialized with 10 connections
+2026-05-30 18:13:42,127 [INFO] storage.manager - Storage manager initialized
+2026-05-30 18:13:42,127 [INFO] master - Cluster master initialized
+2026-05-30 18:13:42,127 [INFO] node_manager - Node manager started
+2026-05-30 18:13:42,127 [INFO] scheduler - Task scheduler started
+2026-05-30 18:13:42,127 [INFO] master - Cluster master started on 0.0.0.0:9500
+2026-05-30 18:13:42,128 [INFO] __main__ - === 集群水文泥沙计算系统优化功能演示 ===
+2026-05-30 18:13:42,128 [INFO] __main__ - 可用泥沙模型: ['yang_sediment', 'engelund_hansen', 'rouse']
+2026-05-30 18:13:42,128 [INFO] __main__ - 
+负载均衡策略: weighted_score
+2026-05-30 18:13:42,129 [INFO] __main__ - 可用策略: ['round_robin', 'weighted_round_robin', 'least_load', 'weighted_score', 'consistent_hash']
+2026-05-30 18:13:42,129 [INFO] node_manager - Node registered: compute-node-01 host=192.168.1.101:9501 cores=16 mem=64.0GB
+2026-05-30 18:13:42,130 [INFO] __main__ - 注册计算节点: compute-node-01 (16核/64.0GB, max_tasks=8)
+2026-05-30 18:13:42,130 [INFO] node_manager - Node registered: compute-node-02 host=192.168.1.102:9501 cores=32 mem=128.0GB
+2026-05-30 18:13:42,130 [INFO] __main__ - 注册计算节点: compute-node-02 (32核/128.0GB, max_tasks=16)
+2026-05-30 18:13:42,130 [INFO] node_manager - Node registered: compute-node-03 host=192.168.1.103:9501 cores=8 mem=32.0GB
+2026-05-30 18:13:42,131 [INFO] __main__ - 注册计算节点: compute-node-03 (8核/32.0GB, max_tasks=4)
+2026-05-30 18:13:42,131 [INFO] __main__ - 
+--- 节点性能评分 ---
+2026-05-30 18:13:42,131 [INFO] __main__ -   compute-node-01: score=7.217, tasks=1, success_rate=100.00%
+2026-05-30 18:13:42,131 [INFO] __main__ -   compute-node-02: score=13.611, tasks=2, success_rate=100.00%
+2026-05-30 18:13:42,131 [INFO] __main__ -   compute-node-03: score=4.006, tasks=3, success_rate=100.00%
+2026-05-30 18:13:42,131 [INFO] __main__ - 
+--- 功能1: 自适应时间步长 + 收敛性检测 ---
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 9, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 10, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 11, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 12, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 13, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 14, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 15, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 16, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 17, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 18, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 19, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 20, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 21, cv=0.0
+2026-05-30 18:13:42,132 [INFO] sediment.models - Convergence reached at step 22, cv=0.0
+2026-05-30 18:13:42,135 [INFO] sediment.models - Convergence reached at step 23, cv=0.0
+2026-05-30 18:13:42,135 [INFO] sediment.models - Convergence reached at step 24, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 25, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 26, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 27, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 28, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 29, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 30, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 31, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 32, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 33, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 34, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 35, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 36, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 37, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 38, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 39, cv=0.0
+2026-05-30 18:13:42,136 [INFO] sediment.models - Convergence reached at step 40, cv=0.0
+2026-05-30 18:13:42,139 [INFO] sediment.models - Convergence reached at step 41, cv=0.0
+2026-05-30 18:13:42,139 [INFO] sediment.models - Convergence reached at step 42, cv=0.0
+2026-05-30 18:13:42,139 [INFO] sediment.models - Convergence reached at step 43, cv=0.0
+2026-05-30 18:13:42,139 [INFO] sediment.models - Convergence reached at step 44, cv=0.0
+2026-05-30 18:13:42,140 [INFO] sediment.models - Convergence reached at step 45, cv=0.0
+2026-05-30 18:13:42,140 [INFO] sediment.models - Convergence reached at step 46, cv=0.0
+2026-05-30 18:13:42,140 [INFO] sediment.models - Convergence reached at step 47, cv=0.0
+2026-05-30 18:13:42,140 [INFO] sediment.models - Convergence reached at step 48, cv=0.0
+2026-05-30 18:13:42,141 [INFO] sediment.models - Convergence reached at step 49, cv=0.0
+2026-05-30 18:13:42,141 [INFO] __main__ -   计算完成: 50 步, 5 快照
+2026-05-30 18:13:42,141 [INFO] __main__ -   收敛状态: True
+2026-05-30 18:13:42,141 [INFO] __main__ -   时间步长变化: ['1800s', '2160s', '2592s', '3110s', '3600s', '3732s', '4478s', '5374s', '6449s', '7200s']
+2026-05-30 18:13:42,141 [INFO] __main__ -   最终浓度: 0.0000
+2026-05-30 18:13:42,143 [INFO] __main__ -   平均浓度: 0.0000
+2026-05-30 18:13:42,143 [INFO] __main__ -   P50浓度: 0.0000
+2026-05-30 18:13:42,143 [INFO] __main__ - 
+--- 功能2: 多分辨率计算与网格收敛指标 ---
+2026-05-30 18:13:42,144 [INFO] __main__ -   网格收敛指数 (GCI): 0.000000%
+2026-05-30 18:13:42,144 [INFO] __main__ -   level_0: 48 步, 最终浓度=0.0000
+2026-05-30 18:13:42,144 [INFO] __main__ -   level_1: 24 步, 最终浓度=0.0000
+2026-05-30 18:13:42,145 [INFO] __main__ -   level_2: 12 步, 最终浓度=0.0000
+2026-05-30 18:13:42,145 [INFO] __main__ - 
+--- 功能3: 分区存储策略 ---
+2026-05-30 18:13:42,145 [INFO] storage.manager - Initializing connection pool: postgresql://localhost:5432/sediment_db pool_size=10
+2026-05-30 18:13:42,145 [INFO] storage.manager - Connection pool initialized with 10 connections
+2026-05-30 18:13:42,146 [INFO] storage.manager - Storage manager initialized
+2026-05-30 18:13:42,146 [INFO] __main__ -   Yangtze: 时间分区=y2024m05d31, 河段分区=reach_unknown
+2026-05-30 18:13:42,147 [INFO] __main__ -   Yellow: 时间分区=y2024m06d01, 河段分区=reach_unknown
+2026-05-30 18:13:42,147 [INFO] __main__ -   Pearl: 时间分区=y2024m06d02, 河段分区=reach_unknown
+2026-05-30 18:13:42,147 [INFO] __main__ - 
+  存储分区策略: None
+2026-05-30 18:13:42,147 [INFO] __main__ - 
+--- 功能4: 结果比对功能 ---
+2026-05-30 18:13:42,148 [INFO] __main__ -   Yang vs Rouse 模型比对:
+2026-05-30 18:13:42,148 [INFO] __main__ -     concentration: RMSE=41962.799163, MARE=100.0000%, 最终差=55008.536307
+2026-05-30 18:13:42,149 [INFO] __main__ -     depth: RMSE=14.578477, MARE=64.8019%, 最终差=24.990501
+2026-05-30 18:13:42,149 [INFO] __main__ -   一致性评级: poor
+2026-05-30 18:13:42,149 [INFO] __main__ - 
+--- 功能5: 快照管理 ---
+2026-05-30 18:13:42,149 [INFO] __main__ -   快照数量: 5
+2026-05-30 18:13:42,149 [INFO] __main__ -     快照 1: 深度=4.998m, 流速=1.500m/s
+2026-05-30 18:13:42,150 [INFO] __main__ -     快照 11: 深度=4.970m, 流速=1.500m/s
+2026-05-30 18:13:42,150 [INFO] __main__ -     快照 21: 深度=4.925m, 流速=1.500m/s
+2026-05-30 18:13:42,150 [INFO] __main__ -     ... (2 more)
+2026-05-30 18:13:42,150 [INFO] __main__ - 
+--- 集群调度器状态 ---
+2026-05-30 18:13:42,150 [INFO] __main__ -   调度器: {'pending': 0, 'running': 0, 'completed': 0, 'total': 0}
+2026-05-30 18:13:42,150 [INFO] __main__ -   集群: 3 节点在线 / 3 总计
+2026-05-30 18:13:42,150 [INFO] __main__ -   存储: 缓冲=0, 分区=0
+2026-05-30 18:13:42,151 [INFO] storage.manager - Result writer closed. Total flushes: 0, total_written: 0, total_failed: 0
+2026-05-30 18:13:42,151 [INFO] storage.manager - All database connections closed
+2026-05-30 18:13:42,151 [INFO] storage.manager - Storage manager closed
+2026-05-30 18:13:42,152 [INFO] scheduler - Task scheduler stopped
+2026-05-30 18:13:42,152 [INFO] node_manager - Node manager stopped
+2026-05-30 18:13:42,152 [INFO] storage.manager - Result writer closed. Total flushes: 0, total_written: 0, total_failed: 0
+2026-05-30 18:13:42,152 [INFO] storage.manager - All database connections closed
+2026-05-30 18:13:42,152 [INFO] storage.manager - Storage manager closed
+2026-05-30 18:13:42,153 [INFO] master - Cluster master stopped
+2026-05-30 18:13:42,153 [INFO] __main__ - 
+=== 所有优化功能演示完成 ===
