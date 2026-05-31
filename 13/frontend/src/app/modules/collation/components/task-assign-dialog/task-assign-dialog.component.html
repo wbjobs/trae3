@@ -1,0 +1,143 @@
+<div class="dialog-overlay" *ngIf="visible()" (click)="close()">
+  <div class="dialog-container" (click)="$event.stopPropagation()">
+    <div class="dialog-header">
+      <h2 class="dialog-title">批量分派任务</h2>
+      <button class="close-btn" (click)="close()">
+        <span class="icon">×</span>
+      </button>
+    </div>
+
+    <div class="dialog-body">
+      <div class="form-section">
+        <label class="form-label">选择勘校员 <span class="required">*</span></label>
+        <select
+          class="form-select"
+          [(ngModel)]="selectedCollatorId"
+          [disabled]="isSubmitting()"
+        >
+          <option value="">请选择勘校员</option>
+          <option *ngFor="let collator of collators()" [value]="collator.id">
+            {{ collator.nickname }} ({{ collator.username }})
+          </option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-section">
+          <label class="form-label">优先级</label>
+          <div class="priority-group">
+            <button
+              *ngFor="let option of priorityOptions"
+              class="priority-btn"
+              [class.active]="selectedPriority() === option.value"
+              [style.borderColor]="option.color"
+              [style.color]="selectedPriority() === option.value ? 'white' : option.color"
+              [style.backgroundColor]="selectedPriority() === option.value ? option.color : 'transparent'"
+              (click)="selectedPriority.set(option.value)"
+              [disabled]="isSubmitting()"
+            >
+              {{ option.label }}
+            </button>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">截止日期</label>
+          <input
+            type="datetime-local"
+            class="form-input"
+            [(ngModel)]="deadline"
+            [disabled]="isSubmitting()"
+          />
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">备注</label>
+        <textarea
+          class="form-textarea"
+          [(ngModel)]="remark"
+          placeholder="请输入备注信息（可选）"
+          rows="3"
+          [disabled]="isSubmitting()"
+        ></textarea>
+      </div>
+
+      <div class="form-section">
+        <div class="section-header">
+          <label class="form-label">选择页面 <span class="required">*</span></label>
+          <div class="selection-info">
+            <span>已选择 {{ selectedPageIds().length }} / {{ pages().length }} 页</span>
+          </div>
+        </div>
+
+        <div class="select-all-row">
+          <label class="checkbox-label">
+            <input
+              type="checkbox"
+              [checked]="allSelected()"
+              [indeterminate]="indeterminate()"
+              (change)="toggleAll()"
+              [disabled]="isSubmitting()"
+            />
+            <span>全选</span>
+          </label>
+        </div>
+
+        <div class="page-list" *ngIf="!isLoading(); else loadingTemplate">
+          <div
+            *ngFor="let page of pages()"
+            class="page-item"
+            [class.selected]="isSelected(page.id)"
+            (click)="togglePage(page.id)"
+          >
+            <input
+              type="checkbox"
+              [checked]="isSelected(page.id)"
+              (change)="togglePage(page.id)"
+              [disabled]="isSubmitting()"
+              (click)="$event.stopPropagation()"
+            />
+            <div class="page-thumbnail">
+              <img [src]="page.thumbnailUrl || page.imageUrl" alt="第{{ page.pageNumber }}页" loading="lazy" />
+            </div>
+            <div class="page-info">
+              <div class="page-number">第 {{ page.pageNumber }} 页</div>
+              <div class="page-meta">卷 {{ page.volumeNumber }}</div>
+            </div>
+          </div>
+
+          <div class="empty-state" *ngIf="pages().length === 0">
+            <div class="empty-icon">📄</div>
+            <div class="empty-text">暂无待分配的页面</div>
+          </div>
+        </div>
+
+        <ng-template #loadingTemplate>
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <div class="loading-text">加载中...</div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button
+        class="btn btn-secondary"
+        (click)="close()"
+        [disabled]="isSubmitting()"
+      >
+        取消
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="submit()"
+        [disabled]="!canSubmit() || isSubmitting()"
+      >
+        <span *ngIf="isSubmitting()" class="spinner-inline"></span>
+        {{ isSubmitting() ? '分派中...' : '确认分派' }}
+      </button>
+    </div>
+  </div>
+</div>

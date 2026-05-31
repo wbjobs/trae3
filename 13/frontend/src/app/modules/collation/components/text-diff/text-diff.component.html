@@ -1,0 +1,78 @@
+<!-- 文本差异对比组件 -->
+
+<div class="text-diff-container">
+  <!-- 统计信息 -->
+  <div class="diff-stats" *ngIf="hasDiffs()">
+    <span class="stat-item added">
+      +{{ addedCount() }} 新增
+    </span>
+    <span class="stat-item removed">
+      -{{ removedCount() }} 删除
+    </span>
+  </div>
+
+  <!-- 模式切换 -->
+  <div class="mode-switcher" *ngIf="!diffs.length">
+    <button
+      class="mode-btn"
+      [class.active]="diffMode === 'chars'"
+      (click)="setDiffMode('chars')"
+    >
+      按字符
+    </button>
+    <button
+      class="mode-btn"
+      [class.active]="diffMode === 'words'"
+      (click)="setDiffMode('words')"
+    >
+      按词
+    </button>
+    <button
+      class="mode-btn"
+      [class.active]="diffMode === 'lines'"
+      (click)="setDiffMode('lines')"
+    >
+      按行
+    </button>
+  </div>
+
+  <!-- 行内显示 -->
+  <div class="inline-diff" *ngIf="showInline">
+    <div class="diff-content">
+      <span
+        *ngFor="let diff of getCurrentDiffs(); let i = index"
+        [class]="getDiffClass(diff.type)"
+        [innerHTML]="getSafeHtml(diff.value)"
+      ></span>
+    </div>
+  </div>
+
+  <!-- 并排显示 -->
+  <div class="side-by-side-diff" *ngIf="showSideBySide">
+    <div class="diff-column">
+      <div class="column-header">原始文本</div>
+      <div class="diff-content">
+        <span
+          *ngFor="let diff of leftDiffs(); let i = index"
+          [class]="getDiffClass(diff.type === 'added' ? 'unchanged' : diff.type)"
+          [innerHTML]="getSafeHtml(diff.value)"
+        ></span>
+      </div>
+    </div>
+    <div class="diff-column">
+      <div class="column-header">勘校后文本</div>
+      <div class="diff-content">
+        <span
+          *ngFor="let diff of rightDiffs(); let i = index"
+          [class]="getDiffClass(diff.type === 'removed' ? 'unchanged' : diff.type)"
+          [innerHTML]="getSafeHtml(diff.value)"
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 无差异提示 -->
+  <div class="no-diff" *ngIf="!hasDiffs() && (oldText || newText || diffs.length)">
+    文本内容一致，无差异
+  </div>
+</div>

@@ -1,0 +1,42 @@
+{
+  "analysis": {
+    "analyzer": {
+      "ik_max_word": {
+        "type": "custom",
+        "tokenizer": "ik_max_word",
+        "filter": [
+          "synonym_filter"
+        ]
+      },
+      "ik_smart": {
+        "type": "custom",
+        "tokenizer": "ik_smart",
+        "filter": [
+          "synonym_filter"
+        ]
+      },
+      "pinyin_analyzer": {
+        "type": "custom",
+        "tokenizer": "ik_smart",
+        "filter": [
+          "pinyin_filter"
+        ]
+      }
+    },
+    "filter": {
+      "synonym_filter": {
+        "type": "synonym",
+        "synonyms_path": "analysis/synonyms.txt"
+      },
+      "pinyin_filter": {
+        "type": "pinyin",
+        "keep_first_letter": true,
+        "keep_separate_first_letter": false,
+        "keep_full_pinyin": true,
+        "keep_original": true,
+        "limit_first_letter_length": 16,
+        "lowercase": true
+      }
+    }
+  }
+}

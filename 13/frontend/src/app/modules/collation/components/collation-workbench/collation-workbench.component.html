@@ -1,0 +1,230 @@
+<!-- 勘校工作台主组件 -->
+
+<div class="workbench-container">
+  <!-- 顶部工具栏 -->
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <button class="btn btn-secondary" (click)="goBack()">
+        ← 返回列表
+      </button>
+      <span class="page-info">
+        第 {{ currentIndex() + 1 }} / {{ totalPages() }} 页
+      </span>
+    </div>
+
+    <div class="toolbar-center">
+      <button
+        class="btn btn-icon"
+        [disabled]="!hasPrevious()"
+        (click)="goToPreviousPage()"
+        title="上一页 (←)"
+      >
+        ◀
+      </button>
+      <input
+        type="number"
+        class="page-input"
+        [value]="currentIndex() + 1"
+        (change)="goToPage($event.target ? parseInt($event.target.value) - 1 : 0)"
+        min="1"
+        [max]="totalPages()"
+      />
+      <button
+        class="btn btn-icon"
+        [disabled]="!hasNext()"
+        (click)="goToNextPage()"
+        title="下一页 (→)"
+      >
+        ▶
+      </button>
+    </div>
+
+    <div class="toolbar-right">
+      <button class="btn btn-secondary" (click)="toggleOcrText()" title="显示/隐藏OCR文本">
+        {{ showOcrText() ? '隐藏OCR' : '显示OCR' }}
+      </button>
+      <button class="btn btn-secondary" (click)="toggleDiff()" title="显示/隐藏差异对比">
+        {{ showDiff() ? '隐藏差异' : '显示差异' }}
+      </button>
+      <button class="btn btn-secondary" (click)="toggleHistory()" title="历史记录 (Ctrl+H)">
+        📜 历史
+      </button>
+      <button class="btn btn-secondary" (click)="toggleShortcuts()" title="快捷键说明">
+        ⌨ 快捷键
+      </button>
+      <button
+        class="btn btn-primary"
+        [disabled]="isSaving()"
+        (click)="submitCollation()"
+      >
+        {{ isSaving() ? '提交中...' : '提交勘校 (Ctrl+S)' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- 主内容区 -->
+  <div class="main-content">
+    <!-- 左侧：图像查看器 -->
+    <div class="image-panel">
+      <div class="image-toolbar">
+        <span class="image-info" *ngIf="currentPage()">
+          册 {{ currentPage()?.volumeNumber }} · 页 {{ currentPage()?.pageNumber }}
+        </span>
+        <div class="image-actions">
+          <button class="btn btn-sm" (click)="zoomIn()" title="放大 (Ctrl+=)">
+            🔍+
+          </button>
+          <button class="btn btn-sm" (click)="zoomOut()" title="缩小 (Ctrl+-)">
+            🔍-
+          </button>
+          <button class="btn btn-sm" (click)="rotateImage()" title="旋转 (Ctrl+R)">
+            ↻ {{ rotation() }}°
+          </button>
+          <button class="btn btn-sm" (click)="resetView()" title="重置视图">
+            ⟲ 重置
+          </button>
+          <button class="btn btn-sm" (click)="toggleFullscreen()" title="全屏 (Ctrl+F)">
+            ⛶
+          </button>
+        </div>
+      </div>
+      <div #openseadragonContainer class="openseadragon-container"></div>
+      <div class="loading-overlay" *ngIf="isLoading()">
+        <div class="loading-spinner"></div>
+        <span>加载中...</span>
+      </div>
+    </div>
+
+    <!-- 右侧：文本编辑区 -->
+    <div class="text-panel">
+      <!-- OCR文本区 -->
+      <div class="ocr-section" *ngIf="showOcrText()">
+        <div class="section-header">
+          <span class="section-title">OCR识别文本</span>
+        </div>
+        <div class="ocr-content">
+          {{ originalText() }}
+        </div>
+      </div>
+
+      <!-- 编辑区 -->
+      <div class="editor-section">
+        <div class="section-header">
+          <span class="section-title">勘校文本</span>
+          <span
+            class="status-badge"
+            *ngIf="currentPage()"
+            [style.backgroundColor]="getStatusColor(currentPage()!.status)"
+          >
+            {{ getStatusLabel(currentPage()!.status) }}
+          </span>
+        </div>
+        <textarea
+          #textEditor
+          class="text-editor"
+          [(ngModel)]="editedText"
+          placeholder="请在此处进行勘校..."
+          [disabled]="isLoading()"
+        ></textarea>
+      </div>
+
+      <!-- 差异对比区 -->
+      <div class="diff-section" *ngIf="showDiff()">
+        <div class="section-header">
+          <span class="section-title">差异对比</span>
+        </div>
+        <app-text-diff
+          [oldText]="originalText()"
+          [newText]="editedText()"
+          diffMode="chars"
+        ></app-text-diff>
+      </div>
+
+      <!-- 提交选项 -->
+      <div class="submit-options">
+        <div class="option-item">
+          <label>
+            <input type="checkbox" [(ngModel)]="markAsCompleted" />
+            标记为已完成
+          </label>
+        </div>
+        <div class="option-item">
+          <textarea
+            class="comment-input"
+            [(ngModel)]="comment"
+            placeholder="添加备注（可选）..."
+            rows="2"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 历史记录面板 -->
+    <div class="history-panel" *ngIf="showHistory()">
+      <app-history-panel
+        [history]="history()"
+        [currentPageId]="currentPage()?.id || ''"
+        (restore)="restoreVersion($event)"
+        (close)="toggleHistory()"
+      ></app-history-panel>
+    </div>
+  </div>
+
+  <!-- 底部状态栏 -->
+  <div class="status-bar">
+    <div class="status-left">
+      <span *ngIf="currentPage()">
+        缩放: {{ (zoom() * 100).toFixed(0) }}% | 旋转: {{ rotation() }}°
+      </span>
+    </div>
+    <div class="status-center">
+      <!-- 版本时间轴 -->
+      <div class="timeline" *ngIf="history().length > 0">
+        <span class="timeline-label">版本历史:</span>
+        <div class="timeline-items">
+          <div
+            class="timeline-item"
+            *ngFor="let record of history().slice(-5); let i = index"
+            [title]="record.collatorName + ' - ' + (record.createdAt | date: 'yyyy-MM-dd HH:mm')"
+          >
+            v{{ record.version }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="status-right">
+      <span *ngIf="currentPage()?.collatorName">
+        勘校者: {{ currentPage()?.collatorName }}
+      </span>
+      <span *ngIf="currentPage()?.updatedAt">
+        更新时间: {{ currentPage()?.updatedAt | date: 'yyyy-MM-dd HH:mm' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- 快捷键说明弹窗 -->
+  <div class="modal-overlay" *ngIf="showShortcuts()" (click)="toggleShortcuts()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>快捷键说明</h3>
+        <button class="btn-close" (click)="toggleShortcuts()">×</button>
+      </div>
+      <div class="modal-body">
+        <table class="shortcut-table">
+          <thead>
+            <tr>
+              <th>快捷键</th>
+              <th>功能</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let shortcut of shortcuts">
+              <td class="shortcut-key">{{ shortcut.key }}</td>
+              <td>{{ shortcut.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

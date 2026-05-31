@@ -1,0 +1,170 @@
+<div class="task-list-container">
+  <div class="list-header">
+    <div class="header-left">
+      <h3 class="list-title">{{ mode() === 'my' ? '我的任务' : '任务列表' }}</h3>
+      <button class="refresh-btn" (click)="refresh()" [disabled]="isLoading()">
+        <span class="icon" [class.spinning]="isLoading()">↻</span>
+        刷新
+      </button>
+    </div>
+
+    <div class="header-right">
+      <div class="search-box">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="搜索项目、勘校员..."
+          [(ngModel)]="searchKeyword"
+          (input)="search()"
+        />
+        <span class="search-icon">🔍</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div
+      *ngFor="let option of statusOptions"
+      class="stat-item"
+      [class.active]="selectedStatus() === option.value"
+      [style.borderColor]="selectedStatus() === option.value ? option.color : 'transparent'"
+      (click)="filterByStatus(option.value)"
+    >
+      <span class="stat-label">{{ option.label }}</span>
+      <span class="stat-value" [style.color]="option.color">
+        {{ option.value === 'all' ? statistics().total :
+           option.value === TaskStatus.IN_PROGRESS ? statistics().inProgress :
+           option.value === TaskStatus.COMPLETED ? statistics().completed :
+           statistics().cancelled }}
+      </span>
+    </div>
+  </div>
+
+  <div class="task-list" *ngIf="!isLoading(); else loadingTemplate">
+    <div
+      *ngFor="let task of filteredTasks()"
+      class="task-card"
+      [class.overdue]="isOverdue(task.deadline)"
+      [class.deadline-near]="isDeadlineNear(task.deadline)"
+    >
+      <div class="task-header">
+        <div class="task-title-row">
+          <h4 class="task-title">{{ task.projectName }}</h4>
+          <span
+            class="priority-badge"
+            [style.backgroundColor]="getPriorityColor(task.priority) + '20'"
+            [style.color]="getPriorityColor(task.priority)"
+          >
+            {{ getPriorityLabel(task.priority) }}
+          </span>
+        </div>
+        <div class="task-meta">
+          <span
+            class="status-badge"
+            [style.backgroundColor]="getStatusColor(task.status) + '20'"
+            [style.color]="getStatusColor(task.status)"
+          >
+            {{ getStatusLabel(task.status) }}
+          </span>
+          <span class="page-count">📄 {{ task.pageCount }} 页</span>
+        </div>
+      </div>
+
+      <div class="task-body">
+        <div class="progress-section">
+          <div class="progress-header">
+            <span class="progress-label">完成进度</span>
+            <span class="progress-value">{{ task.completedPages }}/{{ task.pageCount }}</span>
+          </div>
+          <div class="progress-bar">
+            <div
+              class="progress-fill"
+              [style.width]="task.progress + '%'"
+              [style.backgroundColor]="getProgressColor(task.progress)"
+            ></div>
+          </div>
+          <div class="progress-percent">{{ task.progress }}%</div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">分派人</span>
+            <span class="info-value">{{ task.dispatcherName }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">勘校员</span>
+            <span class="info-value">{{ task.collatorName }}</span>
+          </div>
+          <div class="info-item" *ngIf="task.deadline">
+            <span class="info-label">截止日期</span>
+            <span
+              class="info-value"
+              [class.overdue-text]="isOverdue(task.deadline)"
+              [class.near-text]="isDeadlineNear(task.deadline)"
+            >
+              {{ formatDate(task.deadline) }}
+              <span *ngIf="isOverdue(task.deadline)" class="overdue-badge">已逾期</span>
+              <span *ngIf="isDeadlineNear(task.deadline) && !isOverdue(task.deadline)" class="near-badge">即将到期</span>
+            </span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">创建时间</span>
+            <span class="info-value">{{ formatDate(task.createTime) }}</span>
+          </div>
+        </div>
+
+        <div class="task-remark" *ngIf="task.remark">
+          <span class="remark-label">备注：</span>
+          <span class="remark-text">{{ task.remark }}</span>
+        </div>
+      </div>
+
+      <div class="task-footer">
+        <div class="footer-left">
+          <span class="update-time">更新于 {{ formatDate(task.updateTime) }}</span>
+        </div>
+        <div class="footer-right">
+          <button class="action-btn btn-view" (click)="viewTaskDetail(task)">
+            查看详情
+          </button>
+          <button
+            *ngIf="task.status === TaskStatus.IN_PROGRESS && mode() !== 'my'"
+            class="action-btn btn-reassign"
+            (click)="onReassign(task)"
+          >
+            重新分派
+          </button>
+          <button
+            *ngIf="task.status === TaskStatus.IN_PROGRESS && mode() !== 'my'"
+            class="action-btn btn-cancel"
+            (click)="cancelTask(task)"
+          >
+            取消任务
+          </button>
+          <button
+            *ngIf="task.status === TaskStatus.IN_PROGRESS && mode() === 'my'"
+            class="action-btn btn-primary"
+            (click)="startCollation(task)"
+          >
+            开始勘校
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="filteredTasks().length === 0">
+      <div class="empty-icon">📋</div>
+      <div class="empty-text">暂无任务数据</div>
+      <div class="empty-hint">
+        {{ selectedStatus() !== 'all' ? '尝试切换筛选条件' : '新的任务将显示在这里' }}
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingTemplate>
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <div class="loading-text">加载中...</div>
+    </div>
+  </ng-template>
+</div>

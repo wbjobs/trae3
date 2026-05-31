@@ -1,0 +1,216 @@
+@import './variables';
+
+// 古籍主题定制 - Angular Material 主题
+@use '@angular/material' as mat;
+
+// 定义古籍风格调色板
+$ancient-book-primary: mat.define-palette(
+  (
+    50: #FAF8F4,
+    100: #F5F0E6,
+    200: #EDE6D6,
+    300: #D4C9B5,
+    400: #B5A78F,
+    500: #8B7D65,
+    600: #5D4E37,
+    700: #3E3325,
+    800: #2C2416,
+    900: #1A150E,
+    A100: #F5F0E6,
+    A200: #D4C9B5,
+    A400: #8B7D65,
+    A700: #3E3325,
+  ),
+  600,
+  400,
+  700
+);
+
+$ancient-book-accent: mat.define-palette(
+  (
+    50: #FBECE9,
+    100: #F5D1CA,
+    200: #EFB2A6,
+    300: #E89382,
+    400: #E37B66,
+    500: #D96B5A,
+    600: #C84C3B,
+    700: #A83D2E,
+    800: #8A3226,
+    900: #6B261D,
+    A100: #FBECE9,
+    A200: #EFB2A6,
+    A400: #D96B5A,
+    A700: #A83D2E,
+  ),
+  600,
+  400,
+  700
+);
+
+$ancient-book-warn: mat.define-palette(mat.$red-palette);
+
+// 创建主题
+$ancient-book-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ancient-book-primary,
+      accent: $ancient-book-accent,
+      warn: $ancient-book-warn,
+    ),
+    typography: mat.define-typography-config(
+      $font-family: '#{$font-family-primary}, #{$font-family-secondary}',
+      $display-4: mat.define-typography-level(112px, 112px, 300),
+      $display-3: mat.define-typography-level(56px, 56px, 400),
+      $display-2: mat.define-typography-level(45px, 48px, 400),
+      $display-1: mat.define-typography-level(34px, 40px, 400),
+      $headline: mat.define-typography-level(24px, 32px, 500),
+      $title: mat.define-typography-level(20px, 28px, 500),
+      $subheading-2: mat.define-typography-level(16px, 24px, 500),
+      $subheading-1: mat.define-typography-level(15px, 24px, 400),
+      $body-2: mat.define-typography-level(14px, 24px, 500),
+      $body-1: mat.define-typography-level(14px, 20px, 400),
+      $caption: mat.define-typography-level(12px, 20px, 400),
+      $button: mat.define-typography-level(14px, 14px, 500),
+      $input: mat.define-typography-level(inherit, 1.125, 400),
+    ),
+    density: 0,
+  )
+);
+
+// 应用主题
+@include mat.all-component-themes($ancient-book-theme);
+
+// 全局样式
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-primary, $font-family-secondary;
+  background-color: $color-bg-primary;
+  color: $color-text-primary;
+  line-height: 1.6;
+}
+
+// 自定义滚动条
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-bg-secondary;
+  border-radius: $border-radius-sm;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-primary-light;
+  border-radius: $border-radius-sm;
+
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+// 选择文本样式
+::selection {
+  background-color: rgba($color-accent, 0.3);
+  color: $color-text-primary;
+}
+
+// 全局链接样式
+a {
+  color: $color-accent;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover,
+  &:focus {
+    color: $color-accent-dark;
+    text-decoration: underline;
+  }
+}
+
+// 古籍风格按钮扩展
+.ancient-btn {
+  font-family: $font-family-primary;
+  border: 1px solid $color-primary;
+  background-color: $color-bg-tertiary;
+  color: $color-primary;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-bg-primary;
+  }
+
+  &.primary {
+    background-color: $color-primary;
+    color: $color-bg-primary;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+  }
+
+  &.accent {
+    background-color: $color-accent;
+    color: white;
+    border-color: $color-accent;
+
+    &:hover {
+      background-color: $color-accent-dark;
+      border-color: $color-accent-dark;
+    }
+  }
+}
+
+// 古籍卡片样式
+.ancient-card {
+  background-color: $color-bg-tertiary;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  padding: $spacing-lg;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+
+  .card-title {
+    color: $color-primary;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    border-bottom: 2px solid $color-accent;
+    padding-bottom: $spacing-sm;
+  }
+
+  .card-content {
+    color: $color-text-secondary;
+    font-size: $font-size-base;
+  }
+}
+
+// 古籍分隔线
+.ancient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, $color-border, transparent);
+  margin: $spacing-lg 0;
+}
+
+// 古籍印章效果
+.ancient-seal {
+  display: inline-block;
+  padding: $spacing-xs $spacing-sm;
+  border: 2px solid $color-accent;
+  color: $color-accent;
+  font-family: $font-family-primary;
+  font-weight: bold;
+  transform: rotate(-5deg);
+  opacity: 0.9;
+}

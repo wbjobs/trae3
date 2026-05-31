@@ -1,0 +1,131 @@
+<!-- 历史记录面板组件 -->
+
+<div class="history-panel">
+  <!-- 头部 -->
+  <div class="panel-header">
+    <h3>勘校历史</h3>
+    <div class="header-actions">
+      <button
+        class="btn btn-sm"
+        [class.active]="compareMode()"
+        (click)="toggleCompareMode()"
+        title="版本对比"
+      >
+        {{ compareMode() ? '退出对比' : '版本对比' }}
+      </button>
+      <button class="btn-close" (click)="closePanel()">×</button>
+    </div>
+  </div>
+
+  <!-- 对比模式提示 -->
+  <div class="compare-hint" *ngIf="compareMode()">
+    <p>请选择两个版本进行对比：</p>
+    <div class="compare-actions" *ngIf="canCompare()">
+      <button class="btn btn-primary btn-sm" (click)="compareVersions()">
+        开始对比
+      </button>
+      <button class="btn btn-secondary btn-sm" (click)="clearComparison()">
+        清空选择
+      </button>
+    </div>
+    <p class="hint-text" *ngIf="selectedVersion1() !== null">
+      已选版本1: v{{ selectedVersion1() }}
+      <span *ngIf="selectedVersion2() !== null"> | 版本2: v{{ selectedVersion2() }}</span>
+    </p>
+  </div>
+
+  <!-- 对比结果 -->
+  <div class="compare-result" *ngIf="diffResult().length > 0">
+    <div class="result-header">
+      <h4>版本差异</h4>
+      <button class="btn-close" (click)="diffResult.set([])">×</button>
+    </div>
+    <div class="diff-legend">
+      <span class="legend-item">
+        <span class="legend-color added"></span> 新增
+      </span>
+      <span class="legend-item">
+        <span class="legend-color removed"></span> 删除
+      </span>
+    </div>
+    <app-text-diff
+      [diffs]="diffResult()"
+      [showInline]="true"
+    ></app-text-diff>
+  </div>
+
+  <!-- 历史记录列表 -->
+  <div class="history-list" *ngIf="!selectedRecord() || compareMode()">
+    <div class="empty-state" *ngIf="sortedHistory().length === 0">
+      暂无历史记录
+    </div>
+
+    <div
+      *ngFor="let record of sortedHistory()"
+      class="history-item"
+      [class.selected]="selectedRecord()?.id === record.id"
+      [class]="getVersionSelectionClass(record.version)"
+      (click)="compareMode() ? selectVersion(record.version) : selectRecord(record)"
+    >
+      <div class="item-header">
+        <span class="version-badge">v{{ record.version }}</span>
+        <span class="collator">{{ record.collatorName }}</span>
+      </div>
+      <div class="item-time">
+        {{ formatDate(record.createdAt) }}
+      </div>
+      <div class="item-comment" *ngIf="record.comment">
+        {{ record.comment }}
+      </div>
+      <div class="item-actions" *ngIf="!compareMode()">
+        <button
+          class="btn btn-sm btn-secondary"
+          (click)="$event.stopPropagation(); restoreVersion(record)"
+        >
+          恢复此版本
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 记录详情 -->
+  <div class="record-detail" *ngIf="selectedRecord() && !compareMode()">
+    <div class="detail-header">
+      <button class="btn btn-sm" (click)="selectedRecord.set(null)">
+        ← 返回列表
+      </button>
+      <span class="version-title">版本 v{{ selectedRecord()!.version }}</span>
+    </div>
+
+    <div class="detail-info">
+      <div class="info-row">
+        <label>勘校者:</label>
+        <span>{{ selectedRecord()!.collatorName }}</span>
+      </div>
+      <div class="info-row">
+        <label>时间:</label>
+        <span>{{ formatDate(selectedRecord()!.createdAt) }}</span>
+      </div>
+      <div class="info-row" *ngIf="selectedRecord()!.comment">
+        <label>备注:</label>
+        <span>{{ selectedRecord()!.comment }}</span>
+      </div>
+    </div>
+
+    <div class="detail-content">
+      <h4>勘校后文本</h4>
+      <div class="text-content">
+        {{ selectedRecord()!.correctedText }}
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <button
+        class="btn btn-primary"
+        (click)="restoreVersion(selectedRecord()!)"
+      >
+        恢复到此版本
+      </button>
+    </div>
+  </div>
+</div>

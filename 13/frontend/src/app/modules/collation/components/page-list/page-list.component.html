@@ -1,0 +1,160 @@
+<!-- 页面列表组件 -->
+
+<div class="page-list-container">
+  <!-- 头部 -->
+  <div class="header">
+    <h1>书页管理</h1>
+    <p class="subtitle">古籍数字化勘校 - 书页列表</p>
+  </div>
+
+  <!-- 统计卡片 -->
+  <div class="statistics-cards">
+    <div class="stat-card">
+      <div class="stat-value">{{ statistics().total }}</div>
+      <div class="stat-label">总计</div>
+    </div>
+    <div class="stat-card pending">
+      <div class="stat-value">{{ statistics().pending }}</div>
+      <div class="stat-label">待勘校</div>
+    </div>
+    <div class="stat-card in-progress">
+      <div class="stat-value">{{ statistics().inProgress }}</div>
+      <div class="stat-label">勘校中</div>
+    </div>
+    <div class="stat-card completed">
+      <div class="stat-value">{{ statistics().completed }}</div>
+      <div class="stat-label">已完成</div>
+    </div>
+    <div class="stat-card reviewed">
+      <div class="stat-value">{{ statistics().reviewed }}</div>
+      <div class="stat-label">已审核</div>
+    </div>
+  </div>
+
+  <!-- 工具栏 -->
+  <div class="toolbar">
+    <div class="filter-tabs">
+      <button
+        *ngFor="let status of ['all', 'pending', 'in_progress', 'completed', 'reviewed']"
+        class="tab-btn"
+        [class.active]="selectedStatus() === status"
+        (click)="filterByStatus(status as PageStatus | 'all')"
+      >
+        {{ pageStatusMap[status as PageStatus]?.label }}
+      </button>
+    </div>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="搜索页码、册号..."
+        [value]="searchKeyword()"
+        (input)="searchKeyword.set(($event.target as HTMLInputElement).value)"
+        (keyup.enter)="search()"
+      />
+      <button class="btn btn-primary" (click)="search()">搜索</button>
+      <button class="btn btn-secondary" (click)="resetSearch()">重置</button>
+    </div>
+  </div>
+
+  <!-- 表格 -->
+  <div class="table-container">
+    <table class="page-table">
+      <thead>
+        <tr>
+          <th style="width: 80px;">序号</th>
+          <th style="width: 100px;">缩略图</th>
+          <th>册号</th>
+          <th>页码</th>
+          <th>状态</th>
+          <th>勘校者</th>
+          <th>更新时间</th>
+          <th style="width: 120px;">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="isLoading()">
+          <td colspan="8" class="loading-cell">
+            <div class="loading-spinner"></div>
+            加载中...
+          </td>
+        </tr>
+        <tr *ngIf="!isLoading() && pages().length === 0">
+          <td colspan="8" class="empty-cell">
+            暂无数据
+          </td>
+        </tr>
+        <tr *ngFor="let page of pages(); let i = index">
+          <td>{{ (currentPage() - 1) * pageSize() + i + 1 }}</td>
+          <td>
+            <img
+              [src]="page.thumbnailUrl"
+              alt="缩略图"
+              class="thumbnail"
+              loading="lazy"
+              (error)="$event.target.style.display = 'none'"
+            />
+          </td>
+          <td>第 {{ page.volumeNumber }} 册</td>
+          <td>第 {{ page.pageNumber }} 页</td>
+          <td>
+            <span
+              class="status-badge"
+              [style.backgroundColor]="getStatusColor(page.status)"
+            >
+              {{ getStatusLabel(page.status) }}
+            </span>
+          </td>
+          <td>{{ page.collatorName || '-' }}</td>
+          <td>{{ formatDate(page.updatedAt) }}</td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="openWorkbench(page)"
+            >
+              开始勘校
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 分页 -->
+  <div class="pagination" *ngIf="totalPages() > 1">
+    <button
+      class="btn btn-secondary btn-sm"
+      [disabled]="!hasPrevious()"
+      (click)="goToPrevious()"
+    >
+      上一页
+    </button>
+
+    <div class="page-numbers">
+      <ng-container *ngFor="let page of getPageNumbers()">
+        <button
+          *ngIf="page !== '...'"
+          class="page-btn"
+          [class.active]="page === currentPage()"
+          (click)="goToPage(page as number)"
+        >
+          {{ page }}
+        </button>
+        <span *ngIf="page === '...'" class="ellipsis">...</span>
+      </ng-container>
+    </div>
+
+    <button
+      class="btn btn-secondary btn-sm"
+      [disabled]="!hasNext()"
+      (click)="goToNext()"
+    >
+      下一页
+    </button>
+
+    <span class="page-info">
+      共 {{ total() }} 条，第 {{ currentPage() }} / {{ totalPages() }} 页
+    </span>
+  </div>
+</div>

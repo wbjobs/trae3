@@ -1,0 +1,68 @@
+// 古籍风格主题变量定义
+
+// 主色调 - 古籍暖色调
+$color-bg-primary: #F5F0E6; // 米白色 - 背景主色
+$color-bg-secondary: #EDE6D6; // 浅米色 - 次级背景
+$color-bg-tertiary: #FAF7F0; // 近白色 - 卡片背景
+$color-primary: #5D4E37; // 深棕色 - 主色
+$color-primary-light: #7A6B54; // 浅棕色
+$color-primary-dark: #3E3325; // 深棕暗色
+$color-accent: #C84C3B; // 朱砂红 - 强调色
+$color-accent-light: #D96B5A; // 浅朱砂红
+$color-accent-dark: #A83D2E; // 深朱砂红
+
+// 中性色
+$color-text-primary: #2C2416; // 深褐色文本
+$color-text-secondary: #6B5D4A; // 中褐色文本
+$color-text-hint: #9B8F7A; // 浅褐色提示文本
+$color-border: #D4C9B5; // 边框色
+$color-divider: #E5DCCB; // 分隔线色
+
+// 功能色
+$color-success: #4A7C59; // 古籍绿 - 成功
+$color-warning: #C89B3B; // 琥珀黄 - 警告
+$color-error: #C84C3B; // 朱砂红 - 错误
+$color-info: #3B6C8C; // 藏青蓝 - 信息
+
+// 字体
+$font-family-primary: 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif; // 宋体类衬线字体
+$font-family-secondary: 'Noto Sans SC', 'Source Han Sans SC', 'Microsoft YaHei', sans-serif; // 无衬线字体
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 24px;
+$font-size-title: 32px;
+
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// 圆角
+$border-radius-sm: 2px;
+$border-radius-md: 4px;
+$border-radius-lg: 8px;
+
+// 阴影
+$shadow-sm: 0 1px 3px rgba(93, 78, 55, 0.1);
+$shadow-md: 0 2px 8px rgba(93, 78, 55, 0.12);
+$shadow-lg: 0 4px 16px rgba(93, 78, 55, 0.16);
+
+// 过渡
+$transition-fast: 0.15s ease-in-out;
+$transition-base: 0.25s ease-in-out;
+$transition-slow: 0.35s ease-in-out;
+
+// 层级
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
