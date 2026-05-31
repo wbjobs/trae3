@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Device {
+  id              String    @id @default(uuid())
+  serialNumber    String    @unique
+  model           String
+  status          String    @default("online")
+  batteryLevel    Float?
+  signalStrength  Float?
+  lastOnline      DateTime?
+  areaId          String?
+  area            Area?     @relation(fields: [areaId], references: [id])
+  meterData       MeterData[]
+  alerts          Alert[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([serialNumber])
+  @@index([status])
+  @@index([areaId])
+  @@index([areaId, status])
+  @@index([status, lastOnline])
+}
+
+model MeterData {
+  id                String    @id @default(uuid())
+  deviceId          String
+  device            Device    @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  flowRate          Float
+  totalConsumption  Float
+  timestamp         DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+
+  @@index([deviceId])
+  @@index([timestamp])
+  @@index([deviceId, timestamp, flowRate])
+  @@index([timestamp, deviceId, totalConsumption])
+  @@unique([deviceId, timestamp])
+}
+
+model Alert {
+  id          String    @id @default(uuid())
+  deviceId    String
+  device      Device    @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  type        String
+  level       String
+  message     String
+  status      String    @default("pending")
+  createdAt   DateTime  @default(now())
+  resolvedAt  DateTime?
+
+  @@index([deviceId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([level, status])
+  @@index([status, createdAt])
+  @@index([deviceId, createdAt])
+}
+
+model Area {
+  id        String   @id @default(uuid())
+  name      String
+  parentId  String?
+  level     Int
+  children  Area[]   @relation("AreaHierarchy")
+  parent    Area?    @relation("AreaHierarchy", fields: [parentId], references: [id])
+  devices   Device[]
+
+  @@index([parentId])
+}
