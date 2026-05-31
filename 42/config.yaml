@@ -1,0 +1,59 @@
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "./logs/app.log"
+  max_bytes: 10485760
+  backup_count: 5
+
+database:
+  url: "sqlite:///./data/gateway.db"
+  echo: false
+
+redis:
+  host: "localhost"
+  port: 6379
+  db: 0
+  password: null
+
+serial:
+  ports:
+    - name: "serial1"
+      port: "COM1"
+      baudrate: 9600
+      timeout: 1
+      parity: "N"
+      stopbits: 1
+      bytesize: 8
+
+mqtt:
+  brokers:
+    - name: "mqtt1"
+      host: "localhost"
+      port: 1883
+      username: null
+      password: null
+      keepalive: 60
+  topics:
+    - "device/+/data"
+    - "device/+/status"
+
+http:
+  timeout: 30
+  max_retries: 3
+
+cluster:
+  enabled: false
+  service_name: "api-gateway"
+  consul_host: "localhost"
+  consul_port: 8500
+  node_id: "node-1"
+
+traffic:
+  enable_statistics: true
+  statistics_interval: 60
+  max_history: 10000
