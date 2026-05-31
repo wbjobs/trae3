@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地质地层三维剖面可视化系统</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4da6ff" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="header-text">
+          <h1>地质地层三维剖面可视化系统</h1>
+          <p>Geological Stratum 3D Visualization System</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-label">地层数</span>
+            <span class="stat-value" id="stat-strata">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">数据点</span>
+            <span class="stat-value" id="stat-points">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">钻孔</span>
+            <span class="stat-value" id="stat-holes">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">加载</span>
+            <span class="stat-value" id="load-progress">0/0</span>
+          </div>
+        </div>
+        <div class="performance-bar">
+          <span id="fps-display" class="fps-display">0 FPS</span>
+          <span id="quality-display" class="quality-display">质量: 高</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <aside class="sidebar sidebar-left">
+        <div class="panel">
+          <h2 class="panel-title">视角控制</h2>
+          <div class="panel-content">
+            <div class="button-grid">
+              <button id="btn-reset-view" class="control-btn" title="重置视角">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                  <path d="M3 3v5h5"/>
+                </svg>
+                <span>重置</span>
+              </button>
+              <button id="btn-front-view" class="control-btn" title="正视图">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M9 3v18"/>
+                </svg>
+                <span>正视</span>
+              </button>
+              <button id="btn-top-view" class="control-btn" title="俯视图">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 3v18M3 12h18"/>
+                </svg>
+                <span>俯视</span>
+              </button>
+              <button id="btn-side-view" class="control-btn" title="侧视图">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="M7.5 5v14"/>
+                </svg>
+                <span>侧视</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">交互模式</h2>
+          <div class="panel-content">
+            <div class="button-grid">
+              <button id="btn-edit-mode" class="control-btn" title="选择编辑模式">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+                <span>选择</span>
+              </button>
+              <button id="btn-annotation-mode" class="control-btn" title="标注模式">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <span>标注</span>
+              </button>
+              <button id="btn-show-all" class="control-btn" title="显示全部">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>全部</span>
+              </button>
+              <button id="btn-lazy-load" class="control-btn active" title="按需加载">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                  <path d="M3 3v5h5"/>
+                </svg>
+                <span>懒加载</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">显示选项</h2>
+          <div class="panel-content">
+            <div class="button-grid">
+              <button id="btn-toggle-points" class="control-btn active" title="显示/隐藏数据点云">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="5" cy="5" r="1.5"/>
+                  <circle cx="12" cy="5" r="1.5"/>
+                  <circle cx="19" cy="5" r="1.5"/>
+                  <circle cx="5" cy="12" r="1.5"/>
+                  <circle cx="12" cy="12" r="1.5"/>
+                  <circle cx="19" cy="12" r="1.5"/>
+                  <circle cx="5" cy="19" r="1.5"/>
+                  <circle cx="12" cy="19" r="1.5"/>
+                  <circle cx="19" cy="19" r="1.5"/>
+                </svg>
+                <span>点云</span>
+              </button>
+              <button id="btn-toggle-drill-holes" class="control-btn active" title="显示/隐藏钻孔">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20"/>
+                  <circle cx="12" cy="2" r="2"/>
+                  <path d="M10 22h4"/>
+                </svg>
+                <span>钻孔</span>
+              </button>
+              <button id="btn-reload" class="control-btn" title="重新加载">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                  <path d="M3 3v5h5"/>
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                  <path d="M16 16h5v5"/>
+                </svg>
+                <span>刷新</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">剖面切片</h2>
+          <div class="panel-content" id="slicer-controls">
+            <div class="slicer-row">
+              <label class="slicer-label axis-label-x">X</label>
+              <input type="checkbox" id="slice-toggle-x" class="slicer-toggle">
+              <input type="range" id="slice-position-x" class="slicer-slider" min="-200" max="200" value="200" step="1">
+              <span class="slicer-value" id="slice-value-x">200</span>
+              <button class="slicer-flip-btn" id="slice-flip-x" title="翻转方向">⇄</button>
+            </div>
+            <div class="slicer-row">
+              <label class="slicer-label axis-label-y">Y</label>
+              <input type="checkbox" id="slice-toggle-y" class="slicer-toggle">
+              <input type="range" id="slice-position-y" class="slicer-slider" min="-200" max="200" value="200" step="1">
+              <span class="slicer-value" id="slice-value-y">200</span>
+              <button class="slicer-flip-btn" id="slice-flip-y" title="翻转方向">⇄</button>
+            </div>
+            <div class="slicer-row">
+              <label class="slicer-label axis-label-z">Z</label>
+              <input type="checkbox" id="slice-toggle-z" class="slicer-toggle">
+              <input type="range" id="slice-position-z" class="slicer-slider" min="-200" max="200" value="200" step="1">
+              <span class="slicer-value" id="slice-value-z">200</span>
+              <button class="slicer-flip-btn" id="slice-flip-z" title="翻转方向">⇄</button>
+            </div>
+            <div class="slicer-actions">
+              <button class="control-btn small-btn" id="slice-reset">重置</button>
+              <button class="control-btn small-btn" id="slice-export">导出</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">地层列表</h2>
+          <div class="panel-content">
+            <div id="stratum-list" class="stratum-list"></div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="scene-wrapper">
+        <div id="scene-container" class="scene-container"></div>
+
+        <div class="scene-controls">
+          <div class="mouse-hint">
+            <div class="hint-item"><span class="mouse-icon">🖱️ 左键</span> 拖拽旋转</div>
+            <div class="hint-item"><span class="mouse-icon">🖱️ 右键</span> 平移</div>
+            <div class="hint-item"><span class="mouse-icon">🖱️ 滚轮</span> 缩放</div>
+          </div>
+          <div class="axis-legend">
+            <span class="axis axis-x">X</span>
+            <span class="axis axis-y">Y</span>
+            <span class="axis axis-z">Z</span>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar sidebar-right">
+        <div class="panel">
+          <h2 class="panel-title">地层详情</h2>
+          <div class="panel-content">
+            <div id="stratum-details" class="stratum-details">
+              <div class="empty-state">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <p>点击地层查看详情</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">标注管理 <span class="badge" id="annotation-count">0</span></h2>
+          <div class="panel-content">
+            <div class="annotation-toolbar">
+              <input type="text" id="annotation-search" class="annotation-search" placeholder="搜索标注...">
+              <div class="annotation-actions">
+                <button class="ann-action-btn" id="btn-select-all-annotations" title="全选">☑</button>
+                <button class="ann-action-btn" id="btn-deselect-all-annotations" title="取消全选">☐</button>
+                <button class="ann-action-btn danger" id="btn-delete-selected-annotations" title="删除选中">✕</button>
+                <button class="ann-action-btn" id="btn-toggle-annotations-visibility" title="显隐切换">👁</button>
+              </div>
+              <div class="annotation-export">
+                <button class="ann-export-btn" id="btn-export-annotations-json">导出JSON</button>
+                <button class="ann-export-btn" id="btn-export-annotations-csv">导出CSV</button>
+              </div>
+            </div>
+            <div id="annotation-list" class="annotation-list">
+              <div class="empty-annotation">暂无标注</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title">操作指南</h2>
+          <div class="panel-content">
+            <div class="help-section">
+              <h4>视角操作</h4>
+              <ul>
+                <li>左键拖拽: 旋转视角</li>
+                <li>右键拖拽: 平移视角</li>
+                <li>滚轮: 缩放视图</li>
+              </ul>
+            </div>
+            <div class="help-section">
+              <h4>编辑操作</h4>
+              <ul>
+                <li>选择模式: 点击地层选中</li>
+                <li>标注模式: 点击添加/选中标注</li>
+                <li>Ctrl+点击: 多选标注</li>
+                <li>颜色选择器: 修改地层颜色</li>
+              </ul>
+            </div>
+            <div class="help-section">
+              <h4>剖面切片</h4>
+              <ul>
+                <li>勾选轴向: 启用该方向切片</li>
+                <li>拖动滑块: 移动切面位置</li>
+                <li>翻转按钮: 反转切面方向</li>
+                <li>导出按钮: 导出切片数据</li>
+              </ul>
+            </div>
+            <div class="help-section">
+              <h4>性能优化</h4>
+              <ul>
+                <li>懒加载: 按需加载地层模型</li>
+                <li>自适应: 根据帧率调整质量</li>
+                <li>LOD: 远距离自动简化模型</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <p id="loading-text">加载中...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/utils/CoordConverter.js"></script>
+  <script src="js/config/AppConfig.js"></script>
+  <script src="js/modules/SceneRenderer.js"></script>
+  <script src="js/modules/StratumDataLoader.js"></script>
+  <script src="js/modules/CameraController.js"></script>
+  <script src="js/modules/StratumModelBuilder.js"></script>
+  <script src="js/modules/SectionSlicer.js"></script>
+  <script src="js/modules/StratumEditor.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
