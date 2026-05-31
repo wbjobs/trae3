@@ -1,0 +1,31 @@
+{
+  "service": {
+    "name": "order-service",
+    "version": "2.1.0",
+    "profile": "test",
+    "type": "web"
+  },
+  "server": {
+    "port": 8081,
+    "context-path": "/api/v1"
+  },
+  "database": {
+    "url": "jdbc:postgresql://localhost:5432/order_db",
+    "username": "order_user",
+    "max-pool-size": 20
+  },
+  "redis": {
+    "host": "redis-server",
+    "port": 6379,
+    "timeout": 3000
+  },
+  "mq": {
+    "brokers": ["kafka1:9092", "kafka2:9092"],
+    "topic": "order-events"
+  },
+  "logging": {
+    "level": {
+      "root": "INFO"
+    }
+  }
+}

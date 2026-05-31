@@ -1,0 +1,33 @@
+clusters:
+  dev:
+    name: Development Cluster
+    config_center:
+      url: http://dev-config-center:8848
+      type: nacos
+      username: ${DEV_CONFIG_USERNAME}
+      password: ${DEV_CONFIG_PASSWORD}
+    namespace: dev
+    backup_path: ./backups/dev
+
+  test:
+    name: Testing Cluster
+    config_center:
+      url: http://test-config-center:8848
+      type: nacos
+      username: ${TEST_CONFIG_USERNAME}
+      password: ${TEST_CONFIG_PASSWORD}
+    namespace: test
+    backup_path: ./backups/test
+
+  prod:
+    name: Production Cluster
+    config_center:
+      url: http://prod-config-center:8848
+      type: nacos
+      username: ${PROD_CONFIG_USERNAME}
+      password: ${PROD_CONFIG_PASSWORD}
+    namespace: prod
+    backup_path: ./backups/prod
+    read_only: true
+
+default_cluster: dev
