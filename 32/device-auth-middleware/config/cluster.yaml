@@ -1,0 +1,20 @@
+inherit: "production.yaml"
+
+cluster:
+  enabled: true
+  node_id: "NODE_ID"
+  heartbeat_interval: 3
+  seed_nodes:
+    - "http://node-01:8000"
+    - "http://node-02:8000"
+    - "http://node-03:8000"
+
+server:
+  workers: 4
+
+database:
+  pool_size: 30
+  max_overflow: 15
+
+redis:
+  pool_size: 30

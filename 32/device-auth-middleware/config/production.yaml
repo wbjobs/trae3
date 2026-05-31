@@ -1,0 +1,43 @@
+inherit: "base.yaml"
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 8
+  log_level: "warning"
+
+database:
+  host: "DB_HOST"
+  port: 5432
+  name: "device_auth"
+  user: "DB_USER"
+  password: "DB_PASSWORD"
+  pool_size: 50
+  max_overflow: 20
+  pool_recycle: 1800
+
+redis:
+  host: "REDIS_HOST"
+  port: 6379
+  db: 0
+  password: "REDIS_PASSWORD"
+  pool_size: 50
+
+auth:
+  secret_key: "SECRET_KEY"
+  access_token_expire_minutes: 15
+  temp_token_expire_minutes: 5
+
+tenant:
+  isolation_level: "strict"
+  default_quota: 5000
+
+thirdparty:
+  device_manager_url: "DEVICE_MANAGER_URL"
+  auth_api_key: "THIRDPARTY_API_KEY"
+  timeout: 5
+  retry_times: 3
+  retry_delay: 0.5
+
+cluster:
+  enabled: true

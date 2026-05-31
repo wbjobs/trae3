@@ -1,0 +1,27 @@
+inherit: "base.yaml"
+
+server:
+  log_level: "debug"
+  workers: 1
+
+database:
+  host: "127.0.0.1"
+  port: 5432
+  name: "device_auth_dev"
+  user: "dev_user"
+  password: "dev_password"
+  pool_size: 5
+  max_overflow: 5
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  db: 1
+
+auth:
+  secret_key: "dev-secret-key-change-in-production"
+  access_token_expire_minutes: 60
+  temp_token_expire_minutes: 30
+
+cluster:
+  enabled: false

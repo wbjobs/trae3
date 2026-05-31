@@ -1,0 +1,57 @@
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  log_level: "info"
+
+database:
+  driver: "postgresql+asyncpg"
+  host: "127.0.0.1"
+  port: 5432
+  name: "device_auth"
+  user: "auth_admin"
+  password: ""
+  pool_size: 20
+  max_overflow: 10
+  pool_recycle: 3600
+
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  db: 0
+  password: ""
+  pool_size: 20
+
+auth:
+  secret_key: ""
+  algorithm: "HS256"
+  access_token_expire_minutes: 30
+  temp_token_expire_minutes: 15
+
+tenant:
+  isolation_level: "strict"
+  default_quota: 1000
+
+whitelist:
+  enabled: true
+  auto_expire_days: 90
+
+thirdparty:
+  device_manager_url: ""
+  auth_api_key: ""
+  timeout: 10
+  retry_times: 3
+  retry_delay: 1
+
+cluster:
+  enabled: false
+  node_id: "node-01"
+  heartbeat_interval: 5
+
+ratelimit:
+  enabled: true
+  capacity: 100
+  refill_rate: 10
+
+access_control:
+  ip_whitelist_mode: false
