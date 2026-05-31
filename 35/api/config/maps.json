@@ -1,0 +1,50 @@
+[
+  {
+    "id": "map_01",
+    "name": "太空战场",
+    "width": 1600,
+    "height": 1200,
+    "background": "#0a1628",
+    "gridSize": 40,
+    "obstacles": [
+      { "x": 300, "y": 200, "width": 80, "height": 80, "type": "wall" },
+      { "x": 700, "y": 400, "width": 120, "height": 60, "type": "wall" },
+      { "x": 1100, "y": 200, "width": 80, "height": 80, "type": "wall" },
+      { "x": 500, "y": 800, "width": 100, "height": 100, "type": "block" },
+      { "x": 1000, "y": 700, "width": 80, "height": 80, "type": "block" },
+      { "x": 200, "y": 600, "width": 60, "height": 120, "type": "wall" },
+      { "x": 1300, "y": 900, "width": 100, "height": 60, "type": "block" }
+    ],
+    "spawnPoints": [
+      { "x": 100, "y": 100, "team": 0 },
+      { "x": 200, "y": 150, "team": 0 },
+      { "x": 150, "y": 250, "team": 0 },
+      { "x": 1400, "y": 1000, "team": 1 },
+      { "x": 1300, "y": 950, "team": 1 },
+      { "x": 1350, "y": 850, "team": 1 }
+    ]
+  },
+  {
+    "id": "map_02",
+    "name": "星际要塞",
+    "width": 1400,
+    "height": 1000,
+    "background": "#111827",
+    "gridSize": 35,
+    "obstacles": [
+      { "x": 600, "y": 400, "width": 200, "height": 200, "type": "wall" },
+      { "x": 200, "y": 300, "width": 60, "height": 150, "type": "wall" },
+      { "x": 1100, "y": 550, "width": 60, "height": 150, "type": "wall" },
+      { "x": 400, "y": 700, "width": 100, "height": 60, "type": "block" },
+      { "x": 900, "y": 200, "width": 100, "height": 60, "type": "block" }
+    ],
+    "spawnPoints": [
+      { "x": 80, "y": 80, "team": 0 },
+      { "x": 180, "y": 120, "team": 0 },
+      { "x": 120, "y": 200, "team": 0 },
+      { "x": 1250, "y": 850, "team": 1 },
+      { "x": 1150, "y": 800, "team": 1 },
+      { "x": 1200, "y": 720, "team": 1 }
+    ]
+  }
+]

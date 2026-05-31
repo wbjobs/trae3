@@ -1,0 +1,50 @@
+[
+  {
+    "id": "fighter_01",
+    "name": "星际战士",
+    "type": "fighter",
+    "health": 100,
+    "speed": 120,
+    "damage": 15,
+    "attackRange": 40,
+    "size": 16,
+    "color": "#00d4ff",
+    "skillIds": ["skill_01", "skill_02"]
+  },
+  {
+    "id": "tank_01",
+    "name": "重型机甲",
+    "type": "tank",
+    "health": 200,
+    "speed": 60,
+    "damage": 25,
+    "attackRange": 35,
+    "size": 24,
+    "color": "#ff6b35",
+    "skillIds": ["skill_03", "skill_04"]
+  },
+  {
+    "id": "ranged_01",
+    "name": "狙击手",
+    "type": "ranged",
+    "health": 70,
+    "speed": 90,
+    "damage": 40,
+    "attackRange": 150,
+    "size": 14,
+    "color": "#a855f7",
+    "skillIds": ["skill_05", "skill_06"]
+  },
+  {
+    "id": "support_01",
+    "name": "医疗兵",
+    "type": "support",
+    "health": 80,
+    "speed": 100,
+    "damage": 8,
+    "attackRange": 50,
+    "size": 14,
+    "color": "#22c55e",
+    "skillIds": ["skill_07", "skill_08"]
+  }
+]
