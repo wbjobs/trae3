@@ -1,0 +1,13 @@
+{
+  "name": "underground-pipeline-3d-system",
+  "version": "1.0.0",
+  "description": "地下管廊管线三维拓扑3D交互系统",
+  "scripts": {
+    "dev:server": "cd backend && npm run start:dev",
+    "dev:client": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "keywords": ["three.js", "nestjs", "mongodb", "3d", "pipeline"],
+  "author": "",
+  "license": "MIT"
+}

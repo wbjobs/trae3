@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>地下管廊管线三维拓扑系统</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Microsoft YaHei', sans-serif; }
+    #app { width: 100%; height: 100%; }
+    #canvas-container { width: 100%; height: 100%; }
+
+    .control-panel {
+      position: absolute; top: 20px; left: 20px;
+      background: rgba(0, 0, 0, 0.75); color: white;
+      padding: 16px; border-radius: 8px; min-width: 220px; z-index: 100;
+      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .control-panel h3 {
+      margin-bottom: 12px; font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;
+    }
+    .layer-control { margin-bottom: 6px; }
+    .layer-control label {
+      display: flex; align-items: center; cursor: pointer;
+      padding: 4px 0; font-size: 13px;
+    }
+    .layer-control input { margin-right: 8px; }
+    .layer-loading {
+      font-size: 11px; color: #f39c12; margin-left: 8px; display: none;
+    }
+    .legend-color {
+      display: inline-block; width: 14px; height: 14px;
+      margin-right: 6px; border-radius: 3px;
+    }
+
+    .info-panel {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(0, 0, 0, 0.75); color: white;
+      padding: 16px; border-radius: 8px; min-width: 220px; z-index: 100;
+      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .info-panel h3 {
+      margin-bottom: 12px; font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;
+    }
+    .info-item { margin-bottom: 6px; font-size: 13px; }
+    .info-item .value { font-weight: bold; }
+    .fps-good { color: #2ecc71; }
+    .fps-warn { color: #f39c12; }
+    .fps-bad { color: #e74c3c; }
+
+    .performance-bar {
+      display: flex; gap: 10px; margin-top: 8px; padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.15); font-size: 11px; color: #aaa;
+    }
+    .performance-bar .perf-item { display: flex; align-items: center; gap: 4px; }
+
+    .toolbar {
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.75); color: white;
+      padding: 10px 16px; border-radius: 8px;
+      display: flex; gap: 6px; z-index: 100;
+      backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1);
+    }
+    .toolbar button {
+      padding: 8px 14px; background: #4a90d9; border: none;
+      color: white; border-radius: 4px; cursor: pointer;
+      font-size: 13px; transition: background 0.2s; white-space: nowrap;
+    }
+    .toolbar button:hover { background: #3a7bc8; }
+    .toolbar button.active { background: #2ecc71; }
+    .toolbar .separator {
+      width: 1px; background: rgba(255,255,255,0.2); margin: 0 4px;
+    }
+
+    .section-panel {
+      position: absolute; bottom: 80px; right: 20px;
+      background: rgba(0, 0, 0, 0.85); color: white;
+      padding: 16px; border-radius: 8px; min-width: 260px;
+      z-index: 150; display: none; max-height: 350px; overflow-y: auto;
+      backdrop-filter: blur(8px); border: 1px solid rgba(0,255,136,0.3);
+    }
+    .section-panel h4 {
+      margin-bottom: 10px; font-size: 14px; color: #00ff88;
+      border-bottom: 1px solid rgba(0,255,136,0.3); padding-bottom: 6px;
+    }
+    .section-panel .section-info {
+      font-size: 12px; color: #aaa; margin-bottom: 8px;
+    }
+    .section-controls {
+      display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+    }
+    .section-controls input {
+      width: 60px; padding: 4px 6px; background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2); color: white;
+      border-radius: 3px; font-size: 12px;
+    }
+    .section-controls label { font-size: 11px; color: #aaa; }
+    .section-controls button {
+      padding: 4px 10px; background: #00ff88; color: #000;
+      border: none; border-radius: 3px; cursor: pointer; font-size: 12px;
+    }
+
+    .annotation-popup {
+      position: absolute; background: white; padding: 12px 16px;
+      border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      z-index: 200; display: none; min-width: 180px;
+    }
+    .annotation-popup h4 { margin-bottom: 6px; color: #333; font-size: 14px; }
+    .annotation-popup p { color: #666; font-size: 12px; margin-bottom: 4px; }
+    .annotation-popup .close-btn {
+      position: absolute; top: 5px; right: 8px;
+      cursor: pointer; color: #999; font-size: 16px;
+    }
+
+    .shortcut-hint {
+      position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.6); color: rgba(255,255,255,0.6);
+      padding: 6px 14px; border-radius: 4px; font-size: 11px;
+      z-index: 90; white-space: nowrap;
+    }
+    .shortcut-hint kbd {
+      background: rgba(255,255,255,0.15); padding: 1px 5px;
+      border-radius: 3px; font-family: monospace; margin: 0 2px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="canvas-container"></div>
+    
+    <div class="control-panel">
+      <h3>管线图层控制</h3>
+      <div class="layer-control">
+        <label>
+          <input type="checkbox" id="layer-water" checked>
+          <span class="legend-color" style="background: #3498db;"></span>
+          给水管线
+          <span class="layer-loading" id="loading-water">加载中...</span>
+        </label>
+      </div>
+      <div class="layer-control">
+        <label>
+          <input type="checkbox" id="layer-sewage" checked>
+          <span class="legend-color" style="background: #8e44ad;"></span>
+          排水管线
+          <span class="layer-loading" id="loading-sewage">加载中...</span>
+        </label>
+      </div>
+      <div class="layer-control">
+        <label>
+          <input type="checkbox" id="layer-electric" checked>
+          <span class="legend-color" style="background: #f39c12;"></span>
+          电力管线
+          <span class="layer-loading" id="loading-electric">加载中...</span>
+        </label>
+      </div>
+      <div class="layer-control">
+        <label>
+          <input type="checkbox" id="layer-gas" checked>
+          <span class="legend-color" style="background: #e74c3c;"></span>
+          燃气管线
+          <span class="layer-loading" id="loading-gas">加载中...</span>
+        </label>
+      </div>
+      <div class="layer-control">
+        <label>
+          <input type="checkbox" id="layer-heat" checked>
+          <span class="legend-color" style="background: #e67e22;"></span>
+          热力管线
+          <span class="layer-loading" id="loading-heat">加载中...</span>
+        </label>
+      </div>
+    </div>
+    
+    <div class="info-panel">
+      <h3>场景信息</h3>
+      <div class="info-item">管线数量: <span class="value" id="pipeline-count">0</span></div>
+      <div class="info-item">标注数量: <span class="value" id="annotation-count">0</span></div>
+      <div class="info-item">当前模式: <span class="value" id="current-mode">浏览</span></div>
+      <div class="info-item">帧率: <span class="value fps-good" id="fps-display">--</span> FPS</div>
+      <div class="info-item">画质: <span class="value" id="quality-level">高</span></div>
+      <div class="performance-bar">
+        <div class="perf-item">DC: <span id="draw-calls">0</span></div>
+        <div class="perf-item">TRI: <span id="triangles">0</span></div>
+      </div>
+    </div>
+    
+    <div class="section-panel" id="section-panel">
+      <h4>管线剖面截取</h4>
+      <div class="section-info" id="section-info"></div>
+      <div class="section-controls">
+        <label>宽<input type="number" id="section-width" value="20" min="5" max="100"></label>
+        <label>高<input type="number" id="section-height" value="20" min="5" max="100"></label>
+        <label>深<input type="number" id="section-depth" value="20" min="5" max="100"></label>
+        <button id="section-apply">应用</button>
+        <button id="section-export">导出</button>
+      </div>
+      <div id="section-list"></div>
+    </div>
+
+    <div class="toolbar">
+      <button id="btn-rotate">旋转</button>
+      <button id="btn-pan">平移</button>
+      <button id="btn-zoom">缩放</button>
+      <div class="separator"></div>
+      <button id="btn-annotation">标注</button>
+      <button id="btn-batch-annotation">批量管理</button>
+      <button id="btn-export-annotations">导出</button>
+      <div class="separator"></div>
+      <button id="btn-section">剖面截取</button>
+      <div class="separator"></div>
+      <button id="btn-reset">重置视角</button>
+    </div>
+    
+    <div class="shortcut-hint">
+      <kbd>R</kbd>旋转 <kbd>P</kbd>平移 <kbd>Z</kbd>缩放 <kbd>F</kbd>适配 <kbd>S</kbd>剖面 <kbd>Ctrl+A</kbd>全选 <kbd>Del</kbd>删除 <kbd>Esc</kbd>取消
+    </div>
+
+    <div class="annotation-popup" id="annotation-popup">
+      <span class="close-btn" onclick="this.parentElement.style.display='none'">×</span>
+      <h4 id="popup-title">标注信息</h4>
+      <div id="popup-content"></div>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
