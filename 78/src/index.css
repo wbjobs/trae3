@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-indigo-900: #1B2A4A;
+  --color-indigo-800: #2A3F6A;
+  --color-indigo-700: #3A548A;
+  --color-indigo-100: #EBF0F7;
+  --color-indigo-50: #F4F6F9;
+  --color-amber-500: #F5A623;
+  --color-amber-400: #F7B84E;
+  --color-amber-600: #D4891A;
+  --color-mint-500: #34C759;
+  --color-mint-100: #E8F8ED;
+  --color-coral-500: #FF3B30;
+  --color-coral-100: #FFEFEE;
+  font-family: 'Noto Sans SC', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F6F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C1C9D4;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9AA5B4;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 166, 35, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.35s ease-out forwards;
+}
+
+.animate-pulse-amber {
+  animation: pulse-amber 1.5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #EBF0F7 25%, #F4F6F9 50%, #EBF0F7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.animate-flash {
+  animation: flash 0.8s ease-in-out 3;
+}
+
+.upload-zone-drag-over {
+  border-color: var(--color-amber-500) !important;
+  background-color: rgba(245, 166, 35, 0.06) !important;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+.confidence-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: #EBF0F7;
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
+}
+
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  box-shadow: 0 4px 12px rgba(27, 42, 74, 0.08);
+  transform: translateY(-1px);
+}
+
+.table-zebra tr:nth-child(even) {
+  background-color: #F4F6F9;
+}
+
+.table-zebra tr:hover {
+  background-color: #EBF0F7;
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  background-color: rgba(27, 42, 74, 0.4);
+}
