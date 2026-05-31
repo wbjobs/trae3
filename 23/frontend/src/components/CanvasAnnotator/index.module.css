@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fafafa;
+  border-bottom: 1px solid #e8e8e8;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toolGroup {
+  display: flex;
+  align-items: center;
+}
+
+.confidenceSlider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.canvasWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2f5;
+  overflow: auto;
+  position: relative;
+}
+
+.canvas {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.annotationList {
+  width: 280px;
+  border-left: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+.listHeader {
+  padding: 12px 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fafafa;
+}
+
+.listContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.annotationItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+}
+
+.annotationItem:hover {
+  background: #f5f5f5;
+}
+
+.annotationItem.active {
+  background: #e6f7ff;
+  border: 1px solid #91d5ff;
+}
+
+.annotationColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.annotationInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.annotationLabel {
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.annotationType {
+  font-size: 12px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.annotationConfidence {
+  font-size: 12px;
+  color: #52c41a;
+  font-weight: 500;
+}

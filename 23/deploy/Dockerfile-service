@@ -1,0 +1,32 @@
+ARG SERVICE_NAME
+
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+
+ARG SERVICE_NAME
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY specimen-common/pom.xml ./specimen-common/pom.xml
+COPY ${SERVICE_NAME}/pom.xml ./${SERVICE_NAME}/pom.xml
+
+RUN mvn dependency:go-offline -B
+
+COPY specimen-common/src ./specimen-common/src
+COPY ${SERVICE_NAME}/src ./${SERVICE_NAME}/src
+
+RUN mvn clean package -DskipTests -pl ${SERVICE_NAME} -am
+
+FROM eclipse-temurin:17-jre-jammy
+
+ARG SERVICE_NAME
+
+WORKDIR /app
+
+COPY --from=builder /app/${SERVICE_NAME}/target/${SERVICE_NAME}.jar ./app.jar
+
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+EXPOSE 9001-9010
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

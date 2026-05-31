@@ -1,0 +1,310 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0.33
+    container_name: specimen-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: specimen
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - specimen-network
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max_connections=1000
+      - --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: specimen-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - specimen-network
+    command: redis-server --appendonly yes --requirepass ""
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nacos:
+    image: nacos/nacos-server:v2.3.0
+    container_name: specimen-nacos
+    restart: always
+    environment:
+      MODE: standalone
+      SPRING_DATASOURCE_PLATFORM: mysql
+      MYSQL_SERVICE_HOST: mysql
+      MYSQL_SERVICE_PORT: 3306
+      MYSQL_SERVICE_DB_NAME: nacos_config
+      MYSQL_SERVICE_USER: root
+      MYSQL_SERVICE_PASSWORD: root
+      JVM_XMS: 512m
+      JVM_XMX: 512m
+      JVM_XMN: 256m
+      TZ: Asia/Shanghai
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    volumes:
+      - nacos-data:/home/nacos/data
+      - nacos-logs:/home/nacos/logs
+    networks:
+      - specimen-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8848/nacos/v1/console/health/readiness"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  minio:
+    image: minio/minio:RELEASE.2024-01-16T16-07-38Z
+    container_name: specimen-minio
+    restart: always
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - specimen-network
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  elasticsearch:
+    image: elasticsearch:8.11.3
+    container_name: specimen-elasticsearch
+    restart: always
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      xpack.security.enabled: "false"
+      xpack.security.enrollment.enabled: "false"
+      xpack.security.http.ssl.enabled: "false"
+      xpack.security.transport.ssl.enabled: "false"
+      TZ: Asia/Shanghai
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    networks:
+      - specimen-network
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  specimen-gateway:
+    build:
+      context: ../backend
+      dockerfile: deploy/Dockerfile-gateway
+    container_name: specimen-gateway
+    restart: always
+    environment:
+      NACOS_HOST: nacos
+      NACOS_PORT: 8848
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      TZ: Asia/Shanghai
+    ports:
+      - "9999:9999"
+    networks:
+      - specimen-network
+    depends_on:
+      nacos:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  specimen-auth:
+    build:
+      context: ../backend
+      dockerfile: deploy/Dockerfile-service
+      args:
+        SERVICE_NAME: specimen-auth
+    container_name: specimen-auth
+    restart: always
+    environment:
+      NACOS_HOST: nacos
+      NACOS_PORT: 8848
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      TZ: Asia/Shanghai
+    ports:
+      - "9001:9001"
+    networks:
+      - specimen-network
+    depends_on:
+      nacos:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  specimen-storage:
+    build:
+      context: ../backend
+      dockerfile: deploy/Dockerfile-service
+      args:
+        SERVICE_NAME: specimen-storage
+    container_name: specimen-storage
+    restart: always
+    environment:
+      NACOS_HOST: nacos
+      NACOS_PORT: 8848
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      TZ: Asia/Shanghai
+    ports:
+      - "9002:9002"
+    networks:
+      - specimen-network
+    depends_on:
+      nacos:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+
+  specimen-data:
+    build:
+      context: ../backend
+      dockerfile: deploy/Dockerfile-service
+      args:
+        SERVICE_NAME: specimen-data
+    container_name: specimen-data
+    restart: always
+    environment:
+      NACOS_HOST: nacos
+      NACOS_PORT: 8848
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      TZ: Asia/Shanghai
+    ports:
+      - "9003:9003"
+    networks:
+      - specimen-network
+    depends_on:
+      nacos:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  specimen-traceability:
+    build:
+      context: ../backend
+      dockerfile: deploy/Dockerfile-service
+      args:
+        SERVICE_NAME: specimen-traceability
+    container_name: specimen-traceability
+    restart: always
+    environment:
+      NACOS_HOST: nacos
+      NACOS_PORT: 8848
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      ES_HOST: elasticsearch
+      ES_PORT: 9200
+      TZ: Asia/Shanghai
+    ports:
+      - "9004:9004"
+    networks:
+      - specimen-network
+    depends_on:
+      nacos:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+
+  specimen-frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../deploy/Dockerfile-frontend
+    container_name: specimen-frontend
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - specimen-network
+    depends_on:
+      - specimen-gateway
+
+volumes:
+  mysql-data:
+    driver: local
+  redis-data:
+    driver: local
+  nacos-data:
+    driver: local
+  nacos-logs:
+    driver: local
+  minio-data:
+    driver: local
+  es-data:
+    driver: local
+
+networks:
+  specimen-network:
+    driver: bridge

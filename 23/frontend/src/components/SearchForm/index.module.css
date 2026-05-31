@@ -1,0 +1,12 @@
+.form {
+  padding: 24px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}

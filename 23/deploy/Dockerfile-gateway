@@ -1,0 +1,26 @@
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY specimen-common/pom.xml ./specimen-common/pom.xml
+COPY specimen-gateway/pom.xml ./specimen-gateway/pom.xml
+
+RUN mvn dependency:go-offline -B
+
+COPY specimen-common/src ./specimen-common/src
+COPY specimen-gateway/src ./specimen-gateway/src
+
+RUN mvn clean package -DskipTests -pl specimen-gateway -am
+
+FROM eclipse-temurin:17-jre-jammy
+
+WORKDIR /app
+
+COPY --from=builder /app/specimen-gateway/target/specimen-gateway.jar ./app.jar
+
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+EXPOSE 9999
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

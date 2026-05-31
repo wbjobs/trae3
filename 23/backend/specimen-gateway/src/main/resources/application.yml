@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: specimen-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: specimen
+        group: DEFAULT_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: specimen-auth
+          uri: lb://specimen-auth
+          predicates:
+            - Path=/auth/**
+        - id: specimen-storage
+          uri: lb://specimen-storage
+          predicates:
+            - Path=/storage/**
+        - id: specimen-data
+          uri: lb://specimen-data
+          predicates:
+            - Path=/data/**
+        - id: specimen-traceability
+          uri: lb://specimen-traceability
+          predicates:
+            - Path=/traceability/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: "*"
+            allowed-headers: "*"
+            allowed-methods: "*"
+            allow-credentials: true
+            max-age: 3600
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+
+server:
+  port: 9999
