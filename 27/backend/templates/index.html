@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>供水管网压力流量数据分析可视化平台</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>供水管网压力流量数据分析可视化平台</h1>
+            <div class="header-info">
+                <span id="current-time"></span>
+                <span class="status-indicator online">系统在线</span>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">仪表盘</button>
+            <button class="nav-tab" data-tab="zone">分区监控</button>
+            <button class="nav-tab" data-tab="trend">趋势分析</button>
+            <button class="nav-tab" data-tab="fault">故障预警</button>
+            <button class="nav-tab" data-tab="quality">数据质量</button>
+            <button class="nav-tab" data-tab="report">运维报表</button>
+        </nav>
+
+        <main class="main-content">
+            <section id="dashboard" class="tab-content active">
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon pressure-icon">📊</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="avg-pressure">--</div>
+                            <div class="stat-label">平均压力 (MPa)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon flow-icon">💧</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="avg-flow">--</div>
+                            <div class="stat-label">平均流量 (m³/h)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon device-icon">📡</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="online-rate">--</div>
+                            <div class="stat-label">设备在线率 (%)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon warning-icon">⚠️</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="active-faults">--</div>
+                            <div class="stat-label">待处理故障</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>实时压力趋势</h3>
+                            <select id="pressure-zone-select" class="chart-filter">
+                                <option value="">全部分区</option>
+                            </select>
+                        </div>
+                        <div id="pressure-trend-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>实时流量趋势</h3>
+                            <select id="flow-zone-select" class="chart-filter">
+                                <option value="">全部分区</option>
+                            </select>
+                        </div>
+                        <div id="flow-trend-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>管网设备分布图</h3>
+                            <div class="chart-legend">
+                                <span class="legend-item"><span class="legend-dot online"></span>在线</span>
+                                <span class="legend-item"><span class="legend-dot offline"></span>离线</span>
+                                <span class="legend-item"><span class="legend-dot fault"></span>故障</span>
+                            </div>
+                        </div>
+                        <div id="device-map-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>分区压力对比</h3>
+                        </div>
+                        <div id="zone-pressure-chart" class="chart"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="zone" class="tab-content">
+                <div class="zone-controls">
+                    <select id="zone-select" class="control-select">
+                        <option value="">选择分区</option>
+                    </select>
+                    <select id="time-range-select" class="control-select">
+                        <option value="1h">最近1小时</option>
+                        <option value="24h" selected>最近24小时</option>
+                        <option value="7d">最近7天</option>
+                        <option value="30d">最近30天</option>
+                    </select>
+                    <button id="refresh-zone-btn" class="btn btn-primary">刷新数据</button>
+                </div>
+
+                <div class="zone-overview" id="zone-overview">
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>压力变化趋势</h3>
+                        </div>
+                        <div id="zone-pressure-detail-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>流量变化趋势</h3>
+                        </div>
+                        <div id="zone-flow-detail-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>24小时压力分布</h3>
+                        </div>
+                        <div id="pressure-hourly-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>24小时流量分布</h3>
+                        </div>
+                        <div id="flow-hourly-chart" class="chart"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="trend" class="tab-content">
+                <div class="trend-controls">
+                    <select id="trend-metric-select" class="control-select">
+                        <option value="pressure">压力</option>
+                        <option value="flow">流量</option>
+                    </select>
+                    <select id="trend-zone-select" class="control-select">
+                        <option value="">全部分区对比</option>
+                    </select>
+                    <div class="date-range">
+                        <input type="date" id="start-date" class="control-input">
+                        <span>至</span>
+                        <input type="date" id="end-date" class="control-input">
+                    </div>
+                    <button id="analyze-btn" class="btn btn-primary">分析</button>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container large">
+                        <div class="chart-header">
+                            <h3>多分区趋势对比</h3>
+                        </div>
+                        <div id="multi-zone-trend-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>指标统计分布</h3>
+                        </div>
+                        <div id="stats-boxplot-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>趋势变化率</h3>
+                        </div>
+                        <div id="trend-rate-chart" class="chart"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fault" class="tab-content">
+                <div class="fault-controls">
+                    <button id="check-fault-btn" class="btn btn-danger">检测故障</button>
+                    <select id="fault-status-filter" class="control-select">
+                        <option value="">全部状态</option>
+                        <option value="false">待处理</option>
+                        <option value="true">已解决</option>
+                    </select>
+                </div>
+
+                <div class="fault-stats">
+                    <div class="fault-stat">
+                        <div class="fault-stat-value" id="total-faults">0</div>
+                        <div class="fault-stat-label">总故障数</div>
+                    </div>
+                    <div class="fault-stat">
+                        <div class="fault-stat-value" id="resolved-faults">0</div>
+                        <div class="fault-stat-label">已解决</div>
+                    </div>
+                    <div class="fault-stat">
+                        <div class="fault-stat-value warning" id="unresolved-faults">0</div>
+                        <div class="fault-stat-label">待处理</div>
+                    </div>
+                    <div class="fault-stat">
+                        <div class="fault-stat-value" id="resolution-rate">0%</div>
+                        <div class="fault-stat-label">解决率</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>故障类型分布</h3>
+                        </div>
+                        <div id="fault-type-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>近7天故障趋势</h3>
+                        </div>
+                        <div id="fault-trend-chart" class="chart"></div>
+                    </div>
+                </div>
+
+                <div class="fault-list-container">
+                    <h3>故障列表</h3>
+                    <table class="fault-table">
+                        <thead>
+                            <tr>
+                                <th>设备ID</th>
+                                <th>分区</th>
+                                <th>故障类型</th>
+                                <th>故障值</th>
+                                <th>阈值</th>
+                                <th>故障时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fault-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="quality" class="tab-content">
+                <div class="quality-controls">
+                    <select id="quality-zone-select" class="control-select">
+                        <option value="">全部分区</option>
+                    </select>
+                    <div class="date-range">
+                        <input type="date" id="quality-start-date" class="control-input">
+                        <span>至</span>
+                        <input type="date" id="quality-end-date" class="control-input">
+                    </div>
+                    <button id="check-quality-btn" class="btn btn-primary">检查数据质量</button>
+                    <button id="clean-data-btn" class="btn btn-secondary">数据清洗</button>
+                </div>
+
+                <div class="quality-summary" id="quality-summary">
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>数据质量评分</h3>
+                        </div>
+                        <div id="quality-score-chart" class="chart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>异常数据分布</h3>
+                        </div>
+                        <div id="anomaly-dist-chart" class="chart"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="report" class="tab-content">
+                <div class="report-controls">
+                    <input type="date" id="report-date" class="control-input">
+                    <button id="generate-report-btn" class="btn btn-primary">生成日报表</button>
+                </div>
+
+                <div class="report-list-container">
+                    <h3>报表列表</h3>
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>报表日期</th>
+                                <th>设备总数</th>
+                                <th>在线设备</th>
+                                <th>故障设备</th>
+                                <th>平均压力</th>
+                                <th>平均流量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/api.js"></script>
+    <script src="/static/js/charts.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
