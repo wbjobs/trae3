@@ -1,0 +1,28 @@
+{
+  "name": "node-trace-gateway",
+  "version": "1.0.0",
+  "description": "服务端接口网关 - 跨机房分布式节点状态溯源系统",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node --watch src/app.js",
+    "prod": "cross-env NODE_ENV=production node src/app.js"
+  },
+  "dependencies": {
+    "@koa/cors": "^5.0.0",
+    "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-router": "^12.0.1",
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0",
+    "persistence": "file:../persistence"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

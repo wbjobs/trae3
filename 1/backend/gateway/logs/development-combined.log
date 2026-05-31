@@ -1,0 +1,8 @@
+{"env":"development","level":"info","message":"正在启动 API 网关...","port":3000,"service":"gateway","timestamp":"2026-05-29 01:04:24","traceId":"c7f8e793-6aa7-4927-b11d-8159ef55c7e5"}
+{"env":"development","level":"info","message":"API 网关启动成功","port":3000,"service":"gateway","timestamp":"2026-05-29 01:04:24","traceId":"c7f8e793-6aa7-4927-b11d-8159ef55c7e5","url":"http://localhost:3000"}
+{"level":"info","message":"========================================","timestamp":"2026-05-29 01:04:24"}
+{"level":"info","message":"  跨机房分布式节点状态溯源系统 - API 网关","timestamp":"2026-05-29 01:04:24"}
+{"level":"info","message":"  环境: development","timestamp":"2026-05-29 01:04:24"}
+{"level":"info","message":"  端口: 3000","timestamp":"2026-05-29 01:04:24"}
+{"level":"info","message":"  地址: http://localhost:3000","timestamp":"2026-05-29 01:04:24"}
+{"level":"info","message":"========================================","timestamp":"2026-05-29 01:04:24"}

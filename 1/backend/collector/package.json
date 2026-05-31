@@ -1,0 +1,27 @@
+{
+  "name": "node-trace-collector",
+  "version": "1.0.0",
+  "description": "节点数据采集子服务 - 跨机房分布式节点状态溯源系统",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node --watch src/app.js",
+    "prod": "cross-env NODE_ENV=production node src/app.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cron": "^3.1.7",
+    "dotenv": "^16.4.5",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "@koa/cors": "^5.0.0",
+    "koa-router": "^12.0.1",
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0",
+    "node-cron": "^3.0.3",
+    "persistence": "file:../persistence"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

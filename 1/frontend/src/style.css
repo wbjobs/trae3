@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #0B1220;
+  color: #E5E7EB;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-accent-500 hover:bg-accent-600 text-white rounded-lg transition-colors;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-dark-card border border-dark-border rounded-lg text-dark-text hover:border-accent-500/50 hover:text-accent-400 transition-colors;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 bg-danger hover:bg-danger/80 text-white rounded-lg transition-colors;
+  }
+
+  .card {
+    @apply bg-dark-card rounded-lg border border-dark-border p-6;
+  }
+
+  .card-hover {
+    @apply bg-dark-card rounded-lg border border-dark-border p-6 transition-all duration-200 hover:border-accent-500/30 hover:shadow-card;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-dark-text placeholder-dark-textSecondary/50 focus:outline-none focus:border-accent-500/50;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-2 bg-dark-bg border border-dark-border rounded-lg text-sm text-dark-text focus:outline-none focus:border-accent-500/50;
+  }
+
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-dot-online {
+    @apply bg-success animate-pulse;
+  }
+
+  .status-dot-warning {
+    @apply bg-warning animate-pulse;
+  }
+
+  .status-dot-error {
+    @apply bg-danger animate-pulse;
+  }
+
+  .status-dot-offline {
+    @apply bg-dark-textSecondary;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}

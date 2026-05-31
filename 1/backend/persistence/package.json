@@ -1,0 +1,24 @@
+{
+  "name": "node-trace-persistence",
+  "version": "1.0.0",
+  "description": "数据持久化模块 - 跨机房分布式节点状态溯源系统",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node --watch src/index.js",
+    "prod": "cross-env NODE_ENV=production node src/index.js",
+    "migrate": "node src/migrations/runner.js",
+    "seed": "node src/seeders/runner.js",
+    "init": "npm run migrate && npm run seed"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.10.0",
+    "sequelize": "^6.37.3",
+    "uuid": "^9.0.1",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
