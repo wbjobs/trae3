@@ -1,0 +1,111 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6-jammy
+    container_name: cfd-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: cfd_scheduler
+    networks:
+      - cfd-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: cfd-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - cfd-network
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cfd-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - redis
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - MONGODB_URI=mongodb://mongodb:27017/cfd_scheduler
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MAX_WORKERS=10
+      - TASK_TIMEOUT=3600000
+      - MAX_RETRY_ATTEMPTS=3
+      - STORAGE_PATH=/app/storage
+      - LOG_LEVEL=info
+    volumes:
+      - server_storage:/app/storage
+      - server_logs:/app/logs
+    networks:
+      - cfd-network
+
+  worker-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: cfd-worker-1
+    restart: unless-stopped
+    depends_on:
+      - server
+    environment:
+      - NODE_ENV=production
+      - SERVER_URL=http://server:8080
+      - NODE_NAME=worker-1
+      - MAX_TASKS=2
+      - STORAGE_PATH=/app/storage
+      - LOG_LEVEL=info
+    volumes:
+      - worker1_storage:/app/storage
+      - worker1_logs:/app/logs
+    networks:
+      - cfd-network
+
+  worker-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: cfd-worker-2
+    restart: unless-stopped
+    depends_on:
+      - server
+    environment:
+      - NODE_ENV=production
+      - SERVER_URL=http://server:8080
+      - NODE_NAME=worker-2
+      - MAX_TASKS=2
+      - STORAGE_PATH=/app/storage
+      - LOG_LEVEL=info
+    volumes:
+      - worker2_storage:/app/storage
+      - worker2_logs:/app/logs
+    networks:
+      - cfd-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+  server_storage:
+  server_logs:
+  worker1_storage:
+  worker1_logs:
+  worker2_storage:
+  worker2_logs:
+
+networks:
+  cfd-network:
+    driver: bridge

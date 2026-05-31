@@ -1,0 +1,178 @@
+[
+  {
+    "name": "两相流模拟 - 工况1",
+    "description": "高速气液两相流管道模拟",
+    "createdBy": "researcher_01",
+    "priority": 8,
+    "tags": ["两相流", "管道", "高速"],
+    "numChunks": 4,
+    "parameters": {
+      "domain": {
+        "xMin": 0,
+        "xMax": 10,
+        "yMin": 0,
+        "yMax": 1,
+        "zMin": 0,
+        "zMax": 1
+      },
+      "mesh": {
+        "xCells": 200,
+        "yCells": 20,
+        "zCells": 20,
+        "refinementLevel": 1
+      },
+      "phases": [
+        {
+          "type": "liquid",
+          "name": "water",
+          "density": 998,
+          "viscosity": 1e-6,
+          "volumeFraction": 0.7
+        },
+        {
+          "type": "gas",
+          "name": "air",
+          "density": 1.2,
+          "viscosity": 1.8e-5,
+          "volumeFraction": 0.3
+        }
+      ],
+      "boundaryConditions": {
+        "inlet": {
+          "velocity": {
+            "x": 5.0,
+            "y": 0,
+            "z": 0
+          },
+          "pressure": 0
+        },
+        "outlet": {
+          "pressure": 0
+        }
+      },
+      "simulation": {
+        "startTime": 0,
+        "endTime": 5,
+        "timeStep": 0.001,
+        "writeInterval": 100,
+        "solver": "interFoam",
+        "turbulenceModel": "k-epsilon"
+      }
+    }
+  },
+  {
+    "name": "两相流模拟 - 工况2",
+    "description": "中速气液两相流管道模拟",
+    "createdBy": "researcher_01",
+    "priority": 6,
+    "tags": ["两相流", "管道", "中速"],
+    "numChunks": 4,
+    "parameters": {
+      "domain": {
+        "xMin": 0,
+        "xMax": 10,
+        "yMin": 0,
+        "yMax": 1,
+        "zMin": 0,
+        "zMax": 1
+      },
+      "mesh": {
+        "xCells": 200,
+        "yCells": 20,
+        "zCells": 20,
+        "refinementLevel": 1
+      },
+      "phases": [
+        {
+          "type": "liquid",
+          "name": "water",
+          "density": 998,
+          "viscosity": 1e-6,
+          "volumeFraction": 0.7
+        },
+        {
+          "type": "gas",
+          "name": "air",
+          "density": 1.2,
+          "viscosity": 1.8e-5,
+          "volumeFraction": 0.3
+        }
+      ],
+      "boundaryConditions": {
+        "inlet": {
+          "velocity": {
+            "x": 2.5,
+            "y": 0,
+            "z": 0
+          },
+          "pressure": 0
+        },
+        "outlet": {
+          "pressure": 0
+        }
+      },
+      "simulation": {
+        "startTime": 0,
+        "endTime": 5,
+        "timeStep": 0.001,
+        "writeInterval": 100,
+        "solver": "interFoam",
+        "turbulenceModel": "k-epsilon"
+      }
+    }
+  },
+  {
+    "name": "单相流模拟 - 基准测试",
+    "description": "管道单相流基准测试",
+    "createdBy": "researcher_02",
+    "priority": 5,
+    "tags": ["单相流", "管道", "基准"],
+    "numChunks": 2,
+    "parameters": {
+      "domain": {
+        "xMin": 0,
+        "xMax": 5,
+        "yMin": 0,
+        "yMax": 0.5,
+        "zMin": 0,
+        "zMax": 0.5
+      },
+      "mesh": {
+        "xCells": 100,
+        "yCells": 10,
+        "zCells": 10,
+        "refinementLevel": 0
+      },
+      "phases": [
+        {
+          "type": "liquid",
+          "name": "water",
+          "density": 998,
+          "viscosity": 1e-6,
+          "volumeFraction": 1
+        }
+      ],
+      "boundaryConditions": {
+        "inlet": {
+          "velocity": {
+            "x": 1.0,
+            "y": 0,
+            "z": 0
+          },
+          "pressure": 0
+        },
+        "outlet": {
+          "pressure": 0
+        }
+      },
+      "simulation": {
+        "startTime": 0,
+        "endTime": 2,
+        "timeStep": 0.01,
+        "writeInterval": 50,
+        "solver": "simpleFoam",
+        "turbulenceModel": "k-epsilon"
+      }
+    }
+  }
+]
