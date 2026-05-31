@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>巡检仪参数配置工具 v2.0</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h1>巡检仪参数配置工具</h1>
+        <span class="version-badge">v2.0</span>
+      </div>
+      
+      <div class="header-center">
+        <div class="connection-status">
+          <span class="status-indicator" id="statusIndicator"></span>
+          <span class="status-text" id="statusText">未连接</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="quick-stats">
+          <div class="stat-item">
+            <span class="stat-label">设备</span>
+            <span class="stat-value" id="deviceCount">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">任务</span>
+            <span class="stat-value" id="taskCount">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">缓存命中</span>
+            <span class="stat-value" id="cacheHitRate">-</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="connection">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>连接管理</span>
+      </button>
+      <button class="nav-tab" data-tab="devices">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+        </svg>
+        <span>设备列表</span>
+      </button>
+      <button class="nav-tab" data-tab="params">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <span>参数配置</span>
+      </button>
+      <button class="nav-tab" data-tab="batch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+        <span>批量任务</span>
+      </button>
+      <button class="nav-tab" data-tab="monitor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        <span>数据监控</span>
+      </button>
+      <button class="nav-tab" data-tab="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>系统设置</span>
+      </button>
+      <button class="nav-tab" data-tab="logs">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span>操作日志</span>
+      </button>
+    </nav>
+
+    <main class="main-content">
+      <section id="tab-connection" class="tab-content active">
+        <div class="content-header">
+          <h2>连接管理</h2>
+          <p>配置串口连接参数，建立与巡检仪的通信</p>
+        </div>
+        
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>串口配置</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>串口选择</label>
+                  <select id="portSelect" class="form-control">
+                    <option value="">刷新后选择串口</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>波特率</label>
+                  <select id="baudRateSelect" class="form-control">
+                    <option value="9600">9600</option>
+                    <option value="19200">19200</option>
+                    <option value="38400">38400</option>
+                    <option value="57600">57600</option>
+                    <option value="115200" selected>115200</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>数据位</label>
+                  <select id="dataBitsSelect" class="form-control">
+                    <option value="8" selected>8</option>
+                    <option value="7">7</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>停止位</label>
+                  <select id="stopBitsSelect" class="form-control">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>校验位</label>
+                  <select id="paritySelect" class="form-control">
+                    <option value="none" selected>无</option>
+                    <option value="even">偶校验</option>
+                    <option value="odd">奇校验</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="button-group">
+                <button id="refreshPortsBtn" class="btn btn-secondary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10"/>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                  </svg>
+                  刷新串口
+                </button>
+                <button id="connectBtn" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                  连接设备
+                </button>
+                <button id="disconnectBtn" class="btn btn-danger" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                  </svg>
+                  断开连接
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>连接信息</h3>
+              <span class="badge badge-info" id="connectionPlatform">-</span>
+            </div>
+            <div class="card-body">
+              <div class="info-list" id="connectionInfo">
+                <div class="info-item">
+                  <span class="info-label">状态</span>
+                  <span class="info-value">未连接</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">串口</span>
+                  <span class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">传输速率</span>
+                  <span class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">自动重连</span>
+                  <span class="info-value">已启用</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>快速操作</h3>
+            </div>
+            <div class="card-body">
+              <div class="action-list">
+                <button id="testConnectionBtn" class="action-btn" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                  <span>测试通信</span>
+                </button>
+                <button id="readDeviceInfoBtn" class="action-btn" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                  <span>读取设备信息</span>
+                </button>
+                <button id="resetDeviceBtn" class="action-btn" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 4 23 10 17 10"/>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                  </svg>
+                  <span>重置设备</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-devices" class="tab-content">
+        <div class="content-header">
+          <h2>设备列表</h2>
+          <p>管理和监控已连接的巡检仪设备</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>设备扫描</h3>
+            <div class="header-actions">
+              <div class="form-inline">
+                <label>设备ID范围:</label>
+                <input type="text" id="deviceIdRange" class="form-control" value="1-255" style="width: 100px;">
+              </div>
+              <button id="scanDevicesBtn" class="btn btn-primary btn-sm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.35-4.35"/>
+                </svg>
+                扫描设备
+              </button>
+              <button id="addDeviceBtn" class="btn btn-secondary btn-sm">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                添加设备
+              </button>
+            </div>
+          </div>
+          <div class="progress-bar" id="scanProgress" style="display: none;">
+            <div class="progress-fill" id="scanProgressFill" style="width: 0%"></div>
+            <span class="progress-text" id="scanProgressText">扫描中...</span>
+          </div>
+          <div class="card-body">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th style="width: 40px;">
+                      <input type="checkbox" id="selectAllDevices">
+                    </th>
+                    <th>设备ID</th>
+                    <th>串口</th>
+                    <th>状态</th>
+                    <th>固件版本</th>
+                    <th>最后在线</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="deviceTableBody">
+                  <tr class="empty-row">
+                    <td colspan="7">暂无设备，请扫描或手动添加</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-params" class="tab-content">
+        <div class="content-header">
+          <h2>参数配置</h2>
+          <p>配置巡检仪的各项参数设置</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>目标设备</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-inline">
+              <label>设备ID:</label>
+              <input type="number" id="targetDeviceId" class="form-control" min="1" max="255" value="1">
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>参数列表</h3>
+            <div class="header-actions">
+              <button id="readAllParamsBtn" class="btn btn-secondary btn-sm">读取全部</button>
+              <button id="writeAllParamsBtn" class="btn btn-primary btn-sm">写入全部</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="params-grid" id="paramsForm"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-batch" class="tab-content">
+        <div class="content-header">
+          <h2>批量任务</h2>
+          <p>创建和管理批量配置任务</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>任务控制</h3>
+            <div class="header-actions">
+              <div class="form-inline">
+                <label>策略:</label>
+                <select id="batchStrategy" class="form-control">
+                  <option value="smart">智能</option>
+                  <option value="sequential">顺序</option>
+                  <option value="parallel">并行</option>
+                </select>
+              </div>
+              <div class="form-inline">
+                <label>并发:</label>
+                <input type="number" id="concurrencyInput" class="form-control" min="1" max="8" value="1" style="width: 60px;">
+              </div>
+              <label class="checkbox">
+                <input type="checkbox" id="optimizedMode" checked>
+                <span>优化模式</span>
+              </label>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="button-group">
+              <button id="addTaskBtn" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                添加任务
+              </button>
+              <button id="startTasksBtn" class="btn btn-success">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                开始执行
+              </button>
+              <button id="pauseTasksBtn" class="btn btn-warning" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="6" y="4" width="4" height="16"/>
+                  <rect x="14" y="4" width="4" height="16"/>
+                </svg>
+                暂停
+              </button>
+              <button id="resumeTasksBtn" class="btn btn-secondary" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 4 15 12 5 20 5 4"/>
+                </svg>
+                继续
+              </button>
+              <button id="stopTasksBtn" class="btn btn-danger" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                </svg>
+                停止
+              </button>
+              <button id="clearTasksBtn" class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                清空
+              </button>
+              <button id="exportResultsBtn" class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                导出结果
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-bar" id="batchProgress" style="display: none;">
+          <div class="progress-fill" id="batchProgressFill" style="width: 0%"></div>
+          <span class="progress-text" id="batchProgressText">准备中...</span>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>任务列表</h3>
+            <span class="badge" id="taskCountBadge">0 个任务</span>
+          </div>
+          <div class="card-body">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>任务ID</th>
+                    <th>类型</th>
+                    <th>设备ID</th>
+                    <th>参数</th>
+                    <th>状态</th>
+                    <th>结果</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="taskTableBody">
+                  <tr class="empty-row">
+                    <td colspan="7">暂无任务</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-monitor" class="tab-content">
+        <div class="content-header">
+          <h2>数据监控</h2>
+          <p>实时监控串口数据和系统状态</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="card" style="flex: 2;">
+            <div class="card-header">
+              <h3>串口数据</h3>
+              <button id="clearMonitorBtn" class="btn btn-secondary btn-sm">清空</button>
+            </div>
+            <div class="card-body">
+              <div class="monitor-content" id="monitorContent">
+                <div class="monitor-line">等待数据...</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>系统状态</h3>
+            </div>
+            <div class="card-body">
+              <div class="info-list">
+                <div class="info-item">
+                  <span class="info-label">任务池状态</span>
+                  <span class="info-value" id="taskPoolStatus">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">缓冲池内存</span>
+                  <span class="info-value" id="bufferPoolMemory">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">平均执行时间</span>
+                  <span class="info-value" id="avgExecTime">-</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">缓存命中率</span>
+                  <span class="info-value" id="cacheRate">-</span>
+                </div>
+              </div>
+              <button id="refreshStatsBtn" class="btn btn-secondary btn-sm" style="margin-top: 16px;">刷新统计</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-settings" class="tab-content">
+        <div class="content-header">
+          <h2>系统设置</h2>
+          <p>配置系统参数和加密选项</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>加密设置</h3>
+            </div>
+            <div class="card-body">
+              <div class="info-list">
+                <div class="info-item">
+                  <span class="info-label">加密算法</span>
+                  <span class="info-value" id="cryptoAlgo">AES-128-CBC</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">校验方式</span>
+                  <span class="info-value">CRC32</span>
+                </div>
+              </div>
+              <label class="checkbox" style="margin-top: 16px;">
+                <input type="checkbox" id="enableEncryption">
+                <span>启用参数加密传输</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>性能设置</h3>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label>任务超时时间 (ms)</label>
+                <input type="number" id="taskTimeout" class="form-control" min="1000" max="30000" value="5000">
+              </div>
+              <div class="form-group">
+                <label>最大重试次数</label>
+                <input type="number" id="maxRetries" class="form-control" min="0" max="10" value="3">
+              </div>
+              <label class="checkbox">
+                <input type="checkbox" id="enableCache" checked>
+                <span>启用参数缓存</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>重连设置</h3>
+            </div>
+            <div class="card-body">
+              <label class="checkbox">
+                <input type="checkbox" id="autoReconnect" checked>
+                <span>自动重连</span>
+              </label>
+              <div class="form-group">
+                <label>最大重连次数</label>
+                <input type="number" id="maxReconnect" class="form-control" min="1" max="20" value="5">
+              </div>
+              <div class="form-group">
+                <label>初始重连延迟 (ms)</label>
+                <input type="number" id="reconnectDelay" class="form-control" min="500" max="10000" value="2000">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-logs" class="tab-content">
+        <div class="content-header">
+          <h2>操作日志</h2>
+          <p>查看系统操作日志和错误记录</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>日志文件</h3>
+            <div class="header-actions">
+              <select id="logFileSelect" class="form-control">
+                <option value="">选择日志文件</option>
+              </select>
+              <button id="refreshLogsBtn" class="btn btn-secondary btn-sm">刷新</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="log-viewer" id="logViewer">
+              <div class="log-line">请选择日志文件查看内容</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="addDeviceModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>添加设备</h3>
+        <button class="modal-close" id="closeDeviceModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>串口</label>
+          <select id="modalPortSelect" class="form-control"></select>
+        </div>
+        <div class="form-group">
+          <label>设备ID (1-255)</label>
+          <input type="number" id="modalDeviceId" class="form-control" min="1" max="255" value="1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelAddDeviceBtn">取消</button>
+        <button class="btn btn-primary" id="confirmAddDeviceBtn">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="addTaskModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>添加任务</h3>
+        <button class="modal-close" id="closeTaskModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>任务类型</label>
+          <select id="taskTypeSelect" class="form-control">
+            <option value="read">读取参数</option>
+            <option value="write">写入参数</option>
+            <option value="read_all">读取全部参数</option>
+            <option value="write_all">写入全部参数</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>目标设备</label>
+          <select id="modalDeviceSelect" class="form-control" multiple size="5"></select>
+        </div>
+        <div class="form-group" id="taskParamsGroup">
+          <label>选择参数</label>
+          <div class="checkbox-group" id="paramCheckboxes"></div>
+        </div>
+        <div class="form-group" id="writeParamsGroup">
+          <label>参数值</label>
+          <div id="writeParamsInputs"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelAddTaskBtn">取消</button>
+        <button class="btn btn-primary" id="confirmAddTaskBtn">添加</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/renderer.js"></script>
+</body>
+</html>
