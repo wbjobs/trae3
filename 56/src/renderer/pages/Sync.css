@@ -1,0 +1,194 @@
+.sync {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1100px;
+}
+
+.sync-auth {
+  max-width: 480px;
+  margin: 40px auto;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.auth-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-btn {
+  margin-top: 8px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.sync-toolbar {
+  padding: 16px 20px;
+}
+
+.sync-status-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sync-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sync-status-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-green);
+}
+
+.sync-stats-mini {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.sync-stat-divider {
+  color: var(--border-color);
+}
+
+.sync-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.sync-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 16px;
+}
+
+.cloud-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cloud-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.cloud-file-item:hover {
+  background: var(--bg-hover);
+}
+
+.cloud-file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.cloud-file-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.cloud-file-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cloud-file-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cloud-file-detail {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.sync-task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.sync-task-item {
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--border-color);
+}
+
+.sync-task-item.sync-task-completed {
+  border-left-color: var(--accent-green);
+}
+
+.sync-task-item.sync-task-processing {
+  border-left-color: var(--accent-blue);
+}
+
+.sync-task-item.sync-task-failed {
+  border-left-color: var(--accent-red);
+}
+
+.sync-task-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sync-task-type {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.sync-task-filename {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
