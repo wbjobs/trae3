@@ -1,0 +1,52 @@
+[gd_scene load_steps=13 format=3 uid="uid://bmain001"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/event_bus.gd" id="2_bus"]
+[ext_resource type="Script" path="res://scripts/network_client.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/environment_simulator.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/environment_interaction.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/game_state_manager.gd" id="4_gs"]
+[ext_resource type="Script" path="res://scripts/resource_loader.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/save_manager.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/object_pool.gd" id="7_pool"]
+[ext_resource type="Script" path="res://scripts/performance_monitor.gd" id="8_perf"]
+[ext_resource type="Script" path="res://scripts/jitter_buffer.gd" id="9_jitter"]
+[ext_resource type="Script" path="res://scripts/extreme_event_handler.gd" id="10_extreme"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1")
+
+[node name="EventBus" type="Node" parent="."]
+script = ExtResource("2_bus")
+
+[node name="NetworkClient" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="EnvironmentSimulator" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="EnvironmentInteraction" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="GameStateManager" type="Node" parent="."]
+script = ExtResource("4_gs")
+
+[node name="ResourceLoader" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="SaveManager" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="ObjectPool" type="Node" parent="."]
+script = ExtResource("7_pool")
+
+[node name="PerformanceMonitor" type="Node" parent="."]
+script = ExtResource("8_perf")
+
+[node name="JitterBuffer" type="Node" parent="."]
+script = ExtResource("9_jitter")
+
+[node name="ExtremeEventHandler" type="Node" parent="."]
+script = ExtResource("10_extreme")
+
+[node name="HUD" type="CanvasLayer" parent="."]
