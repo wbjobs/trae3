@@ -1,0 +1,31 @@
+{
+  "name": "firmware-batch-manager",
+  "version": "1.0.0",
+  "description": "工业嵌入式固件批量编译与版本管控系统",
+  "private": true,
+  "workspaces": [
+    "desktop",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "npm install && cd desktop && npm install && cd ../backend && npm install",
+    "dev:desktop": "cd desktop && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:desktop\"",
+    "build:desktop": "cd desktop && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build": "npm run build:backend && npm run build:desktop"
+  },
+  "keywords": [
+    "firmware",
+    "embedded",
+    "compiler",
+    "version-control",
+    "electron"
+  ],
+  "author": "Industrial Firmware Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

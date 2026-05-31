@@ -1,0 +1,76 @@
+{
+  "name": "firmware-manager-desktop",
+  "version": "1.0.0",
+  "description": "工业嵌入式固件批量编译与版本管控桌面端",
+  "main": "dist-electron/main.js",
+  "author": "Industrial Firmware Team",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build && electron-builder",
+    "build:vite": "vite build",
+    "build:electron": "electron-builder",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "diff": "^5.1.0",
+    "element-plus": "^2.5.6",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0",
+    "zip-lib": "^0.7.3"
+  },
+  "devDependencies": {
+    "@types/diff": "^5.0.9",
+    "@types/node": "^20.11.16",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-electron": "^0.28.0",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue-tsc": "^1.8.27"
+  },
+  "build": {
+    "appId": "com.firmware.manager",
+    "productName": "FirmwareBatchManager",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "dist",
+      "dist-electron"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "public/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "public/icon.png"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "icon": "public/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
