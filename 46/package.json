@@ -1,0 +1,49 @@
+{
+  "name": "cnc-program-manager",
+  "version": "1.0.0",
+  "description": "跨平台数控程序管理桌面应用 - 解析、格式转换、远程同步、本地管理",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && electron dist/main/main.js",
+    "dev": "tsc && electron dist/main/main.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "test": "jest --coverage"
+  },
+  "build": {
+    "appId": "com.cnc.program-manager",
+    "productName": "数控程序管理器",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "better-sqlite3": "^9.4.0",
+    "chokidar": "^3.5.3",
+    "electron-store": "^8.1.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.3.0",
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/uuid": "^9.0.7",
+    "ts-jest": "^29.1.0"
+  }
+}
