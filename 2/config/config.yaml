@@ -1,0 +1,84 @@
+server:
+  port: "8080"
+  node_id: 1
+  mode: "release"
+
+database:
+  host: "127.0.0.1"
+  port: "5432"
+  user: "postgres"
+  password: "postgres"
+  dbname: "gateway"
+  sslmode: "disable"
+  max_open: 100
+  max_idle: 10
+
+influxdb:
+  url: "http://127.0.0.1:8086"
+  token: "your-influxdb-token"
+  org: "industrial"
+  bucket: "protocol_data"
+  batch_size: 100
+  compress_raw: true
+  raw_retention: "168h"
+  downsample: true
+  cold_bucket: "protocol_data_cold"
+  cold_threshold: "168h"
+
+cluster:
+  mode: "raft"
+  node_id: "node-1"
+  join_addr: ""
+  bind_addr: "127.0.0.1:7000"
+  http_addr: "127.0.0.1:7001"
+  peers:
+    - "127.0.0.1:7000"
+  etcd_endpoints:
+    - "127.0.0.1:2379"
+
+auth:
+  jwt_secret: "your-super-secret-key-change-in-production"
+  jwt_expire: 3600
+  api_keys:
+    - key: "admin-key-12345"
+      name: "admin"
+      role: "admin"
+    - key: "service-key-67890"
+      name: "service"
+      role: "readwrite"
+
+ratelimit:
+  global: 1000
+  per_ip: 100
+  per_key: 500
+  whitelist_ip:
+    - "127.0.0.1"
+    - "10.0.0.0/8"
+  whitelist_key: []
+  path_limits:
+    "/api/v1/protocol/parse": 500
+    "/api/v1/protocol/parse/batch": 100
+
+log:
+  level: "info"
+  file_path: "./logs/gateway.log"
+  max_size: 100
+  max_backups: 30
+  max_age: 30
+  compress: true
+
+protocol:
+  modbus:
+    timeout: 5
+    max_retries: 3
+    pool_warmup: false
+    health_check: true
+  iec104:
+    apci: 65535
+    timeout: 10
+    max_retries: 3
+  worker_pool:
+    parse_workers: 8
+    storage_workers: 4
+    forward_workers: 8
+    queue_size: 1000
