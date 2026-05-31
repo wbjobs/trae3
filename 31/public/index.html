@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分布式异构终端日志溯源联动系统</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface2: #242836;
+    --border: #2e3348; --primary: #6c5ce7; --primary-dim: #4a3db5;
+    --accent: #00cec9; --warn: #fdcb6e; --error: #e17055; --success: #00b894;
+    --text: #e0e0e0; --text2: #8a8fa8; --text3: #5a5f78;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); min-height: 100vh; }
+  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .header h1 { font-size: 18px; font-weight: 600; color: var(--primary); letter-spacing: 0.5px; }
+  .header h1 span { color: var(--accent); }
+  .header-actions { display: flex; gap: 10px; align-items: center; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .status-dot.online { background: var(--success); box-shadow: 0 0 6px var(--success); }
+  .status-dot.offline { background: var(--error); }
+  .status-dot.connecting { background: var(--warn); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .badge { background: var(--primary-dim); color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+
+  .container { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1800px; margin: 0 auto; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .card-header { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .card-header h3 { font-size: 13px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.8px; }
+  .card-body { padding: 14px 16px; max-height: 420px; overflow-y: auto; }
+  .card-body::-webkit-scrollbar { width: 5px; }
+  .card-body::-webkit-scrollbar-track { background: transparent; }
+  .card-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+  .stat-value { font-size: 28px; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 11px; color: var(--text3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card.accent .stat-value { color: var(--accent); }
+  .stat-card.warn .stat-value { color: var(--warn); }
+  .stat-card.success .stat-value { color: var(--success); }
+  .stat-card.error .stat-value { color: var(--error); }
+  .stat-sub { font-size: 10px; color: var(--text3); margin-top: 6px; }
+  .progress-bar { width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-top: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--primary); border-radius: 2px; transition: width 0.3s; }
+
+  .perf-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 20px; }
+
+  .terminal-item { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .terminal-item:last-child { border-bottom: none; }
+  .terminal-info { flex: 1; }
+  .terminal-id { font-family: var(--mono); font-size: 13px; color: var(--text); }
+  .terminal-meta { font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .terminal-type { background: var(--surface2); padding: 2px 8px; border-radius: 4px; font-size: 11px; color: var(--accent); font-family: var(--mono); }
+
+  .log-entry { padding: 6px 0; border-bottom: 1px solid rgba(46,51,72,0.5); font-size: 12px; border-left: 3px solid transparent; padding-left: 8px; }
+  .log-entry:last-child { border-bottom: none; }
+  .log-entry.highlight-error { border-left-color: var(--error); background: rgba(225,112,85,0.05); }
+  .log-entry.highlight-warn { border-left-color: var(--warn); background: rgba(253,203,110,0.05); }
+  .log-entry.highlight-cross { border-left-color: var(--primary); background: rgba(108,92,231,0.05); }
+  .log-entry.highlight-hardware { border-left-color: var(--accent); background: rgba(0,206,201,0.05); }
+  .log-entry.highlight-sensor { border-left-color: #fd79a8; background: rgba(253,121,168,0.05); }
+  .log-entry.highlight-alert { border-left-color: #e17055; background: rgba(225,112,85,0.05); }
+  .log-entry.highlight-custom { border-left-color: #a29bfe; background: rgba(162,155,254,0.05); }
+  .log-entry.focused { background: rgba(108,92,231,0.15); border-left-color: var(--primary); }
+  .log-entry.dimmed { opacity: 0.4; }
+  .log-header { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .log-level { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; }
+  .log-level.info { background: rgba(0,206,201,0.15); color: var(--accent); }
+  .log-level.warn { background: rgba(253,203,110,0.15); color: var(--warn); }
+  .log-level.error { background: rgba(225,112,85,0.15); color: var(--error); }
+  .log-level.debug { background: rgba(108,92,231,0.15); color: var(--primary); }
+  .log-level.fatal { background: rgba(225,112,85,0.3); color: var(--error); }
+  .log-source { color: var(--text3); font-family: var(--mono); font-size: 10px; }
+  .log-time { color: var(--text3); font-size: 10px; margin-left: auto; }
+  .log-action { color: var(--text); font-family: var(--mono); }
+  .log-detail { color: var(--text3); font-family: var(--mono); font-size: 11px; margin-top: 2px; word-break: break-all; }
+  .hl-tag { display: inline-block; padding: 0 5px; border-radius: 3px; font-size: 9px; margin-right: 4px; font-weight: 600; text-transform: uppercase; }
+  .hl-tag.error { background: rgba(225,112,85,0.2); color: var(--error); }
+  .hl-tag.warn { background: rgba(253,203,110,0.2); color: var(--warn); }
+  .hl-tag.cross { background: rgba(108,92,231,0.2); color: var(--primary); }
+  .hl-tag.hardware { background: rgba(0,206,201,0.2); color: var(--accent); }
+  .hl-tag.sensor { background: rgba(253,121,168,0.2); color: #fd79a8; }
+  .hl-tag.alert { background: rgba(225,112,85,0.2); color: var(--error); }
+  .hl-tag.custom { background: rgba(162,155,254,0.2); color: #a29bfe; }
+  .hl-tag.focus { background: rgba(253,203,110,0.3); color: var(--warn); }
+
+  .trace-chain { padding: 8px 0; }
+  .trace-node { display: flex; align-items: flex-start; padding: 8px 0 8px 20px; position: relative; cursor: pointer; transition: all 0.2s; border-radius: 4px; }
+  .trace-node:hover { background: var(--surface2); }
+  .trace-node::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .trace-node::after { content: ''; position: absolute; left: 2px; top: 14px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); border: 2px solid var(--surface); z-index: 1; }
+  .trace-node.browser::after { background: var(--accent); }
+  .trace-node.terminal::after { background: var(--warn); }
+  .trace-node.iot::after { background: #00b894; }
+  .trace-node.mobile::after { background: #fd79a8; }
+  .trace-node:first-child::before { top: 14px; }
+  .trace-node:last-child::before { bottom: calc(100% - 14px); }
+  .trace-node.highlight-error { background: rgba(225,112,85,0.08); }
+  .trace-node.highlight-error::after { box-shadow: 0 0 8px var(--error); }
+  .trace-node.highlight-warn { background: rgba(253,203,110,0.08); }
+  .trace-node.highlight-warn::after { box-shadow: 0 0 8px var(--warn); }
+  .trace-node.highlight-cross { background: rgba(108,92,231,0.08); }
+  .trace-node.highlight-cross::after { box-shadow: 0 0 8px var(--primary); }
+  .trace-node.highlight-hardware { background: rgba(0,206,201,0.08); }
+  .trace-node.highlight-hardware::after { box-shadow: 0 0 8px var(--accent); }
+  .trace-node.focused { background: rgba(253,203,110,0.15); }
+  .trace-node.focused::after { box-shadow: 0 0 12px var(--warn); background: var(--warn) !important; }
+  .trace-node.in-path { background: rgba(108,92,231,0.1); }
+  .trace-node.in-path::before { background: var(--primary); }
+  .trace-node.dimmed { opacity: 0.3; }
+  .trace-node-info { flex: 1; }
+  .trace-span-id { font-family: var(--mono); font-size: 11px; color: var(--primary); display: flex; align-items: center; gap: 6px; }
+  .trace-action { font-size: 12px; color: var(--text); margin-top: 4px; }
+  .trace-time { font-size: 10px; color: var(--text3); margin-top: 4px; }
+  .trace-locate-btn { padding: 1px 6px; font-size: 10px; background: var(--primary-dim); color: #fff; border: none; border-radius: 3px; cursor: pointer; margin-left: 6px; }
+  .trace-locate-btn:hover { background: var(--primary); }
+
+  .btn { padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 12px; cursor: pointer; transition: all 0.2s; font-family: var(--font); }
+  .btn:hover { border-color: var(--primary); color: var(--primary); }
+  .btn.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .btn.primary:hover { background: var(--primary-dim); }
+  .btn.sm { padding: 4px 10px; font-size: 11px; }
+  .btn.danger { border-color: var(--error); color: var(--error); }
+  .btn.danger:hover { background: var(--error); color: #fff; }
+
+  .search-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+  .search-bar input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 13px; font-family: var(--mono); outline: none; }
+  .search-bar input:focus { border-color: var(--primary); }
+  .search-bar input::placeholder { color: var(--text3); }
+
+  .full-width { grid-column: 1 / -1; }
+  .empty-state { text-align: center; padding: 30px; color: var(--text3); font-size: 13px; }
+
+  .link-form { display: flex; gap: 8px; align-items: center; }
+  .link-form input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; color: var(--text); font-size: 12px; font-family: var(--mono); outline: none; }
+  .link-form input:focus { border-color: var(--primary); }
+  .link-form input::placeholder { color: var(--text3); }
+
+  .tab-bar { display: flex; gap: 2px; padding: 0 16px; border-bottom: 1px solid var(--border); overflow-x: auto; }
+  .tab { padding: 8px 16px; font-size: 12px; color: var(--text3); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+  .tab:hover { color: var(--text); }
+
+  .rule-item { display: flex; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 10px; }
+  .rule-color { width: 12px; height: 12px; border-radius: 3px; margin-top: 4px; flex-shrink: 0; }
+  .rule-info { flex: 1; }
+  .rule-name { font-size: 12px; color: var(--text); font-weight: 600; }
+  .rule-desc { font-size: 11px; color: var(--text3); margin-top: 2px; font-family: var(--mono); }
+  .rule-meta { font-size: 10px; color: var(--text3); margin-top: 4px; }
+  .rule-actions { display: flex; gap: 4px; }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; width: 90%; max-width: 500px; max-height: 80vh; overflow: hidden; }
+  .modal-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .modal-header h3 { font-size: 14px; color: var(--text); }
+  .modal-body { padding: 16px; overflow-y: auto; }
+  .modal-footer { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 8px; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 11px; color: var(--text2); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 13px; font-family: var(--font); outline: none; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); }
+  .form-group textarea { min-height: 60px; font-family: var(--mono); font-size: 12px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--surface); border: 1px solid var(--primary); padding: 12px 20px; border-radius: 8px; font-size: 13px; z-index: 2000; animation: slideIn 0.3s ease; }
+  @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+  .log-list { max-height: 400px; overflow-y: auto; }
+
+  .span-detail { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 10px; margin-top: 8px; font-family: var(--mono); font-size: 11px; word-break: break-all; }
+  .span-detail h4 { font-size: 11px; color: var(--primary); margin-bottom: 6px; }
+  .span-detail pre { margin: 0; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>LOG<span>TRACE</span> - 分布式异构终端日志溯源联动系统 <span class="badge" style="margin-left:10px;">v3.0 性能升级</span></h1>
+  <div class="header-actions">
+    <span class="badge" id="wsStatus"><span class="status-dot connecting"></span> 连接中</span>
+    <button class="btn sm" onclick="connectWS()">重连</button>
+    <button class="btn sm" onclick="showPerformanceModal()">性能监控</button>
+    <button class="btn sm primary" onclick="simulateLog()">模拟日志</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="perf-grid full-width">
+    <div class="stat-card"><div class="stat-value" id="statOnline">0</div><div class="stat-label">在线终端</div></div>
+    <div class="stat-card accent"><div class="stat-value" id="statLogs">0</div><div class="stat-label">日志总量</div></div>
+    <div class="stat-card warn"><div class="stat-value" id="statTraces">0</div><div class="stat-label">活跃链路</div></div>
+    <div class="stat-card success"><div class="stat-value" id="statLinks">0</div><div class="stat-label">跨源关联</div></div>
+    <div class="stat-card"><div class="stat-value" id="statCompression">0%</div><div class="stat-label">压缩率</div><div class="stat-sub" id="statCompressionSaved">节省 0 KB</div><div class="progress-bar"><div class="progress-fill" id="compressionBar" style="width:0%;"></div></div></div>
+    <div class="stat-card error"><div class="stat-value" id="statQueue">0</div><div class="stat-label">调度队列</div><div class="stat-sub" id="statScheduler">0 活跃 / 0 已处理</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h3>在线终端</h3><button class="btn sm" onclick="refreshTerminals()">刷新</button></div>
+    <div class="card-body" id="terminalList"><div class="empty-state">暂无终端连接</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h3>实时日志流</h3>
+      <div style="display:flex;gap:6px;">
+        <select id="logFilterLevel" class="btn sm" onchange="applyLogFilter()">
+          <option value="all">全部级别</option>
+          <option value="error">Error+</option>
+          <option value="warn">Warn+</option>
+          <option value="info">Info+</option>
+          <option value="debug">Debug+</option>
+        </select>
+        <button class="btn sm" onclick="clearLogs()">清空</button>
+      </div>
+    </div>
+    <div class="search-bar" style="padding:0 16px;">
+      <input type="text" id="logSearch" placeholder="在日志中搜索关键词..." oninput="applyLogFilter()">
+    </div>
+    <div class="card-body log-list" id="logStream"><div class="empty-state">等待日志输入...</div></div>
+  </div>
+
+  <div class="card full-width">
+    <div class="card-header"><h3>链路追踪与高亮</h3></div>
+    <div class="tab-bar" id="traceTabs">
+      <div class="tab active" onclick="switchTraceTab(event, 'search')">链路查询</div>
+      <div class="tab" onclick="switchTraceTab(event, 'highlight')">高亮定位</div>
+      <div class="tab" onclick="switchTraceTab(event, 'fulltext')">全文搜索</div>
+      <div class="tab" onclick="switchTraceTab(event, 'rules')">高亮规则</div>
+    </div>
+
+    <div id="tab-search" class="tab-content">
+      <div class="search-bar" style="padding:14px 16px 0;">
+        <input type="text" id="traceIdInput" placeholder="输入 Trace ID 查询完整链路...">
+        <input type="text" id="traceKeywordInput" placeholder="关键词搜索（可选）..." style="max-width:200px;">
+        <button class="btn primary" onclick="queryTraceWithHighlight()">查询</button>
+        <button class="btn" onclick="showExplainPlan()">执行计划</button>
+      </div>
+      <div class="card-body" id="traceResult"><div class="empty-state">输入 Trace ID 以查询完整链路</div></div>
+    </div>
+
+    <div id="tab-highlight" class="tab-content" style="display:none;">
+      <div class="search-bar" style="padding:14px 16px 0;">
+        <input type="text" id="locateTraceId" placeholder="Trace ID">
+        <input type="text" id="locateSpanId" placeholder="Span ID 进行局部定位">
+        <button class="btn primary" onclick="locateSpanInTrace()">定位</button>
+      </div>
+      <div class="card-body" id="locateResult"><div class="empty-state">输入 Trace ID 和 Span ID，查看该节点的上下游局部链路</div></div>
+    </div>
+
+    <div id="tab-fulltext" class="tab-content" style="display:none;">
+      <div class="search-bar" style="padding:14px 16px 0;">
+        <input type="text" id="fulltextKeyword" placeholder="输入关键词进行全文搜索...">
+        <input type="number" id="fulltextHours" value="1" min="0.1" step="0.1" style="width:80px;">
+        <span style="color:var(--text3);font-size:12px;align-self:center;">小时</span>
+        <select id="fulltextSource" class="btn sm">
+          <option value="">全部来源</option>
+          <option value="browser">浏览器</option>
+          <option value="embedded">嵌入式</option>
+          <option value="iot">IoT设备</option>
+          <option value="mobile">移动端</option>
+        </select>
+        <button class="btn primary" onclick="fulltextSearch()">搜索</button>
+      </div>
+      <div class="card-body" id="fulltextResult"><div class="empty-state">使用全文搜索在海量日志中快速定位</div></div>
+    </div>
+
+    <div id="tab-rules" class="tab-content" style="display:none;">
+      <div style="padding:14px 16px 0;">
+        <button class="btn primary sm" onclick="showAddRuleModal()">+ 添加高亮规则</button>
+      </div>
+      <div class="card-body" id="rulesResult"><div class="empty-state">加载高亮规则中...</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h3>双向溯源关联</h3></div>
+    <div class="card-body">
+      <div class="link-form" style="margin-bottom:10px;">
+        <input type="text" id="browserTraceId" placeholder="浏览器端 Trace ID">
+        <input type="text" id="terminalTraceId" placeholder="终端端 Trace ID">
+        <button class="btn primary" onclick="linkTrace()">关联</button>
+      </div>
+      <div id="linkResult"><div class="empty-state">建立浏览器与终端日志的双向溯源</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h3>系统状态</h3><button class="btn sm" onclick="refreshStatus()">刷新</button></div>
+    <div class="card-body" id="systemStatus"><div class="empty-state">加载中...</div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="perfModal" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>性能监控面板</h3>
+      <button class="btn sm" onclick="closePerfModal()">×</button>
+    </div>
+    <div class="modal-body" id="perfBody">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <h4 style="color:var(--primary);font-size:12px;margin-bottom:10px;text-transform:uppercase;">压缩统计</h4>
+          <div id="compressionStats" style="font-family:var(--mono);font-size:12px;line-height:2;"></div>
+        </div>
+        <div>
+          <h4 style="color:var(--accent);font-size:12px;margin-bottom:10px;text-transform:uppercase;">调度器统计</h4>
+          <div id="schedulerStats" style="font-family:var(--mono);font-size:12px;line-height:2;"></div>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <h4 style="color:var(--warn);font-size:12px;margin-bottom:10px;text-transform:uppercase;">数据库索引</h4>
+        <div style="font-family:var(--mono);font-size:11px;line-height:1.9;background:var(--surface2);padding:12px;border-radius:6px;">
+          <div>• idx_logs_trace_time (trace_id, timestamp)</div>
+          <div>• idx_logs_terminal_time (terminal_id, timestamp)</div>
+          <div>• idx_logs_source_time (source_type, timestamp)</div>
+          <div>• idx_logs_level_time (level_value, timestamp)</div>
+          <div>• idx_logs_source_level (source_type, level_value)</div>
+          <div>• idx_logs_source_category (source_type, category)</div>
+          <div style="color:var(--text3);margin-top:8px;">+ log_aggregates 预聚合表 (分钟级时间桶)</div>
+          <div style="color:var(--text3);">+ search_terms 倒排索引表 (全文搜索)</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closePerfModal()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="ruleModal" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="ruleModalTitle">添加高亮规则</h3>
+      <button class="btn sm" onclick="closeRuleModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>规则名称</label>
+        <input type="text" id="ruleName" placeholder="例如：支付错误">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>匹配字段</label>
+          <select id="ruleField">
+            <option value="level">日志级别</option>
+            <option value="category">类别</option>
+            <option value="action">动作</option>
+            <option value="source">来源类型</option>
+            <option value="detail">详情内容</option>
+            <option value="tags">标签</option>
+            <option value="any">任意字段</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>匹配值</label>
+          <input type="text" id="ruleValue" placeholder="例如：error">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>高亮颜色</label>
+          <select id="ruleColor">
+            <option value="custom">自定义（紫色）</option>
+            <option value="error">错误（红色）</option>
+            <option value="warn">警告（橙色）</option>
+            <option value="cross">跨源（紫色）</option>
+            <option value="hardware">硬件（青色）</option>
+            <option value="sensor">传感器（粉色）</option>
+            <option value="alert">告警（红色）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>优先级</label>
+          <input type="number" id="rulePriority" value="10" min="1" max="100">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>描述</label>
+        <textarea id="ruleDescription" placeholder="规则描述..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeRuleModal()">取消</button>
+      <button class="btn primary" onclick="saveRule()">保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let ws = null;
+  let logCount = 0;
+  let terminalId = 'browser-' + Math.random().toString(36).substr(2, 8);
+  const logs = [];
+  const MAX_LOGS = 200;
+  let currentTraceTab = 'search';
+
+  function connectWS() {
+    const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const url = `${proto}//${location.host}/ws/log-trace`;
+    updateWsStatus('connecting');
+    ws = new WebSocket(url);
+    ws.onopen = () => {
+      updateWsStatus('online');
+      ws.send(JSON.stringify({ type: 'register', terminalId, terminalType: 'browser', timestamp: Date.now() }));
+    };
+    ws.onmessage = (e) => {
+      try { const msg = JSON.parse(e.data); handleServerMessage(msg); } catch (_) {}
+    };
+    ws.onclose = () => { updateWsStatus('offline'); setTimeout(connectWS, 3000); };
+    ws.onerror = () => { updateWsStatus('offline'); };
+  }
+
+  function handleServerMessage(msg) {
+    if (msg.type === 'log_batch_ack') {
+      logCount += msg.received;
+      document.getElementById('statLogs').textContent = logCount;
+    } else if (msg.type === 'trace_linked') {
+      document.getElementById('statLinks').textContent = (parseInt(document.getElementById('statLinks').textContent) || 0) + 1;
+    }
+  }
+
+  function updateWsStatus(status) {
+    const el = document.getElementById('wsStatus');
+    const dot = status === 'online' ? 'online' : status === 'connecting' ? 'connecting' : 'offline';
+    const text = status === 'online' ? '已连接' : status === 'connecting' ? '连接中' : '已断开';
+    el.innerHTML = `<span class="status-dot ${dot}"></span> ${text}`;
+  }
+
+  function addLogToStream(level, source, action, detail, extra = {}) {
+    const logData = { level, source, action, detail, time: new Date(), timestamp: Date.now(), ...extra };
+    logs.push(logData);
+    if (logs.length > MAX_LOGS) logs.shift();
+    renderLogStream();
+  }
+
+  function renderLogStream() {
+    const levelFilter = document.getElementById('logFilterLevel').value;
+    const keywordFilter = document.getElementById('logSearch').value.toLowerCase();
+    const levelOrder = { debug: 0, info: 1, warn: 2, error: 3, fatal: 4 };
+    const minLevel = levelOrder[levelFilter] ?? 0;
+
+    const filtered = logs.filter(l => {
+      const levelOk = (levelOrder[l.level] ?? 1) >= minLevel;
+      const keywordOk = !keywordFilter ||
+        l.action.toLowerCase().includes(keywordFilter) ||
+        l.detail.toLowerCase().includes(keywordFilter) ||
+        l.level.toLowerCase().includes(keywordFilter) ||
+        l.source.toLowerCase().includes(keywordFilter);
+      return levelOk && keywordOk;
+    });
+
+    const stream = document.getElementById('logStream');
+    if (filtered.length === 0) { stream.innerHTML = '<div class="empty-state">暂无匹配日志</div>'; return; }
+
+    stream.innerHTML = filtered.map(l => {
+      const timeStr = l.time.toLocaleTimeString('zh-CN', { hour12: false });
+      const hlClass = l.highlightType ? `highlight-${l.highlightType}` : '';
+      const hlTags = l.highlightTags ? l.highlightTags.map(t => `<span class="hl-tag ${t}">${t}</span>`).join('') : '';
+      return `
+        <div class="log-entry ${hlClass}">
+          <div class="log-header">
+            <span class="log-level ${l.level}">${l.level}</span>
+            <span class="log-source">${l.source}</span>
+            ${hlTags}
+            <span class="log-time">${timeStr}</span>
+          </div>
+          <div class="log-action">${l.action}</div>
+          ${l.detail ? `<div class="log-detail">${l.detail}</div>` : ''}
+        </div>
+      `;
+    }).reverse().join('');
+  }
+
+  function applyLogFilter() { renderLogStream(); }
+
+  function captureUserAction(action, detail) {
+    const hlType = action.includes('error') ? 'error' : '';
+    addLogToStream('info', 'browser', action, JSON.stringify(detail), { highlightType: hlType, highlightTags: hlType ? [hlType] : [] });
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({
+        type: 'log_batch', terminalId,
+        logs: [{
+          id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substr(2),
+          traceId: Math.random().toString(36).substr(2, 16),
+          spanId: Math.random().toString(36).substr(2, 10),
+          source: 'browser', terminalId, terminalType: 'browser',
+          category: 'user_action', action, level: 'info', detail,
+          timestamp: Date.now(),
+        }],
+        count: 1, timestamp: Date.now(),
+      }));
+    }
+  }
+
+  function simulateLog() {
+    const actions = [
+      { category: 'user_action', action: 'click', detail: { element: 'button#submit', page: '/dashboard' }, hl: null },
+      { category: 'network', action: 'GET 200', detail: { url: '/api/status', duration: 45 }, hl: null },
+      { category: 'error', action: 'error_captured', detail: { message: 'Network timeout', stack: 'Error: timeout at fetch' }, hl: 'error' },
+      { category: 'console', action: 'console.warn', detail: { args: ['Deprecation warning'] }, hl: 'warn' },
+      { category: 'lifecycle', action: 'page_visible', detail: { url: location.href }, hl: null },
+      { category: 'hardware', action: 'sensor_reading', detail: { temperature: 45, humidity: 60 }, hl: 'hardware' },
+      { category: 'network', action: 'POST 500', detail: { url: '/api/payment', duration: 120 }, hl: 'error' },
+      { category: 'alert', action: 'threshold_exceeded', detail: { metric: 'cpu', value: 92 }, hl: 'alert' },
+    ];
+    const levels = ['info', 'warn', 'error', 'debug', 'info', 'info', 'error', 'warn'];
+    const idx = Math.floor(Math.random() * actions.length);
+    const a = actions[idx];
+    const hlType = a.hl;
+    addLogToStream(levels[idx], 'browser', a.action, JSON.stringify(a.detail), {
+      highlightType: hlType, highlightTags: hlType ? [hlType] : [],
+    });
+
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({
+        type: 'log_batch', terminalId,
+        logs: [{
+          id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substr(2),
+          traceId: Math.random().toString(36).substr(2, 16),
+          spanId: Math.random().toString(36).substr(2, 10),
+          source: 'browser', terminalId, terminalType: 'browser',
+          ...a, level: levels[idx], timestamp: Date.now(),
+        }],
+        count: 1, timestamp: Date.now(),
+      }));
+    }
+  }
+
+  function clearLogs() {
+    document.getElementById('logStream').innerHTML = '<div class="empty-state">等待日志输入...</div>';
+    logs.length = 0;
+  }
+
+  async function refreshTerminals() {
+    try {
+      const res = await fetch('/api/terminals');
+      const data = await res.json();
+      const list = document.getElementById('terminalList');
+      if (!data.terminals.length) { list.innerHTML = '<div class="empty-state">暂无终端连接</div>'; return; }
+      list.innerHTML = data.terminals.map(t => `
+        <div class="terminal-item">
+          <span class="status-dot ${t.status === 'online' ? 'online' : 'offline'}" style="margin-right:8px;"></span>
+          <div class="terminal-info">
+            <div class="terminal-id">${t.terminalId}</div>
+            <div class="terminal-meta">日志: ${t.logCount} | 活动: ${new Date(t.lastActivity).toLocaleTimeString()}</div>
+          </div>
+          <span class="terminal-type">${t.type}</span>
+        </div>
+      `).join('');
+      document.getElementById('statOnline').textContent = data.terminals.length;
+    } catch (_) {}
+  }
+
+  function switchTraceTab(e, tab) {
+    currentTraceTab = tab;
+    document.querySelectorAll('#traceTabs .tab').forEach(t => t.classList.remove('active'));
+    e.target.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    document.getElementById(`tab-${tab}`).style.display = 'block';
+    if (tab === 'rules') loadRules();
+  }
+
+  async function queryTraceWithHighlight() {
+    const traceId = document.getElementById('traceIdInput').value.trim();
+    const keyword = document.getElementById('traceKeywordInput').value.trim();
+    if (!traceId) return;
+    try {
+      const res = await fetch(`/api/logs/trace/${encodeURIComponent(traceId)}/highlight`);
+      const data = await res.json();
+      const el = document.getElementById('traceResult');
+      if (data.error) { el.innerHTML = `<div class="empty-state">${data.error}</div>`; return; }
+
+      let keywordMatches = [];
+      if (keyword) {
+        const searchRes = await fetch(`/api/logs/trace/${encodeURIComponent(traceId)}/search?keyword=${encodeURIComponent(keyword)}&includeSpans=true`);
+        const searchData = await searchRes.json();
+        keywordMatches = searchData.matches || [];
+      }
+
+      el.innerHTML = renderHighlightedTrace(data, keywordMatches);
+    } catch (_) {}
+  }
+
+  async function showExplainPlan() {
+    const traceId = document.getElementById('traceIdInput').value.trim();
+    if (!traceId) { showToast('请先输入 Trace ID'); return; }
+    try {
+      const res = await fetch(`/api/logs/query/explain?traceId=${encodeURIComponent(traceId)}`);
+      const data = await res.json();
+      const planText = JSON.stringify(data.queryPlan, null, 2);
+      const el = document.getElementById('traceResult');
+      el.innerHTML = `
+        <div style="font-family:var(--mono);font-size:12px;">
+          <div style="color:var(--primary);margin-bottom:10px;">查询执行计划 (Trace: ${data.traceId})</div>
+          <div style="background:var(--surface2);padding:12px;border-radius:6px;overflow-x:auto;">
+            <pre>${planText}</pre>
+          </div>
+          <div style="color:var(--text3);margin-top:10px;">可用索引:</div>
+          ${data.indexes.map(i => `<div style="font-size:11px;color:var(--text2);">• ${i}</div>`).join('')}
+        </div>
+      `;
+    } catch (_) {}
+  }
+
+  function renderHighlightedTrace(data, keywordMatches = []) {
+    if (!data || !data.spans) return '<div class="empty-state">无数据</div>';
+    const matchIds = new Set(keywordMatches.map(m => m.spanId));
+
+    function renderNode(span, depth = 0) {
+      const highlight = span.highlight || {};
+      const hlClass = highlight.matchedRules?.[0] ? `highlight-${highlight.matchedRules[0]}` : '';
+      const hlTags = highlight.matchedRules ? highlight.matchedRules.map(t => `<span class="hl-tag ${t}">${t}</span>`).join('') : '';
+      const isMatch = matchIds.has(span.spanId);
+      const dimmed = keywordMatches.length > 0 && !isMatch ? 'dimmed' : '';
+      const matchBadge = isMatch ? '<span class="hl-tag focus">关键词匹配</span>' : '';
+
+      const childrenHtml = span.children && span.children.length > 0
+        ? `<div style="margin-left:10px;border-left:1px dashed var(--border);padding-left:10px;">${span.children.map(c => renderNode(c, depth + 1)).join('')}</div>`
+        : '';
+
+      return `
+        <div class="trace-node ${span.source?.type || span.source || 'browser'} ${hlClass} ${dimmed}" data-span-id="${span.spanId}">
+          <div class="trace-node-info">
+            <div class="trace-span-id">
+              ${span.spanId}
+              ${span.parentSpanId ? `<span style="color:var(--text3);">← ${span.parentSpanId}</span>` : '<span style="color:var(--text3);">(root)</span>'}
+              ${hlTags}
+              ${matchBadge}
+              <button class="trace-locate-btn" onclick="event.stopPropagation(); locateSpan('${span.traceId}', '${span.spanId}')">定位</button>
+            </div>
+            <div class="trace-action">${span.action} <span style="color:var(--text3)">[${span.source?.type || span.source}]</span> <span style="color:var(--text3);font-family:var(--mono);">${span.category || ''}</span></div>
+            <div class="trace-time">${new Date(span.timestamp).toLocaleString('zh-CN')} | ${span.level || ''}${highlight.severity !== undefined ? ` | 严重度: ${highlight.severity}` : ''}</div>
+          </div>
+          ${childrenHtml}
+        </div>
+      `;
+    }
+
+    const stats = data.stats || {};
+    const summary = `
+      <div style="background:var(--surface2);padding:12px;border-radius:6px;margin-bottom:12px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;font-family:var(--mono);font-size:12px;">
+        <div>总 Span: <span style="color:var(--primary);font-weight:600;">${data.totalSpans || 0}</span></div>
+        <div>持续时间: <span style="color:var(--accent);font-weight:600;">${data.duration || 0}ms</span></div>
+        <div>错误: <span style="color:var(--error);font-weight:600;">${stats.errors || 0}</span></div>
+        <div>警告: <span style="color:var(--warn);font-weight:600;">${stats.warnings || 0}</span></div>
+      </div>
+    `;
+
+    if (data.roots && data.roots.length > 0) {
+      return summary + `<div class="trace-chain">${data.roots.map(r => renderNode(r)).join('')}</div>`;
+    }
+    return summary + `<div class="trace-chain">${data.spans.map(s => renderNode(s)).join('')}</div>`;
+  }
+
+  async function locateSpan(traceId, spanId) {
+    try {
+      const res = await fetch(`/api/logs/trace/${encodeURIComponent(traceId)}/locate/${encodeURIComponent(spanId)}`);
+      const data = await res.json();
+      if (data.error) { showToast(data.error); return; }
+      document.getElementById('locateTraceId').value = traceId;
+      document.getElementById('locateSpanId').value = spanId;
+      document.querySelectorAll('#traceTabs .tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('#traceTabs .tab')[1].classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+      document.getElementById('tab-highlight').style.display = 'block';
+      currentTraceTab = 'highlight';
+      document.getElementById('locateResult').innerHTML = renderLocateResult(data);
+    } catch (_) {}
+  }
+
+  async function locateSpanInTrace() {
+    const traceId = document.getElementById('locateTraceId').value.trim();
+    const spanId = document.getElementById('locateSpanId').value.trim();
+    if (!traceId || !spanId) { showToast('请输入 Trace ID 和 Span ID'); return; }
+    try {
+      const res = await fetch(`/api/logs/trace/${encodeURIComponent(traceId)}/locate/${encodeURIComponent(spanId)}`);
+      const data = await res.json();
+      if (data.error) { document.getElementById('locateResult').innerHTML = `<div class="empty-state">${data.error}</div>`; return; }
+      document.getElementById('locateResult').innerHTML = renderLocateResult(data);
+    } catch (_) {}
+  }
+
+  function renderLocateResult(data) {
+    function renderPathNode(span, isTarget, isInPath) {
+      const highlight = span.highlight || {};
+      const hlClass = isTarget ? 'focused' : isInPath ? 'in-path' : (highlight.matchedRules?.[0] ? `highlight-${highlight.matchedRules[0]}` : '');
+      const tag = isTarget ? '<span class="hl-tag focus">焦点</span>' : isInPath ? '<span class="hl-tag cross">路径</span>' : '';
+      const hlTags = highlight.matchedRules ? highlight.matchedRules.map(t => `<span class="hl-tag ${t}">${t}</span>`).join('') : '';
+      return `
+        <div class="trace-node ${span.source?.type || span.source || 'browser'} ${hlClass}">
+          <div class="trace-node-info">
+            <div class="trace-span-id">${span.spanId} ${tag} ${hlTags}</div>
+            <div class="trace-action">${span.action} <span style="color:var(--text3)">[${span.source?.type || span.source}]</span></div>
+            <div class="trace-time">${new Date(span.timestamp).toLocaleString('zh-CN')} | ${span.level || ''}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    const target = data.targetSpan;
+    const upPath = data.upstreamPath || [];
+    const downPath = data.downstreamPath || [];
+
+    return `
+      <div style="background:var(--surface2);padding:12px;border-radius:6px;margin-bottom:12px;font-family:var(--mono);font-size:12px;">
+        <div style="color:var(--primary);margin-bottom:6px;">定位信息</div>
+        <div>焦点 Span: <span style="color:var(--warn);">${target?.spanId || 'N/A'}</span></div>
+        <div>上游: ${upPath.length} 跳 | 下游: ${downPath.length} 跳 | 路径深度: ${data.pathDepth || 0}</div>
+        <div style="color:var(--text3);margin-top:4px;">总影响范围: ${upPath.length + downPath.length + 1} 个节点</div>
+      </div>
+      <div class="trace-chain">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;padding-left:20px;">↑ 上游路径</div>
+        ${upPath.map(s => renderPathNode(s, false, true)).join('')}
+        ${target ? renderPathNode(target, true, true) : ''}
+        <div style="font-size:11px;color:var(--text3);margin:8px 0 8px 20px;">↓ 下游路径</div>
+        ${downPath.map(s => renderPathNode(s, false, true)).join('')}
+      </div>
+      <div class="span-detail">
+        <h4>焦点 Span 详情</h4>
+        <pre>${JSON.stringify(target || {}, null, 2)}</pre>
+      </div>
+    `;
+  }
+
+  async function fulltextSearch() {
+    const keyword = document.getElementById('fulltextKeyword').value.trim();
+    const hours = parseFloat(document.getElementById('fulltextHours').value);
+    const source = document.getElementById('fulltextSource').value;
+    if (!keyword) { showToast('请输入搜索关键词'); return; }
+
+    const startTime = Date.now() - hours * 3600000;
+    const endTime = Date.now();
+    try {
+      const res = await fetch(`/api/logs/search/fulltext?keyword=${encodeURIComponent(keyword)}&startTime=${startTime}&endTime=${endTime}&sourceType=${source || ''}&limit=200`);
+      const data = await res.json();
+      const el = document.getElementById('fulltextResult');
+      if (!data.logs || data.logs.length === 0) {
+        el.innerHTML = `<div class="empty-state">未找到包含 "${keyword}" 的日志</div>`;
+        return;
+      }
+      el.innerHTML = `
+        <div style="color:var(--text3);font-size:12px;margin-bottom:10px;">
+          找到 ${data.count} 条包含 "<span style="color:var(--primary);font-family:var(--mono);">${keyword}</span>" 的日志
+        </div>
+        <div class="log-list">
+          ${data.logs.map(l => {
+            const time = new Date(l.timestamp).toLocaleString('zh-CN');
+            return `
+              <div class="log-entry highlight-custom">
+                <div class="log-header">
+                  <span class="log-level ${l.level}">${l.level}</span>
+                  <span class="log-source">${l.source?.type || l.source}</span>
+                  <span class="hl-tag custom">全文匹配</span>
+                  <span class="log-time">${time}</span>
+                </div>
+                <div class="log-action">${l.action} <span style="color:var(--text3);font-family:var(--mono);">[${l.category}]</span></div>
+                ${l.detail ? `<div class="log-detail">${typeof l.detail === 'string' ? l.detail : JSON.stringify(l.detail)}</div>` : ''}
+                <div style="margin-top:4px;font-size:10px;color:var(--primary);font-family:var(--mono);">Trace: ${l.traceId} | Span: ${l.spanId}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    } catch (_) {}
+  }
+
+  async function loadRules() {
+    try {
+      const res = await fetch('/api/highlight/rules');
+      const data = await res.json();
+      const el = document.getElementById('rulesResult');
+      if (!data.rules || data.rules.length === 0) {
+        el.innerHTML = '<div class="empty-state">暂无自定义规则，点击上方按钮添加</div>';
+        return;
+      }
+      const colorMap = { error: '#e17055', warn: '#fdcb6e', cross: '#6c5ce7', hardware: '#00cec9', sensor: '#fd79a8', alert: '#e17055', custom: '#a29bfe' };
+      el.innerHTML = data.rules.map(r => `
+        <div class="rule-item">
+          <div class="rule-color" style="background:${colorMap[r.style] || colorMap.custom};"></div>
+          <div class="rule-info">
+            <div class="rule-name">${r.name}</div>
+            <div class="rule-desc">${r.field} ${r.operator || '='} "${r.value}"</div>
+            <div class="rule-meta">ID: ${r.id} | 优先级: ${r.priority} | 样式: ${r.style} | ${r.enabled ? '<span style="color:var(--success);">已启用</span>' : '<span style="color:var(--text3);">已禁用</span>'}</div>
+          </div>
+          <div class="rule-actions">
+            <button class="btn sm" onclick="editRule('${r.id}')">编辑</button>
+            <button class="btn sm danger" onclick="deleteRule('${r.id}')">删除</button>
+          </div>
+        </div>
+      `).join('');
+    } catch (_) {}
+  }
+
+  function showAddRuleModal() {
+    document.getElementById('ruleModalTitle').textContent = '添加高亮规则';
+    document.getElementById('ruleName').value = '';
+    document.getElementById('ruleField').value = 'level';
+    document.getElementById('ruleValue').value = '';
+    document.getElementById('ruleColor').value = 'custom';
+    document.getElementById('rulePriority').value = '10';
+    document.getElementById('ruleDescription').value = '';
+    document.getElementById('ruleModal').style.display = 'flex';
+  }
+
+  function editRule(ruleId) { showToast('规则编辑功能'); }
+
+  async function deleteRule(ruleId) {
+    if (!confirm('确定删除此规则？')) return;
+    try {
+      const res = await fetch(`/api/highlight/rules/${encodeURIComponent(ruleId)}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) { showToast('规则已删除'); loadRules(); }
+    } catch (_) {}
+  }
+
+  function closeRuleModal() { document.getElementById('ruleModal').style.display = 'none'; }
+
+  async function saveRule() {
+    const name = document.getElementById('ruleName').value.trim();
+    const field = document.getElementById('ruleField').value;
+    const value = document.getElementById('ruleValue').value.trim();
+    const color = document.getElementById('ruleColor').value;
+    const priority = parseInt(document.getElementById('rulePriority').value, 10);
+    const description = document.getElementById('ruleDescription').value.trim();
+
+    if (!name || !value) { showToast('请填写规则名称和匹配值'); return; }
+
+    const rule = { name, match: { field, value }, style: color, priority, description };
+    try {
+      const res = await fetch('/api/highlight/rules', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(rule),
+      });
+      const data = await res.json();
+      if (data.id) { showToast('规则已添加'); closeRuleModal(); loadRules(); }
+    } catch (_) {}
+  }
+
+  async function linkTrace() {
+    const browserTraceId = document.getElementById('browserTraceId').value.trim();
+    const terminalTraceId = document.getElementById('terminalTraceId').value.trim();
+    if (!browserTraceId || !terminalTraceId) return;
+    try {
+      const res = await fetch('/api/trace/link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ browserTraceId, terminalTraceId }),
+      });
+      const data = await res.json();
+      const el = document.getElementById('linkResult');
+      el.innerHTML = `
+        <div style="font-family:var(--mono);font-size:12px;color:var(--text);line-height:1.8;">
+          <div>关联ID: <span style="color:var(--primary)">${data.linkId || 'N/A'}</span></div>
+          <div>关联码: <span style="color:var(--accent)">${data.correlationId || 'N/A'}</span></div>
+          <div>浏览器日志: ${data.browserLogCount || 0} 条</div>
+          <div>终端日志: ${data.terminalLogCount || 0} 条</div>
+          <div>关联时间: ${data.linkedAt ? new Date(data.linkedAt).toLocaleString('zh-CN') : 'N/A'}</div>
+        </div>
+      `;
+    } catch (_) {}
+  }
+
+  async function refreshStatus() {
+    try {
+      const res = await fetch('/api/status');
+      const data = await res.json();
+      const el = document.getElementById('systemStatus');
+      el.innerHTML = `
+        <div style="font-family:var(--mono);font-size:12px;line-height:1.9;">
+          <div>运行状态: <span style="color:var(--success)">${data.status}</span></div>
+          <div>运行时间: ${Math.floor(data.uptime / 60)}分钟</div>
+          <div>网关连接: ${data.gateway ? data.gateway.activeConnections : 0} / 累计 ${data.gateway ? data.gateway.totalConnections : 0}</div>
+          <div>日志总量: ${data.gateway ? data.gateway.totalLogEntries : 0}</div>
+          <div>索引条目: ${data.indexer ? data.indexer.totalIndexed : 0}</div>
+          <div>链路数: ${data.indexer ? data.indexer.traceCount : 0}</div>
+          <div>高亮规则: ${data.indexer ? data.indexer.highlightRules : 0}</div>
+          <div>终端数: ${data.terminals ? data.terminals.total : 0} (在线 ${data.terminals ? data.terminals.online : 0})</div>
+          <div>跨源关联: ${data.indexer ? data.indexer.crossSourceTraceCount : 0}</div>
+        </div>
+      `;
+      document.getElementById('statOnline').textContent = data.terminals ? data.terminals.online : 0;
+      document.getElementById('statLogs').textContent = data.gateway ? data.gateway.totalLogEntries : 0;
+      document.getElementById('statTraces').textContent = data.indexer ? data.indexer.traceCount : 0;
+    } catch (_) {}
+
+    try {
+      const res = await fetch('/api/stats/performance');
+      const data = await res.json();
+      const comp = data.compression?.gateway || data.compression?.compressor || {};
+      const sched = data.scheduler || {};
+      const ratio = comp.totalOriginalBytes > 0 ? ((1 - comp.totalCompressedBytes / comp.totalOriginalBytes) * 100).toFixed(1) : '0';
+      const savedKB = comp.totalOriginalBytes > 0 ? ((comp.totalOriginalBytes - comp.totalCompressedBytes) / 1024).toFixed(1) : '0';
+      document.getElementById('statCompression').textContent = ratio + '%';
+      document.getElementById('statCompressionSaved').textContent = `节省 ${savedKB} KB`;
+      document.getElementById('compressionBar').style.width = Math.min(100, parseFloat(ratio)) + '%';
+      document.getElementById('statQueue').textContent = sched.waiting || 0;
+      document.getElementById('statScheduler').textContent = `${sched.active || 0} 活跃 / ${sched.completed || 0} 已处理`;
+    } catch (_) {}
+  }
+
+  function showPerformanceModal() {
+    document.getElementById('perfModal').style.display = 'flex';
+    refreshPerformanceModal();
+  }
+
+  function closePerfModal() { document.getElementById('perfModal').style.display = 'none'; }
+
+  async function refreshPerformanceModal() {
+    try {
+      const res = await fetch('/api/stats/performance');
+      const data = await res.json();
+      const comp = data.compression?.gateway || data.compression?.compressor || {};
+      const sched = data.scheduler || {};
+      const ratio = comp.totalOriginalBytes > 0 ? ((1 - comp.totalCompressedBytes / comp.totalOriginalBytes) * 100).toFixed(1) : '0';
+      const savedKB = comp.totalOriginalBytes > 0 ? ((comp.totalOriginalBytes - comp.totalCompressedBytes) / 1024).toFixed(1) : '0';
+
+      document.getElementById('compressionStats').innerHTML = `
+        <div>总批次: ${comp.totalBatches || 0}</div>
+        <div>压缩批次: ${comp.compressedBatches || 0}</div>
+        <div>原始大小: ${(comp.totalOriginalBytes / 1024).toFixed(1)} KB</div>
+        <div>压缩后: ${(comp.totalCompressedBytes / 1024).toFixed(1)} KB</div>
+        <div>压缩率: <span style="color:var(--primary);">${ratio}%</span></div>
+        <div>节省流量: <span style="color:var(--success);">${savedKB} KB</span></div>
+        <div>解压错误: ${comp.totalDecompressionErrors || 0}</div>
+      `;
+
+      document.getElementById('schedulerStats').innerHTML = `
+        <div>等待队列: ${sched.waiting || 0}</div>
+        <div>活跃处理: ${sched.active || 0}</div>
+        <div>已完成: ${sched.completed || 0}</div>
+        <div>已驱逐: ${sched.evicted || 0}</div>
+        <div>并发限制: ${sched.maxConcurrency || 20}</div>
+        <div>队列上限: ${sched.maxQueueSize || 5000}</div>
+        <div>过载状态: ${sched.overloaded ? '<span style="color:var(--error);">是</span>' : '<span style="color:var(--success);">否</span>'}</div>
+      `;
+    } catch (_) {}
+  }
+
+  function showToast(msg) {
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+
+  document.addEventListener('click', (e) => {
+    const tag = e.target.tagName.toLowerCase();
+    if (['button', 'a', 'input', 'select', 'textarea'].includes(tag)) return;
+    captureUserAction('click', { tag, text: e.target.textContent?.slice(0, 30), x: e.clientX, y: e.clientY });
+  });
+
+  window.addEventListener('error', (e) => {
+    addLogToStream('error', 'browser', 'error_captured', JSON.stringify({ message: e.message, file: e.filename }), {
+      highlightType: 'error', highlightTags: ['error'],
+    });
+  });
+
+  connectWS();
+  setInterval(refreshStatus, 5000);
+  setInterval(refreshTerminals, 8000);
+  refreshStatus();
+  refreshTerminals();
+</script>
+</body>
+</html>
