@@ -1,0 +1,137 @@
+{
+  "devices": [
+    {
+      "id": "conveyor-1",
+      "name": "主传送带",
+      "type": "conveyor",
+      "status": "running",
+      "speed": 71.9,
+      "mode": "auto",
+      "temperature": 43.6,
+      "runtime": 1256.0129999999997,
+      "output": 8928,
+      "energy": 45.5,
+      "lastUpdate": 1780066445654
+    },
+    {
+      "id": "conveyor-2",
+      "name": "分拣传送带",
+      "type": "conveyor",
+      "status": "running",
+      "speed": 57.1,
+      "mode": "auto",
+      "temperature": 44.2,
+      "runtime": 980.0099999999998,
+      "output": 7658,
+      "energy": 32.1,
+      "lastUpdate": 1780066445734
+    },
+    {
+      "id": "robot-1",
+      "name": "机械臂A",
+      "type": "robot",
+      "status": "running",
+      "speed": 89.7,
+      "mode": "auto",
+      "temperature": 52.7,
+      "runtime": 2100.014000000003,
+      "output": 15615,
+      "energy": 128.6,
+      "lastUpdate": 1780066445779
+    },
+    {
+      "id": "cnc-1",
+      "name": "CNC机床1",
+      "type": "cnc",
+      "status": "running",
+      "speed": 91.9,
+      "mode": "auto",
+      "temperature": 65.2,
+      "runtime": 3400.014000000003,
+      "output": 4543,
+      "energy": 256.7,
+      "lastUpdate": 1780066445180
+    },
+    {
+      "id": "cnc-2",
+      "name": "CNC机床2",
+      "type": "cnc",
+      "status": "idle",
+      "speed": 0,
+      "mode": "manual",
+      "temperature": 25.3,
+      "runtime": 1800,
+      "output": 2180,
+      "energy": 89.2,
+      "lastUpdate": 1780066445822
+    },
+    {
+      "id": "shelf-1",
+      "name": "货架A",
+      "type": "shelf",
+      "status": "idle",
+      "speed": 0,
+      "mode": "auto",
+      "temperature": 22.5,
+      "runtime": 0,
+      "output": 0,
+      "energy": 2.1,
+      "lastUpdate": 1780066445346
+    },
+    {
+      "id": "shelf-2",
+      "name": "货架B",
+      "type": "shelf",
+      "status": "idle",
+      "speed": 0,
+      "mode": "auto",
+      "temperature": 22,
+      "runtime": 0,
+      "output": 0,
+      "energy": 1.8,
+      "lastUpdate": 1780066445867
+    },
+    {
+      "id": "agv-1",
+      "name": "AGV小车",
+      "type": "agv",
+      "status": "running",
+      "speed": 40.2,
+      "mode": "auto",
+      "temperature": 36.1,
+      "runtime": 560.0139999999997,
+      "output": 1262,
+      "energy": 15.6,
+      "lastUpdate": 1780066445467
+    }
+  ],
+  "alarms": [
+    {
+      "id": "alarm-1780066200090-pcchql0rl",
+      "deviceId": "conveyor-2",
+      "deviceName": "分拣传送带",
+      "type": "info",
+      "message": "设备运行参数波动",
+      "level": 1,
+      "timestamp": 1780066200090
+    },
+    {
+      "id": "alarm-1780066110196-czeuoueuc",
+      "deviceId": "conveyor-1",
+      "deviceName": "主传送带",
+      "type": "info",
+      "message": "设备运行参数波动",
+      "level": 1,
+      "timestamp": 1780066110196
+    },
+    {
+      "id": "alarm-1780065960297-e1seqzcs4",
+      "deviceId": "conveyor-2",
+      "deviceName": "分拣传送带",
+      "type": "info",
+      "message": "设备运行参数波动",
+      "level": 1,
+      "timestamp": 1780065960297
+    }
+  ]
+}
