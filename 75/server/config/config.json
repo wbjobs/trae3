@@ -1,0 +1,41 @@
+{
+  "server": {
+    "port": 3000,
+    "host": "0.0.0.0",
+    "maxConnections": 1000
+  },
+  "game": {
+    "maxPlayersPerRoom": 2,
+    "startingHp": 30,
+    "startingMana": 1,
+    "maxMana": 10,
+    "startingHandSize": 4,
+    "maxHandSize": 10,
+    "maxFieldSize": 7,
+    "deckSize": 20,
+    "turnTimeout": 90
+  },
+  "database": {
+    "path": "E:\\标注项目\\trae3\\75\\data\\game.db",
+    "backupPath": "E:\\标注项目\\trae3\\75\\data\\backups",
+    "enableWal": true,
+    "maxConnections": 10
+  },
+  "sync": {
+    "enabled": true,
+    "serverId": null,
+    "peerServers": [],
+    "syncInterval": 5000,
+    "stateExpireTime": 3600000
+  },
+  "logging": {
+    "level": "info",
+    "file": "E:\\标注项目\\trae3\\75\\logs\\server.log",
+    "maxSize": "100m",
+    "maxFiles": 10
+  },
+  "matchmaking": {
+    "maxWaitTime": 120000,
+    "ratingRange": 200
+  }
+}

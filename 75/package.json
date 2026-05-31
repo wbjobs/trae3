@@ -1,0 +1,14 @@
+{
+  "name": "card-battle-game",
+  "version": "1.0.0",
+  "description": "卡牌对战游戏 - 客户端+服务端架构",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build"
+  },
+  "keywords": ["card-game", "battle", "multiplayer"],
+  "author": "",
+  "license": "MIT"
+}

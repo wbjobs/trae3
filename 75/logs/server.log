@@ -1,0 +1,13 @@
+[2026-05-30T10:08:50.247Z] [INFO] [Database] 创建备份目录: E:\标注项目\trae3\75\data\backups
+[2026-05-30T10:08:50.326Z] [INFO] [Database] 数据库连接成功
+[2026-05-30T10:08:50.333Z] [INFO] [Database] 数据库表初始化完成
+[2026-05-30T10:08:50.334Z] [INFO] [CrossServer] 跨服同步已启用 {"serverId":"cba9a0bb-9171-45d7-85a0-ade8b67eedb6"}
+[2026-05-30T10:08:50.350Z] [INFO] [Server] 服务器运行在 0.0.0.0:3000
+[2026-05-30T10:08:50.350Z] [INFO] [Server] 环境: development
+[2026-05-30T10:08:50.351Z] [INFO] [Server] 服务器ID: cba9a0bb-9171-45d7-85a0-ade8b67eedb6
+[2026-05-30T10:52:09.943Z] [INFO] [Database] 数据库连接成功
+[2026-05-30T10:52:09.968Z] [INFO] [Database] 数据库表初始化完成
+[2026-05-30T10:52:09.970Z] [INFO] [CrossServer] 跨服同步已启用 {"serverId":"917467ed-d96d-4c8c-bac8-2a62d81e5640"}
+[2026-05-30T10:52:09.992Z] [INFO] [Server] 服务器运行在 0.0.0.0:3000
+[2026-05-30T10:52:09.993Z] [INFO] [Server] 环境: development
+[2026-05-30T10:52:09.993Z] [INFO] [Server] 服务器ID: 917467ed-d96d-4c8c-bac8-2a62d81e5640
