@@ -1,0 +1,53 @@
+gateways:
+  - name: gateway-01
+    group: production
+    host: 192.168.1.100
+    port: 22
+    username: root
+    password: ""
+    private_key: ~/.ssh/id_rsa
+    timeout: 10
+    enabled: true
+  - name: gateway-02
+    group: production
+    host: 192.168.1.101
+    port: 22
+    username: admin
+    password: "your-password"
+    private_key: ""
+    timeout: 10
+    enabled: true
+  - name: gateway-test-01
+    group: testing
+    host: 192.168.2.100
+    port: 22
+    username: root
+    password: ""
+    private_key: ~/.ssh/id_rsa
+    timeout: 10
+    enabled: true
+
+scheduler:
+  enabled: false
+  cron_expr: "0 0 * * *"
+
+report:
+  output_dir: ./reports
+  formats:
+    - console
+    - html
+    - json
+
+rules:
+  cpu_threshold: 80.0
+  memory_threshold: 85.0
+  disk_threshold: 90.0
+  load_threshold: 1.5
+  swap_threshold: 50.0
+  zombie_threshold: 5
+  connection_threshold: 1000
+  service_checks:
+    - nginx
+    - docker
+    - mosquitto
+    - frps
