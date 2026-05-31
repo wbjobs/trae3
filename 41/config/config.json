@@ -1,0 +1,30 @@
+{
+  "server": {
+    "tcp_host": "0.0.0.0",
+    "tcp_port": 8888,
+    "api_host": "0.0.0.0",
+    "api_port": 8000
+  },
+  "edge_node": {
+    "server_host": "127.0.0.1",
+    "server_port": 8888,
+    "report_interval": 5,
+    "heartbeat_interval": 15
+  },
+  "anomaly_detection": {
+    "cpu_warning_threshold": 80,
+    "cpu_critical_threshold": 95,
+    "memory_warning_threshold": 85,
+    "memory_critical_threshold": 95,
+    "disk_warning_threshold": 90,
+    "disk_critical_threshold": 98,
+    "offline_timeout_seconds": 60
+  },
+  "database": {
+    "path": "./data/monitor.db"
+  },
+  "frontend": {
+    "dev_port": 5173,
+    "api_base_url": "http://localhost:8000/api"
+  }
+}
