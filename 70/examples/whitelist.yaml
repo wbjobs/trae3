@@ -1,0 +1,18 @@
+include_patterns:
+  - "database.*"
+  - "server.*"
+  - "cache.*"
+  - "app.name"
+  - "app.version"
+  - "logging.*"
+
+exclude_patterns:
+  - "*.password"
+  - "*.secret"
+  - "*token*"
+  - "*.private_key"
+
+regex_include: []
+regex_exclude:
+  - "^internal\\."
+  - "\\.temp$"

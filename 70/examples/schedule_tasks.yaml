@@ -1,0 +1,90 @@
+tasks:
+  - name: 生产与测试环境定时比对
+    task_id: env-diff-prod-test
+    schedule_type: cron
+    cron: "0 */6 * * *"
+    comparison_type: configs
+    parameters:
+      env1: prod
+      env2: test
+      namespace: application
+      center_type: apollo
+      ignore_keys:
+        - password
+        - secret
+        - token
+    alert_config:
+      enabled: true
+      min_diff_count: 1
+      channels:
+        - log
+        - http
+      http_url: "https://api.example.com/alert"
+      alert_on_added: true
+      alert_on_removed: true
+      alert_on_modified: true
+      alert_on_type_changed: true
+    enabled: true
+    tags:
+      - env
+      - production
+
+  - name: 配置文件完整性检查
+    task_id: file-check-daily
+    schedule_type: cron
+    cron: "0 2 * * *"
+    comparison_type: files
+    parameters:
+      source_file: config/prod.yaml
+      target_file: config/staging.yaml
+    alert_config:
+      enabled: true
+      min_diff_count: 1
+      channels:
+        - log
+    enabled: true
+    tags:
+      - file
+      - validation
+
+  - name: 生产与基线版本比对
+    task_id: version-check-hourly
+    schedule_type: interval
+    interval: 3600
+    comparison_type: version
+    parameters:
+      app_id: my-app
+      namespace: application
+      version: 1
+      center_type: apollo
+      ignore_keys:
+        - last_updated
+        - deploy_time
+    alert_config:
+      enabled: true
+      min_diff_count: 1
+      channels:
+        - log
+        - webhook
+      webhook_url: "https://hooks.slack.com/services/xxx/yyy/zzz"
+    enabled: true
+    tags:
+      - version
+      - compliance
+
+  - name: 紧急配置核对
+    task_id: urgent-check-once
+    schedule_type: once
+    run_at: "2026-06-01 10:00:00"
+    comparison_type: files
+    parameters:
+      source_file: config/baseline.yaml
+      target_file: config/current.yaml
+    alert_config:
+      enabled: true
+      min_diff_count: 1
+      channels:
+        - log
+    enabled: true
+    tags:
+      - urgent

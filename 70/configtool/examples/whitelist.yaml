@@ -1,0 +1,18 @@
+include_patterns:
+  - "database.*"
+  - "redis.*"
+  - "*.timeout"
+  - "server.port"
+
+exclude_patterns:
+  - "database.password"
+  - "*.secret"
+  - "*.private_key"
+
+regex_include:
+  - "^app\\.v\\d+\\..*"
+  - "^feature\\..*"
+
+regex_exclude:
+  - ".*password.*"
+  - ".*secret.*"

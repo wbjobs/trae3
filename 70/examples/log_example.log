@@ -1,0 +1,39 @@
+[2026-05-30 10:00:01] [INFO] [main:10] 启动配置管理工具 v1.1.0
+[2026-05-30 10:00:02] [DEBUG] [config_center.apollo:45] 连接配置中心: apollo.example.com
+[2026-05-30 10:00:03] [INFO] [config_center.apollo:78] 已获取命名空间 application, 共 25 个配置项
+[2026-05-30 10:00:05] [DEBUG] [config_diff.comparator:32] 开始比对配置文件: config/prod.yaml <-> config/staging.yaml
+[2026-05-30 10:00:05] [INFO] [config_diff.comparator:67] 比对完成: 总计 3 处差异 (新增: 1, 删除: 1, 修改: 1, 类型变更: 0)
+[2026-05-30 10:00:06] [WARNING] [config_diff.comparator:90] 检测到敏感配置变更: database.password
+[2026-05-30 10:00:10] [INFO] [rollback.manager:55] 创建批量回滚任务, 任务数: 5
+[2026-05-30 10:00:11] [DEBUG] [rollback.manager:120] 解析任务依赖关系, 分组: 3 组
+[2026-05-30 10:00:15] [INFO] [rollback.manager:180] 执行第 1/3 组任务, 并行数: 3
+[2026-05-30 10:00:18] [DEBUG] [rollback.manager:210] 任务 task-001 执行成功, 耗时: 2.3s
+[2026-05-30 10:00:19] [DEBUG] [rollback.manager:210] 任务 task-002 执行成功, 耗时: 3.1s
+[2026-05-30 10:00:20] [DEBUG] [rollback.manager:210] 任务 task-003 执行成功, 耗时: 4.2s
+[2026-05-30 10:00:20] [INFO] [rollback.manager:225] 第 1/3 组完成: 成功 3/3
+[2026-05-30 10:00:25] [INFO] [rollback.manager:180] 执行第 2/3 组任务, 并行数: 1
+[2026-05-30 10:00:28] [DEBUG] [rollback.manager:210] 任务 task-004 执行成功, 耗时: 2.8s
+[2026-05-30 10:00:30] [ERROR] [rollback.manager:230] 第 2/3 组完成: 成功 0/1, 错误: 配置中心连接超时
+[2026-05-30 10:00:31] [WARNING] [rollback.manager:240] 跳过第 3/3 组, 原因: 依赖任务失败
+[2026-05-30 10:00:35] [ERROR] [main:25] 批量回滚执行失败, 请检查错误日志
+[2026-05-30 10:05:00] [INFO] [scheduler.core:535] 调度器已启动, 任务数: 3
+[2026-05-30 10:05:01] [DEBUG] [scheduler.core:569] Tick 检查, 当前时间: 2026-05-30 10:05:01
+[2026-05-30 10:05:01] [INFO] [scheduler.core:581] 任务执行完成: 生产与测试环境比对, 状态: completed, 耗时: 1.2s, 差异: 0
+[2026-05-30 11:00:00] [WARNING] [scheduler.core:496] [ALERT] 定时比对发现差异: 配置文件完整性检查, 差异数: 2, 新增: 1, 删除: 0, 修改: 1, 类型变更: 0
+[2026-05-30 11:00:01] [DEBUG] [scheduler.core:507] 发送HTTP告警到: https://api.example.com/alert
+[2026-05-30 11:00:02] [INFO] [scheduler.core:510] HTTP告警发送成功
+[2026-05-30 12:00:00] [INFO] [remote.client:95] 请求成功: GET https://api.example.com/health - 200 (0.23s)
+[2026-05-30 12:00:05] [DEBUG] [remote.client:110] 连接熔断状态: CLOSED, 失败计数: 0
+[2026-05-30 12:00:10] [WARNING] [remote.client:120] 请求重试 (1/3): GET https://api.example.com/config, 等待 1.0s
+[2026-05-30 12:00:11] [INFO] [remote.client:95] 请求成功: GET https://api.example.com/config - 200 (1.5s)
+[2026-05-30 12:30:00] [INFO] [whitelist.core:45] 加载白名单规则: include=8, exclude=5
+[2026-05-30 12:30:01] [DEBUG] [whitelist.core:78] 过滤配置字典, 原始键数: 45, 过滤后: 28
+[2026-05-30 12:30:05] [INFO] [utils.helpers:65] 深度比较结果: 5 处差异, 白名单过滤后: 3 处差异
+[2026-05-30 13:00:00] [INFO] [version_db.db:120] 保存配置版本: app=demo-app, namespace=application, version=42
+[2026-05-30 13:00:01] [DEBUG] [version_db.db:135] 配置MD5: a1b2c3d4e5f6, 变更检测: 5 处修改
+[2026-05-30 13:00:02] [INFO] [version_db.db:145] 记录变更日志: 5 条
+[2026-05-30 14:00:00] [INFO] [log_exporter.core:150] 加载日志文件: logs/configtool.log, 共 1234 条记录
+[2026-05-30 14:00:01] [DEBUG] [log_exporter.core:180] 按时间过滤: 2026-05-29 00:00:00 到 2026-05-30 00:00:00, 匹配: 856 条
+[2026-05-30 14:00:02] [DEBUG] [log_exporter.core:190] 按级别过滤: >=WARNING, 匹配: 124 条
+[2026-05-30 14:00:05] [INFO] [log_exporter.core:230] 导出JSON: 124 行 -> export_20260530.json
+[2026-05-30 15:00:00] [INFO] [main:15] 所有操作完成, 退出程序

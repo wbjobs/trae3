@@ -1,0 +1,511 @@
+[2026-05-30 15:56:02] [ERROR] [main:19] 未处理的异常: [WinError 6] 句柄无效。
+[2026-05-30 15:58:58] [INFO] [test_fixes:146] 开始验证所有修复
+[2026-05-30 15:58:58] [INFO] [test_fixes:147] 
+[2026-05-30 15:58:58] [INFO] [test_fixes:7] === 测试类型变更检测 (之前会漏检) ===
+[2026-05-30 15:58:58] [INFO] [test_fixes:13] 检测到 2 处差异:
+[2026-05-30 15:58:58] [INFO] [test_fixes:15]   type_changed: cache = {'ttl': 300} -> 'redis'
+[2026-05-30 15:58:58] [INFO] [test_fixes:15]   modified: debug = True -> 'true'
+[2026-05-30 15:58:58] [INFO] [test_fixes:19]   -> 类型变更检测: PASS (1处)
+[2026-05-30 15:58:58] [INFO] [test_fixes:20] 
+[2026-05-30 15:58:58] [INFO] [test_fixes:23] === 测试列表元素逐项比对 (之前只做整体验等) ===
+[2026-05-30 15:58:58] [INFO] [test_fixes:29] 检测到 3 处差异:
+[2026-05-30 15:58:58] [INFO] [test_fixes:31]   modified: servers[0].port = 80 -> 8080
+[2026-05-30 15:58:58] [INFO] [test_fixes:31]   added: servers[2] = None -> {'host': 'c', 'port': 9090}
+[2026-05-30 15:58:58] [INFO] [test_fixes:31]   modified: servers._length = 2 -> 3
+[2026-05-30 15:58:58] [INFO] [test_fixes:37]   -> 列表元素逐项比对: PASS
+[2026-05-30 15:58:58] [INFO] [test_fixes:38] 
+[2026-05-30 15:58:58] [INFO] [test_fixes:41] === 测试数值与字符串的智能比较 ===
+[2026-05-30 15:58:58] [INFO] [test_fixes:47] 检测到 0 处差异:
+[2026-05-30 15:58:58] [INFO] [test_fixes:52]   -> 数值/字符串智能比较: PASS
+[2026-05-30 15:58:58] [INFO] [test_fixes:53] 
+[2026-05-30 15:58:58] [INFO] [test_fixes:56] === 测试None值与缺失键的区分 ===
+[2026-05-30 15:58:58] [INFO] [test_fixes:62] 检测到 2 处差异:
+[2026-05-30 15:58:58] [INFO] [test_fixes:64]   added: c = None -> 2
+[2026-05-30 15:58:58] [INFO] [test_fixes:64]   removed: a = None -> None
+[2026-05-30 15:58:58] [INFO] [test_fixes:69]   -> None值与缺失键区分: PASS
+[2026-05-30 15:58:58] [INFO] [test_fixes:70] 
+[2026-05-30 15:58:58] [INFO] [test_fixes:73] === 测试回滚管理器验证开关 ===
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: config_version
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: config_center
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: remote_service
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: database
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: file
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: config_version
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: config_center
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: remote_service
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: database
+[2026-05-30 15:58:58] [INFO] [rollback:36] 已注册回滚执行器: file
+[2026-05-30 15:58:58] [INFO] [test_fixes:82]   -> 回滚验证开关: PASS
+[2026-05-30 15:58:58] [INFO] [test_fixes:83] 
+[2026-05-30 15:58:58] [INFO] [test_fixes:86] === 测试远程调用超时配置 ===
+[2026-05-30 15:58:59] [INFO] [test_fixes:108]   -> 超时配置与标记: PASS
+[2026-05-30 15:58:59] [INFO] [test_fixes:113]   -> 超时响应序列化: PASS
+[2026-05-30 15:58:59] [INFO] [test_fixes:116] 
+[2026-05-30 15:58:59] [INFO] [test_fixes:119] === 测试日志安全处理器 ===
+[2026-05-30 15:58:59] [ERROR] [test_fixes:166] 验证异常: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\Users\\gengq\\AppData\\Local\\Temp\\tmpldiunump\\test.log'
+[2026-05-30 15:59:37] [INFO] [test_fixes:150] 开始验证所有修复
+[2026-05-30 15:59:37] [INFO] [test_fixes:151] 
+[2026-05-30 15:59:37] [INFO] [test_fixes:7] === 测试类型变更检测 (之前会漏检) ===
+[2026-05-30 15:59:37] [INFO] [test_fixes:13] 检测到 2 处差异:
+[2026-05-30 15:59:37] [INFO] [test_fixes:15]   modified: debug = True -> 'true'
+[2026-05-30 15:59:37] [INFO] [test_fixes:15]   type_changed: cache = {'ttl': 300} -> 'redis'
+[2026-05-30 15:59:37] [INFO] [test_fixes:19]   -> 类型变更检测: PASS (1处)
+[2026-05-30 15:59:37] [INFO] [test_fixes:20] 
+[2026-05-30 15:59:37] [INFO] [test_fixes:23] === 测试列表元素逐项比对 (之前只做整体验等) ===
+[2026-05-30 15:59:37] [INFO] [test_fixes:29] 检测到 3 处差异:
+[2026-05-30 15:59:37] [INFO] [test_fixes:31]   modified: servers[0].port = 80 -> 8080
+[2026-05-30 15:59:37] [INFO] [test_fixes:31]   added: servers[2] = None -> {'host': 'c', 'port': 9090}
+[2026-05-30 15:59:37] [INFO] [test_fixes:31]   modified: servers._length = 2 -> 3
+[2026-05-30 15:59:37] [INFO] [test_fixes:37]   -> 列表元素逐项比对: PASS
+[2026-05-30 15:59:37] [INFO] [test_fixes:38] 
+[2026-05-30 15:59:37] [INFO] [test_fixes:41] === 测试数值与字符串的智能比较 ===
+[2026-05-30 15:59:37] [INFO] [test_fixes:47] 检测到 0 处差异:
+[2026-05-30 15:59:37] [INFO] [test_fixes:52]   -> 数值/字符串智能比较: PASS
+[2026-05-30 15:59:37] [INFO] [test_fixes:53] 
+[2026-05-30 15:59:37] [INFO] [test_fixes:56] === 测试None值与缺失键的区分 ===
+[2026-05-30 15:59:37] [INFO] [test_fixes:62] 检测到 2 处差异:
+[2026-05-30 15:59:37] [INFO] [test_fixes:64]   removed: a = None -> None
+[2026-05-30 15:59:37] [INFO] [test_fixes:64]   added: c = None -> 2
+[2026-05-30 15:59:37] [INFO] [test_fixes:69]   -> None值与缺失键区分: PASS
+[2026-05-30 15:59:37] [INFO] [test_fixes:70] 
+[2026-05-30 15:59:37] [INFO] [test_fixes:73] === 测试回滚管理器验证开关 ===
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: config_version
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: config_center
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: remote_service
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: database
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: file
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: config_version
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: config_center
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: remote_service
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: database
+[2026-05-30 15:59:37] [INFO] [rollback:36] 已注册回滚执行器: file
+[2026-05-30 15:59:37] [INFO] [test_fixes:82]   -> 回滚验证开关: PASS
+[2026-05-30 15:59:37] [INFO] [test_fixes:83] 
+[2026-05-30 15:59:37] [INFO] [test_fixes:86] === 测试远程调用超时配置 ===
+[2026-05-30 15:59:38] [INFO] [test_fixes:108]   -> 超时配置与标记: PASS
+[2026-05-30 15:59:38] [INFO] [test_fixes:113]   -> 超时响应序列化: PASS
+[2026-05-30 15:59:38] [INFO] [test_fixes:116] 
+[2026-05-30 15:59:38] [INFO] [test_fixes:119] === 测试日志安全处理器 ===
+[2026-05-30 15:59:38] [ERROR] [test_fixes:170] 验证异常: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\Users\\gengq\\AppData\\Local\\Temp\\tmpjj4usde8\\test.log'
+[2026-05-30 16:00:05] [INFO] [test_fixes:163] 开始验证所有修复
+[2026-05-30 16:00:05] [INFO] [test_fixes:164] 
+[2026-05-30 16:00:05] [INFO] [test_fixes:7] === 测试类型变更检测 (之前会漏检) ===
+[2026-05-30 16:00:05] [INFO] [test_fixes:13] 检测到 2 处差异:
+[2026-05-30 16:00:05] [INFO] [test_fixes:15]   modified: debug = True -> 'true'
+[2026-05-30 16:00:05] [INFO] [test_fixes:15]   type_changed: cache = {'ttl': 300} -> 'redis'
+[2026-05-30 16:00:05] [INFO] [test_fixes:19]   -> 类型变更检测: PASS (1处)
+[2026-05-30 16:00:05] [INFO] [test_fixes:20] 
+[2026-05-30 16:00:05] [INFO] [test_fixes:23] === 测试列表元素逐项比对 (之前只做整体验等) ===
+[2026-05-30 16:00:05] [INFO] [test_fixes:29] 检测到 3 处差异:
+[2026-05-30 16:00:05] [INFO] [test_fixes:31]   modified: servers[0].port = 80 -> 8080
+[2026-05-30 16:00:05] [INFO] [test_fixes:31]   added: servers[2] = None -> {'host': 'c', 'port': 9090}
+[2026-05-30 16:00:05] [INFO] [test_fixes:31]   modified: servers._length = 2 -> 3
+[2026-05-30 16:00:05] [INFO] [test_fixes:37]   -> 列表元素逐项比对: PASS
+[2026-05-30 16:00:05] [INFO] [test_fixes:38] 
+[2026-05-30 16:00:05] [INFO] [test_fixes:41] === 测试数值与字符串的智能比较 ===
+[2026-05-30 16:00:05] [INFO] [test_fixes:47] 检测到 0 处差异:
+[2026-05-30 16:00:05] [INFO] [test_fixes:52]   -> 数值/字符串智能比较: PASS
+[2026-05-30 16:00:05] [INFO] [test_fixes:53] 
+[2026-05-30 16:00:05] [INFO] [test_fixes:56] === 测试None值与缺失键的区分 ===
+[2026-05-30 16:00:05] [INFO] [test_fixes:62] 检测到 2 处差异:
+[2026-05-30 16:00:05] [INFO] [test_fixes:64]   removed: a = None -> None
+[2026-05-30 16:00:05] [INFO] [test_fixes:64]   added: c = None -> 2
+[2026-05-30 16:00:05] [INFO] [test_fixes:69]   -> None值与缺失键区分: PASS
+[2026-05-30 16:00:05] [INFO] [test_fixes:70] 
+[2026-05-30 16:00:05] [INFO] [test_fixes:73] === 测试回滚管理器验证开关 ===
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: config_version
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: config_center
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: remote_service
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: database
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: file
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: config_version
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: config_center
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: remote_service
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: database
+[2026-05-30 16:00:05] [INFO] [rollback:36] 已注册回滚执行器: file
+[2026-05-30 16:00:05] [INFO] [test_fixes:82]   -> 回滚验证开关: PASS
+[2026-05-30 16:00:05] [INFO] [test_fixes:83] 
+[2026-05-30 16:00:05] [INFO] [test_fixes:86] === 测试远程调用超时配置 ===
+[2026-05-30 16:00:06] [INFO] [test_fixes:108]   -> 超时配置与标记: PASS
+[2026-05-30 16:00:06] [INFO] [test_fixes:113]   -> 超时响应序列化: PASS
+[2026-05-30 16:00:06] [INFO] [test_fixes:116] 
+[2026-05-30 16:00:06] [INFO] [test_fixes:119] === 测试日志安全处理器 ===
+[2026-05-30 16:00:06] [INFO] [test_fixes:141]   -> SafeRotatingFileHandler 正常写入: PASS
+[2026-05-30 16:00:06] [INFO] [test_fixes:154]   -> 损坏日志文件自动恢复: PASS
+[2026-05-30 16:00:06] [INFO] [test_fixes:159] 
+[2026-05-30 16:00:06] [INFO] [test_fixes:175] ==================================================
+[2026-05-30 16:00:06] [INFO] [test_fixes:176] 所有修复验证通过！
+[2026-05-30 16:00:06] [INFO] [test_fixes:177] ==================================================
+[2026-05-30 16:00:54] [INFO] [config_diff:19] 开始比对配置文件: test_v1.yaml <-> test_v2.yaml
+[2026-05-30 16:00:54] [INFO] [config_diff:127] 比对完成: 总计 5 处差异 (新增: 1, 删除: 0, 修改: 3, 类型变更: 1)
+[2026-05-30 17:04:39] [INFO] [integration_test:399] ============================================================
+[2026-05-30 17:04:39] [INFO] [integration_test:400] 开始集成测试
+[2026-05-30 17:04:39] [INFO] [integration_test:401] 时间: 2026-05-30 17:04:39
+[2026-05-30 17:04:39] [INFO] [integration_test:402] ============================================================
+[2026-05-30 17:04:39] [INFO] [integration_test:403] 
+[2026-05-30 17:04:39] [INFO] [integration_test:14] ============================================================
+[2026-05-30 17:04:39] [INFO] [integration_test:15] 测试1: CLI上下文对象
+[2026-05-30 17:04:39] [INFO] [integration_test:16] ============================================================
+[2026-05-30 17:04:40] [INFO] [cli:46] 测试日志信息
+[2026-05-30 17:04:40] [INFO] [integration_test:41] ✓ CLI上下文对象测试通过
+[2026-05-30 17:04:40] [INFO] [integration_test:42] 
+[2026-05-30 17:04:40] [INFO] [integration_test:45] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:46] 测试2: CLI解析器重构
+[2026-05-30 17:04:40] [INFO] [integration_test:47] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:65] ✓ CLI命令: config, diff, logs, remote, rollback, schedule, version
+[2026-05-30 17:04:40] [INFO] [integration_test:66] ✓ 全局选项: config_file, env_file, no_color, output_file, output_format, quiet, verbose
+[2026-05-30 17:04:40] [INFO] [integration_test:67] 
+[2026-05-30 17:04:40] [INFO] [integration_test:70] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:71] 测试3: 批量任务依赖与优先级
+[2026-05-30 17:04:40] [INFO] [integration_test:72] ============================================================
+[2026-05-30 17:04:40] [ERROR] [integration_test:426] ✗ 批量任务依赖与优先级 异常: cannot import name 'TaskPriority' from 'configtool.rollback' (E:\标注项目\trae3\70\configtool\rollback\__init__.py)
+[2026-05-30 17:04:40] [INFO] [integration_test:116] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:117] 测试4: 连接重试机制增强
+[2026-05-30 17:04:40] [INFO] [integration_test:118] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:145] 指数退避(前4次): ['1.0s', '1.7s', '3.7s', '8.4s']
+[2026-05-30 17:04:40] [INFO] [integration_test:154] 固定退避(前4次): ['2.0s', '2.0s', '2.0s', '2.0s']
+[2026-05-30 17:04:40] [INFO] [integration_test:166] ✓ 熔断器状态流转: CLOSED -> OPEN (3次失败)
+[2026-05-30 17:04:40] [INFO] [integration_test:169] ✓ 健康检查配置: /health, 间隔=10s, 超时=5s
+[2026-05-30 17:04:40] [INFO] [integration_test:174] ✓ 连接重试机制测试通过
+[2026-05-30 17:04:40] [INFO] [integration_test:175] 
+[2026-05-30 17:04:40] [INFO] [integration_test:178] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:179] 测试5: 配置项白名单
+[2026-05-30 17:04:40] [INFO] [integration_test:180] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:196] 原始键: ['app', 'database', 'server']
+[2026-05-30 17:04:40] [INFO] [integration_test:197] 过滤后键: ['database', 'server']
+[2026-05-30 17:04:40] [INFO] [integration_test:209] 白名单过滤后差异数: 3
+[2026-05-30 17:04:40] [INFO] [integration_test:211]   modified: database.port = 3306 -> 3307
+[2026-05-30 17:04:40] [INFO] [integration_test:211]   modified: database.host = a -> b
+[2026-05-30 17:04:40] [INFO] [integration_test:211]   modified: server.port = 8080 -> 9090
+[2026-05-30 17:04:40] [INFO] [integration_test:217] ✓ 从文件加载include规则: ['database.*', 'server.*', 'cache.*', 'app.name', 'app.version', 'logging.*']
+[2026-05-30 17:04:40] [INFO] [integration_test:218] ✓ 从文件加载exclude规则: ['*.password', '*.secret', '*token*', '*.private_key']
+[2026-05-30 17:04:40] [INFO] [integration_test:220] ✓ 配置项白名单测试通过
+[2026-05-30 17:04:40] [INFO] [integration_test:221] 
+[2026-05-30 17:04:40] [INFO] [integration_test:224] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:225] 测试6: 定时比对功能
+[2026-05-30 17:04:40] [INFO] [integration_test:226] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:247]   ✓ 0 * * * *            -> 2026-05-30 11:00:00
+[2026-05-30 17:04:40] [INFO] [integration_test:247]   ✓ 0 0 * * *            -> 2026-05-31 00:00:00
+[2026-05-30 17:04:40] [INFO] [integration_test:247]   ✓ */15 * * * *         -> 2026-05-30 10:45:00
+[2026-05-30 17:04:40] [INFO] [integration_test:247]   ✓ 0 9-18 * * 1-5       -> 2026-05-30 11:00:00
+[2026-05-30 17:04:40] [INFO] [scheduler:257] 已添加定时任务: 集成测试任务 (0a60429b-2b79-4aa3-bd41-a941b3fa8541)
+[2026-05-30 17:04:40] [INFO] [integration_test:266] ✓ 添加任务: 集成测试任务
+[2026-05-30 17:04:40] [INFO] [integration_test:267]   下次运行: 2026-05-30 18:04:40
+[2026-05-30 17:04:40] [INFO] [integration_test:284] ✓ 任务列表输出格式化正常
+[2026-05-30 17:04:40] [INFO] [scheduler:296] 已禁用任务: 0a60429b-2b79-4aa3-bd41-a941b3fa8541
+[2026-05-30 17:04:40] [INFO] [integration_test:290] ✓ 禁用任务: 0a60429b...
+[2026-05-30 17:04:40] [INFO] [scheduler:286] 已启用任务: 0a60429b-2b79-4aa3-bd41-a941b3fa8541
+[2026-05-30 17:04:40] [INFO] [integration_test:296] ✓ 启用任务: 0a60429b...
+[2026-05-30 17:04:40] [INFO] [config_diff:21] 开始比对配置文件: examples/sample_config.yaml <-> examples/sample_config.yaml
+[2026-05-30 17:04:40] [INFO] [config_diff:137] 比对完成: 总计 0 处差异 (新增: 0, 删除: 0, 修改: 0, 类型变更: 0)
+[2026-05-30 17:04:40] [INFO] [integration_test:302] ✓ 立即执行: 状态=completed, 差异数=0
+[2026-05-30 17:04:40] [INFO] [integration_test:306] ✓ 执行历史: 1 条记录
+[2026-05-30 17:04:40] [INFO] [scheduler:264] 已移除定时任务: 0a60429b-2b79-4aa3-bd41-a941b3fa8541
+[2026-05-30 17:04:40] [INFO] [integration_test:311] ✓ 移除任务成功
+[2026-05-30 17:04:40] [INFO] [integration_test:318] ✓ 定时比对功能测试通过
+[2026-05-30 17:04:40] [INFO] [integration_test:319] 
+[2026-05-30 17:04:40] [INFO] [integration_test:322] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:323] 测试7: 日志导出功能
+[2026-05-30 17:04:40] [INFO] [integration_test:324] ============================================================
+[2026-05-30 17:04:40] [ERROR] [integration_test:426] ✗ 日志导出功能 异常: 日志文件不存在: examples/log_example.log
+[2026-05-30 17:04:40] [INFO] [integration_test:365] ============================================================
+[2026-05-30 17:04:40] [INFO] [integration_test:366] 测试8: CLI命令可用性
+[2026-05-30 17:04:40] [INFO] [integration_test:367] ============================================================
+[2026-05-30 17:04:41] [INFO] [integration_test:393]   ✓ 'schedule' 存在于 configtool --help
+[2026-05-30 17:04:41] [INFO] [integration_test:393]   ✓ 'logs' 存在于 configtool --help
+[2026-05-30 17:04:41] [INFO] [integration_test:393]   ✓ '--format' 存在于 configtool --help
+[2026-05-30 17:04:41] [INFO] [integration_test:393]   ✓ '--quiet' 存在于 configtool --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'list' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'add' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'remove' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'enable' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'disable' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'run' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'start' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'history' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'parse-cron' 存在于 configtool schedule --help
+[2026-05-30 17:04:42] [INFO] [integration_test:393]   ✓ 'example' 存在于 configtool schedule --help
+[2026-05-30 17:04:44] [INFO] [integration_test:393]   ✓ 'export' 存在于 configtool logs --help
+[2026-05-30 17:04:44] [INFO] [integration_test:393]   ✓ 'stats' 存在于 configtool logs --help
+[2026-05-30 17:04:44] [INFO] [integration_test:393]   ✓ 'tail' 存在于 configtool logs --help
+[2026-05-30 17:04:46] [INFO] [integration_test:393]   ✓ 'files' 存在于 configtool diff --help
+[2026-05-30 17:04:46] [INFO] [integration_test:393]   ✓ 'configs' 存在于 configtool diff --help
+[2026-05-30 17:04:46] [INFO] [integration_test:393]   ✓ 'version' 存在于 configtool diff --help
+[2026-05-30 17:04:46] [WARNING] [integration_test:391]   ⚠  '--whitelist' 未在输出中找到: configtool diff --help
+[2026-05-30 17:04:47] [INFO] [integration_test:393]   ✓ 'batch' 存在于 configtool rollback --help
+[2026-05-30 17:04:47] [WARNING] [integration_test:391]   ⚠  '--parallel' 未在输出中找到: configtool rollback --help
+[2026-05-30 17:04:48] [INFO] [integration_test:393]   ✓ 'get' 存在于 configtool remote --help
+[2026-05-30 17:04:48] [INFO] [integration_test:393]   ✓ 'post' 存在于 configtool remote --help
+[2026-05-30 17:04:48] [INFO] [integration_test:393]   ✓ 'batch' 存在于 configtool remote --help
+[2026-05-30 17:04:50] [INFO] [integration_test:393]   ✓ 'get' 存在于 configtool config --help
+[2026-05-30 17:04:50] [INFO] [integration_test:393]   ✓ 'set' 存在于 configtool config --help
+[2026-05-30 17:04:50] [INFO] [integration_test:393]   ✓ 'publish' 存在于 configtool config --help
+[2026-05-30 17:04:50] [WARNING] [integration_test:391]   ⚠  '--whitelist' 未在输出中找到: configtool config --help
+[2026-05-30 17:04:51] [INFO] [integration_test:393]   ✓ 'save' 存在于 configtool version --help
+[2026-05-30 17:04:51] [INFO] [integration_test:393]   ✓ 'get' 存在于 configtool version --help
+[2026-05-30 17:04:51] [INFO] [integration_test:393]   ✓ 'list' 存在于 configtool version --help
+[2026-05-30 17:04:51] [INFO] [integration_test:393]   ✓ 'diff' 存在于 configtool version --help
+[2026-05-30 17:04:51] [INFO] [integration_test:395] ✓ CLI命令可用性测试完成
+[2026-05-30 17:04:51] [INFO] [integration_test:396] 
+[2026-05-30 17:04:51] [INFO] [integration_test:431] ============================================================
+[2026-05-30 17:04:51] [INFO] [integration_test:432] 测试完成: 6/8 通过
+[2026-05-30 17:04:51] [ERROR] [integration_test:436] ✗ 部分测试失败，请检查错误信息
+[2026-05-30 17:04:51] [INFO] [integration_test:437] ============================================================
+[2026-05-30 17:11:29] [INFO] [integration_test:402] ============================================================
+[2026-05-30 17:11:29] [INFO] [integration_test:403] 开始集成测试
+[2026-05-30 17:11:29] [INFO] [integration_test:404] 时间: 2026-05-30 17:11:29
+[2026-05-30 17:11:29] [INFO] [integration_test:405] ============================================================
+[2026-05-30 17:11:29] [INFO] [integration_test:406] 
+[2026-05-30 17:11:29] [INFO] [integration_test:14] ============================================================
+[2026-05-30 17:11:29] [INFO] [integration_test:15] 测试1: CLI上下文对象
+[2026-05-30 17:11:29] [INFO] [integration_test:16] ============================================================
+[2026-05-30 17:11:30] [INFO] [cli:46] 测试日志信息
+[2026-05-30 17:11:30] [INFO] [integration_test:41] ✓ CLI上下文对象测试通过
+[2026-05-30 17:11:30] [INFO] [integration_test:42] 
+[2026-05-30 17:11:30] [INFO] [integration_test:45] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:46] 测试2: CLI解析器重构
+[2026-05-30 17:11:30] [INFO] [integration_test:47] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:65] ✓ CLI命令: config, diff, logs, remote, rollback, schedule, version
+[2026-05-30 17:11:30] [INFO] [integration_test:66] ✓ 全局选项: config_file, env_file, no_color, output_file, output_format, quiet, verbose
+[2026-05-30 17:11:30] [INFO] [integration_test:67] 
+[2026-05-30 17:11:30] [INFO] [integration_test:70] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:71] 测试3: 批量任务依赖与优先级
+[2026-05-30 17:11:30] [INFO] [integration_test:72] ============================================================
+[2026-05-30 17:11:30] [INFO] [rollback:40] 已注册回滚执行器: config_version
+[2026-05-30 17:11:30] [INFO] [rollback:40] 已注册回滚执行器: config_center
+[2026-05-30 17:11:30] [INFO] [rollback:40] 已注册回滚执行器: remote_service
+[2026-05-30 17:11:30] [INFO] [rollback:40] 已注册回滚执行器: database
+[2026-05-30 17:11:30] [INFO] [rollback:40] 已注册回滚执行器: file
+[2026-05-30 17:11:30] [INFO] [rollback:69] 创建回滚任务: 0b65a938-3c61-4f6e-809b-ab761f499d68, 类型: file, 目标: file1.yaml
+[2026-05-30 17:11:30] [INFO] [rollback:69] 创建回滚任务: 4294e4bd-7cd8-4d69-9f1b-5acd4fdd602d, 类型: file, 目标: file2.yaml
+[2026-05-30 17:11:30] [INFO] [rollback:69] 创建回滚任务: 465eb314-38f3-4418-909a-f601338a32ba, 类型: file, 目标: file3.yaml
+[2026-05-30 17:11:30] [INFO] [integration_test:104] 任务1: 0b65a938..., 优先级=HIGH, 依赖=[]
+[2026-05-30 17:11:30] [INFO] [integration_test:105] 任务2: 4294e4bd..., 优先级=NORMAL, 依赖=['0b65a938']
+[2026-05-30 17:11:30] [INFO] [integration_test:106] 任务3: 465eb314..., 优先级=LOW, 依赖=[]
+[2026-05-30 17:11:30] [INFO] [integration_test:112] ✓ 批量任务依赖与优先级测试通过
+[2026-05-30 17:11:30] [INFO] [integration_test:113] 
+[2026-05-30 17:11:30] [INFO] [integration_test:116] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:117] 测试4: 连接重试机制增强
+[2026-05-30 17:11:30] [INFO] [integration_test:118] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:145] 指数退避(前4次): ['0.9s', '1.7s', '4.9s', '7.7s']
+[2026-05-30 17:11:30] [INFO] [integration_test:154] 固定退避(前4次): ['2.0s', '2.0s', '2.0s', '2.0s']
+[2026-05-30 17:11:30] [INFO] [integration_test:166] ✓ 熔断器状态流转: CLOSED -> OPEN (3次失败)
+[2026-05-30 17:11:30] [INFO] [integration_test:169] ✓ 健康检查配置: /health, 间隔=10s, 超时=5s
+[2026-05-30 17:11:30] [INFO] [integration_test:174] ✓ 连接重试机制测试通过
+[2026-05-30 17:11:30] [INFO] [integration_test:175] 
+[2026-05-30 17:11:30] [INFO] [integration_test:178] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:179] 测试5: 配置项白名单
+[2026-05-30 17:11:30] [INFO] [integration_test:180] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:196] 原始键: ['app', 'database', 'server']
+[2026-05-30 17:11:30] [INFO] [integration_test:197] 过滤后键: ['database', 'server']
+[2026-05-30 17:11:30] [INFO] [integration_test:209] 白名单过滤后差异数: 3
+[2026-05-30 17:11:30] [INFO] [integration_test:211]   modified: database.port = 3306 -> 3307
+[2026-05-30 17:11:30] [INFO] [integration_test:211]   modified: database.host = a -> b
+[2026-05-30 17:11:30] [INFO] [integration_test:211]   modified: server.port = 8080 -> 9090
+[2026-05-30 17:11:30] [INFO] [integration_test:217] ✓ 从文件加载include规则: ['database.*', 'server.*', 'cache.*', 'app.name', 'app.version', 'logging.*']
+[2026-05-30 17:11:30] [INFO] [integration_test:218] ✓ 从文件加载exclude规则: ['*.password', '*.secret', '*token*', '*.private_key']
+[2026-05-30 17:11:30] [INFO] [integration_test:220] ✓ 配置项白名单测试通过
+[2026-05-30 17:11:30] [INFO] [integration_test:221] 
+[2026-05-30 17:11:30] [INFO] [integration_test:224] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:225] 测试6: 定时比对功能
+[2026-05-30 17:11:30] [INFO] [integration_test:226] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:247]   ✓ 0 * * * *            -> 2026-05-30 11:00:00
+[2026-05-30 17:11:30] [INFO] [integration_test:247]   ✓ 0 0 * * *            -> 2026-05-31 00:00:00
+[2026-05-30 17:11:30] [INFO] [integration_test:247]   ✓ */15 * * * *         -> 2026-05-30 10:45:00
+[2026-05-30 17:11:30] [INFO] [integration_test:247]   ✓ 0 9-18 * * 1-5       -> 2026-05-30 11:00:00
+[2026-05-30 17:11:30] [INFO] [scheduler:257] 已添加定时任务: 集成测试任务 (3b0f2f74-e61c-4b0e-905a-1c0fff505178)
+[2026-05-30 17:11:30] [INFO] [integration_test:266] ✓ 添加任务: 集成测试任务
+[2026-05-30 17:11:30] [INFO] [integration_test:267]   下次运行: 2026-05-30 18:11:30
+[2026-05-30 17:11:30] [INFO] [integration_test:284] ✓ 任务列表输出格式化正常
+[2026-05-30 17:11:30] [INFO] [scheduler:296] 已禁用任务: 3b0f2f74-e61c-4b0e-905a-1c0fff505178
+[2026-05-30 17:11:30] [INFO] [integration_test:290] ✓ 禁用任务: 3b0f2f74...
+[2026-05-30 17:11:30] [INFO] [scheduler:286] 已启用任务: 3b0f2f74-e61c-4b0e-905a-1c0fff505178
+[2026-05-30 17:11:30] [INFO] [integration_test:296] ✓ 启用任务: 3b0f2f74...
+[2026-05-30 17:11:30] [INFO] [config_diff:21] 开始比对配置文件: examples/sample_config.yaml <-> examples/sample_config.yaml
+[2026-05-30 17:11:30] [INFO] [config_diff:137] 比对完成: 总计 0 处差异 (新增: 0, 删除: 0, 修改: 0, 类型变更: 0)
+[2026-05-30 17:11:30] [INFO] [integration_test:302] ✓ 立即执行: 状态=completed, 差异数=0
+[2026-05-30 17:11:30] [INFO] [integration_test:306] ✓ 执行历史: 1 条记录
+[2026-05-30 17:11:30] [INFO] [scheduler:264] 已移除定时任务: 3b0f2f74-e61c-4b0e-905a-1c0fff505178
+[2026-05-30 17:11:30] [INFO] [integration_test:311] ✓ 移除任务成功
+[2026-05-30 17:11:30] [INFO] [integration_test:318] ✓ 定时比对功能测试通过
+[2026-05-30 17:11:30] [INFO] [integration_test:319] 
+[2026-05-30 17:11:30] [INFO] [integration_test:322] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:323] 测试7: 日志导出功能
+[2026-05-30 17:11:30] [INFO] [integration_test:324] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:330] ✓ 加载日志: 39 条
+[2026-05-30 17:11:30] [INFO] [integration_test:333] ✓ 按级别过滤(>=INFO): 25 条
+[2026-05-30 17:11:30] [ERROR] [integration_test:429] ✗ 日志导出功能 异常: 'by_level'
+[2026-05-30 17:11:30] [INFO] [integration_test:365] ============================================================
+[2026-05-30 17:11:30] [INFO] [integration_test:366] 测试8: CLI命令可用性
+[2026-05-30 17:11:30] [INFO] [integration_test:367] ============================================================
+[2026-05-30 17:11:31] [INFO] [integration_test:396]   ✓ 'schedule' 存在于 configtool --help
+[2026-05-30 17:11:31] [INFO] [integration_test:396]   ✓ 'logs' 存在于 configtool --help
+[2026-05-30 17:11:31] [INFO] [integration_test:396]   ✓ '--format' 存在于 configtool --help
+[2026-05-30 17:11:31] [INFO] [integration_test:396]   ✓ '--quiet' 存在于 configtool --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'list' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'add' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'remove' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'enable' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'disable' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'run' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'start' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'history' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'parse-cron' 存在于 configtool schedule --help
+[2026-05-30 17:11:33] [INFO] [integration_test:396]   ✓ 'example' 存在于 configtool schedule --help
+[2026-05-30 17:11:34] [INFO] [integration_test:396]   ✓ 'export' 存在于 configtool logs --help
+[2026-05-30 17:11:34] [INFO] [integration_test:396]   ✓ 'stats' 存在于 configtool logs --help
+[2026-05-30 17:11:34] [INFO] [integration_test:396]   ✓ 'tail' 存在于 configtool logs --help
+[2026-05-30 17:11:36] [INFO] [integration_test:396]   ✓ 'files' 存在于 configtool diff --help
+[2026-05-30 17:11:36] [INFO] [integration_test:396]   ✓ 'configs' 存在于 configtool diff --help
+[2026-05-30 17:11:36] [INFO] [integration_test:396]   ✓ 'version' 存在于 configtool diff --help
+[2026-05-30 17:11:37] [INFO] [integration_test:396]   ✓ '--whitelist' 存在于 configtool diff files --help
+[2026-05-30 17:11:38] [INFO] [integration_test:396]   ✓ 'batch' 存在于 configtool rollback --help
+[2026-05-30 17:11:39] [INFO] [integration_test:396]   ✓ '--parallel' 存在于 configtool rollback batch --help
+[2026-05-30 17:11:40] [INFO] [integration_test:396]   ✓ 'get' 存在于 configtool remote --help
+[2026-05-30 17:11:40] [INFO] [integration_test:396]   ✓ 'post' 存在于 configtool remote --help
+[2026-05-30 17:11:40] [INFO] [integration_test:396]   ✓ 'batch' 存在于 configtool remote --help
+[2026-05-30 17:11:41] [INFO] [integration_test:396]   ✓ 'get' 存在于 configtool config --help
+[2026-05-30 17:11:41] [INFO] [integration_test:396]   ✓ 'set' 存在于 configtool config --help
+[2026-05-30 17:11:41] [INFO] [integration_test:396]   ✓ 'publish' 存在于 configtool config --help
+[2026-05-30 17:11:43] [INFO] [integration_test:396]   ✓ '--whitelist' 存在于 configtool config publish --help
+[2026-05-30 17:11:44] [INFO] [integration_test:396]   ✓ 'save' 存在于 configtool version --help
+[2026-05-30 17:11:44] [INFO] [integration_test:396]   ✓ 'get' 存在于 configtool version --help
+[2026-05-30 17:11:44] [INFO] [integration_test:396]   ✓ 'list' 存在于 configtool version --help
+[2026-05-30 17:11:44] [INFO] [integration_test:396]   ✓ 'diff' 存在于 configtool version --help
+[2026-05-30 17:11:44] [INFO] [integration_test:398] ✓ CLI命令可用性测试完成
+[2026-05-30 17:11:44] [INFO] [integration_test:399] 
+[2026-05-30 17:11:44] [INFO] [integration_test:434] ============================================================
+[2026-05-30 17:11:44] [INFO] [integration_test:435] 测试完成: 7/8 通过
+[2026-05-30 17:11:44] [ERROR] [integration_test:439] ✗ 部分测试失败，请检查错误信息
+[2026-05-30 17:11:44] [INFO] [integration_test:440] ============================================================
+[2026-05-30 17:13:37] [INFO] [integration_test:402] ============================================================
+[2026-05-30 17:13:37] [INFO] [integration_test:403] 开始集成测试
+[2026-05-30 17:13:37] [INFO] [integration_test:404] 时间: 2026-05-30 17:13:37
+[2026-05-30 17:13:37] [INFO] [integration_test:405] ============================================================
+[2026-05-30 17:13:37] [INFO] [integration_test:406] 
+[2026-05-30 17:13:37] [INFO] [integration_test:14] ============================================================
+[2026-05-30 17:13:37] [INFO] [integration_test:15] 测试1: CLI上下文对象
+[2026-05-30 17:13:37] [INFO] [integration_test:16] ============================================================
+[2026-05-30 17:13:38] [INFO] [cli:46] 测试日志信息
+[2026-05-30 17:13:38] [INFO] [integration_test:41] ✓ CLI上下文对象测试通过
+[2026-05-30 17:13:38] [INFO] [integration_test:42] 
+[2026-05-30 17:13:38] [INFO] [integration_test:45] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:46] 测试2: CLI解析器重构
+[2026-05-30 17:13:38] [INFO] [integration_test:47] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:65] ✓ CLI命令: config, diff, logs, remote, rollback, schedule, version
+[2026-05-30 17:13:38] [INFO] [integration_test:66] ✓ 全局选项: config_file, env_file, no_color, output_file, output_format, quiet, verbose
+[2026-05-30 17:13:38] [INFO] [integration_test:67] 
+[2026-05-30 17:13:38] [INFO] [integration_test:70] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:71] 测试3: 批量任务依赖与优先级
+[2026-05-30 17:13:38] [INFO] [integration_test:72] ============================================================
+[2026-05-30 17:13:38] [INFO] [rollback:40] 已注册回滚执行器: config_version
+[2026-05-30 17:13:38] [INFO] [rollback:40] 已注册回滚执行器: config_center
+[2026-05-30 17:13:38] [INFO] [rollback:40] 已注册回滚执行器: remote_service
+[2026-05-30 17:13:38] [INFO] [rollback:40] 已注册回滚执行器: database
+[2026-05-30 17:13:38] [INFO] [rollback:40] 已注册回滚执行器: file
+[2026-05-30 17:13:38] [INFO] [rollback:69] 创建回滚任务: 93696691-c278-4620-a08d-e052e5353e07, 类型: file, 目标: file1.yaml
+[2026-05-30 17:13:38] [INFO] [rollback:69] 创建回滚任务: 0faf0319-644f-40f7-9bc0-25c4b72b6ba2, 类型: file, 目标: file2.yaml
+[2026-05-30 17:13:38] [INFO] [rollback:69] 创建回滚任务: a29057d3-e78a-4747-a3ac-f6f4f5bcb692, 类型: file, 目标: file3.yaml
+[2026-05-30 17:13:38] [INFO] [integration_test:104] 任务1: 93696691..., 优先级=HIGH, 依赖=[]
+[2026-05-30 17:13:38] [INFO] [integration_test:105] 任务2: 0faf0319..., 优先级=NORMAL, 依赖=['93696691']
+[2026-05-30 17:13:38] [INFO] [integration_test:106] 任务3: a29057d3..., 优先级=LOW, 依赖=[]
+[2026-05-30 17:13:38] [INFO] [integration_test:112] ✓ 批量任务依赖与优先级测试通过
+[2026-05-30 17:13:38] [INFO] [integration_test:113] 
+[2026-05-30 17:13:38] [INFO] [integration_test:116] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:117] 测试4: 连接重试机制增强
+[2026-05-30 17:13:38] [INFO] [integration_test:118] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:145] 指数退避(前4次): ['0.8s', '2.1s', '4.1s', '7.9s']
+[2026-05-30 17:13:38] [INFO] [integration_test:154] 固定退避(前4次): ['2.0s', '2.0s', '2.0s', '2.0s']
+[2026-05-30 17:13:38] [INFO] [integration_test:166] ✓ 熔断器状态流转: CLOSED -> OPEN (3次失败)
+[2026-05-30 17:13:38] [INFO] [integration_test:169] ✓ 健康检查配置: /health, 间隔=10s, 超时=5s
+[2026-05-30 17:13:38] [INFO] [integration_test:174] ✓ 连接重试机制测试通过
+[2026-05-30 17:13:38] [INFO] [integration_test:175] 
+[2026-05-30 17:13:38] [INFO] [integration_test:178] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:179] 测试5: 配置项白名单
+[2026-05-30 17:13:38] [INFO] [integration_test:180] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:196] 原始键: ['app', 'database', 'server']
+[2026-05-30 17:13:38] [INFO] [integration_test:197] 过滤后键: ['database', 'server']
+[2026-05-30 17:13:38] [INFO] [integration_test:209] 白名单过滤后差异数: 3
+[2026-05-30 17:13:38] [INFO] [integration_test:211]   modified: database.host = a -> b
+[2026-05-30 17:13:38] [INFO] [integration_test:211]   modified: database.port = 3306 -> 3307
+[2026-05-30 17:13:38] [INFO] [integration_test:211]   modified: server.port = 8080 -> 9090
+[2026-05-30 17:13:38] [INFO] [integration_test:217] ✓ 从文件加载include规则: ['database.*', 'server.*', 'cache.*', 'app.name', 'app.version', 'logging.*']
+[2026-05-30 17:13:38] [INFO] [integration_test:218] ✓ 从文件加载exclude规则: ['*.password', '*.secret', '*token*', '*.private_key']
+[2026-05-30 17:13:38] [INFO] [integration_test:220] ✓ 配置项白名单测试通过
+[2026-05-30 17:13:38] [INFO] [integration_test:221] 
+[2026-05-30 17:13:38] [INFO] [integration_test:224] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:225] 测试6: 定时比对功能
+[2026-05-30 17:13:38] [INFO] [integration_test:226] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:247]   ✓ 0 * * * *            -> 2026-05-30 11:00:00
+[2026-05-30 17:13:38] [INFO] [integration_test:247]   ✓ 0 0 * * *            -> 2026-05-31 00:00:00
+[2026-05-30 17:13:38] [INFO] [integration_test:247]   ✓ */15 * * * *         -> 2026-05-30 10:45:00
+[2026-05-30 17:13:38] [INFO] [integration_test:247]   ✓ 0 9-18 * * 1-5       -> 2026-05-30 11:00:00
+[2026-05-30 17:13:38] [INFO] [scheduler:257] 已添加定时任务: 集成测试任务 (97f8832f-d243-4397-9b21-3c9e52e44784)
+[2026-05-30 17:13:38] [INFO] [integration_test:266] ✓ 添加任务: 集成测试任务
+[2026-05-30 17:13:38] [INFO] [integration_test:267]   下次运行: 2026-05-30 18:13:38
+[2026-05-30 17:13:38] [INFO] [integration_test:284] ✓ 任务列表输出格式化正常
+[2026-05-30 17:13:38] [INFO] [scheduler:296] 已禁用任务: 97f8832f-d243-4397-9b21-3c9e52e44784
+[2026-05-30 17:13:38] [INFO] [integration_test:290] ✓ 禁用任务: 97f8832f...
+[2026-05-30 17:13:38] [INFO] [scheduler:286] 已启用任务: 97f8832f-d243-4397-9b21-3c9e52e44784
+[2026-05-30 17:13:38] [INFO] [integration_test:296] ✓ 启用任务: 97f8832f...
+[2026-05-30 17:13:38] [INFO] [config_diff:21] 开始比对配置文件: examples/sample_config.yaml <-> examples/sample_config.yaml
+[2026-05-30 17:13:38] [INFO] [config_diff:137] 比对完成: 总计 0 处差异 (新增: 0, 删除: 0, 修改: 0, 类型变更: 0)
+[2026-05-30 17:13:38] [INFO] [integration_test:302] ✓ 立即执行: 状态=completed, 差异数=0
+[2026-05-30 17:13:38] [INFO] [integration_test:306] ✓ 执行历史: 1 条记录
+[2026-05-30 17:13:38] [INFO] [scheduler:264] 已移除定时任务: 97f8832f-d243-4397-9b21-3c9e52e44784
+[2026-05-30 17:13:38] [INFO] [integration_test:311] ✓ 移除任务成功
+[2026-05-30 17:13:38] [INFO] [integration_test:318] ✓ 定时比对功能测试通过
+[2026-05-30 17:13:38] [INFO] [integration_test:319] 
+[2026-05-30 17:13:38] [INFO] [integration_test:322] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:323] 测试7: 日志导出功能
+[2026-05-30 17:13:38] [INFO] [integration_test:324] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:330] ✓ 加载日志: 39 条
+[2026-05-30 17:13:38] [INFO] [integration_test:333] ✓ 按级别过滤(>=INFO): 25 条
+[2026-05-30 17:13:38] [INFO] [integration_test:336] ✓ 统计信息: 按级别={'INFO': 19, 'WARNING': 4, 'ERROR': 2}, 总数=25
+[2026-05-30 17:13:38] [INFO] [integration_test:342] ✓ 导出JSON: 25 行 -> tmp7ob_wv75.json
+[2026-05-30 17:13:38] [INFO] [integration_test:353] ✓ 导出CSV: 25 行 -> tmpk07ulgy0.csv
+[2026-05-30 17:13:38] [INFO] [integration_test:361] ✓ 日志导出功能测试通过
+[2026-05-30 17:13:38] [INFO] [integration_test:362] 
+[2026-05-30 17:13:38] [INFO] [integration_test:365] ============================================================
+[2026-05-30 17:13:38] [INFO] [integration_test:366] 测试8: CLI命令可用性
+[2026-05-30 17:13:38] [INFO] [integration_test:367] ============================================================
+[2026-05-30 17:13:39] [INFO] [integration_test:396]   ✓ 'schedule' 存在于 configtool --help
+[2026-05-30 17:13:39] [INFO] [integration_test:396]   ✓ 'logs' 存在于 configtool --help
+[2026-05-30 17:13:39] [INFO] [integration_test:396]   ✓ '--format' 存在于 configtool --help
+[2026-05-30 17:13:39] [INFO] [integration_test:396]   ✓ '--quiet' 存在于 configtool --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'list' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'add' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'remove' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'enable' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'disable' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'run' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'start' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'history' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'parse-cron' 存在于 configtool schedule --help
+[2026-05-30 17:13:40] [INFO] [integration_test:396]   ✓ 'example' 存在于 configtool schedule --help
+[2026-05-30 17:13:41] [INFO] [integration_test:396]   ✓ 'export' 存在于 configtool logs --help
+[2026-05-30 17:13:41] [INFO] [integration_test:396]   ✓ 'stats' 存在于 configtool logs --help
+[2026-05-30 17:13:41] [INFO] [integration_test:396]   ✓ 'tail' 存在于 configtool logs --help
+[2026-05-30 17:13:42] [INFO] [integration_test:396]   ✓ 'files' 存在于 configtool diff --help
+[2026-05-30 17:13:42] [INFO] [integration_test:396]   ✓ 'configs' 存在于 configtool diff --help
+[2026-05-30 17:13:42] [INFO] [integration_test:396]   ✓ 'version' 存在于 configtool diff --help
+[2026-05-30 17:13:43] [INFO] [integration_test:396]   ✓ '--whitelist' 存在于 configtool diff files --help
+[2026-05-30 17:13:45] [INFO] [integration_test:396]   ✓ 'batch' 存在于 configtool rollback --help
+[2026-05-30 17:13:46] [INFO] [integration_test:396]   ✓ '--parallel' 存在于 configtool rollback batch --help
+[2026-05-30 17:13:47] [INFO] [integration_test:396]   ✓ 'get' 存在于 configtool remote --help
+[2026-05-30 17:13:47] [INFO] [integration_test:396]   ✓ 'post' 存在于 configtool remote --help
+[2026-05-30 17:13:47] [INFO] [integration_test:396]   ✓ 'batch' 存在于 configtool remote --help
+[2026-05-30 17:13:48] [INFO] [integration_test:396]   ✓ 'get' 存在于 configtool config --help
+[2026-05-30 17:13:48] [INFO] [integration_test:396]   ✓ 'set' 存在于 configtool config --help
+[2026-05-30 17:13:48] [INFO] [integration_test:396]   ✓ 'publish' 存在于 configtool config --help
+[2026-05-30 17:13:49] [INFO] [integration_test:396]   ✓ '--whitelist' 存在于 configtool config publish --help
+[2026-05-30 17:13:50] [INFO] [integration_test:396]   ✓ 'save' 存在于 configtool version --help
+[2026-05-30 17:13:50] [INFO] [integration_test:396]   ✓ 'get' 存在于 configtool version --help
+[2026-05-30 17:13:50] [INFO] [integration_test:396]   ✓ 'list' 存在于 configtool version --help
+[2026-05-30 17:13:50] [INFO] [integration_test:396]   ✓ 'diff' 存在于 configtool version --help
+[2026-05-30 17:13:50] [INFO] [integration_test:398] ✓ CLI命令可用性测试完成
+[2026-05-30 17:13:50] [INFO] [integration_test:399] 
+[2026-05-30 17:13:50] [INFO] [integration_test:434] ============================================================
+[2026-05-30 17:13:50] [INFO] [integration_test:435] 测试完成: 8/8 通过
+[2026-05-30 17:13:50] [INFO] [integration_test:437] ✓ 所有测试通过！
+[2026-05-30 17:13:50] [INFO] [integration_test:440] ============================================================

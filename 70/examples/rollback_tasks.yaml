@@ -1,0 +1,43 @@
+tasks:
+  - type: config_version
+    target: my-app
+    target_version: "5"
+    parameters:
+      app_id: my-app
+      namespace: application
+      config_center: apollo
+      operator: admin
+    description: 回滚应用配置到版本5
+
+  - type: config_center
+    target: staging
+    parameters:
+      source_env: production
+      target_env: staging
+      namespace: application
+      config_center: nacos
+      operator: admin
+    description: 从生产环境同步配置到预发布环境
+
+  - type: remote_service
+    target: http://service-a.example.com
+    target_version: "v1.2.3"
+    parameters:
+      service_url: http://service-a.example.com
+      endpoint: /api/admin/rollback
+      timeout: 60
+      extra_data:
+        force: true
+    description: 回滚服务A到指定版本
+
+  - type: file
+    target: /etc/config/app.yaml
+    parameters:
+      backup_file: /etc/config/app.yaml.bak.20240101
+    description: 恢复应用配置文件
+
+  - type: database
+    target: app_db
+    parameters:
+      backup_file: /backup/db/app_db_20240101.sql
+    description: 恢复数据库备份

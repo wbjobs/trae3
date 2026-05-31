@@ -1,0 +1,27 @@
+requests:
+  - url: /api/health
+    method: GET
+    context:
+      service: service-a
+
+  - url: /api/config/reload
+    method: POST
+    data:
+      mode: soft
+    context:
+      service: service-a
+
+  - url: /api/cache/clear
+    method: POST
+    headers:
+      X-Admin-Token: secret-token
+    context:
+      service: service-b
+
+  - url: /api/metrics
+    method: GET
+    params:
+      type: system
+    timeout: 10
+    context:
+      service: service-c
