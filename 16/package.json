@@ -1,0 +1,112 @@
+{
+  "name": "firmware-manager",
+  "version": "1.0.0",
+  "description": "工业扫码终端固件远程管理桌面应用",
+  "main": "dist/main/main.js",
+  "author": "Firmware Manager Team",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:main\" \"npm run dev:renderer\"",
+    "dev:main": "tsc -p tsconfig.main.json -w",
+    "dev:renderer": "vite",
+    "dev:backend": "ts-node-dev --respawn --transpile-only src/backend/server.ts",
+    "build": "npm run build:main && npm run build:renderer && npm run build:backend",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "build:backend": "tsc -p tsconfig.backend.json",
+    "start": "electron .",
+    "start:backend": "node dist/backend/server.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "better-sqlite3": "^9.2.2",
+    "typeorm": "^0.3.17",
+    "axios": "^1.6.0",
+    "crypto-js": "^4.2.0",
+    "node-ssh": "^13.1.0",
+    "ping": "^0.4.4",
+    "multer": "^1.4.5-lts.1",
+    "socket.io": "^4.7.2",
+    "winston": "^3.11.0",
+    "winston-transport": "^4.6.0",
+    "reflect-metadata": "^0.1.13",
+    "class-validator": "^0.14.0",
+    "class-transformer": "^0.5.1",
+    "async-mutex": "^0.4.0",
+    "uuid": "^9.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0",
+    "antd": "^5.11.0",
+    "@ant-design/icons": "^5.2.6",
+    "dayjs": "^1.11.10",
+    "echarts": "^5.4.3",
+    "echarts-for-react": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.16",
+    "@types/node": "^20.9.0",
+    "@types/crypto-js": "^4.2.1",
+    "@types/ping": "^0.4.4",
+    "@types/multer": "^1.4.10",
+    "@types/uuid": "^9.0.7",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "typescript": "^5.2.2",
+    "electron": "^27.1.0",
+    "electron-builder": "^24.6.4",
+    "vite": "^5.0.0",
+    "@vitejs/plugin-react": "^4.1.1",
+    "concurrently": "^8.2.2",
+    "ts-node-dev": "^2.0.0",
+    "eslint": "^8.53.0",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0"
+  },
+  "build": {
+    "appId": "com.firmware.manager",
+    "productName": "FirmwareManager",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}-${version}-setup.${ext}"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        },
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        }
+      ],
+      "category": "Utility",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+export const DEFAULT_BACKEND_PORT = 3000;
+export const DEFAULT_MAX_CONCURRENT_TASKS = 3;
+export const MAX_RETRY_COUNT = 3;
+export const RETRY_DELAY_MS = 5000;
+export const REBOOT_TIMEOUT_MS = 120000;
+export const REBOOT_CHECK_INTERVAL_MS = 2000;
+export const TERMINAL_API_PORT = 8080;
+export const PING_TIMEOUT_MS = 2000;
+export const SCAN_CONCURRENCY = 50;
+export const MAX_FIRMWARE_SIZE = 500 * 1024 * 1024;
+export const ALLOWED_FIRMWARE_EXTENSIONS = ['.bin', '.img', '.hex', '.zip'];
+export const LOG_CLEANUP_DAYS = 30;
+export const HEALTH_CHECK_INTERVAL_MS = 5000;
