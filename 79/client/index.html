@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>储罐3D监控系统</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>🏭 储罐3D监控系统</h1>
+      <div class="header-info">
+        <span id="connection-status" class="status disconnected">未连接</span>
+        <span id="current-time"></span>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h3>储罐列表</h3>
+          <div id="tank-list" class="tank-list"></div>
+        </div>
+        <div class="sidebar-section">
+          <h3>实时报警</h3>
+          <div id="alert-list" class="alert-list">
+            <div class="no-alerts">暂无报警</div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <div class="toolbar">
+          <div class="toolbar-group">
+            <button id="btn-show-points" class="toolbar-btn" title="显示安全测点">
+              📍 测点
+            </button>
+            <button id="btn-cut-mode" class="toolbar-btn" title="剖切模式">
+              ✂️ 剖切
+            </button>
+            <button id="btn-reset-view" class="toolbar-btn" title="重置视图">
+              🔄 重置
+            </button>
+          </div>
+          <div id="cut-controls" class="cut-controls hidden">
+            <label>剖切角度:</label>
+            <input type="range" id="cut-angle" min="0" max="360" value="0" step="5">
+            <span id="cut-angle-value">0°</span>
+          </div>
+        </div>
+
+        <div id="canvas-container" class="canvas-container"></div>
+        
+        <div id="tank-detail" class="tank-detail hidden">
+          <div class="detail-header">
+            <h3 id="detail-title">储罐详情</h3>
+            <button id="close-detail" class="close-btn">×</button>
+          </div>
+          <div class="detail-content">
+            <div class="detail-info">
+              <div class="info-item">
+                <label>储罐编号</label>
+                <span id="detail-id"></span>
+              </div>
+              <div class="info-item">
+                <label>储罐类型</label>
+                <span id="detail-type"></span>
+              </div>
+              <div class="info-item">
+                <label>总容量</label>
+                <span id="detail-capacity"></span>
+              </div>
+              <div class="info-item">
+                <label>运行状态</label>
+                <span id="detail-status" class="status-badge"></span>
+              </div>
+            </div>
+            
+            <div class="detail-metrics">
+              <div class="metric-card">
+                <div class="metric-label">液位</div>
+                <div class="metric-value" id="detail-level">0</div>
+                <div class="metric-unit">m³</div>
+                <div class="metric-bar">
+                  <div class="metric-bar-fill" id="detail-level-bar"></div>
+                </div>
+                <div class="metric-percent" id="detail-level-percent">0%</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">压力</div>
+                <div class="metric-value" id="detail-pressure">0</div>
+                <div class="metric-unit">MPa</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-label">温度</div>
+                <div class="metric-value" id="detail-temperature">0</div>
+                <div class="metric-unit">°C</div>
+              </div>
+            </div>
+
+            <div class="detail-actions">
+              <button id="view-history" class="btn btn-primary">查看历史数据</button>
+              <button id="view-alerts" class="btn btn-secondary">查看报警记录</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="measure-point-popup" class="measure-point-popup hidden">
+          <div class="popup-header">
+            <span id="popup-point-name" class="popup-title">测点名称</span>
+            <button class="close-popup">×</button>
+          </div>
+          <div class="popup-content">
+            <div class="popup-info">
+              <div class="info-item">
+                <label>类型</label>
+                <span id="popup-point-type"></span>
+              </div>
+              <div class="info-item">
+                <label>当前值</label>
+                <span id="popup-point-value"></span>
+              </div>
+              <div class="info-item">
+                <label>所属储罐</label>
+                <span id="popup-tank-name"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="history-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="history-title">历史数据</h3>
+          <button class="close-modal" data-modal="history-modal">×</button>
+        </div>
+        <div class="modal-body">
+          <div id="history-chart" class="chart-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

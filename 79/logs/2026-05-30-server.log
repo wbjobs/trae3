@@ -1,0 +1,849 @@
+[2026-05-30T10:45:05.954Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:45:05.957Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:45:07.958Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:09.963Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:11.968Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:13.969Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:15.975Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:17.978Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:19.997Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:22.000Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:24.006Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:26.011Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:28.013Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:30.018Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:32.035Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:34.041Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:36.045Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:38.055Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:40.065Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:42.070Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:44.086Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:46.089Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:48.112Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:50.114Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:52.115Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:45:52.117Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:54.129Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:45:54.130Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:56.138Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:45:56.140Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:45:58.142Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:45:58.143Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:00.143Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:00.144Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:02.151Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:02.152Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:04.155Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:04.156Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:06.169Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:06.174Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:08.183Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:08.184Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:10.198Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:10.199Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:12.209Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:12.211Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:46:34.939Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:46:34.940Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:46:36.948Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:42.968Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:48.988Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:55.003Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:46:59.640Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:46:59.644Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:01.735Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:01.743Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:03.576Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:03.580Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:04.273Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:04.282Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:05.681Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:05.683Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:06.737Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:06.751Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:12.020Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:12.023Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:12.594Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:12.595Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:13.160Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:13.161Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:14.708Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:14.709Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:15.409Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:15.410Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:15.872Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:15.873Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:20.332Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:20.334Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:20.911Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:20.913Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:37.375Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:37.377Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:42.167Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:49.613Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:49.622Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:52.972Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:52.976Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:53.472Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:53.475Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:54.532Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:54.536Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:57.443Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:57.529Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:47:58.621Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:47:58.629Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:02.672Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:02.675Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:04.527Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:04.530Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:05.122Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:05.125Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:19.708Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:19.709Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:21.719Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:48:27.766Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:48:33.782Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:48:39.806Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:48:45.833Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:48:51.857Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:48:55.149Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:55.150Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:56.260Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:56.261Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:56.687Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:56.690Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:57.293Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:57.294Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:57.911Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:48:57.912Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:48:59.652Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:00.235Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:00.237Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:01.270Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:01.276Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:04.541Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:04.544Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:05.936Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:05.937Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:08.393Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:09.759Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:09.760Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:10.778Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:10.784Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:11.844Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:11.845Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:12.276Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:12.277Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:12.730Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:12.731Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:13.483Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:13.484Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:14.017Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:14.017Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:14.593Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:14.594Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:15.608Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:15.609Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:16.104Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:16.109Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:18.803Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:20.488Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:20.490Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:22.550Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:22.551Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:23.212Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:23.213Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:26.266Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:26.267Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:27.262Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:27.263Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:27.732Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:27.733Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:28.320Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:28.331Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:34.821Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:34.825Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:35.921Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:35.922Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:36.452Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:36.453Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:37.093Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:37.095Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:38.300Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:38.301Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:39.529Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:39.537Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:44.029Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:44.034Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:45.314Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:45.314Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:46.109Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:46.115Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:46.545Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:49:46.545Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:49:48.548Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:49:50.556Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:49:54.568Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:49:56.575Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:50:27.290Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:50:27.291Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:50:29.294Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:50:35.302Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:50:41.342Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:50:47.368Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:50:53.388Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:50:59.412Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:51:05.430Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:51:15.467Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:51:23.502Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:51:29.535Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:51:35.552Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:51:43.582Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:54:34.867Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:34.868Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:35.305Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:35.306Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:35.788Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:35.789Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:36.326Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:36.329Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:37.051Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:37.053Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:37.702Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:37.703Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:38.623Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:38.624Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:39.151Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:39.152Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:39.854Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:39.857Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:40.903Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:44.592Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:44.593Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:45.253Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:45.255Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:45.708Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:45.708Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:46.814Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:46.816Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:47.500Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:47.503Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:48.582Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:48.583Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:49.107Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:49.108Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:50.199Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:50.201Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:50.850Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:50.851Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:51.248Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:51.249Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:52.011Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:52.013Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:52.332Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:52.334Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:52.900Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:52.901Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:53.835Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:53.836Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:54:56.002Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:54:56.003Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:12.661Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:12.664Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:16.781Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:16.783Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:17.676Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:17.679Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:20.975Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:20.976Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:21.647Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:21.649Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:29.693Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:29.696Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:30.652Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:30.652Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:31.658Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:31.662Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:32.254Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:32.256Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:32.794Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:32.796Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:33.326Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:33.327Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:33.880Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:33.881Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:34.583Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:34.585Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:35.085Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:35.086Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:35.484Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:35.485Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:36.067Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:36.068Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:36.738Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:36.739Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:37.601Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:37.602Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:38.159Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:38.161Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:38.676Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:38.677Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:39.033Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:39.034Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:39.627Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:39.628Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:40.218Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:55:40.219Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:55:42.225Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:55:42.227Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:55:48.247Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:55:48.249Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:55:54.275Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:55:54.277Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:00.298Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:00.300Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:06.321Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:06.323Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:12.334Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:12.336Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:18.357Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:18.358Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:24.387Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:24.388Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:30.418Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:30.419Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:36.438Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:36.440Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:42.455Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:42.457Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:48.468Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:48.472Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:56:54.501Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:56:54.504Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:00.524Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:00.524Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:06.547Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:06.549Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:12.559Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:12.560Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:18.585Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:18.589Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:24.600Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:24.602Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:30.619Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:30.622Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:36.639Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:36.641Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:42.672Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:42.673Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:48.678Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:48.679Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:54.707Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:57:54.709Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:57:56.721Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:00.745Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:00.746Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:58:02.745Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:06.754Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:06.756Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:58:12.789Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:12.802Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T10:58:43.060Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:58:43.062Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:58:43.443Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T10:58:43.444Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T10:58:45.457Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:45.459Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:58:51.470Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:51.471Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:58:57.495Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:58:57.497Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:59:03.532Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:59:03.535Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:59:09.545Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:59:09.546Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T10:59:15.567Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T10:59:15.569Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:00:29.951Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:00:29.952Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:00:31.969Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:00:38.002Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:00:38.003Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:00:44.021Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:00:48.027Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:00:50.033Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:00:54.044Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:00:56.050Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:02.097Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:08.122Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:10.132Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:01:14.146Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:20.176Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:26.191Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:32.226Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:38.250Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:40.255Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:44.277Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:46.286Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:50.326Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:52.337Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:01:56.366Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:00.376Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:02.393Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:06.417Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:08.434Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:12.454Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:14.459Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:18.480Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:20.490Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:24.504Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:26.516Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:30.542Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:32.544Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:36.548Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:38.549Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:42.555Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:44.569Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:46.573Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:02:48.580Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:02:50.426Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:50.427Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:02:50.912Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:50.913Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:02:51.598Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:51.598Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:02:52.042Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:52.043Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:02:52.712Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:52.713Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:02:54.528Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:54.529Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:02:55.187Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:02:55.189Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:00.967Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:00.968Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:02.590Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:02.591Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:03.863Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:03.865Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:05.992Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:05.995Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:06.489Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:06.490Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:06.995Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:06.996Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:07.559Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:07.561Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:08.254Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:08.256Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:08.729Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:08.731Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:09.316Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:09.317Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:09.909Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:09.910Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:11.901Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:11.902Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:13.530Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:13.539Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:16.135Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:16.139Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:17.714Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:17.716Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:18.828Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:18.829Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:20.691Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:20.693Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:21.211Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:21.213Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:22.452Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:22.456Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:26.117Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:26.118Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:26.964Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:26.965Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:27.852Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:27.854Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:30.786Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:30.789Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:46.792Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:46.794Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:48.117Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:48.121Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:49.541Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:49.547Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:03:54.785Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:03:54.787Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:04:25.954Z] [INFO] [server] 服务器运行在 http://localhost:8080
+[2026-05-30T11:04:25.955Z] [INFO] [server] WebSocket 服务器已启动，最大连接数: 100
+[2026-05-30T11:04:27.967Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:04:27.968Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:04:33.981Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:04:33.981Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:04:40.007Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:04:40.008Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:04:40.009Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T11:04:46.032Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:04:46.033Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:04:46.033Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"temperature","severity":"warning","message":"温度超高报警"}
+[2026-05-30T11:04:52.049Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:04:52.049Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:04:58.077Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:04:58.080Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:04.106Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:04.108Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:10.138Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:10.139Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:16.171Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:16.173Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:22.186Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:22.189Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:28.214Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:28.217Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:34.235Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:34.236Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:40.260Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:40.261Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:46.279Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:46.280Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:52.309Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:52.310Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:05:58.337Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:05:58.338Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:04.359Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:04.360Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:10.387Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:10.388Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:16.407Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:16.408Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:22.430Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:22.431Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:28.454Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:28.455Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:34.485Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:34.486Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:40.511Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:40.512Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:46.527Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:46.528Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:52.552Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:52.553Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:06:58.571Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:06:58.572Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:04.587Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:04.588Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:10.615Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:10.616Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:16.647Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:16.649Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:22.662Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:22.663Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:28.667Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:28.669Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:34.686Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:34.687Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:40.713Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:40.715Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:46.740Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:46.741Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:52.767Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:52.768Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:07:58.789Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:07:58.790Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:04.818Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:04.820Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:10.842Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:10.844Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:16.873Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:16.874Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:22.899Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:22.900Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:28.918Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:28.919Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:34.943Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:34.944Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:40.973Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:40.974Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:46.996Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:46.998Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:53.031Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:53.032Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:08:59.054Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:08:59.055Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:05.068Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:05.070Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:11.079Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:11.080Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:17.091Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:17.093Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:23.112Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:23.114Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:29.137Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:29.138Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:35.173Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:35.174Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:41.186Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:41.188Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:47.213Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:47.215Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:53.237Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:53.257Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:09:59.252Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:09:59.254Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:05.271Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:05.272Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:11.307Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:11.309Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:17.327Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:17.328Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:23.351Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:23.352Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:29.376Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:29.377Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:35.406Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:35.406Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:41.429Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:41.431Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:47.466Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:47.467Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:53.496Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:53.498Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:10:59.536Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:10:59.537Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:05.560Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:05.561Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:11.568Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:11.571Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:17.586Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:17.587Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:23.612Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:23.613Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:29.637Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:29.640Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:35.651Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:35.653Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:41.676Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:41.676Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:47.693Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:47.696Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:53.713Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:53.714Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:11:59.738Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:11:59.740Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:05.755Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:05.757Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:11.781Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:11.783Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:17.801Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:17.803Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:23.827Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:23.828Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:29.855Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:29.857Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:35.875Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:35.876Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:41.901Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:41.903Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:47.921Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:47.922Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:53.956Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:53.957Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:12:59.973Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:12:59.975Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:06.008Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:06.010Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:12.042Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:12.043Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:18.062Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:18.064Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:24.078Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:24.079Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:30.093Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:30.094Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:36.122Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:36.124Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:42.130Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:42.132Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:48.156Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:48.157Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:54.181Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:13:54.182Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:13:56.184Z] [WARN] [server] 报警触发 {"tankId":"tank-002","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:00.191Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:00.192Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:06.215Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:06.217Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:12.231Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:12.234Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:18.252Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:18.254Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:24.287Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:24.288Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:30.315Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:30.316Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:36.335Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:36.336Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:42.354Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:42.355Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:48.365Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:48.367Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:14:54.387Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:14:54.388Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:00.394Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:00.401Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:06.422Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:06.423Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:12.432Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:12.433Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:18.468Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:18.469Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:24.500Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:24.503Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:30.530Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:30.531Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:36.558Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:36.560Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:42.591Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:42.592Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:48.622Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:48.623Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:15:54.651Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:15:54.652Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:00.660Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:00.663Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:06.677Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:06.678Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:12.702Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:12.703Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:18.731Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:18.733Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:24.755Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:24.756Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:30.780Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:30.781Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:36.805Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:36.807Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:42.831Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:42.834Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:48.847Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:48.848Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:16:54.866Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:16:54.868Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:00.881Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:00.883Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:06.909Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:06.918Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:12.942Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:12.942Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:18.967Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:18.968Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:24.973Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:24.974Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:30.997Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:30.998Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:37.002Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:37.005Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:43.034Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:43.036Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:49.066Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:49.067Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:17:55.092Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:17:55.093Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:01.104Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:01.106Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:07.130Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:07.131Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:13.156Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:13.157Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:19.197Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:19.198Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:25.214Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:25.216Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:31.241Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:31.243Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:37.270Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:37.272Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:43.292Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:43.293Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:49.316Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:49.317Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:18:55.342Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:18:55.343Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:01.365Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:01.367Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:07.405Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:07.406Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:13.438Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:13.439Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:19.462Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:19.464Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:25.479Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:25.481Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:31.503Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:31.504Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:37.523Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:37.524Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:43.542Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:43.544Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:49.563Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:49.564Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:19:55.588Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:19:55.590Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:01.621Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:01.622Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:07.646Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:07.648Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:13.676Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:13.677Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:19.702Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:19.704Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:25.715Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:25.716Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:31.741Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:31.743Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:37.771Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:37.772Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:43.803Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:43.805Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:49.831Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:49.832Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:53.843Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:20:55.845Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:20:55.846Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:20:59.871Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:01.876Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:01.877Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:05.888Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:07.892Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:07.894Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:11.903Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:13.915Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:13.916Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:17.925Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:19.927Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:19.928Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:23.930Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:25.941Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:25.942Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:29.963Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:31.967Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:31.967Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:35.980Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:37.995Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:37.996Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:42.016Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:44.026Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:44.027Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:48.041Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:50.051Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:50.052Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:21:54.070Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:21:56.080Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:21:56.081Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:22:00.096Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:22:02.110Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:22:02.113Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
+[2026-05-30T11:22:06.129Z] [WARN] [server] 报警触发 {"tankId":"tank-003","type":"pressure","severity":"critical","message":"压力超低报警"}
+[2026-05-30T11:22:08.143Z] [WARN] [server] 报警触发 {"tankId":"tank-004","type":"pressure","severity":"critical","message":"压力超高报警"}
+[2026-05-30T11:22:08.144Z] [WARN] [server] 报警触发 {"tankId":"tank-005","type":"level","severity":"warning","message":"液位低报警"}
