@@ -1,0 +1,88 @@
+cluster:
+  name: ocean-compute-cluster
+  master_node:
+    host: 127.0.0.1
+    port: 8080
+  heartbeat_interval: 30
+  node_timeout: 120
+  max_nodes: 100
+  auto_scaling: false
+  min_nodes: 1
+  max_idle_nodes: 5
+
+database:
+  type: sqlite
+  host: localhost
+  port: 5432
+  name: ocean_compute
+  user: admin
+  password: admin123
+  sqlite_path: ./data/ocean_compute.db
+  pool_size: 10
+  max_overflow: 20
+  pool_recycle: 3600
+  echo: false
+
+kernel:
+  default_kernel: default
+  kernels:
+    - name: default
+      image: ocean/kernel:latest
+      timeout: 3600
+      memory_limit: 4096
+      cpu_limit: 2
+    - name: gpu
+      image: ocean/kernel-gpu:latest
+      timeout: 7200
+      memory_limit: 8192
+      cpu_limit: 4
+      gpu_limit: 1
+    - name: highmem
+      image: ocean/kernel-highmem:latest
+      timeout: 14400
+      memory_limit: 16384
+      cpu_limit: 8
+  shared_memory: 1024
+  network_mode: bridge
+
+scheduler:
+  strategy: least_loaded
+  max_concurrent_tasks: 50
+  max_queue_size: 1000
+  task_timeout: 3600
+  default_retry_count: 3
+  retry_delay: 5
+  priority_weights:
+    high: 10
+    medium: 5
+    low: 1
+  scheduling_interval: 5
+  preemption_enabled: false
+  fair_share: true
+
+storage:
+  data_dir: ./data
+  result_dir: ./results
+  temp_dir: ./tmp
+  log_dir: ./logs
+  max_storage_size: 107374182400
+  cleanup_interval: 86400
+  retention_days: 30
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_enabled: true
+  file_rotation: daily
+  max_file_size: 10485760
+  backup_count: 30
+
+security:
+  authentication_enabled: false
+  jwt_secret: your-secret-key-here
+  jwt_expiry: 86400
+  allowed_origins:
+    - "*"
+  api_key_enabled: false
+  rate_limit: 100
+  rate_limit_window: 60
