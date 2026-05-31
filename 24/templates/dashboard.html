@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地下水渗流场监测系统 - 实时仪表盘</title>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header .status {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-online {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .status-online .status-dot {
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .status-warning .status-dot {
+            background: #f59e0b;
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-update {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .metric-value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .metric-change {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .metric-change.up {
+            color: #22c55e;
+        }
+
+        .metric-change.down {
+            color: #ef4444;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #38bdf8;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .chamber-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chamber-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 8px;
+            border-left: 3px solid #38bdf8;
+        }
+
+        .chamber-item.warning {
+            border-left-color: #f59e0b;
+        }
+
+        .chamber-item.error {
+            border-left-color: #ef4444;
+        }
+
+        .chamber-name {
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .chamber-metrics {
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-fill.warning {
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .progress-fill.danger {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-name {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .task-meta {
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .task-status {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-running {
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .status-failed {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+
+        .component-wrapper {
+            position: relative;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            z-index: 10;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(56, 189, 248, 0.2);
+            border-top-color: #38bdf8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .tab.active {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;
+            color: #38bdf8;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        th {
+            color: #64748b;
+            font-weight: 500;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        .cb-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+
+        .cb-closed {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .cb-open {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .cb-half-open {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌊 地下水渗流场监测系统</h1>
+        <div class="status">
+            <span class="status-badge status-online" id="ws-status">
+                <span class="status-dot"></span>
+                WebSocket 连接中
+            </span>
+            <span class="status-badge" id="update-status">
+                <span class="status-dot" style="background: #38bdf8;"></span>
+                最后更新: --:--:--
+            </span>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="overview">系统概览</div>
+        <div class="tab" data-tab="chambers">舱室管理</div>
+        <div class="tab" data-tab="tasks">任务监控</div>
+        <div class="tab" data-tab="sensors">传感器数据</div>
+    </div>
+
+    <div id="overview" class="tab-content active">
+        <div class="grid-container">
+            <div class="card component-wrapper" data-component="system_overview">
+                <div class="loading-overlay" id="loading-system_overview">
+                    <div class="spinner"></div>
+                </div>
+                <div class="card-header">
+                    <span class="card-title">📊 系统概览</span>
+                    <span class="card-update" id="update-system_overview">--</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-chambers">0</div>
+                        <div class="stat-label">舱室总数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-grids">0</div>
+                        <div class="stat-label">网格模型</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-tasks-total">0</div>
+                        <div class="stat-label">任务总数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-tasks-running">0</div>
+                        <div class="stat-label">运行中任务</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card component-wrapper" data-component="task_progress">
+                <div class="loading-overlay" id="loading-task_progress">
+                    <div class="spinner"></div>
+                </div>
+                <div class="card-header">
+                    <span class="card-title">⚡ 任务队列</span>
+                    <span class="card-update" id="update-task_progress">--</span>
+                </div>
+                <div class="stat-item" style="margin-bottom: 15px;">
+                    <div class="stat-value">
+                        <span id="stat-active-tasks">0</span> / <span id="stat-queued-tasks">0</span>
+                    </div>
+                    <div class="stat-label">运行中 / 队列中</div>
+                </div>
+                <div id="active-tasks-list">
+                    <div style="color: #64748b; font-size: 12px; text-align: center; padding: 20px;">
+                        暂无运行中的任务
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">💾 数据处理</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-data-received">0</div>
+                        <div class="stat-label">数据接收</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-data-written">0</div>
+                        <div class="stat-label">数据写入</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-duplicates">0</div>
+                        <div class="stat-label">重复过滤</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-aggregated">0</div>
+                        <div class="stat-label">聚合数据</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">🚀 性能指标</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-cache-hits">0%</div>
+                        <div class="stat-label">缓存命中率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-query-time">0ms</div>
+                        <div class="stat-label">平均查询</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-rejection-rate">0%</div>
+                        <div class="stat-label">拒绝率</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-write-rate">0/s</div>
+                        <div class="stat-label">写入速率</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chambers" class="tab-content">
+        <div class="grid-container">
+            <div class="card full-width component-wrapper" data-component="chamber_status_all">
+                <div class="loading-overlay" id="loading-chamber_status_all">
+                    <div class="spinner"></div>
+                </div>
+                <div class="card-header">
+                    <span class="card-title">🏭 舱室状态监控</span>
+                    <span class="card-update" id="update-chamber_status_all">--</span>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>舱室ID</th>
+                                <th>名称</th>
+                                <th>熔断器状态</th>
+                                <th>内存使用</th>
+                                <th>CPU使用</th>
+                                <th>运行任务</th>
+                                <th>总任务</th>
+                                <th>失败任务</th>
+                            </tr>
+                        </thead>
+                        <tbody id="chambers-table-body">
+                            <tr>
+                                <td colspan="8" style="text-align: center; color: #64748b; padding: 20px;">
+                                    暂无舱室数据
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tasks" class="tab-content">
+        <div class="grid-container">
+            <div class="card full-width component-wrapper" data-component="task_progress">
+                <div class="loading-overlay" id="loading-task_progress_tasks">
+                    <div class="spinner"></div>
+                </div>
+                <div class="card-header">
+                    <span class="card-title">📋 任务列表</span>
+                    <span class="card-update" id="update-task_progress_tasks">--</span>
+                </div>
+                <div id="tasks-list">
+                    <div style="color: #64748b; font-size: 12px; text-align: center; padding: 20px;">
+                        暂无任务数据
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sensors" class="tab-content">
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">📈 传感器选择</span>
+                </div>
+                <div id="sensor-selector" style="max-height: 300px; overflow-y: auto;">
+                    <div style="color: #64748b; font-size: 12px; text-align: center; padding: 20px;">
+                        请先创建舱室和传感器
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="grid-column: span 2;">
+                <div class="card-header">
+                    <span class="card-title">📊 实时数据曲线</span>
+                    <select id="chart-interval" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(148,163,184,0.2); color: #e2e8f0; padding: 4px 8px; border-radius: 4px; font-size: 12px;">
+                        <option value="1min">1分钟</option>
+                        <option value="5min">5分钟</option>
+                        <option value="15min">15分钟</option>
+                        <option value="1hour">1小时</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="sensor-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class DashboardClient {
+            constructor() {
+                this.socket = null;
+                this.connected = false;
+                this.subscriptions = new Set();
+                this.charts = {};
+                this.components = {};
+                this.currentSensorId = null;
+
+                this.init();
+                this.bindEvents();
+            }
+
+            init() {
+                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                const wsUrl = `${protocol}//${window.location.host}`;
+                console.log('Connecting to:', wsUrl);
+
+                this.socket = io(wsUrl, {
+                    transports: ['websocket', 'polling'],
+                    reconnection: true,
+                    reconnectionDelay: 1000,
+                    reconnectionDelayMax: 5000
+                });
+
+                this.socket.on('connect', () => {
+                    this.connected = true;
+                    this.updateConnectionStatus(true);
+                    console.log('WebSocket connected:', this.socket.id);
+                });
+
+                this.socket.on('disconnect', () => {
+                    this.connected = false;
+                    this.updateConnectionStatus(false);
+                    console.log('WebSocket disconnected');
+                });
+
+                this.socket.on('connected', (data) => {
+                    console.log('Server info:', data);
+                    this.subscribe('system_overview');
+                    this.subscribe('task_progress');
+                    this.subscribe('chamber_status_all');
+                });
+
+                this.socket.on('component_update', (data) => {
+                    this.handleComponentUpdate(data);
+                });
+
+                this.socket.on('ping', (data) => {
+                    this.socket.emit('pong');
+                });
+
+                this.initCharts();
+                this.loadSensorList();
+            }
+
+            bindEvents() {
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const tabName = e.target.dataset.tab;
+                        this.switchTab(tabName);
+                    });
+                });
+
+                document.getElementById('chart-interval').addEventListener('change', (e) => {
+                    if (this.currentSensorId) {
+                        this.subscribeSensorChart(this.currentSensorId, e.target.value);
+                    }
+                });
+            }
+
+            switchTab(tabName) {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+                document.getElementById(tabName).classList.add('active');
+            }
+
+            subscribe(componentId) {
+                if (this.subscriptions.has(componentId)) return;
+                this.subscriptions.add(componentId);
+                this.socket.emit('subscribe', { components: [componentId] });
+                this.showLoading(componentId, true);
+            }
+
+            unsubscribe(componentId) {
+                if (!this.subscriptions.has(componentId)) return;
+                this.subscriptions.delete(componentId);
+                this.socket.emit('unsubscribe', { component_id: componentId });
+            }
+
+            handleComponentUpdate(data) {
+                const componentId = data.component_id;
+                if (!componentId) return;
+
+                this.showLoading(componentId, false);
+                this.updateTimestamp(componentId, data.timestamp);
+
+                switch (componentId) {
+                    case 'system_overview':
+                        this.updateSystemOverview(data);
+                        break;
+                    case 'task_progress':
+                        this.updateTaskProgress(data);
+                        break;
+                    case 'chamber_status_all':
+                        this.updateChamberStatus(data);
+                        break;
+                }
+
+                if (componentId.startsWith('sensor_chart_')) {
+                    this.updateSensorChart(data);
+                }
+            }
+
+            updateConnectionStatus(connected) {
+                const statusEl = document.getElementById('ws-status');
+                if (connected) {
+                    statusEl.className = 'status-badge status-online';
+                    statusEl.innerHTML = '<span class="status-dot"></span>WebSocket 已连接';
+                } else {
+                    statusEl.className = 'status-badge status-warning';
+                    statusEl.innerHTML = '<span class="status-dot"></span>WebSocket 重连中...';
+                }
+            }
+
+            showLoading(componentId, show) {
+                const loader = document.getElementById(`loading-${componentId}`);
+                if (loader) {
+                    loader.classList.toggle('active', show);
+                }
+            }
+
+            updateTimestamp(componentId, timestamp) {
+                const updateEl = document.getElementById(`update-${componentId}`);
+                if (updateEl) {
+                    const dt = new Date(timestamp);
+                    updateEl.textContent = dt.toLocaleTimeString('zh-CN');
+                }
+                document.getElementById('update-status').textContent =
+                    `最后更新: ${new Date(timestamp).toLocaleTimeString('zh-CN')}`;
+            }
+
+            updateSystemOverview(data) {
+                if (data.chambers) {
+                    document.getElementById('stat-chambers').textContent = data.chambers.total || 0;
+                }
+                if (data.grids) {
+                    document.getElementById('stat-grids').textContent = data.grids.total || 0;
+                }
+                if (data.tasks) {
+                    document.getElementById('stat-tasks-total').textContent = data.tasks.total || 0;
+                    document.getElementById('stat-tasks-running').textContent = data.tasks.running || 0;
+                }
+                if (data.sensor_processor) {
+                    const sp = data.sensor_processor;
+                    document.getElementById('stat-data-received').textContent =
+                        this.formatNumber(sp.received || 0);
+                    document.getElementById('stat-data-written').textContent =
+                        this.formatNumber(sp.written || 0);
+                    document.getElementById('stat-duplicates').textContent =
+                        this.formatNumber(sp.duplicates || 0);
+                    document.getElementById('stat-aggregated').textContent =
+                        this.formatNumber(sp.aggregated || 0);
+                    document.getElementById('stat-write-rate').textContent =
+                        `${(sp.write_rate || 0).toFixed(0)}/s`;
+                }
+                if (data.timeseries) {
+                    const ts = data.timeseries;
+                    const hitRate = ts.cache_hit_rate || 0;
+                    document.getElementById('stat-cache-hits').textContent =
+                        `${(hitRate * 100).toFixed(1)}%`;
+                    document.getElementById('stat-query-time').textContent =
+                        `${((ts.avg_query_time || 0) * 1000).toFixed(0)}ms`;
+                }
+                if (data.chamber_manager) {
+                    const cm = data.chamber_manager;
+                    document.getElementById('stat-rejection-rate').textContent =
+                        `${((cm.rejection_rate || 0) * 100).toFixed(2)}%`;
+                }
+            }
+
+            updateTaskProgress(data) {
+                document.getElementById('stat-active-tasks').textContent = data.active_count || 0;
+                document.getElementById('stat-queued-tasks').textContent = data.queue_size || 0;
+
+                if (data.active_tasks && data.active_tasks.length > 0) {
+                    const html = data.active_tasks.map(task => `
+                        <div class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">${this.escapeHtml(task.name)}</div>
+                                <div class="task-meta">ID: ${task.id} | 网格: ${task.grid_id}</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${task.progress || 0}%"></div>
+                                </div>
+                            </div>
+                            <span class="task-status status-running">运行中</span>
+                        </div>
+                    `).join('');
+                    document.getElementById('active-tasks-list').innerHTML = html;
+                } else {
+                    document.getElementById('active-tasks-list').innerHTML = `
+                        <div style="color: #64748b; font-size: 12px; text-align: center; padding: 20px;">
+                            暂无运行中的任务
+                        </div>
+                    `;
+                }
+
+                if (data.recent_tasks) {
+                    const tasksHtml = data.recent_tasks.map(task => `
+                        <div class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">${this.escapeHtml(task.name)}</div>
+                                <div class="task-meta">
+                                    ID: ${task.id} | 创建于: ${this.formatDate(task.created_at)}
+                                    ${task.completed_at ? `| 完成于: ${this.formatDate(task.completed_at)}` : ''}
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill ${task.progress >= 80 ? '' : task.progress >= 50 ? 'warning' : ''}"
+                                         style="width: ${task.progress || 0}%"></div>
+                                </div>
+                            </div>
+                            <span class="task-status status-${task.status}">${this.getStatusText(task.status)}</span>
+                        </div>
+                    `).join('');
+                    document.getElementById('tasks-list').innerHTML = tasksHtml;
+                }
+            }
+
+            updateChamberStatus(data) {
+                if (!data.chambers || data.chambers.length === 0) {
+                    document.getElementById('chambers-table-body').innerHTML = `
+                        <tr>
+                            <td colspan="8" style="text-align: center; color: #64748b; padding: 20px;">
+                                暂无舱室数据，请先在系统中创建舱室
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                const html = data.chambers.map(chamber => {
+                    const cbStatus = chamber.circuit_breaker ? chamber.circuit_breaker.state : 'closed';
+                    const cbClass = `cb-${cbStatus}`;
+                    const cbText = this.getCircuitBreakerText(cbStatus);
+
+                    let memPercent = 0, cpuPercent = 0;
+                    if (chamber.resource_usage) {
+                        memPercent = chamber.resource_usage.memory_usage_percent || 0;
+                        cpuPercent = chamber.resource_usage.cpu_usage_percent || 0;
+                    }
+
+                    const memClass = memPercent >= 80 ? 'danger' : memPercent >= 50 ? 'warning' : '';
+                    const cpuClass = cpuPercent >= 80 ? 'danger' : cpuPercent >= 50 ? 'warning' : '';
+
+                    return `
+                        <tr class="${cbStatus === 'open' ? 'error' : cbStatus === 'half_open' ? 'warning' : ''}">
+                            <td>${chamber.chamber_id}</td>
+                            <td>${this.escapeHtml(chamber.name)}</td>
+                            <td><span class="cb-status ${cbClass}">${cbText}</span></td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="flex: 1; min-width: 80px;">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill ${memClass}" style="width: ${Math.min(memPercent, 100)}%"></div>
+                                        </div>
+                                    </div>
+                                    <span style="font-size: 11px;">${memPercent.toFixed(1)}%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div style="flex: 1; min-width: 80px;">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill ${cpuClass}" style="width: ${Math.min(cpuPercent, 100)}%"></div>
+                                        </div>
+                                    </div>
+                                    <span style="font-size: 11px;">${cpuPercent.toFixed(1)}%</span>
+                                </div>
+                            </td>
+                            <td>${chamber.running_tasks || 0}/${chamber.max_concurrent || 2}</td>
+                            <td>${chamber.total_tasks || 0}</td>
+                            <td style="color: ${chamber.failed_tasks > 0 ? '#ef4444' : '#22c55e'};">
+                                ${chamber.failed_tasks || 0}
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+
+                document.getElementById('chambers-table-body').innerHTML = html;
+            }
+
+            initCharts() {
+                const ctx = document.getElementById('sensor-chart').getContext('2d');
+                this.charts.sensor = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        datasets: [{
+                            label: '传感器数据',
+                            data: [],
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 300
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                                titleColor: '#e2e8f0',
+                                bodyColor: '#94a3b8',
+                                borderColor: 'rgba(56, 189, 248, 0.3)',
+                                borderWidth: 1,
+                                padding: 12,
+                                callbacks: {
+                                    title: (items) => {
+                                        return new Date(items[0].parsed.x).toLocaleString('zh-CN');
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    displayFormats: {
+                                        minute: 'HH:mm',
+                                        hour: 'HH:mm',
+                                        day: 'MM-dd'
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(148, 163, 184, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#64748b'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(148, 163, 184, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#64748b'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            async loadSensorList() {
+                try {
+                    const response = await fetch('/api/chambers');
+                    const chambers = await response.json();
+
+                    if (chambers.length === 0) {
+                        document.getElementById('sensor-selector').innerHTML = `
+                            <div style="color: #64748b; font-size: 12px; text-align: center; padding: 20px;">
+                                请先创建舱室和传感器
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    let html = '';
+                    for (const chamber of chambers) {
+                        const sensorsResponse = await fetch(`/api/sensors?chamber_id=${chamber.id}`);
+                        const sensors = await sensorsResponse.json();
+
+                        if (sensors.length > 0) {
+                            html += `<div style="color: #94a3b8; font-size: 11px; margin: 10px 0 5px;">${this.escapeHtml(chamber.name)}</div>`;
+                            sensors.forEach(sensor => {
+                                html += `
+                                    <div class="task-item" style="cursor: pointer;" onclick="dashboard.selectSensor(${sensor.id})">
+                                        <div>
+                                            <div class="task-name">${this.escapeHtml(sensor.name)}</div>
+                                            <div class="task-meta">${sensor.measurement_type || ''} | ${sensor.unit || ''}</div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                        }
+                    }
+
+                    document.getElementById('sensor-selector').innerHTML = html || `
+                        <div style="color: #64748b; font-size: 12px; text-align: center; padding: 20px;">
+                            暂无传感器数据
+                        </div>
+                    `;
+                } catch (e) {
+                    console.error('Failed to load sensors:', e);
+                }
+            }
+
+            selectSensor(sensorId) {
+                this.currentSensorId = sensorId;
+                const interval = document.getElementById('chart-interval').value;
+                this.subscribeSensorChart(sensorId, interval);
+
+                document.querySelectorAll('#sensor-selector .task-item').forEach(el => {
+                    el.style.background = 'rgba(15, 23, 42, 0.4)';
+                });
+                event.currentTarget.style.background = 'rgba(56, 189, 248, 0.2)';
+            }
+
+            subscribeSensorChart(sensorId, interval) {
+                const componentId = `sensor_chart_${sensorId}_${interval}`;
+
+                Object.keys(this.components).forEach(key => {
+                    if (key.startsWith('sensor_chart_')) {
+                        this.unsubscribe(key);
+                    }
+                });
+
+                if (!this.components[componentId]) {
+                    const sensorComponent = {
+                        component_id: componentId
+                    };
+                    this.components[componentId] = sensorComponent;
+                }
+
+                this.subscribe(componentId);
+            }
+
+            updateSensorChart(data) {
+                if (!data.data_points || !this.charts.sensor) return;
+
+                const points = data.data_points.map(p => ({
+                    x: p.t,
+                    y: p.v
+                })).sort((a, b) => a.x - b.x);
+
+                this.charts.sensor.data.datasets[0].data = points;
+                this.charts.sensor.data.datasets[0].label = `传感器 ${data.sensor_id} - ${data.interval}`;
+                this.charts.sensor.update('none');
+            }
+
+            formatNumber(num) {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+            }
+
+            formatDate(dateStr) {
+                if (!dateStr) return '--';
+                const dt = new Date(dateStr);
+                return dt.toLocaleString('zh-CN', {
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            getStatusText(status) {
+                const map = {
+                    'pending': '等待中',
+                    'running': '运行中',
+                    'completed': '已完成',
+                    'failed': '失败'
+                };
+                return map[status] || status;
+            }
+
+            getCircuitBreakerText(status) {
+                const map = {
+                    'closed': '正常',
+                    'open': '熔断',
+                    'half_open': '恢复中'
+                };
+                return map[status] || status;
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        const dashboard = new DashboardClient();
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+{
+  "parameters": [
+    {
+      "parameter_name": "hydraulic_conductivity",
+      "parameter_value": 5e-05,
+      "unit": "m/s",
+      "stratum_id": 1,
+      "grid_id": 2
+    },
+    {
+      "parameter_name": "porosity",
+      "parameter_value": 0.35,
+      "unit": "",
+      "stratum_id": 1,
+      "grid_id": 2
+    }
+  ],
+  "boundary_conditions": [
+    {
+      "boundary_type": "dirichlet",
+      "node_indices": [
+        0,
+        31,
+        62,
+        93,
+        124,
+        155,
+        186,
+        217,
+        248,
+        279,
+        310,
+        341,
+        372,
+        403,
+        434,
+        465
+      ],
+      "values": [
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0
+      ],
+      "description": "Left boundary h=12.0m"
+    },
+    {
+      "boundary_type": "dirichlet",
+      "node_indices": [
+        30,
+        61,
+        92,
+        123,
+        154,
+        185,
+        216,
+        247,
+        278,
+        309,
+        340,
+        371,
+        402,
+        433,
+        464,
+        495
+      ],
+      "values": [
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0
+      ],
+      "description": "Right boundary h=3.0m"
+    }
+  ]
+}

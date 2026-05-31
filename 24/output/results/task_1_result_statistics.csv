@@ -1,0 +1,12 @@
+Statistic,Value
+head_min,5.0
+head_max,10.0
+head_mean,7.500000000000011
+head_std,1.5138251770487468
+velocity_max,1.4285714285714572e-05
+velocity_mean,1.4285714285714279e-05
+flux_max,5.0000000000000995e-06
+flux_mean,4.999999999999996e-06
+gradient_max,0.05000000000000099
+gradient_mean,0.049999999999999975
+mass_balance_error,0.0

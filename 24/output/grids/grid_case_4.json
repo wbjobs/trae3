@@ -1,0 +1,2275 @@
+{
+  "name": "Test Grid 4",
+  "description": "Test case 4 with 15x8 grid",
+  "num_nodes": 144,
+  "num_elements": 120,
+  "element_type": "quadrilateral",
+  "nodes": [
+    {
+      "id": 0,
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 1,
+      "x": 6.666666666666667,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 2,
+      "x": 13.333333333333334,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 3,
+      "x": 20.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 4,
+      "x": 26.666666666666668,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 5,
+      "x": 33.333333333333336,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 6,
+      "x": 40.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 7,
+      "x": 46.666666666666664,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 8,
+      "x": 53.333333333333336,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 9,
+      "x": 60.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 10,
+      "x": 66.66666666666667,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 11,
+      "x": 73.33333333333333,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 12,
+      "x": 80.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 13,
+      "x": 86.66666666666667,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 14,
+      "x": 93.33333333333333,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 15,
+      "x": 100.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    {
+      "id": 16,
+      "x": 0.0,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 17,
+      "x": 6.666666666666667,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 18,
+      "x": 13.333333333333334,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 19,
+      "x": 20.0,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 20,
+      "x": 26.666666666666668,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 21,
+      "x": 33.333333333333336,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 22,
+      "x": 40.0,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 23,
+      "x": 46.666666666666664,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 24,
+      "x": 53.333333333333336,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 25,
+      "x": 60.0,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 26,
+      "x": 66.66666666666667,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 27,
+      "x": 73.33333333333333,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 28,
+      "x": 80.0,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 29,
+      "x": 86.66666666666667,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 30,
+      "x": 93.33333333333333,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 31,
+      "x": 100.0,
+      "y": 6.25,
+      "z": 0.0
+    },
+    {
+      "id": 32,
+      "x": 0.0,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 33,
+      "x": 6.666666666666667,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 34,
+      "x": 13.333333333333334,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 35,
+      "x": 20.0,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 36,
+      "x": 26.666666666666668,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 37,
+      "x": 33.333333333333336,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 38,
+      "x": 40.0,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 39,
+      "x": 46.666666666666664,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 40,
+      "x": 53.333333333333336,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 41,
+      "x": 60.0,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 42,
+      "x": 66.66666666666667,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 43,
+      "x": 73.33333333333333,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 44,
+      "x": 80.0,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 45,
+      "x": 86.66666666666667,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 46,
+      "x": 93.33333333333333,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 47,
+      "x": 100.0,
+      "y": 12.5,
+      "z": 0.0
+    },
+    {
+      "id": 48,
+      "x": 0.0,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 49,
+      "x": 6.666666666666667,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 50,
+      "x": 13.333333333333334,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 51,
+      "x": 20.0,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 52,
+      "x": 26.666666666666668,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 53,
+      "x": 33.333333333333336,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 54,
+      "x": 40.0,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 55,
+      "x": 46.666666666666664,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 56,
+      "x": 53.333333333333336,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 57,
+      "x": 60.0,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 58,
+      "x": 66.66666666666667,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 59,
+      "x": 73.33333333333333,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 60,
+      "x": 80.0,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 61,
+      "x": 86.66666666666667,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 62,
+      "x": 93.33333333333333,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 63,
+      "x": 100.0,
+      "y": 18.75,
+      "z": 0.0
+    },
+    {
+      "id": 64,
+      "x": 0.0,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 65,
+      "x": 6.666666666666667,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 66,
+      "x": 13.333333333333334,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 67,
+      "x": 20.0,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 68,
+      "x": 26.666666666666668,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 69,
+      "x": 33.333333333333336,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 70,
+      "x": 40.0,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 71,
+      "x": 46.666666666666664,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 72,
+      "x": 53.333333333333336,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 73,
+      "x": 60.0,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 74,
+      "x": 66.66666666666667,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 75,
+      "x": 73.33333333333333,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 76,
+      "x": 80.0,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 77,
+      "x": 86.66666666666667,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 78,
+      "x": 93.33333333333333,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 79,
+      "x": 100.0,
+      "y": 25.0,
+      "z": 0.0
+    },
+    {
+      "id": 80,
+      "x": 0.0,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 81,
+      "x": 6.666666666666667,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 82,
+      "x": 13.333333333333334,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 83,
+      "x": 20.0,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 84,
+      "x": 26.666666666666668,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 85,
+      "x": 33.333333333333336,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 86,
+      "x": 40.0,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 87,
+      "x": 46.666666666666664,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 88,
+      "x": 53.333333333333336,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 89,
+      "x": 60.0,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 90,
+      "x": 66.66666666666667,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 91,
+      "x": 73.33333333333333,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 92,
+      "x": 80.0,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 93,
+      "x": 86.66666666666667,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 94,
+      "x": 93.33333333333333,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 95,
+      "x": 100.0,
+      "y": 31.25,
+      "z": 0.0
+    },
+    {
+      "id": 96,
+      "x": 0.0,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 97,
+      "x": 6.666666666666667,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 98,
+      "x": 13.333333333333334,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 99,
+      "x": 20.0,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 100,
+      "x": 26.666666666666668,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 101,
+      "x": 33.333333333333336,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 102,
+      "x": 40.0,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 103,
+      "x": 46.666666666666664,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 104,
+      "x": 53.333333333333336,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 105,
+      "x": 60.0,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 106,
+      "x": 66.66666666666667,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 107,
+      "x": 73.33333333333333,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 108,
+      "x": 80.0,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 109,
+      "x": 86.66666666666667,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 110,
+      "x": 93.33333333333333,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 111,
+      "x": 100.0,
+      "y": 37.5,
+      "z": 0.0
+    },
+    {
+      "id": 112,
+      "x": 0.0,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 113,
+      "x": 6.666666666666667,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 114,
+      "x": 13.333333333333334,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 115,
+      "x": 20.0,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 116,
+      "x": 26.666666666666668,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 117,
+      "x": 33.333333333333336,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 118,
+      "x": 40.0,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 119,
+      "x": 46.666666666666664,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 120,
+      "x": 53.333333333333336,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 121,
+      "x": 60.0,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 122,
+      "x": 66.66666666666667,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 123,
+      "x": 73.33333333333333,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 124,
+      "x": 80.0,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 125,
+      "x": 86.66666666666667,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 126,
+      "x": 93.33333333333333,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 127,
+      "x": 100.0,
+      "y": 43.75,
+      "z": 0.0
+    },
+    {
+      "id": 128,
+      "x": 0.0,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 129,
+      "x": 6.666666666666667,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 130,
+      "x": 13.333333333333334,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 131,
+      "x": 20.0,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 132,
+      "x": 26.666666666666668,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 133,
+      "x": 33.333333333333336,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 134,
+      "x": 40.0,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 135,
+      "x": 46.666666666666664,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 136,
+      "x": 53.333333333333336,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 137,
+      "x": 60.0,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 138,
+      "x": 66.66666666666667,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 139,
+      "x": 73.33333333333333,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 140,
+      "x": 80.0,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 141,
+      "x": 86.66666666666667,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 142,
+      "x": 93.33333333333333,
+      "y": 50.0,
+      "z": 0.0
+    },
+    {
+      "id": 143,
+      "x": 100.0,
+      "y": 50.0,
+      "z": 0.0
+    }
+  ],
+  "elements": [
+    {
+      "id": 0,
+      "nodes": [
+        0,
+        1,
+        17,
+        16
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 1,
+      "nodes": [
+        1,
+        2,
+        18,
+        17
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 2,
+      "nodes": [
+        2,
+        3,
+        19,
+        18
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 3,
+      "nodes": [
+        3,
+        4,
+        20,
+        19
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 4,
+      "nodes": [
+        4,
+        5,
+        21,
+        20
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 5,
+      "nodes": [
+        5,
+        6,
+        22,
+        21
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 6,
+      "nodes": [
+        6,
+        7,
+        23,
+        22
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 7,
+      "nodes": [
+        7,
+        8,
+        24,
+        23
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 8,
+      "nodes": [
+        8,
+        9,
+        25,
+        24
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 9,
+      "nodes": [
+        9,
+        10,
+        26,
+        25
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 10,
+      "nodes": [
+        10,
+        11,
+        27,
+        26
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 11,
+      "nodes": [
+        11,
+        12,
+        28,
+        27
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 12,
+      "nodes": [
+        12,
+        13,
+        29,
+        28
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 13,
+      "nodes": [
+        13,
+        14,
+        30,
+        29
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 14,
+      "nodes": [
+        14,
+        15,
+        31,
+        30
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 15,
+      "nodes": [
+        16,
+        17,
+        33,
+        32
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 16,
+      "nodes": [
+        17,
+        18,
+        34,
+        33
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 17,
+      "nodes": [
+        18,
+        19,
+        35,
+        34
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 18,
+      "nodes": [
+        19,
+        20,
+        36,
+        35
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 19,
+      "nodes": [
+        20,
+        21,
+        37,
+        36
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 20,
+      "nodes": [
+        21,
+        22,
+        38,
+        37
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 21,
+      "nodes": [
+        22,
+        23,
+        39,
+        38
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 22,
+      "nodes": [
+        23,
+        24,
+        40,
+        39
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 23,
+      "nodes": [
+        24,
+        25,
+        41,
+        40
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 24,
+      "nodes": [
+        25,
+        26,
+        42,
+        41
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 25,
+      "nodes": [
+        26,
+        27,
+        43,
+        42
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 26,
+      "nodes": [
+        27,
+        28,
+        44,
+        43
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 27,
+      "nodes": [
+        28,
+        29,
+        45,
+        44
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 28,
+      "nodes": [
+        29,
+        30,
+        46,
+        45
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 29,
+      "nodes": [
+        30,
+        31,
+        47,
+        46
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 30,
+      "nodes": [
+        32,
+        33,
+        49,
+        48
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 31,
+      "nodes": [
+        33,
+        34,
+        50,
+        49
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 32,
+      "nodes": [
+        34,
+        35,
+        51,
+        50
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 33,
+      "nodes": [
+        35,
+        36,
+        52,
+        51
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 34,
+      "nodes": [
+        36,
+        37,
+        53,
+        52
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 35,
+      "nodes": [
+        37,
+        38,
+        54,
+        53
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 36,
+      "nodes": [
+        38,
+        39,
+        55,
+        54
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 37,
+      "nodes": [
+        39,
+        40,
+        56,
+        55
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 38,
+      "nodes": [
+        40,
+        41,
+        57,
+        56
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 39,
+      "nodes": [
+        41,
+        42,
+        58,
+        57
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 40,
+      "nodes": [
+        42,
+        43,
+        59,
+        58
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 41,
+      "nodes": [
+        43,
+        44,
+        60,
+        59
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 42,
+      "nodes": [
+        44,
+        45,
+        61,
+        60
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 43,
+      "nodes": [
+        45,
+        46,
+        62,
+        61
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 44,
+      "nodes": [
+        46,
+        47,
+        63,
+        62
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 45,
+      "nodes": [
+        48,
+        49,
+        65,
+        64
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 46,
+      "nodes": [
+        49,
+        50,
+        66,
+        65
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 47,
+      "nodes": [
+        50,
+        51,
+        67,
+        66
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 48,
+      "nodes": [
+        51,
+        52,
+        68,
+        67
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 49,
+      "nodes": [
+        52,
+        53,
+        69,
+        68
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 50,
+      "nodes": [
+        53,
+        54,
+        70,
+        69
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 51,
+      "nodes": [
+        54,
+        55,
+        71,
+        70
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 52,
+      "nodes": [
+        55,
+        56,
+        72,
+        71
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 53,
+      "nodes": [
+        56,
+        57,
+        73,
+        72
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 54,
+      "nodes": [
+        57,
+        58,
+        74,
+        73
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 55,
+      "nodes": [
+        58,
+        59,
+        75,
+        74
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 56,
+      "nodes": [
+        59,
+        60,
+        76,
+        75
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 57,
+      "nodes": [
+        60,
+        61,
+        77,
+        76
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 58,
+      "nodes": [
+        61,
+        62,
+        78,
+        77
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 59,
+      "nodes": [
+        62,
+        63,
+        79,
+        78
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 60,
+      "nodes": [
+        64,
+        65,
+        81,
+        80
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 61,
+      "nodes": [
+        65,
+        66,
+        82,
+        81
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 62,
+      "nodes": [
+        66,
+        67,
+        83,
+        82
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 63,
+      "nodes": [
+        67,
+        68,
+        84,
+        83
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 64,
+      "nodes": [
+        68,
+        69,
+        85,
+        84
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 65,
+      "nodes": [
+        69,
+        70,
+        86,
+        85
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 66,
+      "nodes": [
+        70,
+        71,
+        87,
+        86
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 67,
+      "nodes": [
+        71,
+        72,
+        88,
+        87
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 68,
+      "nodes": [
+        72,
+        73,
+        89,
+        88
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 69,
+      "nodes": [
+        73,
+        74,
+        90,
+        89
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 70,
+      "nodes": [
+        74,
+        75,
+        91,
+        90
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 71,
+      "nodes": [
+        75,
+        76,
+        92,
+        91
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 72,
+      "nodes": [
+        76,
+        77,
+        93,
+        92
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 73,
+      "nodes": [
+        77,
+        78,
+        94,
+        93
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 74,
+      "nodes": [
+        78,
+        79,
+        95,
+        94
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 75,
+      "nodes": [
+        80,
+        81,
+        97,
+        96
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 76,
+      "nodes": [
+        81,
+        82,
+        98,
+        97
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 77,
+      "nodes": [
+        82,
+        83,
+        99,
+        98
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 78,
+      "nodes": [
+        83,
+        84,
+        100,
+        99
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 79,
+      "nodes": [
+        84,
+        85,
+        101,
+        100
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 80,
+      "nodes": [
+        85,
+        86,
+        102,
+        101
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 81,
+      "nodes": [
+        86,
+        87,
+        103,
+        102
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 82,
+      "nodes": [
+        87,
+        88,
+        104,
+        103
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 83,
+      "nodes": [
+        88,
+        89,
+        105,
+        104
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 84,
+      "nodes": [
+        89,
+        90,
+        106,
+        105
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 85,
+      "nodes": [
+        90,
+        91,
+        107,
+        106
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 86,
+      "nodes": [
+        91,
+        92,
+        108,
+        107
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 87,
+      "nodes": [
+        92,
+        93,
+        109,
+        108
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 88,
+      "nodes": [
+        93,
+        94,
+        110,
+        109
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 89,
+      "nodes": [
+        94,
+        95,
+        111,
+        110
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 90,
+      "nodes": [
+        96,
+        97,
+        113,
+        112
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 91,
+      "nodes": [
+        97,
+        98,
+        114,
+        113
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 92,
+      "nodes": [
+        98,
+        99,
+        115,
+        114
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 93,
+      "nodes": [
+        99,
+        100,
+        116,
+        115
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 94,
+      "nodes": [
+        100,
+        101,
+        117,
+        116
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 95,
+      "nodes": [
+        101,
+        102,
+        118,
+        117
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 96,
+      "nodes": [
+        102,
+        103,
+        119,
+        118
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 97,
+      "nodes": [
+        103,
+        104,
+        120,
+        119
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 98,
+      "nodes": [
+        104,
+        105,
+        121,
+        120
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 99,
+      "nodes": [
+        105,
+        106,
+        122,
+        121
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 100,
+      "nodes": [
+        106,
+        107,
+        123,
+        122
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 101,
+      "nodes": [
+        107,
+        108,
+        124,
+        123
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 102,
+      "nodes": [
+        108,
+        109,
+        125,
+        124
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 103,
+      "nodes": [
+        109,
+        110,
+        126,
+        125
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 104,
+      "nodes": [
+        110,
+        111,
+        127,
+        126
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 105,
+      "nodes": [
+        112,
+        113,
+        129,
+        128
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 106,
+      "nodes": [
+        113,
+        114,
+        130,
+        129
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 107,
+      "nodes": [
+        114,
+        115,
+        131,
+        130
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 108,
+      "nodes": [
+        115,
+        116,
+        132,
+        131
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 109,
+      "nodes": [
+        116,
+        117,
+        133,
+        132
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 110,
+      "nodes": [
+        117,
+        118,
+        134,
+        133
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 111,
+      "nodes": [
+        118,
+        119,
+        135,
+        134
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 112,
+      "nodes": [
+        119,
+        120,
+        136,
+        135
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 113,
+      "nodes": [
+        120,
+        121,
+        137,
+        136
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 114,
+      "nodes": [
+        121,
+        122,
+        138,
+        137
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 115,
+      "nodes": [
+        122,
+        123,
+        139,
+        138
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 116,
+      "nodes": [
+        123,
+        124,
+        140,
+        139
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 117,
+      "nodes": [
+        124,
+        125,
+        141,
+        140
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 118,
+      "nodes": [
+        125,
+        126,
+        142,
+        141
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    },
+    {
+      "id": 119,
+      "nodes": [
+        126,
+        127,
+        143,
+        142
+      ],
+      "element_type": "quadrilateral",
+      "stratum_id": 1
+    }
+  ],
+  "boundaries": [
+    {
+      "id": 0,
+      "node_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "boundary_type": "bottom"
+    },
+    {
+      "id": 1,
+      "node_indices": [
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143
+      ],
+      "boundary_type": "top"
+    },
+    {
+      "id": 2,
+      "node_indices": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112,
+        128
+      ],
+      "boundary_type": "left"
+    },
+    {
+      "id": 3,
+      "node_indices": [
+        15,
+        31,
+        47,
+        63,
+        79,
+        95,
+        111,
+        127,
+        143
+      ],
+      "boundary_type": "right"
+    }
+  ],
+  "min_x": 0.0,
+  "max_x": 100.0,
+  "min_y": 0.0,
+  "max_y": 50.0
+}

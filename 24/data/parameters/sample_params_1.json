@@ -1,0 +1,87 @@
+{
+  "parameters": [
+    {
+      "parameter_name": "hydraulic_conductivity",
+      "parameter_value": 0.0001,
+      "unit": "m/s",
+      "stratum_id": 1,
+      "grid_id": 1
+    },
+    {
+      "parameter_name": "porosity",
+      "parameter_value": 0.35,
+      "unit": "",
+      "stratum_id": 1,
+      "grid_id": 1
+    },
+    {
+      "parameter_name": "specific_storage",
+      "parameter_value": 1e-05,
+      "unit": "1/m",
+      "stratum_id": 1,
+      "grid_id": 1
+    }
+  ],
+  "boundary_conditions": [
+    {
+      "boundary_type": "dirichlet",
+      "node_indices": [
+        0,
+        21,
+        42,
+        63,
+        84,
+        105,
+        126,
+        147,
+        168,
+        189,
+        210
+      ],
+      "values": [
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "description": "左侧定水头边界 (h=10m)"
+    },
+    {
+      "boundary_type": "dirichlet",
+      "node_indices": [
+        20,
+        41,
+        62,
+        83,
+        104,
+        125,
+        146,
+        167,
+        188,
+        209,
+        230
+      ],
+      "values": [
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "description": "右侧定水头边界 (h=5m)"
+    }
+  ]
+}
