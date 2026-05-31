@@ -1,0 +1,227 @@
+2026-05-29 09:46:23,935 [INFO] __main__: ============================================================
+2026-05-29 09:46:23,936 [INFO] __main__: Meteo Turbulence Simulation - Single Mode
+2026-05-29 09:46:23,937 [INFO] __main__: ============================================================
+2026-05-29 09:46:23,937 [INFO] grid_mesh: Generating grid: 8x8x4 over [0.0,500.0]x[0.0,500.0]x[0.0,100.0]
+2026-05-29 09:46:23,937 [INFO] grid_mesh: Grid generation complete: 256 cells total
+2026-05-29 09:46:23,937 [INFO] __main__: Grid generated: 8x8x4
+2026-05-29 09:46:23,937 [INFO] __main__: Creating solver: method=LES, model=Smagorinsky, dt=0.0100, t_end=0.10
+2026-05-29 09:46:24,269 [INFO] turbulence_solver: Starting solver: method=LES, model=Smagorinsky, t_end=0.10
+2026-05-29 09:46:24,271 [INFO] turbulence_solver: Initializing turbulence solver [LES / Smagorinsky]
+2026-05-29 09:46:24,331 [INFO] turbulence_solver: Solver initialized: dt=0.010000, t_end=0.10, nu_min_sgs=0.0500
+2026-05-29 09:53:08,719 [INFO] __main__: ============================================================
+2026-05-29 09:53:08,719 [INFO] __main__: Meteo Turbulence Simulation - Single Mode
+2026-05-29 09:53:08,719 [INFO] __main__: ============================================================
+2026-05-29 09:53:08,723 [INFO] grid_mesh: Generating grid: 8x8x4 over [0.0,500.0]x[0.0,500.0]x[0.0,100.0]
+2026-05-29 09:53:08,724 [INFO] grid_mesh: Grid generation complete: 256 cells total
+2026-05-29 09:53:08,724 [INFO] __main__: Grid generated: 8x8x4
+2026-05-29 09:53:08,724 [INFO] __main__: Creating solver: method=LES, model=Smagorinsky, dt=0.0100, t_end=0.10
+2026-05-29 09:53:08,797 [INFO] turbulence_solver: Starting solver: method=LES, model=Smagorinsky, t_end=0.10
+2026-05-29 09:53:08,800 [INFO] turbulence_solver: Initializing turbulence solver [LES / Smagorinsky]
+2026-05-29 09:53:08,808 [INFO] turbulence_solver: Solver initialized: dt=0.010000, t_end=0.10, nu_min_sgs=0.0500
+2026-05-29 09:54:05,096 [INFO] __main__: ============================================================
+2026-05-29 09:54:05,097 [INFO] __main__: Meteo Turbulence Simulation - Single Mode
+2026-05-29 09:54:05,097 [INFO] __main__: ============================================================
+2026-05-29 09:54:05,097 [INFO] grid_mesh: Generating grid: 8x8x4 over [0.0,500.0]x[0.0,500.0]x[0.0,100.0]
+2026-05-29 09:54:05,100 [INFO] grid_mesh: Grid generation complete: 256 cells total
+2026-05-29 09:54:05,100 [INFO] __main__: Grid generated: 8x8x4
+2026-05-29 09:54:05,100 [INFO] __main__: Creating solver: method=LES, model=Smagorinsky, dt=0.0100, t_end=0.10
+2026-05-29 09:54:05,152 [INFO] turbulence_solver: Starting solver: method=LES, model=Smagorinsky, t_end=0.10
+2026-05-29 09:54:05,152 [INFO] turbulence_solver: Initializing turbulence solver [LES / Smagorinsky]
+2026-05-29 09:54:05,155 [INFO] turbulence_solver: Solver initialized: dt=0.010000, t_end=0.10, nu_min_sgs=0.0500
+2026-05-29 09:54:05,168 [INFO] turbulence_solver: Step 1/10  t=0.0100  dt=0.010000  avg_speed=3.6856  avg_tke=3.155979  max_v=8.5101
+2026-05-29 09:54:05,176 [INFO] turbulence_solver: Step 2/10  t=0.0200  dt=0.010000  avg_speed=3.7181  avg_tke=3.227867  max_v=8.3496
+2026-05-29 09:54:05,185 [INFO] turbulence_solver: Step 3/10  t=0.0300  dt=0.010000  avg_speed=3.7526  avg_tke=3.345797  max_v=8.1891
+2026-05-29 09:54:05,196 [INFO] turbulence_solver: Step 4/10  t=0.0400  dt=0.010000  avg_speed=3.7769  avg_tke=3.443796  max_v=8.1818
+2026-05-29 09:54:05,217 [INFO] turbulence_solver: Step 5/10  t=0.0500  dt=0.010000  avg_speed=3.7878  avg_tke=3.486521  max_v=8.1767
+2026-05-29 09:54:05,239 [INFO] turbulence_solver: Step 6/10  t=0.0600  dt=0.010000  avg_speed=3.7873  avg_tke=3.474885  max_v=8.1716
+2026-05-29 09:54:05,262 [INFO] turbulence_solver: Step 7/10  t=0.0700  dt=0.010000  avg_speed=3.7799  avg_tke=3.431820  max_v=8.1666
+2026-05-29 09:54:05,276 [INFO] turbulence_solver: Step 8/10  t=0.0800  dt=0.010000  avg_speed=3.7704  avg_tke=3.381608  max_v=8.1615
+2026-05-29 09:54:05,289 [INFO] turbulence_solver: Step 9/10  t=0.0900  dt=0.010000  avg_speed=3.7617  avg_tke=3.339142  max_v=8.1565
+2026-05-29 09:54:05,303 [INFO] turbulence_solver: Step 10/10  t=0.1000  dt=0.010000  avg_speed=3.7553  avg_tke=3.309693  max_v=8.1515
+2026-05-29 09:54:05,303 [INFO] turbulence_solver: Solver finished: step=10, time=0.1000, converged=False
+2026-05-29 09:54:05,307 [INFO] turbulence_solver: Result saved to E:\标注项目\trae3\14\data\results\single_sim_result.pkl
+2026-05-29 09:54:05,307 [INFO] __main__: [Export] Exporting results...
+2026-05-29 09:54:05,307 [WARNING] viz_export: VTK not installed, falling back to VTK ASCII export
+2026-05-29 09:54:05,313 [INFO] viz_export: VTK ASCII export: E:\标注项目\trae3\14\data\results\single_sim\result.vtk
+2026-05-29 09:57:10,357 [INFO] __main__: ============================================================
+2026-05-29 09:57:10,357 [INFO] __main__: Meteo Turbulence Simulation - Single Mode
+2026-05-29 09:57:10,357 [INFO] __main__: ============================================================
+2026-05-29 09:57:10,357 [INFO] grid_mesh: Generating grid: 16x16x8 over [0.0,500.0]x[0.0,500.0]x[0.0,100.0]
+2026-05-29 09:57:10,361 [INFO] grid_mesh: Grid generation complete: 2048 cells total
+2026-05-29 09:57:10,361 [INFO] __main__: Grid generated: 16x16x8
+2026-05-29 09:57:10,361 [INFO] __main__: Creating solver: method=LES, model=Smagorinsky, dt=0.0100, t_end=0.50
+2026-05-29 09:57:10,393 [INFO] turbulence_solver: Starting solver: method=LES, model=Smagorinsky, t_end=0.50
+2026-05-29 09:57:10,393 [INFO] turbulence_solver: Initializing turbulence solver [LES / Smagorinsky]
+2026-05-29 09:57:10,412 [INFO] turbulence_solver: Solver initialized: dt=0.010000, t_end=0.50, nu_min_sgs=0.0500
+2026-05-29 09:57:10,436 [INFO] turbulence_solver: Step 1/50  t=0.0100  dt=0.010000  avg_speed=23.1422  avg_tke=346.934079  max_v=30.0000
+2026-05-29 09:57:10,467 [INFO] turbulence_solver: Step 3/50  t=0.0300  dt=0.010000  avg_speed=23.1416  avg_tke=346.932013  max_v=30.0000
+2026-05-29 09:57:10,493 [INFO] turbulence_solver: Step 5/50  t=0.0500  dt=0.010000  avg_speed=23.1410  avg_tke=346.928036  max_v=30.0000
+2026-05-29 09:57:10,576 [INFO] turbulence_solver: Step 7/50  t=0.0700  dt=0.010000  avg_speed=23.1404  avg_tke=346.923712  max_v=30.0000
+2026-05-29 09:57:10,734 [INFO] turbulence_solver: Step 9/50  t=0.0900  dt=0.010000  avg_speed=23.1398  avg_tke=346.919446  max_v=30.0000
+2026-05-29 09:57:10,945 [INFO] turbulence_solver: Step 11/50  t=0.1100  dt=0.010000  avg_speed=0.6393  avg_tke=9.415264  max_v=10.1053
+2026-05-29 09:57:11,036 [INFO] turbulence_solver: Step 13/50  t=0.1300  dt=0.010000  avg_speed=0.6388  avg_tke=9.412831  max_v=10.0599
+2026-05-29 09:57:11,082 [INFO] turbulence_solver: Step 15/50  t=0.1500  dt=0.010000  avg_speed=0.6384  avg_tke=9.410434  max_v=10.0151
+2026-05-29 09:57:11,112 [INFO] turbulence_solver: Step 17/50  t=0.1700  dt=0.010000  avg_speed=0.6380  avg_tke=9.408074  max_v=9.9708
+2026-05-29 09:57:11,167 [INFO] turbulence_solver: Step 19/50  t=0.1900  dt=0.010000  avg_speed=0.6376  avg_tke=9.405749  max_v=9.9271
+2026-05-29 09:57:11,223 [INFO] turbulence_solver: Step 21/50  t=0.2100  dt=0.010000  avg_speed=0.6372  avg_tke=9.403458  max_v=9.8839
+2026-05-29 09:57:11,272 [INFO] turbulence_solver: Step 23/50  t=0.2300  dt=0.010000  avg_speed=0.6368  avg_tke=9.401202  max_v=9.8412
+2026-05-29 09:57:11,303 [INFO] turbulence_solver: Step 25/50  t=0.2500  dt=0.010000  avg_speed=0.6365  avg_tke=9.398979  max_v=9.7990
+2026-05-29 09:57:11,332 [INFO] turbulence_solver: Step 27/50  t=0.2700  dt=0.010000  avg_speed=0.6361  avg_tke=9.396788  max_v=9.7573
+2026-05-29 09:57:11,370 [INFO] turbulence_solver: Step 29/50  t=0.2900  dt=0.010000  avg_speed=0.6357  avg_tke=9.394629  max_v=9.7160
+2026-05-29 09:57:11,402 [INFO] turbulence_solver: Step 31/50  t=0.3100  dt=0.010000  avg_speed=0.6353  avg_tke=9.392502  max_v=9.6753
+2026-05-29 09:57:11,434 [INFO] turbulence_solver: Step 33/50  t=0.3300  dt=0.010000  avg_speed=0.6350  avg_tke=9.390405  max_v=9.6350
+2026-05-29 09:57:11,469 [INFO] turbulence_solver: Step 35/50  t=0.3500  dt=0.010000  avg_speed=0.6346  avg_tke=9.388338  max_v=9.5952
+2026-05-29 09:57:11,497 [INFO] turbulence_solver: Step 37/50  t=0.3700  dt=0.010000  avg_speed=0.6342  avg_tke=9.386301  max_v=9.5559
+2026-05-29 09:57:11,542 [INFO] turbulence_solver: Step 39/50  t=0.3900  dt=0.010000  avg_speed=0.6339  avg_tke=9.384292  max_v=9.5170
+2026-05-29 09:57:11,580 [INFO] turbulence_solver: Step 41/50  t=0.4100  dt=0.010000  avg_speed=0.6335  avg_tke=9.382312  max_v=9.4786
+2026-05-29 09:57:11,610 [INFO] turbulence_solver: Step 43/50  t=0.4300  dt=0.010000  avg_speed=0.6332  avg_tke=9.380360  max_v=9.4405
+2026-05-29 09:57:11,648 [INFO] turbulence_solver: Step 45/50  t=0.4500  dt=0.010000  avg_speed=0.6328  avg_tke=9.378435  max_v=9.4030
+2026-05-29 09:57:11,689 [INFO] turbulence_solver: Step 47/50  t=0.4700  dt=0.010000  avg_speed=0.6325  avg_tke=9.376537  max_v=9.3658
+2026-05-29 09:57:11,725 [INFO] turbulence_solver: Step 49/50  t=0.4900  dt=0.010000  avg_speed=0.6322  avg_tke=9.374665  max_v=9.3290
+2026-05-29 09:57:11,751 [INFO] turbulence_solver: Solver finished: step=50, time=0.5000, converged=False
+2026-05-29 09:57:11,754 [INFO] turbulence_solver: Result saved to E:\标注项目\trae3\14\data\results\single_sim_result.pkl
+2026-05-29 09:57:11,756 [INFO] __main__: [Export] Exporting results...
+2026-05-29 09:57:11,756 [WARNING] viz_export: VTK not installed, falling back to VTK ASCII export
+2026-05-29 09:57:11,776 [INFO] viz_export: VTK ASCII export: E:\标注项目\trae3\14\data\results\single_sim\result.vtk
+2026-05-29 09:57:11,881 [WARNING] viz_export: Failed to export netcdf: [Errno 13] Permission denied: 'E:\\标注项目\\trae3\\14\\data\\results\\single_sim\\result.nc'
+2026-05-29 09:57:11,882 [INFO] viz_export: All formats exported: ['vtk']
+2026-05-29 09:57:11,882 [INFO] __main__: [Export] Formats: ['vtk']
+2026-05-29 09:57:11,882 [INFO] __main__: [Visualize] Generating plots...
+2026-05-29 09:57:14,230 [INFO] viz_export: Cross-section plot saved: E:\标注项目\trae3\14\data\results\single_sim\wind_xy.png
+2026-05-29 09:57:14,773 [INFO] viz_export: Velocity profile plot saved: E:\标注项目\trae3\14\data\results\single_sim\velocity_profile.png
+2026-05-29 09:57:15,289 [INFO] viz_export: Convergence history plot saved: E:\标注项目\trae3\14\data\results\single_sim\convergence.png
+2026-05-29 09:57:15,561 [INFO] viz_export: Turbulence intensity map saved: E:\标注项目\trae3\14\data\results\single_sim\turb_intensity.png
+2026-05-29 09:57:15,562 [INFO] viz_export: All visualizations generated: ['crosssection_z', 'velocity_profile', 'convergence', 'turbulence_intensity']
+2026-05-29 09:57:15,563 [INFO] __main__: [Visualize] Plots: ['crosssection_z', 'velocity_profile', 'convergence', 'turbulence_intensity']
+2026-05-29 09:57:15,563 [INFO] __main__: ============================================================
+2026-05-29 09:57:15,563 [INFO] __main__: Simulation complete: steps=50, time=0.5000, converged=False
+2026-05-29 09:57:15,563 [INFO] __main__:   Avg wind speed: 0.6320 m/s
+2026-05-29 09:57:15,563 [INFO] __main__:   Avg TKE: 9.373738 m²/s²
+2026-05-29 09:57:15,563 [INFO] __main__:   Max velocity: 9.3108 m/s
+2026-05-29 09:57:15,564 [INFO] __main__: ============================================================
+2026-05-29 10:01:38,598 [INFO] __main__: ============================================================
+2026-05-29 10:01:38,598 [INFO] __main__: Meteo Turbulence Simulation - Single Mode
+2026-05-29 10:01:38,598 [INFO] __main__: ============================================================
+2026-05-29 10:01:38,598 [INFO] grid_mesh: Generating grid: 12x12x6 over [0.0,500.0]x[0.0,500.0]x[0.0,100.0]
+2026-05-29 10:01:38,598 [INFO] grid_mesh: Grid generation complete: 864 cells total
+2026-05-29 10:01:38,598 [INFO] __main__: Grid generated: 12x12x6
+2026-05-29 10:01:38,603 [INFO] __main__: Creating solver: method=LES, model=Smagorinsky, dt=0.0100, t_end=0.30
+2026-05-29 10:01:38,647 [INFO] turbulence_solver: Starting solver: method=LES, model=Smagorinsky, t_end=0.30
+2026-05-29 10:01:38,647 [INFO] turbulence_solver: Initializing turbulence solver [LES / Smagorinsky]
+2026-05-29 10:01:38,662 [INFO] turbulence_solver: Solver initialized: dt=0.010000, t_end=0.30, nu_min_sgs=0.0500
+2026-05-29 10:01:38,678 [INFO] turbulence_solver: Step 1/30  t=0.0100  dt=0.010000  avg_speed=20.8238  avg_tke=308.674643  max_v=30.0000
+2026-05-29 10:01:38,687 [INFO] turbulence_solver: Step 2/30  t=0.0200  dt=0.010000  avg_speed=20.8237  avg_tke=308.674639  max_v=30.0000
+2026-05-29 10:01:38,697 [INFO] turbulence_solver: Step 3/30  t=0.0300  dt=0.010000  avg_speed=20.8237  avg_tke=308.674471  max_v=30.0000
+2026-05-29 10:01:38,708 [INFO] turbulence_solver: Step 4/30  t=0.0400  dt=0.010000  avg_speed=20.8237  avg_tke=308.674293  max_v=30.0000
+2026-05-29 10:01:38,719 [INFO] turbulence_solver: Step 5/30  t=0.0500  dt=0.010000  avg_speed=20.8237  avg_tke=308.674115  max_v=30.0000
+2026-05-29 10:01:38,730 [INFO] turbulence_solver: Step 6/30  t=0.0600  dt=0.010000  avg_speed=20.8237  avg_tke=308.673939  max_v=30.0000
+2026-05-29 10:01:38,740 [INFO] turbulence_solver: Step 7/30  t=0.0700  dt=0.010000  avg_speed=20.8236  avg_tke=308.673764  max_v=30.0000
+2026-05-29 10:01:38,757 [INFO] turbulence_solver: Step 8/30  t=0.0800  dt=0.010000  avg_speed=20.8236  avg_tke=308.673590  max_v=30.0000
+2026-05-29 10:01:38,768 [INFO] turbulence_solver: Step 9/30  t=0.0900  dt=0.010000  avg_speed=20.8236  avg_tke=308.673417  max_v=30.0000
+2026-05-29 10:01:38,779 [INFO] turbulence_solver: Step 10/30  t=0.1000  dt=0.010000  avg_speed=20.8236  avg_tke=308.673245  max_v=30.0000
+2026-05-29 10:01:38,789 [INFO] turbulence_solver: Step 11/30  t=0.1100  dt=0.010000  avg_speed=20.8236  avg_tke=308.673074  max_v=30.0000
+2026-05-29 10:01:38,802 [INFO] turbulence_solver: Step 12/30  t=0.1200  dt=0.010000  avg_speed=20.8235  avg_tke=308.672905  max_v=30.0000
+2026-05-29 10:01:38,816 [INFO] turbulence_solver: Step 13/30  t=0.1300  dt=0.010000  avg_speed=20.8235  avg_tke=308.672736  max_v=30.0000
+2026-05-29 10:01:38,827 [INFO] turbulence_solver: Step 14/30  t=0.1400  dt=0.010000  avg_speed=20.8235  avg_tke=308.672569  max_v=30.0000
+2026-05-29 10:01:38,837 [INFO] turbulence_solver: Step 15/30  t=0.1500  dt=0.010000  avg_speed=20.8235  avg_tke=308.672403  max_v=30.0000
+2026-05-29 10:01:38,851 [INFO] turbulence_solver: Step 16/30  t=0.1600  dt=0.010000  avg_speed=20.8235  avg_tke=308.672238  max_v=30.0000
+2026-05-29 10:01:38,869 [INFO] turbulence_solver: Step 17/30  t=0.1700  dt=0.010000  avg_speed=0.8234  avg_tke=8.672074  max_v=6.1963
+2026-05-29 10:01:38,882 [INFO] turbulence_solver: Step 18/30  t=0.1800  dt=0.010000  avg_speed=0.8234  avg_tke=8.671975  max_v=6.1958
+2026-05-29 10:01:38,893 [INFO] turbulence_solver: Step 19/30  t=0.1900  dt=0.010000  avg_speed=0.8234  avg_tke=8.671877  max_v=6.1953
+2026-05-29 10:01:38,907 [INFO] turbulence_solver: Step 20/30  t=0.2000  dt=0.010000  avg_speed=0.8234  avg_tke=8.671780  max_v=6.1949
+2026-05-29 10:01:38,922 [INFO] turbulence_solver: Step 21/30  t=0.2100  dt=0.010000  avg_speed=0.8234  avg_tke=8.671682  max_v=6.1944
+2026-05-29 10:01:38,928 [INFO] turbulence_solver: Step 22/30  t=0.2200  dt=0.010000  avg_speed=0.8234  avg_tke=8.671586  max_v=6.1939
+2026-05-29 10:01:38,944 [INFO] turbulence_solver: Step 23/30  t=0.2300  dt=0.010000  avg_speed=0.8234  avg_tke=8.671489  max_v=6.1935
+2026-05-29 10:01:38,954 [INFO] turbulence_solver: Step 24/30  t=0.2400  dt=0.010000  avg_speed=0.8234  avg_tke=8.671394  max_v=6.1930
+2026-05-29 10:01:38,977 [INFO] turbulence_solver: Step 25/30  t=0.2500  dt=0.010000  avg_speed=0.8233  avg_tke=8.671298  max_v=6.1926
+2026-05-29 10:01:38,989 [INFO] turbulence_solver: Step 26/30  t=0.2600  dt=0.010000  avg_speed=0.8233  avg_tke=8.671203  max_v=6.1921
+2026-05-29 10:01:39,002 [INFO] turbulence_solver: Step 27/30  t=0.2700  dt=0.010000  avg_speed=0.8233  avg_tke=8.671109  max_v=6.1916
+2026-05-29 10:01:39,014 [INFO] turbulence_solver: Step 28/30  t=0.2800  dt=0.010000  avg_speed=0.8233  avg_tke=8.671015  max_v=6.1912
+2026-05-29 10:01:39,031 [INFO] turbulence_solver: Step 29/30  t=0.2900  dt=0.010000  avg_speed=0.8233  avg_tke=8.670921  max_v=6.1907
+2026-05-29 10:01:39,050 [INFO] turbulence_solver: Step 30/30  t=0.3000  dt=0.010000  avg_speed=0.8233  avg_tke=8.670828  max_v=6.1903
+2026-05-29 10:01:39,051 [INFO] turbulence_solver: Solver finished: step=30, time=0.3000, converged=False
+2026-05-29 10:01:39,051 [INFO] turbulence_solver: Result saved to E:\标注项目\trae3\14\data\results\single_sim_result.pkl
+2026-05-29 10:01:39,054 [INFO] __main__: [Export] Exporting results...
+2026-05-29 10:01:39,054 [WARNING] viz_export: VTK not installed, falling back to VTK ASCII export
+2026-05-29 10:01:39,067 [INFO] viz_export: VTK ASCII export: E:\标注项目\trae3\14\data\results\single_sim\result.vtk
+2026-05-29 10:01:39,246 [WARNING] viz_export: Failed to export netcdf: [Errno 13] Permission denied: 'E:\\标注项目\\trae3\\14\\data\\results\\single_sim\\result.nc'
+2026-05-29 10:01:39,247 [INFO] viz_export: CSV summary export: E:\标注项目\trae3\14\data\results\single_sim\result.csv (30 rows)
+2026-05-29 10:01:39,247 [INFO] viz_export: All formats exported: ['vtk', 'csv']
+2026-05-29 10:01:39,247 [INFO] __main__: [Export] Formats: ['vtk', 'csv']
+2026-05-29 10:01:39,247 [INFO] __main__: [Visualize] Generating plots...
+2026-05-29 10:01:40,422 [INFO] viz_export: Cross-section plot saved: E:\标注项目\trae3\14\data\results\single_sim\wind_xy.png
+2026-05-29 10:01:40,923 [INFO] viz_export: Velocity profile plot saved: E:\标注项目\trae3\14\data\results\single_sim\velocity_profile.png
+2026-05-29 10:01:41,397 [INFO] viz_export: Convergence history plot saved: E:\标注项目\trae3\14\data\results\single_sim\convergence.png
+2026-05-29 10:01:41,644 [INFO] viz_export: Turbulence intensity map saved: E:\标注项目\trae3\14\data\results\single_sim\turb_intensity.png
+2026-05-29 10:01:41,644 [INFO] viz_export: All visualizations generated: ['crosssection_z', 'velocity_profile', 'convergence', 'turbulence_intensity']
+2026-05-29 10:01:41,644 [INFO] __main__: [Visualize] Plots: ['crosssection_z', 'velocity_profile', 'convergence', 'turbulence_intensity']
+2026-05-29 10:01:41,644 [INFO] __main__: ============================================================
+2026-05-29 10:01:41,645 [INFO] __main__: Simulation complete: steps=30, time=0.3000, converged=False
+2026-05-29 10:01:41,645 [INFO] __main__:   Avg wind speed: 0.8233 m/s
+2026-05-29 10:01:41,646 [INFO] __main__:   Avg TKE: 8.670828 m²/s²
+2026-05-29 10:01:41,646 [INFO] __main__:   Max velocity: 6.1903 m/s
+2026-05-29 10:01:41,646 [INFO] __main__: ============================================================
+2026-05-29 10:22:16,420 [INFO] __main__: ============================================================
+2026-05-29 10:22:16,421 [INFO] __main__: Meteo Turbulence Simulation - Single Mode
+2026-05-29 10:22:16,421 [INFO] __main__: ============================================================
+2026-05-29 10:22:16,421 [INFO] grid_mesh: Generating grid: 16x16x8 over [0.0,500.0]x[0.0,500.0]x[0.0,100.0]
+2026-05-29 10:22:16,423 [INFO] grid_mesh: Grid generation complete: 2048 cells total
+2026-05-29 10:22:16,424 [INFO] __main__: Grid generated: 16x16x8
+2026-05-29 10:22:16,424 [INFO] __main__: Creating solver: method=LES, model=Smagorinsky, dt=0.0100, t_end=0.30
+2026-05-29 10:22:16,860 [INFO] turbulence_solver: Starting solver: method=LES, model=Smagorinsky, t_end=0.30
+2026-05-29 10:22:16,861 [INFO] turbulence_solver: Initializing turbulence solver [LES / Smagorinsky]
+2026-05-29 10:22:16,903 [INFO] turbulence_solver: Solver initialized: dt=0.010000, t_end=0.30, nu_min_sgs=0.0500
+2026-05-29 10:22:16,930 [INFO] turbulence_solver: Step 1/30  t=0.0100  dt=0.010000  avg_speed=23.1231  avg_tke=346.603060  max_v=30.0000
+2026-05-29 10:22:16,959 [INFO] turbulence_solver: Step 2/30  t=0.0200  dt=0.010000  avg_speed=23.1223  avg_tke=346.611778  max_v=30.0000
+2026-05-29 10:22:16,979 [INFO] turbulence_solver: Step 3/30  t=0.0300  dt=0.010000  avg_speed=23.1216  avg_tke=346.712733  max_v=30.0000
+2026-05-29 10:22:17,009 [INFO] turbulence_solver: Step 4/30  t=0.0400  dt=0.010000  avg_speed=23.1208  avg_tke=346.632409  max_v=30.0000
+2026-05-29 10:22:17,029 [INFO] turbulence_solver: Step 5/30  t=0.0500  dt=0.010000  avg_speed=23.1199  avg_tke=346.632377  max_v=30.0000
+2026-05-29 10:22:17,049 [INFO] turbulence_solver: Step 6/30  t=0.0600  dt=0.010000  avg_speed=23.1191  avg_tke=346.632416  max_v=30.0000
+2026-05-29 10:22:17,066 [INFO] turbulence_solver: Step 7/30  t=0.0700  dt=0.010000  avg_speed=23.1183  avg_tke=346.632431  max_v=30.0000
+2026-05-29 10:22:17,086 [INFO] turbulence_solver: Step 8/30  t=0.0800  dt=0.010000  avg_speed=23.1175  avg_tke=346.632423  max_v=30.0000
+2026-05-29 10:22:17,102 [INFO] turbulence_solver: Step 9/30  t=0.0900  dt=0.010000  avg_speed=23.1167  avg_tke=346.632453  max_v=30.0000
+2026-05-29 10:22:17,124 [INFO] turbulence_solver: Step 10/30  t=0.1000  dt=0.010000  avg_speed=23.1159  avg_tke=346.632527  max_v=30.0000
+2026-05-29 10:22:17,140 [INFO] turbulence_solver: Step 11/30  t=0.1100  dt=0.010000  avg_speed=23.1151  avg_tke=346.632636  max_v=30.0000
+2026-05-29 10:22:17,164 [INFO] turbulence_solver: Step 12/30  t=0.1200  dt=0.010000  avg_speed=23.1143  avg_tke=346.632776  max_v=30.0000
+2026-05-29 10:22:17,187 [INFO] turbulence_solver: Step 13/30  t=0.1300  dt=0.010000  avg_speed=23.1135  avg_tke=346.632944  max_v=30.0000
+2026-05-29 10:22:17,202 [INFO] turbulence_solver: Step 14/30  t=0.1400  dt=0.010000  avg_speed=23.1127  avg_tke=346.633139  max_v=30.0000
+2026-05-29 10:22:17,221 [INFO] turbulence_solver: Step 15/30  t=0.1500  dt=0.010000  avg_speed=23.1119  avg_tke=346.633361  max_v=30.0000
+2026-05-29 10:22:17,247 [INFO] turbulence_solver: Step 16/30  t=0.1600  dt=0.010000  avg_speed=23.1111  avg_tke=346.633608  max_v=30.0000
+2026-05-29 10:22:17,274 [INFO] turbulence_solver: Step 17/30  t=0.1700  dt=0.010000  avg_speed=23.1103  avg_tke=346.633881  max_v=30.0000
+2026-05-29 10:22:17,294 [INFO] turbulence_solver: Step 18/30  t=0.1800  dt=0.010000  avg_speed=23.1095  avg_tke=346.634178  max_v=30.0000
+2026-05-29 10:22:17,315 [INFO] turbulence_solver: Step 19/30  t=0.1900  dt=0.010000  avg_speed=23.1087  avg_tke=346.634501  max_v=30.0000
+2026-05-29 10:22:17,334 [INFO] turbulence_solver: Step 20/30  t=0.2000  dt=0.010000  avg_speed=23.1080  avg_tke=346.634847  max_v=30.0000
+2026-05-29 10:22:17,352 [INFO] turbulence_solver: Step 21/30  t=0.2100  dt=0.010000  avg_speed=23.1072  avg_tke=346.635218  max_v=30.0000
+2026-05-29 10:22:17,370 [INFO] turbulence_solver: Step 22/30  t=0.2200  dt=0.010000  avg_speed=23.1064  avg_tke=346.635612  max_v=30.0000
+2026-05-29 10:22:17,388 [INFO] turbulence_solver: Step 23/30  t=0.2300  dt=0.010000  avg_speed=23.1057  avg_tke=346.636029  max_v=30.0000
+2026-05-29 10:22:17,404 [INFO] turbulence_solver: Step 24/30  t=0.2400  dt=0.010000  avg_speed=23.1049  avg_tke=346.636469  max_v=30.0000
+2026-05-29 10:22:17,423 [INFO] turbulence_solver: Step 25/30  t=0.2500  dt=0.010000  avg_speed=23.1041  avg_tke=346.636932  max_v=30.0000
+2026-05-29 10:22:17,440 [INFO] turbulence_solver: Step 26/30  t=0.2600  dt=0.010000  avg_speed=23.1034  avg_tke=346.637416  max_v=30.0000
+2026-05-29 10:22:17,460 [INFO] turbulence_solver: Step 27/30  t=0.2700  dt=0.010000  avg_speed=23.1026  avg_tke=346.637923  max_v=30.0000
+2026-05-29 10:22:17,481 [INFO] turbulence_solver: Step 28/30  t=0.2800  dt=0.010000  avg_speed=23.1019  avg_tke=346.638451  max_v=30.0000
+2026-05-29 10:22:17,505 [INFO] turbulence_solver: Step 29/30  t=0.2900  dt=0.010000  avg_speed=23.1011  avg_tke=346.639000  max_v=30.0000
+2026-05-29 10:22:17,532 [INFO] turbulence_solver: Step 30/30  t=0.3000  dt=0.010000  avg_speed=23.1004  avg_tke=346.639570  max_v=30.0000
+2026-05-29 10:22:17,533 [INFO] turbulence_solver: Solver finished: step=30, time=0.3000, converged=False
+2026-05-29 10:22:17,534 [INFO] turbulence_solver: Result saved to E:\标注项目\trae3\14\data\results\single_sim_result.pkl
+2026-05-29 10:22:17,534 [INFO] __main__: [Export] Exporting results...
+2026-05-29 10:22:17,537 [WARNING] viz_export: VTK not installed, falling back to VTK ASCII export
+2026-05-29 10:22:17,567 [INFO] viz_export: VTK ASCII export: E:\标注项目\trae3\14\data\results\single_sim\result.vtk
+2026-05-29 10:22:18,193 [WARNING] viz_export: Failed to export netcdf: [Errno 13] Permission denied: 'E:\\标注项目\\trae3\\14\\data\\results\\single_sim\\result.nc'
+2026-05-29 10:22:18,195 [INFO] viz_export: CSV summary export: E:\标注项目\trae3\14\data\results\single_sim\result.csv (30 rows)
+2026-05-29 10:22:18,196 [INFO] viz_export: All formats exported: ['vtk', 'csv']
+2026-05-29 10:22:18,196 [INFO] __main__: [Export] Formats: ['vtk', 'csv']
+2026-05-29 10:22:18,196 [INFO] __main__: [Visualize] Generating plots...
+2026-05-29 10:22:20,069 [INFO] viz_export: Cross-section plot saved: E:\标注项目\trae3\14\data\results\single_sim\wind_xy.png
+2026-05-29 10:22:20,566 [INFO] viz_export: Velocity profile plot saved: E:\标注项目\trae3\14\data\results\single_sim\velocity_profile.png
+2026-05-29 10:22:21,124 [INFO] viz_export: Convergence history plot saved: E:\标注项目\trae3\14\data\results\single_sim\convergence.png
+2026-05-29 10:22:21,361 [INFO] viz_export: Turbulence intensity map saved: E:\标注项目\trae3\14\data\results\single_sim\turb_intensity.png
+2026-05-29 10:22:21,361 [INFO] viz_export: All visualizations generated: ['crosssection_z', 'velocity_profile', 'convergence', 'turbulence_intensity']
+2026-05-29 10:22:21,363 [INFO] __main__: [Visualize] Plots: ['crosssection_z', 'velocity_profile', 'convergence', 'turbulence_intensity']
+2026-05-29 10:22:21,363 [INFO] __main__: ============================================================
+2026-05-29 10:22:21,363 [INFO] __main__: Simulation complete: steps=30, time=0.3000, converged=False
+2026-05-29 10:22:21,363 [INFO] __main__:   Wall time: 0.67 seconds
+2026-05-29 10:22:21,363 [INFO] __main__:   Steps/second: 44.58
+2026-05-29 10:22:21,363 [INFO] __main__:   Avg wind speed: 23.1004 m/s
+2026-05-29 10:22:21,363 [INFO] __main__:   Avg TKE: 346.639570 m²/s²
+2026-05-29 10:22:21,363 [INFO] __main__:   Max velocity: 30.0000 m/s
+2026-05-29 10:22:21,364 [INFO] __main__: ============================================================
