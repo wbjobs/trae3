@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firmware Flasher - 固件批量刷写工具</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div id="app">
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <div class="titlebar-logo">F</div>
+        <span class="titlebar-title">Firmware Flasher</span>
+      </div>
+      <div class="titlebar-center">
+        <span id="statusbar-version">v1.0.0</span>
+      </div>
+      <div class="titlebar-right">
+        <button class="titlebar-btn" id="btn-minimize" title="最小化">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button class="titlebar-btn" id="btn-maximize" title="最大化">
+          <i class="fa-regular fa-square"></i>
+        </button>
+        <button class="titlebar-btn close" id="btn-close" title="关闭">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <nav class="sidebar">
+        <div class="nav-item active" data-page="dashboard" title="概览">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-tooltip">概览</span>
+        </div>
+        <div class="nav-item" data-page="devices" title="设备管理">
+          <i class="fa-solid fa-microchip"></i>
+          <span class="nav-tooltip">设备管理</span>
+        </div>
+        <div class="nav-item" data-page="firmware" title="固件管理">
+          <i class="fa-solid fa-memory"></i>
+          <span class="nav-tooltip">固件管理</span>
+        </div>
+        <div class="nav-item" data-page="tasks" title="任务管理">
+          <i class="fa-solid fa-list-check"></i>
+          <span class="nav-tooltip">任务管理</span>
+        </div>
+        <div class="nav-item" data-page="history" title="历史记录">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span class="nav-tooltip">历史记录</span>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="nav-item" data-page="settings" title="设置">
+            <i class="fa-solid fa-gear"></i>
+            <span class="nav-tooltip">设置</span>
+          </div>
+        </div>
+      </nav>
+
+      <main class="content">
+        <section class="page active" id="page-dashboard">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">概览</h1>
+              <p class="page-subtitle">设备状态与刷写任务总览</p>
+            </div>
+            <div class="flex gap-md">
+              <button class="btn btn-secondary" id="btn-refresh-dashboard">
+                <i class="fa-solid fa-rotate-right"></i>
+                刷新
+              </button>
+              <button class="btn btn-primary" id="btn-start-batch">
+                <i class="fa-solid fa-play"></i>
+                开始批量刷写
+              </button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div class="stat-icon online">
+                  <i class="fa-solid fa-microchip"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-online">0</div>
+              <div class="stat-label">在线设备</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div class="stat-icon pending">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-pending">0</div>
+              <div class="stat-label">待刷写</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div class="stat-icon success">
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-success">0</div>
+              <div class="stat-label">成功</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <div class="stat-icon failed">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+              </div>
+              <div class="stat-value" id="stat-failed">0</div>
+              <div class="stat-label">失败</div>
+            </div>
+          </div>
+
+          <div class="card" style="flex: 1; min-height: 0;">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fa-solid fa-list-check"></i>
+                刷写进度
+              </h3>
+              <div class="card-actions">
+                <button class="btn btn-secondary btn-sm" id="btn-clear-completed">
+                  <i class="fa-solid fa-broom"></i>
+                  清除已完成
+                </button>
+                <button class="btn btn-danger btn-sm" id="btn-cancel-all">
+                  <i class="fa-solid fa-stop"></i>
+                  取消全部
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="progress-grid" id="progress-grid">
+                <div class="empty-state">
+                  <i class="fa-solid fa-list-check empty-state-icon"></i>
+                  <div class="empty-state-title">暂无刷写任务</div>
+                  <div class="empty-state-subtitle">选择设备并加载固件后开始刷写</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-devices">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">设备管理</h1>
+              <p class="page-subtitle">管理串口设备，选择目标设备进行刷写</p>
+            </div>
+            <div class="flex gap-md">
+              <button class="btn btn-secondary" id="btn-select-all">
+                <i class="fa-solid fa-check-square"></i>
+                全选
+              </button>
+              <button class="btn btn-secondary" id="btn-deselect-all">
+                <i class="fa-regular fa-square"></i>
+                取消全选
+              </button>
+              <button class="btn btn-primary" id="btn-refresh-devices">
+                <i class="fa-solid fa-rotate-right"></i>
+                刷新设备
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body" style="padding: 0;">
+              <table class="device-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px;">
+                      <div class="device-checkbox" id="select-all-checkbox"></div>
+                    </th>
+                    <th>状态</th>
+                    <th>端口</th>
+                    <th>厂商</th>
+                    <th>序列号</th>
+                    <th>固件版本</th>
+                    <th>最后在线</th>
+                    <th style="width: 120px;">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="device-table-body">
+                  <tr>
+                    <td colspan="8">
+                      <div class="empty-state" style="padding: var(--spacing-3xl);">
+                        <i class="fa-solid fa-microchip empty-state-icon"></i>
+                        <div class="empty-state-title">未检测到设备</div>
+                        <div class="empty-state-subtitle">请连接设备并点击刷新按钮</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-firmware">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">固件管理</h1>
+              <p class="page-subtitle">加载并解析固件文件，支持 .bin、.hex、.elf 格式</p>
+            </div>
+          </div>
+
+          <div class="card" id="firmware-card">
+            <div class="card-body">
+              <div class="firmware-dropzone" id="firmware-dropzone">
+                <input type="file" id="firmware-file" accept=".bin,.hex,.elf" style="display: none;">
+                <div class="dropzone-icon">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <div class="dropzone-title">拖拽固件文件到此处</div>
+                <div class="dropzone-subtitle">或点击选择文件</div>
+                <div class="dropzone-formats">
+                  <span class="format-tag">.bin</span>
+                  <span class="format-tag">.hex</span>
+                  <span class="format-tag">.elf</span>
+                </div>
+              </div>
+
+              <div id="firmware-info-container" style="display: none; margin-top: var(--spacing-xl);">
+                <div class="firmware-info">
+                  <div class="info-item">
+                    <span class="info-label">文件名</span>
+                    <span class="info-value" id="info-filename">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">版本</span>
+                    <span class="info-value" id="info-version">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">格式</span>
+                    <span class="info-value" id="info-format">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">大小</span>
+                    <span class="info-value" id="info-size">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">加载地址</span>
+                    <span class="info-value" id="info-loadaddr">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">段数</span>
+                    <span class="info-value" id="info-segments">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">完整性评分</span>
+                    <span class="info-value" id="info-integrity">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">CRC32</span>
+                    <span class="info-value monospace" id="info-crc32">-</span>
+                  </div>
+                </div>
+
+                <div class="card" style="margin-top: var(--spacing-xl);">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fa-solid fa-shield-halved"></i>
+                      哈希校验
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="hash-info">
+                      <div class="info-item">
+                        <span class="info-label">MD5</span>
+                        <span class="info-value monospace" id="info-md5">-</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">SHA-1</span>
+                        <span class="info-value monospace" id="info-sha1">-</span>
+                      </div>
+                      <div class="info-item">
+                        <span class="info-label">SHA-256</span>
+                        <span class="info-value monospace" id="info-sha256">-</span>
+                      </div>
+                    </div>
+                    <div style="margin-top: var(--spacing-lg);">
+                      <button class="btn btn-secondary btn-sm" id="btn-copy-hashes">
+                        <i class="fa-solid fa-copy"></i>
+                        复制哈希值
+                      </button>
+                      <button class="btn btn-secondary btn-sm" id="btn-verify-hash">
+                        <i class="fa-solid fa-check"></i>
+                        验证哈希
+                      </button>
+                    </div>
+                    <div class="form-group" id="hash-verify-input" style="display: none; margin-top: var(--spacing-md);">
+                      <input type="text" class="form-input" id="input-expected-hash" placeholder="输入预期的哈希值进行验证...">
+                    </div>
+                  </div>
+                </div>
+                <div class="card" style="margin-top: var(--spacing-lg);">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fa-solid fa-triangle-exclamation"></i>
+                      完整性检查结果
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    <div id="integrity-issues" style="display: none;">
+                      <div class="alert alert-success" id="integrity-issues">
+                        <i class="fa-solid fa-check-circle"></i>
+                        固件文件完整有效
+                      </div>
+                    </div>
+                    <div id="integrity-warnings" style="display: none;">
+                    </div>
+                    <div id="integrity-score" style="margin-top: var(--spacing-md);">
+                      <div class="score-circle">
+                        <div class="score-value" id="score-value">100</div>
+                        <div class="score-label">完整性评分</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-tasks">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">任务管理</h1>
+              <p class="page-subtitle">创建和管理刷写任务队列</p>
+            </div>
+            <div class="flex gap-md">
+              <button class="btn btn-primary" id="btn-create-tasks">
+                <i class="fa-solid fa-plus"></i>
+                创建刷写任务
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body" style="padding: 0;">
+              <table class="device-table">
+                <thead>
+                  <tr>
+                    <th>任务ID</th>
+                    <th>设备</th>
+                    <th>固件</th>
+                    <th>状态</th>
+                    <th>进度</th>
+                    <th>耗时</th>
+                    <th style="width: 120px;">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="task-table-body">
+                  <tr>
+                    <td colspan="7">
+                      <div class="empty-state" style="padding: var(--spacing-3xl);">
+                        <i class="fa-solid fa-list-check empty-state-icon"></i>
+                        <div class="empty-state-title">暂无任务</div>
+                        <div class="empty-state-subtitle">选择设备和固件后创建刷写任务</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-history">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">历史记录</h1>
+              <p class="page-subtitle">查看历史刷写任务记录</p>
+            </div>
+            <div class="flex gap-md">
+              <button class="btn btn-secondary" id="btn-refresh-history">
+                <i class="fa-solid fa-rotate-right"></i>
+                刷新
+              </button>
+              <button class="btn btn-danger" id="btn-clear-history">
+                <i class="fa-solid fa-trash"></i>
+                清除历史
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body" style="padding: 0;">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>时间</th>
+                    <th>任务ID</th>
+                    <th>设备</th>
+                    <th>固件</th>
+                    <th>状态</th>
+                    <th>耗时</th>
+                    <th style="width: 120px;">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="history-table-body">
+                  <tr>
+                    <td colspan="7">
+                      <div class="empty-state" style="padding: var(--spacing-3xl);">
+                        <i class="fa-solid fa-clock-rotate-left empty-state-icon"></i>
+                        <div class="empty-state-title">暂无历史记录</div>
+                        <div class="empty-subtitle">完成刷写任务后将显示在此处</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-header">
+            <div>
+              <h1 class="page-title">设置</h1>
+              <p class="page-subtitle">配置刷写参数和应用设置</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div style="max-width: 600px;">
+                <div class="form-group">
+                  <label class="form-label">默认波特率</label>
+                  <select class="form-select" id="setting-baudrate">
+                    <option value="9600">9600</option>
+                    <option value="19200">19200</option>
+                    <option value="38400">38400</option>
+                    <option value="57600">57600</option>
+                    <option value="115200" selected>115200</option>
+                    <option value="230400">230400</option>
+                    <option value="460800">460800</option>
+                    <option value="921600">921600</option>
+                  </select>
+                  <div class="form-hint">串口通信的默认波特率</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">并发刷写数量</label>
+                  <input type="number" class="form-input" id="setting-concurrency" value="4" min="1" max="16">
+                  <div class="form-hint">同时进行的最大刷写任务数 (1-16)</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">数据块大小 (字节)</label>
+                  <input type="number" class="form-input" id="setting-chunksize" value="1024" min="64" max="16384" step="64">
+                  <div class="form-hint">每次刷写的数据块大小 (64-16384)</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">设备扫描间隔 (毫秒)</label>
+                  <input type="number" class="form-input" id="setting-scaninterval" value="2000" min="500" max="10000" step="500">
+                  <div class="form-hint">自动扫描串口设备的时间间隔 (500-10000)</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">响应超时 (毫秒)</label>
+                  <input type="number" class="form-input" id="setting-timeout" value="5000" min="1000" max="60000" step="1000">
+                  <div class="form-hint">设备响应超时时间 (1000-60000)</div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">日志文件路径</label>
+                  <input type="text" class="form-input" id="setting-logpath" value="./logs" readonly>
+                  <div class="form-hint">日志文件存储目录</div>
+                </div>
+
+                <div class="flex gap-md" style="margin-top: var(--spacing-2xl);">
+                  <button class="btn btn-primary" id="btn-save-settings">
+                    <i class="fa-solid fa-save"></i>
+                    保存设置
+                  </button>
+                  <button class="btn btn-secondary" id="btn-reset-settings">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    恢复默认
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="quick-toolbar" id="quick-toolbar">
+      <div class="quick-toolbar-left">
+        <button class="quick-toolbar-btn" id="quick-select-devices" title="选择设备">
+          <i class="fa-solid fa-microchip"></i>
+          <span>选择设备</span>
+        </button>
+        <button class="quick-toolbar-btn" id="quick-load-firmware" title="加载固件">
+          <i class="fa-solid fa-memory"></i>
+          <span>加载固件</span>
+        </button>
+        <button class="quick-toolbar-btn" id="quick-start-flash" title="开始刷写">
+          <i class="fa-solid fa-play"></i>
+          <span>开始刷写</span>
+        </button>
+        <div class="quick-toolbar-divider"></div>
+        <button class="quick-toolbar-btn" id="quick-refresh" title="刷新设备">
+          <i class="fa-solid fa-rotate-right"></i>
+          <span>刷新</span>
+        </button>
+      </div>
+      <div class="quick-toolbar-right">
+        <div class="quick-progress" id="quick-progress" style="display: none;">
+          <span>批量进度</span>
+          <div class="quick-progress-bar">
+            <div class="quick-progress-fill" id="quick-progress-fill"></div>
+          </div>
+          <span id="quick-progress-text">0%</span>
+        </div>
+        <button class="quick-toolbar-btn" id="quick-cancel-all" title="取消全部任务">
+          <i class="fa-solid fa-stop"></i>
+        </button>
+        <button class="quick-toolbar-btn" id="quick-toggle-log" title="显示日志">
+          <i class="fa-solid fa-terminal"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="statusbar">
+      <div class="statusbar-left">
+        <div class="statusbar-item">
+          <span class="statusbar-dot" id="statusbar-dot"></span>
+          <span id="statusbar-status">就绪</span>
+        </div>
+        <div class="statusbar-item">
+          <i class="fa-solid fa-microchip"></i>
+          <span id="statusbar-devices">0 个设备在线</span>
+        </div>
+        <div class="statusbar-item" id="statusbar-firmware" style="display: none;">
+          <i class="fa-solid fa-memory"></i>
+          <span id="statusbar-firmware-text">未加载固件</span>
+        </div>
+      </div>
+      <div class="statusbar-right">
+        <div class="statusbar-item">
+          <i class="fa-solid fa-list-check"></i>
+          <span id="statusbar-tasks">0 个任务</span>
+        </div>
+        <div class="statusbar-item" id="statusbar-eta" style="display: none;">
+          <i class="fa-solid fa-hourglass-half"></i>
+          <span id="statusbar-eta-text">预计剩余: -</span>
+        </div>
+        <div class="statusbar-item">
+          <i class="fa-solid fa-clock"></i>
+          <span id="statusbar-time">-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="log-panel" id="log-panel" style="position: absolute; bottom: var(--statusbar-height); left: calc(var(--sidebar-width) + 1px); right: 0; height: 200px; background: var(--bg-dark-2); border-top: 1px solid var(--border-dark); display: none; z-index: 50;">
+    <div class="log-toolbar">
+      <div class="flex items-center gap-md">
+        <i class="fa-solid fa-terminal text-primary"></i>
+        <span style="font-weight: 600; color: var(--text-dark-1);">日志面板</span>
+      </div>
+      <div class="log-filters">
+        <button class="filter-btn active" data-level="all">全部</button>
+        <button class="filter-btn" data-level="info">信息</button>
+        <button class="filter-btn" data-level="warn">警告</button>
+        <button class="filter-btn" data-level="error">错误</button>
+      </div>
+      <div class="flex gap-sm">
+        <button class="btn btn-secondary btn-sm" id="btn-clear-logs">
+          <i class="fa-solid fa-broom"></i>
+          清除
+        </button>
+        <button class="btn btn-secondary btn-sm" id="btn-toggle-log">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+    <div class="log-content" id="log-content"></div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="modal-overlay" id="modal-create-tasks">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-plus"></i>
+          创建刷写任务
+        </h3>
+        <button class="titlebar-btn" id="btn-close-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">目标设备</label>
+          <div id="selected-devices-list" style="padding: var(--spacing-md); background: var(--bg-dark); border-radius: var(--radius-sm); border: 1px solid var(--border-dark); max-height: 150px; overflow: auto;">
+            <span class="text-muted">未选择设备</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">固件文件</label>
+          <div id="selected-firmware-info" style="padding: var(--spacing-md); background: var(--bg-dark); border-radius: var(--radius-sm); border: 1px solid var(--border-dark);">
+            <span class="text-muted">未加载固件</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">波特率</label>
+          <select class="form-select" id="modal-baudrate">
+            <option value="9600">9600</option>
+            <option value="19200">19200</option>
+            <option value="38400">38400</option>
+            <option value="57600">57600</option>
+            <option value="115200" selected>115200</option>
+            <option value="230400">230400</option>
+            <option value="460800">460800</option>
+            <option value="921600">921600</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">并发数量</label>
+          <input type="number" class="form-input" id="modal-concurrency" value="4" min="1" max="16">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-cancel-modal">取消</button>
+        <button class="btn btn-primary" id="btn-confirm-create">创建并开始</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/ipc-client.js"></script>
+  <script src="js/ui-components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

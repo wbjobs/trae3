@@ -1,0 +1,17 @@
+node_modules/
+dist/
+logs/
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+coverage/
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

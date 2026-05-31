@@ -1,0 +1,71 @@
+{
+  "name": "firmware-flasher",
+  "version": "1.0.0",
+  "description": "硬件固件批量刷写桌面管理工具",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.firmware.flasher",
+    "productName": "FirmwareFlasher",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.developer-tools"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "keywords": [
+    "electron",
+    "firmware",
+    "serialport",
+    "flash"
+  ],
+  "author": "FirmwareFlasher Team",
+  "license": "MIT",
+  "dependencies": {
+    "serialport": "^12.0.0",
+    "intel-hex": "^0.2.0",
+    "p-queue": "^6.6.2",
+    "electron-log": "^5.1.1",
+    "crc": "^4.3.2"
+  },
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1"
+  }
+}
