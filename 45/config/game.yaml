@@ -1,0 +1,62 @@
+server:
+  port: 3000
+  host: 'localhost'
+
+game:
+  maxPlayers: 2
+  turnTimeLimit: 60
+  startingGold: 100
+  defaultMap: 'default'
+
+database:
+  path: 'data/game.db'
+
+units:
+  SOLDIER:
+    name: '士兵'
+    health: 100
+    attack: 20
+    defense: 15
+    moveRange: 3
+    attackRange: 1
+    cost: 10
+  ARCHER:
+    name: '弓箭手'
+    health: 70
+    attack: 25
+    defense: 8
+    moveRange: 2
+    attackRange: 4
+    cost: 15
+  CAVALRY:
+    name: '骑兵'
+    health: 120
+    attack: 30
+    defense: 12
+    moveRange: 5
+    attackRange: 1
+    cost: 25
+  MAGE:
+    name: '法师'
+    health: 60
+    attack: 35
+    defense: 5
+    moveRange: 2
+    attackRange: 3
+    cost: 30
+  HEALER:
+    name: '治疗师'
+    health: 80
+    attack: 10
+    defense: 10
+    moveRange: 2
+    attackRange: 2
+    cost: 20
+  TANK:
+    name: '坦克'
+    health: 150
+    attack: 15
+    defense: 25
+    moveRange: 2
+    attackRange: 1
+    cost: 20
