@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工业设备运维时序数据分析平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>
+                    <span class="logo-icon">⚙️</span>
+                    IoT Analytics
+                </h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <span class="nav-icon">📊</span>
+                            <span>数据看板</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/devices.html" class="nav-link">
+                            <span class="nav-icon">🔧</span>
+                            <span>设备管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/groups.html" class="nav-link">
+                            <span class="nav-icon">📁</span>
+                            <span>分组管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/heatmap.html" class="nav-link">
+                            <span class="nav-icon">🔥</span>
+                            <span>热力图分析</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            <span>报表中心</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">数据看板</h1>
+                <div class="page-actions">
+                    <button class="btn btn-sm btn-outline" id="compression-toggle" onclick="toggleCompression()">
+                        🗜️ 压缩: 关
+                    </button>
+                    <button class="btn btn-outline" onclick="refreshDashboard()">
+                        🔄 刷新数据
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">设备总数</span>
+                        <span class="stat-icon blue">📟</span>
+                    </div>
+                    <div class="stat-value" id="total-devices">12</div>
+                    <div class="stat-change up">↑ 2% 较上月</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">运行中</span>
+                        <span class="stat-icon green">▶️</span>
+                    </div>
+                    <div class="stat-value" id="running-devices">10</div>
+                    <div class="stat-change up">83.3% 在线率</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">当前设备</span>
+                        <span class="stat-icon" id="device-status-icon">✅</span>
+                    </div>
+                    <div class="stat-value">
+                        <span class="status-badge running" id="device-status-badge">正常</span>
+                    </div>
+                    <div class="perf-info" id="perf-info">加载中...</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">数据点数</span>
+                        <span class="stat-icon purple">📈</span>
+                    </div>
+                    <div class="stat-value" id="data-points">1.2M</div>
+                    <div class="stat-change up">↑ 15% 今日</div>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label class="filter-label">设备选择</label>
+                    <select class="select-input" id="device-select" onchange="loadDeviceData()">
+                        <option value="motor_001">主电机-1号</option>
+                        <option value="motor_002">主电机-2号</option>
+                        <option value="pump_001">冷却水泵</option>
+                        <option value="sensor_temp_001">温度传感器-A1</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">时间范围</label>
+                    <select class="select-input" id="time-range" onchange="loadDeviceData()">
+                        <option value="1h">最近1小时</option>
+                        <option value="6h">最近6小时</option>
+                        <option value="12h">最近12小时</option>
+                        <option value="24h" selected>最近24小时</option>
+                        <option value="7d">最近7天</option>
+                        <option value="30d">最近30天</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">指标选择</label>
+                    <select class="select-input" id="metric-select" onchange="loadDeviceData()">
+                        <option value="all">全部指标</option>
+                        <option value="temperature">温度</option>
+                        <option value="vibration">振动</option>
+                        <option value="current">电流</option>
+                        <option value="rpm">转速</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card full-width">
+                    <div class="chart-header">
+                        <h3 class="chart-title">设备运行趋势</h3>
+                        <div class="chart-controls">
+                            <div id="data-loader" class="loader" style="display:none;"></div>
+                            <button class="btn btn-sm btn-outline" onclick="toggleChartType()">
+                                📈 切换图表类型
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container large" id="main-chart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">温度监控</h3>
+                    </div>
+                    <div class="chart-container" id="temp-chart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">振动监测</h3>
+                    </div>
+                    <div class="chart-container" id="vibration-chart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">设备状态分布</h3>
+                    </div>
+                    <div class="chart-container" id="status-chart"></div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">实时数据指标</h3>
+                    </div>
+                    <div class="chart-container" id="gauge-chart"></div>
+                </div>
+
+                <div class="chart-card full-width alerts-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">预警信息</h3>
+                    </div>
+                    <div id="alerts-container" class="alerts-container">
+                        <div class="alert-item normal">
+                            <span class="alert-icon">✅</span>
+                            <span class="alert-text">加载中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <h3 class="chart-title">设备统计数据</h3>
+                </div>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>设备ID</th>
+                                <th>设备名称</th>
+                                <th>状态</th>
+                                <th>平均温度</th>
+                                <th>平均振动</th>
+                                <th>预警</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="device-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

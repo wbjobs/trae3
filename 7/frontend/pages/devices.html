@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设备管理 - 工业设备运维时序数据分析平台</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>
+                    <span class="logo-icon">⚙️</span>
+                    IoT Analytics
+                </h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            <span>数据看板</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="devices.html" class="nav-link active">
+                            <span class="nav-icon">🔧</span>
+                            <span>设备管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="groups.html" class="nav-link">
+                            <span class="nav-icon">📁</span>
+                            <span>分组管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="heatmap.html" class="nav-link">
+                            <span class="nav-icon">🔥</span>
+                            <span>热力图分析</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            <span>报表中心</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">设备管理</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="openAddDeviceModal()">
+                        ➕ 添加设备
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label class="filter-label">设备分组</label>
+                    <select class="select-input" id="group-filter" onchange="loadDevices()">
+                        <option value="">全部分组</option>
+                        <option value="group_motors">电机设备组</option>
+                        <option value="group_pumps">泵类设备组</option>
+                        <option value="group_sensors">传感器组</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">设备状态</label>
+                    <select class="select-input" id="status-filter" onchange="loadDevices()">
+                        <option value="">全部状态</option>
+                        <option value="running">运行中</option>
+                        <option value="standby">待机</option>
+                        <option value="fault">故障</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">设备类型</label>
+                    <select class="select-input" id="type-filter" onchange="loadDevices()">
+                        <option value="">全部类型</option>
+                        <option value="motor">电机</option>
+                        <option value="pump">泵类</option>
+                        <option value="sensor">传感器</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="device-grid" id="device-grid">
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="device-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">添加设备</h3>
+                <button class="modal-close" onclick="closeModal('device-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="device-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">设备ID</label>
+                            <input type="text" class="form-input" id="device-id" placeholder="例如: motor_001" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">设备名称</label>
+                            <input type="text" class="form-input" id="device-name" placeholder="例如: 主电机-1号" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">设备类型</label>
+                            <select class="form-input" id="device-type">
+                                <option value="motor">电机</option>
+                                <option value="pump">泵类</option>
+                                <option value="sensor">传感器</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">所属分组</label>
+                            <select class="form-input" id="device-group">
+                                <option value="group_motors">电机设备组</option>
+                                <option value="group_pumps">泵类设备组</option>
+                                <option value="group_sensors">传感器组</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">安装位置</label>
+                        <input type="text" class="form-input" id="device-location" placeholder="例如: A车间-1号线">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">监测指标（逗号分隔）</label>
+                        <input type="text" class="form-input" id="device-metrics" value="temperature,vibration,current,rpm">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('device-modal')">取消</button>
+                <button class="btn btn-primary" onclick="saveDevice()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="device-detail-modal">
+        <div class="modal" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="detail-title">设备详情</h3>
+                <button class="modal-close" onclick="closeModal('device-detail-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('tab-overview')">概览</button>
+                    <button class="tab-btn" onclick="switchTab('tab-chart')">数据图表</button>
+                    <button class="tab-btn" onclick="switchTab('tab-history')">历史记录</button>
+                </div>
+                
+                <div id="tab-overview" class="tab-content active">
+                    <div id="detail-content"></div>
+                </div>
+                
+                <div id="tab-chart" class="tab-content">
+                    <div class="chart-container" id="detail-chart" style="height: 300px;"></div>
+                </div>
+                
+                <div id="tab-history" class="tab-content">
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>事件</th>
+                                    <th>状态</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2024-01-15 10:30</td>
+                                    <td>设备启动</td>
+                                    <td><span class="status-badge running">正常</span></td>
+                                    <td>日常启动</td>
+                                </tr>
+                                <tr>
+                                    <td>2024-01-10 14:20</td>
+                                    <td>维护检查</td>
+                                    <td><span class="status-badge running">正常</span></td>
+                                    <td>月度维护</td>
+                                </tr>
+                                <tr>
+                                    <td>2024-01-05 09:15</td>
+                                    <td>温度告警</td>
+                                    <td><span class="status-badge standby">告警</span></td>
+                                    <td>临时过载</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('device-detail-modal')">关闭</button>
+                <button class="btn btn-success" onclick="generateDetailReport()">生成报表</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/charts.js"></script>
+    <script src="../js/devices.js"></script>
+</body>
+</html>

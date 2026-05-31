@@ -1,0 +1,472 @@
+2026-05-29 08:15:15 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.105:5000
+2026-05-29 08:15:15 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-29 08:15:15 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:15:17 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:15:17 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:15:19 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:15:19] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:15:48 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:15:48] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:16:19 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:16:19] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:16:48 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:16:48] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:17:19 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:17:19] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:17:49 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:17:49] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:18:18 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:18:18] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:18:49 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:18:49] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:19:23 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.105:5000
+2026-05-29 08:19:23 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-29 08:19:23 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:19:28 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:19:28 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:19:36 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:19:36] "[35m[1mGET /api/health HTTP/1.1[0m" 500 -
+2026-05-29 08:19:49 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:19:49] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:20:10 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\db\\influxdb_manager.py', reloading
+2026-05-29 08:20:10 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:20:18 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:20:18 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:20:19 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:20:19] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:20:33 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:20:33] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:20:48 - services.data_service - WARNING - Data cleaning failed: No module named 'numpy.rec'
+2026-05-29 08:20:48 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:20:48] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:20:49 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:20:49] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:21:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:00] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:21:18 - modules.report_generator - INFO - PDF report generated: E:\标注项目\trae3\7\backend\..\reports\maintenance_report_motor_001_20260529_082118.pdf
+2026-05-29 08:21:18 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:18] "POST /api/reports/generate/device/motor_001 HTTP/1.1" 200 -
+2026-05-29 08:21:19 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:19] "[33mGET /api/simulate/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1[0m" 404 -
+2026-05-29 08:21:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:34] "GET /api/devices HTTP/1.1" 200 -
+2026-05-29 08:21:36 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:36] "GET /api/groups HTTP/1.1" 200 -
+2026-05-29 08:21:38 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:38] "POST /api/data/heatmap HTTP/1.1" 200 -
+2026-05-29 08:21:43 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:43] "[36mGET / HTTP/1.1[0m" 304 -
+2026-05-29 08:21:43 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:43] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2026-05-29 08:21:43 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:43] "GET /js/api.js HTTP/1.1" 200 -
+2026-05-29 08:21:43 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:43] "[36mGET /js/app.js HTTP/1.1[0m" 304 -
+2026-05-29 08:21:43 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:43] "GET /js/charts.js HTTP/1.1" 200 -
+2026-05-29 08:21:44 - services.data_service - WARNING - Data cleaning failed: No module named 'numpy.rec'
+2026-05-29 08:21:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:21:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:44] "[33mGET /@vite/client HTTP/1.1[0m" 404 -
+2026-05-29 08:21:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:21:55] "GET / HTTP/1.1" 200 -
+2026-05-29 08:22:14 - services.data_service - WARNING - Data cleaning failed: No module named 'numpy.rec'
+2026-05-29 08:22:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:22:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:22:33 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:22:33] "[35m[1mPOST /api/data/cleaning/quality HTTP/1.1[0m" 500 -
+2026-05-29 08:22:44 - services.data_service - WARNING - Data cleaning failed: No module named 'numpy.rec'
+2026-05-29 08:22:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:22:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:23:14 - services.data_service - WARNING - Data cleaning failed: No module named 'numpy.rec'
+2026-05-29 08:23:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:23:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:23:44 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:23:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:23:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:24:14 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.105:5000
+2026-05-29 08:24:14 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-29 08:24:14 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:24:21 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:24:21 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:24:21 - modules.data_cleaning - INFO - IQR: removed 3 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:24:21 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:24:21 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:24:21 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:24:21 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:24:21] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:24:23 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:24:23] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:24:36 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:24:36] "POST /api/data/cleaning/quality HTTP/1.1" 200 -
+2026-05-29 08:24:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:24:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:24:44 - modules.data_cleaning - INFO - IQR: removed 3 outliers from 'current' (threshold=2.0)
+2026-05-29 08:24:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:24:44 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:24:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:24:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:25:14 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:25:14 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:25:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:25:17 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\test_api.py', reloading
+2026-05-29 08:25:17 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:25:26 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:25:26 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:25:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:45] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:25:47 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:47] "GET /api/devices HTTP/1.1" 200 -
+2026-05-29 08:25:49 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:49] "GET /api/groups HTTP/1.1" 200 -
+2026-05-29 08:25:52 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:25:52 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:25:52 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:52] "GET /api/data/timeseries/device/motor_001?metrics=temperature&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:25:54 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:54] "GET /api/data/statistics/device/motor_001?metrics=temperature&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:25:56 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:56] "POST /api/data/heatmap HTTP/1.1" 200 -
+2026-05-29 08:25:58 - modules.report_generator - INFO - PDF report generated: E:\标注项目\trae3\7\backend\..\reports\maintenance_report_motor_001_20260529_082558.pdf
+2026-05-29 08:25:58 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:25:58] "POST /api/reports/generate/device/motor_001 HTTP/1.1" 200 -
+2026-05-29 08:26:00 - modules.report_generator - INFO - Excel report generated: E:\标注项目\trae3\7\backend\..\reports\maintenance_report_motor_001_20260529_082600.xlsx
+2026-05-29 08:26:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:26:00] "POST /api/reports/generate/device/motor_001 HTTP/1.1" 200 -
+2026-05-29 08:26:15 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'current' (threshold=2.0)
+2026-05-29 08:26:15 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:26:15 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:26:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:26:15] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:26:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:26:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:26:44 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:26:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:26:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:27:14 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:27:14 - modules.data_cleaning - INFO - IQR: removed 3 outliers from 'current' (threshold=2.0)
+2026-05-29 08:27:14 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:27:14 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:27:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:27:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:27:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:27:44 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:27:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:27:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:28:14 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:28:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:28:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:28:36 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\cache_service.py', reloading
+2026-05-29 08:28:37 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:28:43 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:28:43 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:28:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:28:44 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:28:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:28:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:28:57 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\alert_service.py', reloading
+2026-05-29 08:28:57 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:29:03 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:29:03 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:29:14 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:29:14 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'current' (threshold=2.0)
+2026-05-29 08:29:14 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:29:14 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:29:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:29:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:29:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:29:44 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:29:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:29:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:29:47 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\modules\\data_query.py', reloading
+2026-05-29 08:29:48 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:29:54 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:29:54 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:30:14 - modules.data_cleaning - INFO - IQR: removed 3 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:30:14 - services.data_service - WARNING - Data cleaning failed: NDFrame.fillna() got an unexpected keyword argument 'method'
+2026-05-29 08:30:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:30:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:30:41 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:30:42 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:30:48 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:30:48 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:30:48 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:30:48 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:30:48] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:31:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:31:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:31:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:31:27 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\api\\routes.py', reloading
+2026-05-29 08:31:27 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:31:34 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:31:34 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:31:44 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:31:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:31:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:32:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:32:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:32:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:32:44 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:32:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:32:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:33:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:33:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:33:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:33:44 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:33:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:33:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:34:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:34:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:34:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:34:43 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.105:5000
+2026-05-29 08:34:43 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-29 08:34:43 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:34:50 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:34:50 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:34:50 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:34:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:34:50] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:35:01 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.105:5000
+2026-05-29 08:35:01 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-05-29 08:35:01 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:35:08 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:35:08 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:35:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:35:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:35:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:35:44 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:35:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:35:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:35:46 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\test_optimization.py', reloading
+2026-05-29 08:35:47 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:35:47 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\test_optimization.py', reloading
+2026-05-29 08:35:47 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:35:55 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:35:55 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:35:55 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:35:55 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:35:58 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:35:58] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:36:00 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:00] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:36:02 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:02 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:02] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:36:04 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:04] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature&last_timestamp=2024-01-15T08:00:00.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:36:06 - services.data_service - ERROR - Error in get_statistics: DataService.get_statistics.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:06] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=24h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:36:08 - services.data_service - ERROR - Error in get_heatmap_data: DataService.get_heatmap_data.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:08 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:08] "POST /api/data/heatmap HTTP/1.1" 200 -
+2026-05-29 08:36:10 - services.data_service - ERROR - Error in get_statistics: DataService.get_statistics.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:10 - modules.report_generator - INFO - PDF report generated: E:\标注项目\trae3\7\backend\..\reports\maintenance_report_motor_001_20260529_083610.pdf
+2026-05-29 08:36:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:10] "POST /api/reports/generate/device/motor_001 HTTP/1.1" 200 -
+2026-05-29 08:36:12 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:12] "GET /api/reports HTTP/1.1" 200 -
+2026-05-29 08:36:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:14] "GET /api/cache/stats HTTP/1.1" 200 -
+2026-05-29 08:36:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:36:16 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:16] "POST /api/data/cleaning/quality HTTP/1.1" 200 -
+2026-05-29 08:36:18 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:18] "GET /api/devices HTTP/1.1" 200 -
+2026-05-29 08:36:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:20] "GET /api/groups HTTP/1.1" 200 -
+2026-05-29 08:36:44 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:36:59 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:36:59 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:36:59] "GET /api/data/timeseries/device/motor_001?metrics=temperature&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:37:14 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:37:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:37:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:37:40 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:37:41 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:37:41 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:37:41 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:37:47 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:37:47 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:37:47 - services.data_service - ERROR - Error in get_device_timeseries: DataService.get_device_timeseries.<locals>.fetch_simulation() got an unexpected keyword argument 'time_range'
+2026-05-29 08:37:47 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:37:47] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:37:48 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:37:48 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:37:55 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:37:55 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:37:56 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:37:56 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:38:02 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:38:02 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:38:02 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:38:02 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:38:03 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:38:03 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:38:04 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:38:04 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:38:09 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:38:09 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:38:10 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:38:10 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:38:11 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:38:11 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:38:11 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\services\\data_service.py', reloading
+2026-05-29 08:38:12 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:38:17 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:38:17 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:38:18 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:38:18 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:38:18 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:38:18 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:38:18 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:38:18 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:38:18] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:38:39 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:38:39 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:38:39] "GET /api/data/timeseries/device/motor_001?metrics=temperature&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:38:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:38:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:27 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\test_features.py', reloading
+2026-05-29 08:39:28 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:39:28 - werkzeug - INFO -  * Detected change in 'E:\\标注项目\\trae3\\7\\backend\\test_features.py', reloading
+2026-05-29 08:39:28 - werkzeug - INFO -  * Restarting with stat
+2026-05-29 08:39:34 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:39:34 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:39:34 - werkzeug - WARNING -  * Debugger is active!
+2026-05-29 08:39:34 - werkzeug - INFO -  * Debugger PIN: 228-462-412
+2026-05-29 08:39:39 - modules.data_cleaning - INFO - IQR: removed 4 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:39:39 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:39:39 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:39] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:41 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:39:41 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:41] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:43 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:43] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=24h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:39:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:39:44 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:39:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:45] "POST /api/data/heatmap HTTP/1.1" 200 -
+2026-05-29 08:39:47 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:47] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature&last_timestamp=2024-01-01T00:00:00.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:49 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:49] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h&compress=true HTTP/1.1" 200 -
+2026-05-29 08:39:51 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:51] "GET /api/cache/stats HTTP/1.1" 200 -
+2026-05-29 08:39:53 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:53] "POST /api/cache/invalidate HTTP/1.1" 200 -
+2026-05-29 08:39:56 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:39:56 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:56] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:39:58 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:39:58 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:39:58] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:00] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=24h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:40:02 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:02] "POST /api/data/heatmap HTTP/1.1" 200 -
+2026-05-29 08:40:04 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:04] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature&last_timestamp=2024-01-01T00:00:00.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:06] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h&compress=true HTTP/1.1" 200 -
+2026-05-29 08:40:08 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:08] "GET /api/cache/stats HTTP/1.1" 200 -
+2026-05-29 08:40:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:10] "POST /api/cache/invalidate HTTP/1.1" 200 -
+2026-05-29 08:40:14 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:40:14 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'current' (threshold=2.0)
+2026-05-29 08:40:14 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:40:14 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:14] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:24 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:24] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:40:26 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:40:26 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:26] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:28 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:40:28 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:40:28 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:28] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature&last_timestamp=2024-01-15T08:00:00.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:32 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:32] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=24h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:40:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:34] "POST /api/data/heatmap HTTP/1.1" 200 -
+2026-05-29 08:40:36 - modules.report_generator - INFO - PDF report generated: E:\标注项目\trae3\7\backend\..\reports\maintenance_report_motor_001_20260529_084036.pdf
+2026-05-29 08:40:36 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:36] "POST /api/reports/generate/device/motor_001 HTTP/1.1" 200 -
+2026-05-29 08:40:38 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:38] "GET /api/reports HTTP/1.1" 200 -
+2026-05-29 08:40:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:40] "GET /api/cache/stats HTTP/1.1" 200 -
+2026-05-29 08:40:42 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:42] "POST /api/data/cleaning/quality HTTP/1.1" 200 -
+2026-05-29 08:40:44 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:40:44 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:44] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:40:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:45] "GET /api/devices HTTP/1.1" 200 -
+2026-05-29 08:40:47 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:40:47] "GET /api/groups HTTP/1.1" 200 -
+2026-05-29 08:41:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:05] "GET / HTTP/1.1" 200 -
+2026-05-29 08:41:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:05] "GET /css/style.css HTTP/1.1" 200 -
+2026-05-29 08:41:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:05] "[36mGET /js/charts.js HTTP/1.1[0m" 304 -
+2026-05-29 08:41:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:05] "GET /js/api.js HTTP/1.1" 200 -
+2026-05-29 08:41:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:05] "GET /js/app.js HTTP/1.1" 200 -
+2026-05-29 08:41:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:05] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "[33mGET /@vite/client HTTP/1.1[0m" 404 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "GET /api/devices HTTP/1.1" 200 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "GET /api/data/statistics/device/motor_002?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "GET /api/data/statistics/device/pump_001?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:06 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:06] "GET /api/data/statistics/device/sensor_temp_001?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:12 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:12] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:40:14.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:17 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:17] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:40:14.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:19 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:19] "GET / HTTP/1.1" 200 -
+2026-05-29 08:41:22 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:22] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:40:14.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:27 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:27] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:40:14.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:32 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:32] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:40:14.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "[36mGET / HTTP/1.1[0m" 304 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "[36mGET /js/api.js HTTP/1.1[0m" 304 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "[36mGET /js/charts.js HTTP/1.1[0m" 304 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "[36mGET /js/app.js HTTP/1.1[0m" 304 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "GET /api/health HTTP/1.1" 200 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "[33mGET /@vite/client HTTP/1.1[0m" 404 -
+2026-05-29 08:41:34 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:41:34 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:34 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:34] "GET /api/devices HTTP/1.1" 200 -
+2026-05-29 08:41:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:35] "GET /api/data/statistics/device/motor_001?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:35] "GET /api/data/statistics/device/motor_002?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:35] "GET /api/data/statistics/device/pump_001?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:35] "GET /api/data/statistics/device/sensor_temp_001?metrics=temperature,vibration&time_range=1h&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:41:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:41:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:41:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:41:34.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:42:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:42:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:42:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:42:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:42:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:42:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:43:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:43:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:42:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:35 - modules.data_cleaning - INFO - IQR: removed 4 outliers from 'current' (threshold=2.0)
+2026-05-29 08:43:35 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:43:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:43:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:43:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:43:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'current' (threshold=2.0)
+2026-05-29 08:44:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:44:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:44:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:44:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:43:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:45:35 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'current' (threshold=2.0)
+2026-05-29 08:45:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:45:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:45:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:45:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:46:35 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'current' (threshold=2.0)
+2026-05-29 08:46:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:46:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:46:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:46:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:47:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:45:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:47:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:47:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:47:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:35] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:47:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:35 - modules.data_cleaning - INFO - IQR: removed 1 outliers from 'temperature' (threshold=2.0)
+2026-05-29 08:48:35 - modules.data_cleaning - INFO - IQR: removed 3 outliers from 'vibration' (threshold=2.0)
+2026-05-29 08:48:35 - modules.data_cleaning - INFO - IQR: removed 2 outliers from 'rpm' (threshold=2.0)
+2026-05-29 08:48:35 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:35] "GET /api/data/timeseries/device/motor_001?metrics=temperature,vibration,current,rpm&time_range=24h&apply_cleaning=true&enable_alerts=true HTTP/1.1" 200 -
+2026-05-29 08:48:40 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:40] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:45 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:45] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:50 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:50] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:48:55 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:48:55] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:00 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:00] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:05 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:05] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:10 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:10] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:15 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:15] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:20 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:20] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:25 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:25] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -
+2026-05-29 08:49:30 - werkzeug - INFO - 127.0.0.1 - - [29/May/2026 08:49:30] "GET /api/data/timeseries/incremental/motor_001?metrics=temperature,vibration,current,rpm&last_timestamp=2026-05-29T00:48:35.000Z&time_range=24h HTTP/1.1" 200 -

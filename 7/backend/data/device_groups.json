@@ -1,0 +1,23 @@
+[
+  {
+    "group_id": "group_motors",
+    "group_name": "电机设备组",
+    "description": "工厂所有电机设备",
+    "created_at": "2026-05-29T01:10:43.640015",
+    "updated_at": "2026-05-29T01:10:43.640015"
+  },
+  {
+    "group_id": "group_pumps",
+    "group_name": "泵类设备组",
+    "description": "水泵、油泵等设备",
+    "created_at": "2026-05-29T01:10:43.640015",
+    "updated_at": "2026-05-29T01:10:43.640015"
+  },
+  {
+    "group_id": "group_sensors",
+    "group_name": "传感器组",
+    "description": "温度、压力传感器",
+    "created_at": "2026-05-29T01:10:43.640015",
+    "updated_at": "2026-05-29T01:10:43.640015"
+  }
+]

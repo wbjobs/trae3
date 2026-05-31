@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报表中心 - 工业设备运维时序数据分析平台</title>
+    <title>报表中心 - 工业设备运维时序数据分析平台</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>
+                    <span class="logo-icon">⚙️</span>
+                    IoT Analytics
+                </h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            <span>数据看板</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="devices.html" class="nav-link">
+                            <span class="nav-icon">🔧</span>
+                            <span>设备管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="groups.html" class="nav-link">
+                            <span class="nav-icon">📁</span>
+                            <span>分组管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="heatmap.html" class="nav-link">
+                            <span class="nav-icon">🔥</span>
+                            <span>热力图分析</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link active">
+                            <span class="nav-icon">📋</span>
+                            <span>报表中心</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">报表中心</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" onclick="openGenerateModal()">
+                        ➕ 生成报表
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label class="filter-label">报表类型</label>
+                    <select class="select-input" id="report-type" onchange="filterReports()">
+                        <option value="all">全部类型</option>
+                        <option value="device">设备报表</option>
+                        <option value="group">分组报表</option>
+                        <option value="summary">汇总报表</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">时间范围</label>
+                    <select class="select-input" id="report-time" onchange="filterReports()">
+                        <option value="all">全部时间</option>
+                        <option value="today">今天</option>
+                        <option value="week">本周</option>
+                        <option value="month">本月</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <h3 class="chart-title">已生成报表</h3>
+                </div>
+                <div id="reports-list">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="generate-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">生成运维报表</h3>
+                <button class="modal-close" onclick="closeModal('generate-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="report-form">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="form-label">报表类型</label>
+                            <select class="form-input" id="gen-report-type" onchange="toggleTargetSelect()">
+                                <option value="device">设备报表</option>
+                                <option value="group">分组报表</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="target-device-group">
+                            <label class="form-label">选择目标</label>
+                            <select class="form-input" id="gen-target">
+                                <option value="motor_001">主电机-1号</option>
+                                <option value="motor_002">主电机-2号</option>
+                                <option value="pump_001">冷却水泵</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">时间范围</label>
+                            <select class="form-input" id="gen-time-range">
+                                <option value="24h">最近24小时</option>
+                                <option value="7d">最近7天</option>
+                                <option value="30d">最近30天</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">输出格式</label>
+                            <select class="form-input" id="gen-format">
+                                <option value="pdf">PDF 格式</option>
+                                <option value="xlsx">Excel 格式</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('generate-modal')">取消</button>
+                <button class="btn btn-primary" onclick="generateReport()">生成报表</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/charts.js"></script>
+    <script src="../js/reports.js"></script>
+</body>
+</html>

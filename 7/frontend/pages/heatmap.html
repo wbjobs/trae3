@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热力图分析 - 工业设备运维时序数据分析平台</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>
+                    <span class="logo-icon">⚙️</span>
+                    IoT Analytics
+                </h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">
+                            <span class="nav-icon">📊</span>
+                            <span>数据看板</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="devices.html" class="nav-link">
+                            <span class="nav-icon">🔧</span>
+                            <span>设备管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="groups.html" class="nav-link">
+                            <span class="nav-icon">📁</span>
+                            <span>分组管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="heatmap.html" class="nav-link active">
+                            <span class="nav-icon">🔥</span>
+                            <span>热力图分析</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <span class="nav-icon">📋</span>
+                            <span>报表中心</span>
+                        </a>
+                    </li>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">热力图分析</h1>
+                <div class="page-actions">
+                    <button class="btn btn-outline" onclick="refreshHeatmap()">
+                        🔄 刷新
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label class="filter-label">设备分组</label>
+                    <select class="select-input" id="heatmap-group" onchange="updateDeviceSelect()">
+                        <option value="group_motors">电机设备组</option>
+                        <option value="group_pumps">泵类设备组</option>
+                        <option value="group_sensors">传感器组</option>
+                        <option value="all">全部设备</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">监测指标</label>
+                    <select class="select-input" id="heatmap-metric" onchange="loadHeatmap()">
+                        <option value="temperature">温度</option>
+                        <option value="vibration">振动</option>
+                        <option value="current">电流</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">时间范围</label>
+                    <select class="select-input" id="heatmap-time" onchange="loadHeatmap()">
+                        <option value="1h">最近1小时</option>
+                        <option value="6h">最近6小时</option>
+                        <option value="12h">最近12小时</option>
+                        <option value="24h" selected>最近24小时</option>
+                        <option value="7d">最近7天</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">时间粒度</label>
+                    <select class="select-input" id="heatmap-resolution" onchange="loadHeatmap()">
+                        <option value="15min">15分钟</option>
+                        <option value="1h" selected>1小时</option>
+                        <option value="2h">2小时</option>
+                        <option value="4h">4小时</option>
+                    </select>
+                </div>
+                </div>
+            </div>
+
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <h3 class="chart-title">设备指标热力图</h3>
+                </div>
+                <div class="chart-container large" id="heatmap-chart" style="height: 500px;"></div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">异常检测</h3>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>设备ID</th>
+                                    <th>时间</th>
+                                    <th>指标</th>
+                                    <th>数值</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody id="anomaly-table">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">统计汇总</h3>
+                    </div>
+                    <div id="stats-summary">
+                        <div class="device-metrics">
+                            <div class="metric-item">
+                                <span class="metric-label">最高值</span>
+                                <span class="metric-value" id="stat-max">-</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">最低值</span>
+                                <span class="metric-value" id="stat-min">-</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">平均值</span>
+                                <span class="metric-value" id="stat-avg">-</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">异常点数</span>
+                                <span class="metric-value" id="stat-anomaly">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/charts.js"></script>
+    <script src="../js/heatmap.js"></script>
+</body>
+</html>
