@@ -1,0 +1,33 @@
+{
+  "name": "industrial-wireless-monitor",
+  "version": "1.0.0",
+  "description": "工业无线组网拓扑监测联动系统",
+  "scripts": {
+    "dev:gateway": "cross-env NODE_ENV=development nodemon backend/gateway/server.js",
+    "dev:collector": "cross-env NODE_ENV=development nodemon backend/collector/server.js",
+    "dev:strategy": "cross-env NODE_ENV=development nodemon backend/strategy/server.js",
+    "dev:all": "concurrently \"npm run dev:gateway\" \"npm run dev:collector\" \"npm run dev:strategy\"",
+    "prod:gateway": "cross-env NODE_ENV=production node backend/gateway/server.js",
+    "prod:collector": "cross-env NODE_ENV=production node backend/collector/server.js",
+    "prod:strategy": "cross-env NODE_ENV=production node backend/strategy/server.js",
+    "frontend:dev": "cd frontend && vite",
+    "frontend:build": "cd frontend && vite build"
+  },
+  "dependencies": {
+    "koa": "^2.14.2",
+    "koa-router": "^12.0.0",
+    "koa-cors": "^0.0.16",
+    "koa-bodyparser": "^4.4.1",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "mqtt": "^5.0.5",
+    "ws": "^8.14.2",
+    "axios": "^1.5.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "concurrently": "^8.2.1",
+    "nodemon": "^3.0.1"
+  }
+}
