@@ -1,0 +1,2 @@
+[console_scripts]
+imgctl = imgctl.cli:main
