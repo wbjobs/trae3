@@ -1,0 +1,12 @@
+{
+  "name": "plot-engine",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev:server": "npx ts-node server/src/main.ts",
+    "dev:client": "npx vite client --open",
+    "build:server": "npx tsc -p server/tsconfig.json",
+    "build:client": "npx vite build client",
+    "lint": "npx eslint shared server/src client/src --ext .ts"
+  }
+}
