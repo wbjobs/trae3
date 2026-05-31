@@ -1,0 +1,45 @@
+{
+  "applications": [
+    {
+      "applyNo": "0120260530882244",
+      "traceId": "cbcf1214-52c5-4465-b9c6-c736f3cdbad7",
+      "applicantId": 2,
+      "applicantName": "普通用户",
+      "department": "",
+      "chemicalId": 1,
+      "chemicalName": "浓硫酸",
+      "casNo": "7664-93-9",
+      "specification": "98%",
+      "unit": "瓶",
+      "dangerLevel": "腐蚀",
+      "quantity": 5,
+      "purpose": "?????",
+      "usageLocation": "A?301?",
+      "emergencyContact": "??",
+      "emergencyPhone": "13800000000",
+      "status": "draft",
+      "currentStep": 0,
+      "id": 1,
+      "createdAt": "2026-05-29T17:48:51.364Z",
+      "updatedAt": "2026-05-29T17:48:51.364Z"
+    }
+  ],
+  "approvalRecords": [],
+  "traceLogs": [
+    {
+      "traceId": "cbcf1214-52c5-4465-b9c6-c736f3cdbad7",
+      "applicationId": 1,
+      "operatorId": 2,
+      "operatorName": "普通用户",
+      "operationType": "create",
+      "operationDetail": "{\"applicationId\":1,\"applicationNo\":\"0120260530882244\",\"chemicalName\":\"浓硫酸\"}",
+      "operationTime": "2026-05-29T17:48:51.365Z",
+      "ipAddress": "::1",
+      "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.22621.5624",
+      "id": 1,
+      "createdAt": "2026-05-29T17:48:51.365Z",
+      "updatedAt": "2026-05-29T17:48:51.365Z"
+    }
+  ],
+  "operationLogs": []
+}

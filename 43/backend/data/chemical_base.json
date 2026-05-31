@@ -1,0 +1,294 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "$2a$10$1KF9.0ZjoeSeBAb.fRvh.OhYIhENlBiYqWPytC7.sMhcvJKy.2MJm",
+      "realName": "系统管理员",
+      "phone": "13800000001",
+      "department": "信息中心",
+      "roleId": 1,
+      "status": 1,
+      "id": 1,
+      "createdAt": "2026-05-29T17:13:15.776Z",
+      "updatedAt": "2026-05-29T17:13:15.776Z"
+    },
+    {
+      "username": "user",
+      "password": "$2a$10$1KF9.0ZjoeSeBAb.fRvh.OhYIhENlBiYqWPytC7.sMhcvJKy.2MJm",
+      "realName": "普通用户",
+      "phone": "13800000002",
+      "department": "研发部",
+      "roleId": 3,
+      "status": 1,
+      "id": 2,
+      "createdAt": "2026-05-29T17:13:15.776Z",
+      "updatedAt": "2026-05-29T17:13:15.776Z"
+    },
+    {
+      "username": "approver",
+      "password": "$2a$10$1KF9.0ZjoeSeBAb.fRvh.OhYIhENlBiYqWPytC7.sMhcvJKy.2MJm",
+      "realName": "审批人员",
+      "phone": "13800000003",
+      "department": "安全管理部",
+      "roleId": 2,
+      "status": 1,
+      "id": 3,
+      "createdAt": "2026-05-29T17:13:15.776Z",
+      "updatedAt": "2026-05-29T17:13:15.776Z"
+    },
+    {
+      "username": "warehouse",
+      "password": "$2a$10$1KF9.0ZjoeSeBAb.fRvh.OhYIhENlBiYqWPytC7.sMhcvJKy.2MJm",
+      "realName": "仓库管理员",
+      "phone": "13800000004",
+      "department": "仓储部",
+      "roleId": 4,
+      "status": 1,
+      "id": 4,
+      "createdAt": "2026-05-29T17:13:15.776Z",
+      "updatedAt": "2026-05-29T17:13:15.776Z"
+    },
+    {
+      "username": "safety",
+      "password": "$2a$10$1KF9.0ZjoeSeBAb.fRvh.OhYIhENlBiYqWPytC7.sMhcvJKy.2MJm",
+      "realName": "安全员",
+      "phone": "13800000005",
+      "department": "安全管理部",
+      "roleId": 5,
+      "status": 1,
+      "id": 5,
+      "createdAt": "2026-05-29T17:13:15.776Z",
+      "updatedAt": "2026-05-29T17:13:15.776Z"
+    }
+  ],
+  "roles": [
+    {
+      "roleName": "系统管理员",
+      "roleCode": "admin",
+      "description": "系统管理员，拥有所有权限",
+      "permissions": [
+        "apply:create",
+        "apply:view",
+        "approval:do",
+        "ledger:view",
+        "user:manage",
+        "role:manage"
+      ],
+      "id": 1,
+      "createdAt": "2026-05-29T17:13:15.660Z",
+      "updatedAt": "2026-05-29T17:13:15.660Z"
+    },
+    {
+      "roleName": "审批人员",
+      "roleCode": "approver",
+      "description": "审批人员，负责危化品申请审批",
+      "permissions": [
+        "apply:view",
+        "approval:do",
+        "ledger:view"
+      ],
+      "id": 2,
+      "createdAt": "2026-05-29T17:13:15.660Z",
+      "updatedAt": "2026-05-29T17:13:15.660Z"
+    },
+    {
+      "roleName": "普通用户",
+      "roleCode": "user",
+      "description": "普通用户，可申请危化品",
+      "permissions": [
+        "apply:create",
+        "apply:view"
+      ],
+      "id": 3,
+      "createdAt": "2026-05-29T17:13:15.660Z",
+      "updatedAt": "2026-05-29T17:13:15.660Z"
+    },
+    {
+      "roleName": "仓库管理员",
+      "roleCode": "warehouse",
+      "description": "仓库管理员，负责危化品出入库",
+      "permissions": [
+        "apply:view",
+        "ledger:view"
+      ],
+      "id": 4,
+      "createdAt": "2026-05-29T17:13:15.660Z",
+      "updatedAt": "2026-05-29T17:13:15.660Z"
+    },
+    {
+      "roleName": "安全员",
+      "roleCode": "safety",
+      "description": "安全员，负责安全监督检查",
+      "permissions": [
+        "apply:view",
+        "ledger:view",
+        "approval:do"
+      ],
+      "id": 5,
+      "createdAt": "2026-05-29T17:13:15.660Z",
+      "updatedAt": "2026-05-29T17:13:15.660Z"
+    }
+  ],
+  "chemicals": [
+    {
+      "chemicalName": "浓硫酸",
+      "casNo": "7664-93-9",
+      "specification": "98%",
+      "unit": "瓶",
+      "stock": 100,
+      "dangerLevel": "腐蚀",
+      "storageCondition": "储存于阴凉、干燥、通风良好的专用库房",
+      "description": "化学式H₂SO₄，具有强腐蚀性、强氧化性，是重要的工业原料",
+      "id": 1,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "浓盐酸",
+      "casNo": "7647-01-0",
+      "specification": "36-38%",
+      "unit": "瓶",
+      "stock": 150,
+      "dangerLevel": "腐蚀",
+      "storageCondition": "储存于阴凉、通风的库房，与碱类、胺类、碱金属分开存放",
+      "description": "化学式HCl，具有强腐蚀性，有刺激性气味",
+      "id": 2,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "乙醇",
+      "casNo": "64-17-5",
+      "specification": "95%",
+      "unit": "桶",
+      "stock": 200,
+      "dangerLevel": "易燃",
+      "storageCondition": "储存于阴凉、通风的库房，远离火种、热源",
+      "description": "化学式C₂H₅OH，易燃，易挥发，常用作溶剂和消毒剂",
+      "id": 3,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "丙酮",
+      "casNo": "67-64-1",
+      "specification": "分析纯",
+      "unit": "桶",
+      "stock": 80,
+      "dangerLevel": "易燃",
+      "storageCondition": "储存于阴凉、通风良好的专用库房，远离火种、热源",
+      "description": "化学式CH₃COCH₃，易燃、易挥发，常用作有机溶剂",
+      "id": 4,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "甲苯",
+      "casNo": "108-88-3",
+      "specification": "分析纯",
+      "unit": "桶",
+      "stock": 60,
+      "dangerLevel": "易燃",
+      "storageCondition": "储存于阴凉、通风的库房，远离火种、热源，库温不宜超过30℃",
+      "description": "化学式C₆H₅CH₃，易燃，对人体有害，属易制毒化学品",
+      "id": 5,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "高锰酸钾",
+      "casNo": "7722-64-7",
+      "specification": "分析纯",
+      "unit": "瓶",
+      "stock": 120,
+      "dangerLevel": "易爆",
+      "storageCondition": "储存于阴凉、通风的库房，远离火种、热源，与还原剂、活性金属粉末等分开存放",
+      "description": "化学式KMnO₄，强氧化剂，与有机物接触易燃烧爆炸",
+      "id": 6,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "硝酸铵",
+      "casNo": "6484-52-2",
+      "specification": "工业级",
+      "unit": "袋",
+      "stock": 50,
+      "dangerLevel": "易爆",
+      "storageCondition": "储存于阴凉、干燥、通风良好的专用库房，远离火种、热源",
+      "description": "化学式NH₄NO₃，强氧化剂，受猛烈撞击或受热爆炸性分解",
+      "id": 7,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    },
+    {
+      "chemicalName": "氢气",
+      "casNo": "1333-74-0",
+      "specification": "99.9%",
+      "unit": "瓶",
+      "stock": 30,
+      "dangerLevel": "易燃",
+      "storageCondition": "储存于阴凉、通风的易燃气体专用库房，远离火种、热源，库温不宜超过30℃",
+      "description": "化学式H₂，易燃气体，与空气混合能形成爆炸性混合物",
+      "id": 8,
+      "createdAt": "2026-05-29T17:13:15.778Z",
+      "updatedAt": "2026-05-29T17:13:15.778Z"
+    }
+  ],
+  "permissions": [
+    {
+      "permissionName": "申请单创建",
+      "permissionCode": "apply:create",
+      "module": "申请管理",
+      "description": "创建危化品申领单",
+      "id": 1,
+      "createdAt": "2026-05-29T17:13:15.650Z",
+      "updatedAt": "2026-05-29T17:13:15.650Z"
+    },
+    {
+      "permissionName": "申请单查看",
+      "permissionCode": "apply:view",
+      "module": "申请管理",
+      "description": "查看危化品申领单",
+      "id": 2,
+      "createdAt": "2026-05-29T17:13:15.650Z",
+      "updatedAt": "2026-05-29T17:13:15.650Z"
+    },
+    {
+      "permissionName": "申请单审批",
+      "permissionCode": "approval:do",
+      "module": "审批管理",
+      "description": "审批危化品申领单",
+      "id": 3,
+      "createdAt": "2026-05-29T17:13:15.650Z",
+      "updatedAt": "2026-05-29T17:13:15.650Z"
+    },
+    {
+      "permissionName": "台账查看",
+      "permissionCode": "ledger:view",
+      "module": "台账管理",
+      "description": "查看危化品台账",
+      "id": 4,
+      "createdAt": "2026-05-29T17:13:15.650Z",
+      "updatedAt": "2026-05-29T17:13:15.650Z"
+    },
+    {
+      "permissionName": "用户管理",
+      "permissionCode": "user:manage",
+      "module": "系统管理",
+      "description": "管理系统用户",
+      "id": 5,
+      "createdAt": "2026-05-29T17:13:15.650Z",
+      "updatedAt": "2026-05-29T17:13:15.650Z"
+    },
+    {
+      "permissionName": "角色管理",
+      "permissionCode": "role:manage",
+      "module": "系统管理",
+      "description": "管理系统角色",
+      "id": 6,
+      "createdAt": "2026-05-29T17:13:15.650Z",
+      "updatedAt": "2026-05-29T17:13:15.650Z"
+    }
+  ]
+}
