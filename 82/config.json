@@ -1,0 +1,31 @@
+{
+  "server": {
+    "port": 8080,
+    "mode": "debug"
+  },
+  "config_db": {
+    "driver": "sqlite",
+    "dsn": "./data/config.db"
+  },
+  "log_db": {
+    "driver": "sqlite",
+    "dsn": "./data/runtime_log.db"
+  },
+  "clusters": [
+    {
+      "id": "cluster-east",
+      "name": "东部边缘集群",
+      "address": "10.0.1.0/24"
+    },
+    {
+      "id": "cluster-west",
+      "name": "西部边缘集群",
+      "address": "10.0.2.0/24"
+    },
+    {
+      "id": "cluster-north",
+      "name": "北部边缘集群",
+      "address": "10.0.3.0/24"
+    }
+  ]
+}
