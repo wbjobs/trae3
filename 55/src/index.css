@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0A1F1A;
+  --color-bg-secondary: #0F241D;
+  --color-bg-tertiary: #15332A;
+  --color-surface: #1A3F35;
+  --color-surface-hover: #22493E;
+  --color-border: #2A5A4A;
+  --color-border-light: #3A6A5A;
+  --color-primary: #C4A265;
+  --color-primary-hover: #D4BA87;
+  --color-primary-dim: #9A7A3E;
+  --color-danger: #D44B3F;
+  --color-danger-hover: #E0776F;
+  --color-info: #2B5C8A;
+  --color-success: #4CAF50;
+  --color-text: #E8ECF0;
+  --color-text-secondary: #A2B0BC;
+  --color-text-muted: #6B7B8D;
+  --color-text-inverse: #0A1F1A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Noto Serif SC', serif;
+}
+
+code, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-light);
+}
+
+@layer utilities {
+  .hex-highlight {
+    animation: hexPulse 2s ease-in-out infinite;
+  }
+
+  .scan-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      transparent 0%,
+      rgba(196, 162, 101, 0.03) 50%,
+      transparent 100%
+    );
+    animation: scanLine 4s linear infinite;
+    pointer-events: none;
+  }
+
+  .military-border {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+  }
+
+  .glow-sand {
+    box-shadow: 0 0 12px rgba(196, 162, 101, 0.3);
+  }
+
+  .glow-red {
+    box-shadow: 0 0 12px rgba(212, 75, 63, 0.4);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.3);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 8px rgba(196, 162, 101, 0.5);
+  }
+}
