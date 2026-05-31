@@ -1,0 +1,47 @@
+server:
+  port: ${SERVER_PORT:8084}
+  servlet:
+    context-path: /
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    database: ${REDIS_DATABASE:2}
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
+loadbalancer:
+  default-strategy: ${LOADBALANCER_STRATEGY:round_robin}
+  refresh-interval: ${LOADBALANCER_REFRESH_INTERVAL:10000}
+  health-check-interval: ${LOADBALANCER_HEALTH_INTERVAL:5000}
+  service-names:
+    - protocol-parser-service
+    - data-cache-service
+    - data-forward-service
+
+logging:
+  level:
+    com.smartmeter: ${LOG_LEVEL:INFO}
+    org.springframework: WARN
+    org.springframework.cloud.loadbalancer: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always

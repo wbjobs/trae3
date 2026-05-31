@@ -1,0 +1,19 @@
+FROM maven:3.8.6-jdk-8 AS builder
+WORKDIR /app
+
+COPY pom.xml .
+COPY common ./common
+COPY gateway ./gateway
+
+RUN mvn clean install -pl common -am -DskipTests
+RUN mvn clean package -pl gateway -am -DskipTests
+
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=builder /app/gateway/target/gateway-1.0.0.jar /app/app.jar
+
+EXPOSE 8080
+
+ENV JAVA_OPTS="-Xms512m -Xmx1024m -XX:+UseG1GC"
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]

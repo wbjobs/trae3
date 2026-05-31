@@ -1,0 +1,8 @@
+FROM maven:3.8.6-jdk-8 AS builder
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+
+COPY common/src ./common/src
+WORKDIR /app/common
+RUN mvn clean install -DskipTests

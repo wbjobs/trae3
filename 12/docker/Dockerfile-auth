@@ -1,0 +1,19 @@
+FROM maven:3.8.6-jdk-8 AS builder
+WORKDIR /app
+
+COPY pom.xml .
+COPY common ./common
+COPY auth ./auth
+
+RUN mvn clean install -pl common -am -DskipTests
+RUN mvn clean package -pl auth -am -DskipTests
+
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=builder /app/auth/target/auth-1.0.0.jar /app/app.jar
+
+EXPOSE 8083
+
+ENV JAVA_OPTS="-Xms256m -Xmx512m -XX:+UseG1GC"
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]

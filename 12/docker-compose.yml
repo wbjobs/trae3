@@ -1,0 +1,205 @@
+version: '3.8'
+
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.3
+    container_name: smartmeter-nacos
+    environment:
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_DB_NAME=nacos_config
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=root123
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - mysql
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0.33
+    container_name: smartmeter-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_DATABASE=smart_meter
+      - TZ=Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - smartmeter-network
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.0.12-alpine
+    container_name: smartmeter-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data
+    networks:
+      - smartmeter-network
+    command: redis-server --appendonly yes --requirepass ""
+    restart: unless-stopped
+
+  protocol-parser-service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-protocol-parser
+    container_name: smartmeter-protocol-parser
+    environment:
+      - NACOS_SERVER=nacos:8848
+      - SERVER_PORT=8081
+      - SPRING_PROFILES_ACTIVE=prod
+      - LOG_LEVEL=INFO
+    ports:
+      - "8081:8081"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - nacos
+    restart: unless-stopped
+
+  data-cache-service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-data-cache
+    container_name: smartmeter-data-cache
+    environment:
+      - NACOS_SERVER=nacos:8848
+      - SERVER_PORT=8082
+      - SPRING_PROFILES_ACTIVE=prod
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=smart_meter
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root123
+      - LOG_LEVEL=INFO
+    ports:
+      - "8082:8082"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - nacos
+      - mysql
+      - redis
+    restart: unless-stopped
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-auth
+    container_name: smartmeter-auth
+    environment:
+      - NACOS_SERVER=nacos:8848
+      - SERVER_PORT=8083
+      - SPRING_PROFILES_ACTIVE=prod
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=smartmeter-gateway-secret-key-2024-abcdefghijklmn
+      - JWT_EXPIRATION=86400
+      - LOG_LEVEL=INFO
+    ports:
+      - "8083:8083"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - nacos
+      - redis
+    restart: unless-stopped
+
+  load-balancer-service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-load-balancer
+    container_name: smartmeter-load-balancer
+    environment:
+      - NACOS_SERVER=nacos:8848
+      - SERVER_PORT=8084
+      - SPRING_PROFILES_ACTIVE=prod
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - LOADBALANCER_STRATEGY=round_robin
+      - LOG_LEVEL=INFO
+    ports:
+      - "8084:8084"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - nacos
+      - redis
+    restart: unless-stopped
+
+  data-forward-service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-data-forward
+    container_name: smartmeter-data-forward
+    environment:
+      - NACOS_SERVER=nacos:8848
+      - SERVER_PORT=8085
+      - SPRING_PROFILES_ACTIVE=prod
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DATAPLATFORM_URL=http://dataplatform:9000/api/data/receive
+      - DATAPLATFORM_APP_KEY=smartmeter-gateway
+      - DATAPLATFORM_APP_SECRET=smartmeter-secret-2024
+      - DATAPLATFORM_BATCH_SIZE=50
+      - DATAPLATFORM_MAX_RETRY=3
+      - DATAPLATFORM_FORWARD_INTERVAL=5000
+      - LOG_LEVEL=INFO
+    ports:
+      - "8085:8085"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - nacos
+      - redis
+      - data-cache-service
+    restart: unless-stopped
+
+  gateway-service:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-gateway
+    container_name: smartmeter-gateway
+    environment:
+      - NACOS_SERVER=nacos:8848
+      - SERVER_PORT=8080
+      - SPRING_PROFILES_ACTIVE=prod
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - GATEWAY_AUTH_ENABLED=true
+      - GATEWAY_AUTH_CACHE_TTL=60
+      - GATEWAY_FORWARD_IMMEDIATELY=false
+      - LOG_LEVEL=INFO
+    ports:
+      - "8080:8080"
+    networks:
+      - smartmeter-network
+    depends_on:
+      - nacos
+      - redis
+      - protocol-parser-service
+      - data-cache-service
+      - auth-service
+      - load-balancer-service
+      - data-forward-service
+    restart: unless-stopped
+
+networks:
+  smartmeter-network:
+    driver: bridge

@@ -1,0 +1,82 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /
+  tomcat:
+    max-threads: 500
+    min-spare-threads: 20
+    max-connections: 10000
+    accept-count: 200
+    connection-timeout: 5000
+
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  main:
+    allow-bean-definition-overriding: true
+
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    database: ${REDIS_DATABASE:4}
+    timeout: 3000ms
+    lettuce:
+      pool:
+        max-active: 64
+        max-wait: 3000ms
+        max-idle: 32
+        min-idle: 8
+      shutdown-timeout: 200ms
+
+gateway:
+  auth-enabled: ${GATEWAY_AUTH_ENABLED:true}
+  auth-cache-ttl: ${GATEWAY_AUTH_CACHE_TTL:120}
+  forward-immediately: ${GATEWAY_FORWARD_IMMEDIATELY:false}
+  local-cache-max-size: ${GATEWAY_LOCAL_CACHE_MAX_SIZE:10000}
+  local-cache-ttl-seconds: ${GATEWAY_LOCAL_CACHE_TTL_SECONDS:30}
+  rate-limit:
+    enabled: ${GATEWAY_RATE_LIMIT_ENABLED:true}
+    permits-per-second: ${GATEWAY_RATE_LIMIT_PERMITS:1000}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 10000
+      protocol-parser-service:
+        connectTimeout: 3000
+        readTimeout: 5000
+      data-cache-service:
+        connectTimeout: 3000
+        readTimeout: 8000
+  httpclient:
+    enabled: true
+    max-connections: 500
+    max-connections-per-route: 100
+  hystrix:
+    enabled: false
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 3000
+  MaxTotalConnections: 500
+  MaxConnectionsPerHost: 100
+
+logging:
+  level:
+    com.smartmeter: ${LOG_LEVEL:INFO}
+    org.springframework: WARN
+    com.smartmeter.gateway.feign: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
